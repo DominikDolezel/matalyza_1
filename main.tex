@@ -41,11 +41,13 @@
 \declaretheoremstyle[
   headfont=\color{blue}\normalfont\bfseries,
   bodyfont=\color{black}\normalfont,
+  numbered=no
 ]{pr}
 
 \declaretheoremstyle[
   headfont=\color{teal}\normalfont\bfseries,
   bodyfont=\color{black}\normalfont\itshape,
+  numbered=no
 ]{cv}
 
 \declaretheoremstyle[
@@ -82,6 +84,7 @@
 \declaretheoremstyle[
   headfont=\color{black}\normalfont\bfseries,
   bodyfont=\color{black}\normalfont,
+  numbered=no
 ]{motivace}
 
 \declaretheorem[
@@ -139,8 +142,8 @@
 \DeclareMathOperator{\arctg}{arctg}
 \DeclareMathOperator{\arccotg}{arccotg}
 
-\title{Úvod do sem patří název \\ {\large Zápisky z přednášky Jméno Příjmení učitele}}
-\author{Jméno Příjmení}
+\title{Matematická analýza I \\ {\large Zápisky z přednášky doc. Miroslava Zeleného?}}
+\author{Dominik Doležel}
 \date{}
 
 \begin{document}
@@ -150,17 +153,22 @@
 % ÚVODNÍ INFORMACE
 % dobré pro poznačení informačních věcí od učitele,
 % např. jeho email, jména skript apod.
-\input{additional/misc_info.tex}
+%\input{additional/misc_info.tex}
 
 % ZNAČENÍ
 % pokud nepotřebujete, zakomentujte řádek níže
 % všechny změny provádějte v souboru additional/conventions.tex
-\input{additional/conventions.tex}
+%\input{additional/conventions.tex}
 
 % KAPITOLY
 % \input{chapters/01_nazev_kapitoly}
 % ...
 
+\input{chapters/01_uvod.tex}
+\input{chapters/02_limita_posloupnosti.tex}
+\input{chapters/03_limita_a_spojitost_funkce.tex}
+\input{chapters/04_elementarni_funkce.tex}
+\input{chapters/05_derivace.tex}
 % \listoffigures
 
 \backmatter

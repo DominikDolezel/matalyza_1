@@ -1,0 +1,595 @@
+\section{Limita a spojitost funkce}
+\begin{definice}
+\textbf{Funkce} $f$ \textbf{jedné reálné proměnné} (dále jen \textbf{funkce}) je zobrazení
+$f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
+\end{definice}
+
+\begin{definice}
+	Funkce $f: J\to \mathbb R $ je \textbf{rostoucí} na intervalu $J$, jestliže pro
+	každou dvojici $x_1, x_2 \in J, x_1 < $
+	%TODO DOÚPLNIT
+\end{definice}
+
+\begin{definice}
+\textbf{Monotónní funkce} %TODO DOPLNIT
+\end{definice}
+
+\begin{definice}
+	Nechť $f$ je funkce a $M\subset \mathcal D(f)$. %TODO lichá atd. DOPLNIT
+\end{definice}
+
+\begin{definice}
+	Nechť $c \in \mathbb R $. Potom \textbf{okolím bodu} $c$ rozumíme každou množinu tvaru
+	$B(c, \varepsilon) = (c-\varepsilon, c+\varepsilon)$, kde $\varepsilon \in \mathbb R , \varepsilon > 0$.
+	\textbf{Okolím} bodu $\infty$ rozumíme každou množinu tvaru $B(\infty, \varepsilon) = \left( \frac{1}{\varepsilon}, \infty \right ) $,
+	kde $\varepsilon \in \mathbb R , \varepsilon > 0$. \textbf{Okolím} bodu $-\infty$
+	rozumíme každou množinu $B(-\infty, \varepsilon)$ %TODO DOPLNIT
+\end{definice}
+
+\begin{definice}
+	Nechť $c \in \mathbb R $. Potom \textbf{prstencovým okolím} bodu $c$ rozumíme
+	každou množinu tvaru $(c-\varepsilon, c+\varepsilon) \smallsetminus \left \{ c \right \} $,
+	kde % TODO DOPLNIT
+\end{definice}
+
+\begin{poznamka}[Pozorování] %TODO
+	Nechť $c_1,c_2 \in \mathbb R ^*, c_1 \ne c_2$. Potom existuje $\varepsilon \in \mathbb R , \varepsilon > 0$
+	takové, že $B(c_1, \varepsilon) \cap B(c_2,\varepsilon) = \emptyset$.
+\end{poznamka}
+
+\begin{definice}
+	Řekneme, že číslo $A \in \mathbb R ^*$ je \textbf{limitou funkce $f$ v bodě $c \in \mathbb R ^*$},
+	jestliže
+	$$
+	    \forall \varepsilon \in \mathbb R, \varepsilon > 0 \, \exists \delta \in \mathbb R , \delta > 0 \, \forall x \in P(c, \delta): f(x)\in B(A,\varepsilon).
+	$$
+\end{definice}
+
+\begin{veta}\label{3.1}% 3.1
+	Nechť funkce $f$ má v bodě $c\in \mathbb R ^*$ limitu $A\in \mathbb R ^*$ a limitu
+	$B\in \mathbb R ^*$. Potom platí $A=B$.
+\end{veta}
+
+\begin{proof}
+	Pro spor předpokládejme, že $A\ne B$. Nalezneme $\varepsilon \in \mathbb R , \varepsilon >0$
+	takové, že $B(A,\varepsilon)\cap B(B,\varepsilon) = \emptyset$. Nalezneme $\delta_1, \delta_2 \in \mathbb R ,
+	\delta_1, \delta_2 > 0$ takové, že platí
+	$$
+	    \forall x \in P(c,\delta_1): f(x) \in B(A,\varepsilon),\\
+		\forall x \in P(c,\delta_2): f(x) \in B(B,\varepsilon).
+	$$
+	Položme $\delta_3 = \min \left \{ \delta_1, \delta_2 \right \} $. Zvolme $z\in P(c,\delta_3)$.
+	Potom platí $c\in P(c,\delta_1)$, a tedy $f(z)\in B(A,\varepsilon).$ Podobně
+	máme $z\in P(c,\delta_2)$, a tedy $f(z)\in B(B,\varepsilon).$ Odtud plyne
+	$$
+	    f(z)\in B(A, \varepsilon) \cap B(B,\varepsilon) = \emptyset,
+	$$
+	což je spor.
+\end{proof}
+
+\begin{poznamka}\,
+\begin{enumerate}[(1)]
+	\item Pokud existuje limita funkce $f$ v bodě $c\in \mathbb R ^*$, pak ji značíme symbolem
+	$\lim_{x\to c} f(x)$.
+	\item Pokud existuje $\lim_{x\to c} f(x)$, potom je $f$ definována na jistém prstencovém okolí
+	bodu $c$.
+	\item Limitu funkce můžeme počítat ve vlastním bodě $c$, tj. $c\in \mathbb R $, nebo v nevlastním
+	bodě $c$, tj. $c\in \left \{ \infty, -\infty \right \} $. Výsledek může být opět vlastní nebo
+	nevlastní.
+	\item Nechť $c, A\in \mathbb R .$ Potom platí, že $\lim_{x\to c}f(x)=A$ právě tehdy, když
+	$$
+	    \forall \varepsilon \in \mathbb R , \varepsilon > 0 \, \exists \delta \in \mathbb R , \delta > 0 \, \forall x \in \mathbb R , 0 < |x-c|<\delta:|f(x)-A|<\varepsilon.
+	$$
+	\item Nechť $c,A\in \mathbb R , K\in \mathbb R , K>0$. Potom $\lim_{x\to c}f(x)=A$ právě tehdy, když platí
+	$$
+	\forall \varepsilon \in \mathbb R , \varepsilon > 0 \, \exists \delta \in \mathbb R , \delta > 0 \, \forall x \in \mathbb R , 0 < |x-c|<\delta:|f(x)-A|<K\varepsilon.
+	$$
+\end{enumerate}
+\end{poznamka}
+
+\begin{definice}
+	Nechť $c\in \mathbb R $. %TODO PRAVÉ OKOLÍ APOD
+\end{definice}
+
+\begin{definice} %TODO limita zprava apod
+	Nechť $A\in \mathbb R ^*$
+\end{definice}
+
+\begin{poznamka}
+	Věta \ref{3.1} platí analogicky i pro limitu zleva a limitu zprava. Značení: $\lim_{x\to c_-}f(x)$, resp.
+	$\lim_{x\to c_+}f(x)$.
+\end{poznamka}
+
+\begin{priklad}\,
+\begin{itemize}
+	\item Nechť $c\in \mathbb R ^*, A \in \mathbb R ,\delta_0\in \mathbb R ,\delta_0>0$ splňují
+	$\forall x \in P(c,\delta_0):f(x)=A.$
+	Potom $\lim_{x\to c}f(x)=A.$
+	\item Nechť $c\in \mathbb R ^*$. Potom platí $\lim_{x\to c}x=c$. Zvolme
+	$\varepsilon \in \mathbb R ,\varepsilon >0$. Položme $\delta=\varepsilon$. Potom platí
+	$P(c,\delta)=P(c,\varepsilon)\subseteq B(c,\varepsilon),$ a tedy
+	$\forall x \in P(c,\delta):x\in B(c,\varepsilon)$.
+\end{itemize}
+\end{priklad}
+
+\begin{poznamka}[Pozorování]
+	Nechť $f,g$ jsou funkce, $c\in \mathbb R ^*, \delta_0 \in \mathbb R , \delta_0 > 0$ a platí
+	$$
+	    \forall x\in P(c,\delta_0): f(x)=g(x).
+	$$
+	Potom $\lim_{x\to c}f(x)=A\in \mathbb R ^*$ právě tehdy, když $\lim_{x\to c}g(x)=A\in \mathbb R ^*$.
+\end{poznamka}
+
+\begin{poznamka}
+	Limita funkce v bodě má \uv{lokální charakter}.
+\end{poznamka}
+
+\begin{definice} %TODO
+	Řekneme, že funkce $f$ je \textbf{spojitá v bodě} $c\in \mathbb R $
+\end{definice}
+
+\begin{poznamka}
+	Funkce je spojitá v bodě $c\in \mathbb R $ právě tehdy, když platí
+	$$
+	    \forall \varepsilon \in \mathbb R , \varepsilon > 0 \,\exists \delta \in \mathbb R , \delta > 0 \, \forall x \in B(c,\delta):f(x)\in B(f(c),\varepsilon).
+	$$
+\end{poznamka}
+
+\begin{definice} %TODO
+	spojitost zprava a spojitost zleva
+\end{definice}
+
+\begin{definice} %TODO
+	funkce spojitá na intervalu
+\end{definice}
+
+\begin{poznamka}
+	Nechť $c\in \mathbb R , A\in \mathbb R ^*$. Potom platí, že $\lim_{x\to c}f(x)=A$ právě tehdy,
+	když $\lim_{x\to c_-}f(x)=A$ a $\lim_{x\to c_+}f(x)=A$.
+	\par Implikace $\implies$ je zřejmá. Implikace $\impliedby$: Zvolme $\varepsilon \in \mathbb R ,\varepsilon > 0$.
+	Nalezneme $\delta _1\in \mathbb R , \delta_1 >0$ takové, že
+	$$
+	    \forall x\in P_1(c,\delta_1) : f(x)\in B(A,\varepsilon).
+	$$
+	Podobně nalezneme $\delta_2\in \mathbb R , \delta_2 >0$ takové, že
+	$$
+	    \forall x\in P_2(c,\delta_2):f(x)\in B(A,\varepsilon).
+	$$
+	Položme $\delta_3=\min \left \{ \delta_1, \delta_2 \right \} $. Potom máme
+	$$
+	    P(c,\delta_3) \subseteq P_+(c,\delta_1) \cup P_-(c,\delta_2).
+	$$
+	Pro každé $x \in P(c,\delta_3)$ platí $f(x)\in B(A,\varepsilon)$.
+\end{poznamka}
+
+\subsection{Věty o limitách}
+\begin{veta} %3.2
+	Nechť funkce $f$ má v bodě $c\in \mathbb R ^*$ vlastní limitu. Pak existuje
+	$\delta\in \mathbb R ,\delta >0$ takové, že $f$ je na $P(c,\delta)$ omezená.
+\end{veta}
+
+\begin{proof}
+	Označme $A=\lim_{x\to c}f(x)$. Potom platí $A\in \mathbb R $. Položme $\varepsilon =1$. K němu
+	nalezneme $\delta\in \mathbb R ,\delta > 0$ takové, že pro každé $x\in P(c,\delta): f(x)\in B(A,\varepsilon)$,
+	neboli
+	$$
+	    \forall x \in P(c,\delta):f(x)\in(A-1, A+1).
+	$$
+	Tedy $f$ je omezená na $P(c,\delta)$.
+\end{proof}
+
+\begin{veta}[Aritmetika limit]\label{veta3.3} % věta 3.3
+	% TODO
+\end{veta}
+
+\begin{proof}
+\begin{enumerate}
+	\item[(b)] Případ $A,B \in \mathbb R $: Podle věty 3.2 % TODO
+	nalezneme $K\in \mathbb R , K > 0$ takové, že existuje $\delta_0 \in \mathbb R , \delta_0 > 0$ splňující
+	$$
+	    \forall x \in P(c,\delta_0):|f(x)| < K.
+	$$
+	Zvolme $\varepsilon \in \mathbb R, \varepsilon > 0$. Nalezneme $\delta_1,\delta_2 \in \mathbb R ,\delta_1, \delta_2 > 0$
+	taková, že platí
+	\begin{align*}
+		&\forall x \in P(c,\delta_1): |f(x)-A|<\varepsilon, \\
+		&\forall x \in P(c,\delta_2): |g(x)-B|< \varepsilon.
+	\end{align*}
+	Položme $\delta = \min \left \{ \delta_0, \delta_1, \delta_2 \right \} $.Pro každé $x\in P(c,\delta)$ platí
+	\begin{align*}
+	|f(x)g(x)-AB| & = |f(x)g(x)-f(x)B+f(x)B-AB| \\
+	& \leq |f(x)(g(x)-B)| + |(f(x)-A)B|++
+	& < K\varepsilon + \varepsilon |B| = (K+|B|)\varepsilon.
+\end{align*}
+Odtud plyne $\lim_{x\to c} f(x)g(x)=AB.$
+\item[(c)] Případ $A = \infty, B\in \mathbb R , B> 0$. Potom $\frac{A}{B}\infty$. Zvolme $\varepsilon \in \mathbb R ,\varepsilon > 0$.
+K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ taková, že platí
+\begin{align*}
+\forall x \in P(c,\delta_1): f(x)\in B(\infty, \frac{1}{2B}\varepsilon),\\
+\forall x \in P(c,\delta_2): g(x) \in B(B,\frac{1}{2}B).
+\end{align*}
+    Položme $\delta = \min \left \{ \delta_1, \delta_2 \right \} $. Pro každé $x \in P(c,\delta)$ platí
+    $$
+    \frac{f(x)}{g(x)}> \frac{\frac{2B}{\varepsilon}}{\frac{3}{2}B} = \frac{4}{3\varepsilon} > \frac{1}{\varepsilon},
+    $$
+    tj. $\frac{f(x)}{g(x)} \in B(\infty, \varepsilon).$ \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	Věta \ref{veta3.3} platí analogicky i pro jednostranné limity.
+\end{poznamka}
+
+\begin{dusledek}\label{duslvety3.3}
+	Nechť $c\in \mathbb R $ a $f,g$ jsou spojité funkce v bodě $c$. Potom také $f+g$ a $fg$ jsou spojité
+	v bodě $c$. Pokud navíc $g(c)\ne 0$, pak i funkce $\frac{f}{g}$ je spojitá v $c$.
+\end{dusledek}
+
+\begin{priklad}
+	Funkce $x\mapsto c, x \in \mathbb R $ a $x\mapsto x, x \in \mathbb R $ jsou spojité na $\mathbb R $.
+	Odtud a z důsledku \ref{duslvety3.3} plyne, že každý polynom je spojitý v každém bodě z $\mathbb R $.
+\end{priklad}
+
+\begin{veta}\label{veta3.4} % věta 3.4
+	oprava: $A \in \mathbb R^* $ %TODO
+\end{veta}
+
+\begin{proof}
+	Rozlišíme dva případy
+	\begin{enumerate}[$i$.]
+		\item $A\in \mathbb R $: Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu
+		nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ taková, že
+		\begin{align*}
+		&\forall x \in P(c, \delta_1): |f(x)-A|<\frac{1}{2}A,\\
+		&\forall x \in P(c,\delta_2): |g(x) - 0| = |g(x)| < \frac{1}{2} A\varepsilon.
+		\end{align*}
+		Položme $\delta = \min \left \{ \delta_1, \delta_2, \eta \right \}. $ Potom pro každé $x \in P(c,\delta)$
+		platí
+		$$
+  \frac{f(x)}{g(x)} > \frac{\frac{1}{2}A}{\frac{1}{2}A\varepsilon}=\frac{1}{\varepsilon},
+		$$
+		tj. $\frac{f(x)}{g(x)} \in B(\infty, \varepsilon)$. Potom tedy $\lim_{x\to c} \frac{f(x)}{g(x)} = \infty$.
+		\item $A = \infty$: Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu
+		nalezneme $\delta_1, \delta_2\in \mathbb R , \delta_1, \delta_2 >0$ taková, že
+		\begin{align*}
+			&\forall x \in P(c,\delta_1): f(x) \in B(\infty, \varepsilon), \\
+			&\forall x \in P(c,\delta_2): G(x) \in B(0, 1).
+        \end{align*}
+        Položme $\delta = \min \left \{ \delta_1, \delta_2,\eta \right \} $. Potom pro každé $x \in P(c,\delta)$
+        platí
+        $$
+        \frac{f(x)}{g(x)}> \frac{\frac{1}{\varepsilon}}{1} = \frac{1}{\varepsilon}.
+        $$
+        Odtud plyne $\lim_{x\to c} \frac{f(x)}{g(x)}=\infty$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{veta}[Limita a uspořádání]\label{veta3.5} % 3.5
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Označme $A = \lim_{x\to c} f(x), B = \lim_{x\to c} g(x)$.
+	\begin{enumerate}[(a)]
+		\item Nalezneme $\varepsilon \in \mathbb R , \varepsilon > 0$
+		takové, že $B(A,\varepsilon) \cap B(B,\varepsilon) = \emptyset.$ Potom pro každé $y_1 \in B(A,\varepsilon)$
+		a $y_2\in B(B,\varepsilon)$ platí $y_1 > y_2$. Nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$
+		taková, že
+		\begin{align*}
+			& \forall x \in P(c,\delta_1):f(x)\in B(A,\varepsilon), \\
+			& \forall x \in P(c,\delta_2):g(x)\in B(B,\varepsilon). \\
+\end{align*}
+    Položme $\delta = \min \left \{ \delta_1, \delta_2 \right \} $. Potom pro každé $x \in P(c,\delta)$
+    platí $f(x)\in B(A,\varepsilon),g(x)\in B(B,\varepsilon)$, a tedy $f(x) > g(x)$.
+    \item Pro spor předpokládejme, že $A > B$. Podle již dokázaného bodu $(a)$ nalezneme
+    $\eta \in \mathbb R , \eta > 0$ takové, že
+    $$
+        \forall x \in P(c,\eta): f(x) > g(x).
+    $$
+    Zvolme $z \in P(c, \min \left \{ \delta, \eta \right \} )$. Potom platí
+    $$
+        f(z) > g(z) \geq f(z),
+    $$
+    což je spor. (Druhá nerovnost z předpokladu.) \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}[O dvou strážnících] % 3.6
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$
+	taková, že
+	\begin{align*}
+		& \forall x \in P(c,\delta_1):f(x)\in B(A, \varepsilon), \\
+		& \forall x \in P(c,\delta_2):g(x)\in B(A, \varepsilon).
+\end{align*}
+    Položme $\delta = \min \left \{ \delta_1, \delta_2,\eta \right \} $. Potom pro každé
+    $x \in B(c,\delta)$ platí $f(x), g(x)\in B(A, \varepsilon)$ a navíc $f(x)\leq h(x)\leq g(x)$,
+    tedy $h(x) \in B(A, \varepsilon)$. Odtud plyne, že $\lim_{x\to c} h(x) = A.$
+\end{proof}
+
+\begin{poznamka}
+	Pokud $A = \infty$, stačí strážník $f$. Podobně pro $A = \infty$.
+\end{poznamka}
+
+\begin{dusledek}
+	Nechť $c \in \mathbb R ^*, \lim _{x\to c} f(x) = 0$ a existuje $\eta \in \mathbb R ,\eta > 0$
+	takové, že funkce $g$ je na $P(c,\eta)$ omezená. Potom $\lim_{x\to c} f(x)g(x)=0.$
+\end{dusledek}
+
+\begin{proof}
+	Nalezneme $K\in \mathbb R , K > 0$ takové, že $\forall x \in P(c,\eta): |g(x)| <K$.
+	Platí také $\lim_{x\to c} |f(x)|=0.$ Potom $\forall x \in P(c, \eta)$ platí
+	$$
+	    -K |f(x)| \leq f(x)g(x) \leq K|f(x)|.
+	$$
+	Odtud podle věty o dvou strážnících máme $\lim_{x\to c} f(x)g(x) = 0.$
+\end{proof}
+
+\begin{veta}[Limita složené funkce] % 3.7
+	% TODO
+\end{veta}
+
+\begin{proof}\label{v3.7}
+	Označme $A=\lim_{y\to \_0}f(y)$. Chceme $\lim_{x\to x_0} f(g(x))=A$.
+	\begin{enumerate}
+		\item[(P)] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K nim nalezneme
+		$\psi \in \mathbb R , \psi > 0$ takové, že
+		$$\forall y \in P(y_0, \psi): f(y)\in B(A, \varepsilon).$$
+		K $\psi$ nalezneme $\delta^\prime \in \mathbb R , \delta ^\prime > 0$ takové, že platí
+		$$
+		    \forall x \in P(x_0,\delta^\prime): g(x)\in B(y_0,\psi).
+		$$
+		Nechť $\eta \in \mathbb R,\eta>0 $ splňuje podmínku (P). Položme
+		$\delta = \min \left \{ \delta^\prime, \eta \right \} $.
+		Pro každé $x \in P(x_0,\delta)$ platí $g(x\in B(y_0,\psi)$ a $g(x)\ne y_0$, tedy $g(x)\in P(y_0, \psi)$.
+		Odtud plyne $f(g(x))\in B(A,\varepsilon).$
+		\item[(S)] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu díky (S) nalezneme
+		$\psi \in \mathbb R , \psi > 0 $ takové, že
+		$$
+		    \forall y \in B(y_0,\psi) : f(y) \in B(f(y_0), \varepsilon),
+		$$
+		neboť $A=f(y_0)$. K $\psi$ nalezneme $\delta \in \mathbb R ,\delta > 0$ takové, že
+		$$
+		    \forall x \in P(x_0, \delta):g(x) \in B(y_0, \psi).
+		$$
+		Potom pro každé $x \in P(x_0, \delta)$ platí $f(g(x)) \in B(f(y_0),\varepsilon)=B(A,\varepsilon)$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{dusledek}
+	Jestliže je funkce $g$ spojitá v bodě $c\in \mathbb R $ a funkce $f$ je spojitá v bodě $g(c)$, potom
+	je funkce $f\circ g$ spojitá v bodě $c$.
+\end{dusledek}
+
+\begin{poznamka}
+	Platí i varianty věty \ref{v3.7} pro jednostranné limity, např.: Nechť $x_0,y_0 \in \mathbb R \smallsetminus \left \{ -\infty \right \} $,
+	$f,g$ jsou funkce, $\lim_{x\to x_0^+} g(x)=y_0,\lim_{y\to y_0^+} f(y)$ existuje a je splněna alespoň jedna z následujících
+	podmínke:
+	\begin{enumerate}
+		\item[(P)] $\exists \eta \in \mathbb R , \eta > 0\, \forall x \in P_+(x_0,\eta):g(x)>y_0$,
+		\item[(S)] $f$ je spojitá v bodě $y_0$,
+\end{enumerate}
+    potom $\lim_{x\to x_0^+} f(g(x))=\lim_{y\to y_0^+}f(y)$.
+\end{poznamka}
+
+\begin{veta}[Heine]\label{Heinehoveta}
+	% TODO
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}
+	\item[$\implies$] Nechť $\left \{ x_n \right \} $ je posloupnost splňující
+	\begin{itemize}
+		\item $\forall n\in \mathbb N : x_n \ne c,$
+		\item $\lim_{n \to \infty} x_n = c$.
+	\end{itemize}
+	Chceme ukázat, že $\lim_{n \to \infty} f(x_n)=A$. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$.
+	Díky ($i$) nalezneme k $\varepsilon$ číslo $\delta\in \mathbb R , \delta > 0$ takové, že
+	$$
+	    \forall x \in P(c,\delta):  f(x) \in B(A,\varepsilon).
+	$$
+	K $\delta$ nalezneme $n_0 \in \mathbb N $ takové, že
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: x_n \in B(c,\delta),
+	$$
+	neboť $\lim_{n \to \infty} x_n = c$. Pak máme
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: x_n \in P(c,\delta).
+	$$
+	Potom z předchozího plyne
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: f(x_n) \in B(A,\varepsilon).
+	$$
+	Odtud $\lim_{n \to \infty} f(x_n)=A.$
+	\item[$\impliedby$] Obměnou. Předpokládejme negaci ($i$):
+	$$
+	    \exists \varepsilon \in \mathbb R , \varepsilon > 0 \, \forall \delta \in \mathbb R , \delta > 0 \, \exists x \in P(c,\delta): \neg(f(x)\in B(A,\varepsilon)).
+	$$
+	Nechť $\varepsilon \in \mathbb R , \varepsilon > 0$ a podle $\neg$ ($i$) splňuje
+	$$
+	    \forall \delta \in \mathbb R , \delta > 0 \, \exists x \in P(c,\delta): \neg (f(x)\in B(A,\varepsilon).
+	$$
+	Pro každé $n \in \mathbb N $ nalezneme $x_n \in P \left( c, \frac{1}{n} \right ) $ takové, že
+	$\neg(f(x_n)\in B(A,\varepsilon)$. Potom pro každé $n \in \mathbb N $ platí $x_n \ne c$.
+	Dále máme $\lim_{n \to \infty} x_n = c$. Zvolme $\tau \in \mathbb R , \tau > 0$. K němu nalezneme
+	$n_0 \in \mathbb N $ splňující $\frac{1}{n_0} < \tau$. Potom pro každé $n\in \mathbb N , n \geq n_0$
+	platí
+	$$
+	    x_n \in P(c, \frac{1}{n}) \subseteq P(c,\frac{1}{n_0})\subseteq B(c,\tau).
+	$$
+	Neplatí však $\lim_{n \to \infty} f(x_n)=A$, neboť pro každé $n \in \mathbb N $ máme
+	$\neq (f(x_n)\in B(A,\varepsilon))$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	Lze formulovat varianty Heineovy věty, např.: Nechť $c\in \mathbb R $ a $f$ je funkce.
+	Pak jsou výroky ($i$) a ($ii$) ekvivalentní:
+	\begin{enumerate}[($i$)]
+		\item $f$ je spojitá zprava v bodě $c$,
+		\item pro každou posloupnost $\left \{ x_n \right \} $ splňující
+		\begin{itemize}
+			\item $\forall n \in \mathbb N : x_n \geq c$,
+			\item $\lim_{n \to \infty} x_n = c$,
+		\end{itemize}
+		platí $\lim_{n \to \infty} f(x_n)=f(c)$.
+	\end{enumerate}
+\end{poznamka}
+
+\begin{priklad}
+	Uvažujme funkci $f(x)=\sin \frac{1}{x}, x \in \mathbb R \smallsetminus \left \{ 0 \right \} $.
+	Položme $x_n=\frac{1}{n\pi},n\in \mathbb N $, $y_n = \frac{1}{2n\pi + \frac{\pi}{2}}, n \in \mathbb N $.
+	Platí $x_n \ne 0, y_n \ne 0$ pro všechna $n \in \mathbb N $. Navíc je
+	\begin{align*}
+		\lim_{n \to \infty} f(x_n)=\lim_{n \to \infty} \sin(n\pi)=0, \\
+		\lim_{n \to \infty} f(y_n) = \lim_{n \to \infty} \left( 2n\pi + \frac{\pi}{2} \right ) =1,
+\end{align*}
+tedy $\lim_{x \to 0} f(x)$ neexistuje.
+\end{priklad}
+
+\begin{veta}[Monotónní funkce]
+	% TODO
+\end{veta}
+
+\begin{proof}
+\begin{enumerate}[(a)]
+	\item Označme $m=\inf f((a,b))$. Předpokládejme, že $m\in \mathbb R $. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$.
+	Podle definice infima není číslo $m+\varepsilon$ dolní závorou množiny $f((a,b))$. Nalezneme $x^\prime \in (a,b)$
+	takové, že $m\leq f(x^\prime)< m + \varepsilon$. Nalezneme $\delta \in \mathbb R , \delta  > 0$ takové, že
+	$P_+(a,\delta)\subset (a,x^\prime).$ Potom pro každé $x\in P_+(a,\delta)$ platí, že $a<x<x^\prime$, a tedy
+	$$
+	    m-\varepsilon < m \leq f(x) \leq f(x^\prime) < m+ \varepsilon.
+	$$
+	Potom máme $f(x)\in B(m,\varepsilon)$. Podobně postupujeme, pokud $m=-\infty$.
+	\item Obdobně.\qedhere
+\end{enumerate}
+\end{proof}
+
+\subsection{Funkce spojité na intervalu}
+\begin{veta}[Bolzano]\label{veta3.10}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Nechť $C\in (f(a),f(b)).$ Položme $M = \left \{ z\in \left [ a,b \right ] , f(z)< C \right \} $.
+	Množina $M$ je neprázdná ($a \in M$) a shora omezená, neboť $M \subseteq \left [ a,b \right ] $.
+	Označme $\xi=\sup M$ (používáme vlastnost suprema). Přivedeme ke sporu možnost, že $f(\xi) < C$ i
+	$f(\xi) < C$.
+	\begin{enumerate}[($i$)]
+		\item Pro spor předpokládejme, že $f(\xi)<C$. Platí tedy, že $\xi < b$. Funkce $f$ je v
+		$\xi$ spojitá zprava. Podle věty \ref{veta3.5} (a) nalezneme $\delta \in \mathbb R ,\delta > 0$
+		takové, že
+		$$
+		    \forall x \in \left [ \xi,\xi<\delta \right ):f(x)< C.
+		$$
+		Potom máme, že $\left [ \xi, \xi+ \delta \right ) \subset M $, což je spor.
+		\item Pro spor předpokládejme, že $f(\xi) < C$. Potom $\xi > a$. Funkce $f$ je zleva spojitá
+		v $\xi$. Podle věty \ref{veta3.5} (a) nalezneme $\delta \in \mathbb R , \delta > 0$
+		takové, že
+		$$\forall x \in (\xi-\delta, \xi]:f(x)>C.$$
+		Potom $M\subseteq \left [ a,\xi-\delta \right ] $, což je spor ($\xi-\delta <\xi$  a $ \xi$ je
+		horní závora).\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	Věta \ref{veta3.10} platí i v případě, že $f(a) >f(b)$.
+\end{poznamka}
+
+\begin{lemma}\label{lemma3.11} % 3.11
+	% TODO
+\end{lemma}
+
+\begin{proof}
+	Pokud $M = \emptyset$, pak $M$ je interval. Předpokládejme tedy, že $M\ne \emptyset$.
+	Položme $a=\inf M, b =\sup M$. Ověříme, že interval $(a,b) \subseteq M \subseteq (a,b)\cup \left \{ a,b \right \} $.
+	Nejprve ověříme $(a,b) \subseteq M$. Zvolme $z\in (a,b)$. Nalezneme prvky $x,y\in M$ splňující
+	$x<z$ a $z<y$. Podle podmínky ze znění máme $z\in M$. Nyní ověříme $M \subseteq (a,b)\cup \left \{ a,b \right \} $.
+	Zvolme $z\in M$. Potom $a\leq z\leq b$. Odtud plyne $z\in(a,b) \cup \left \{ a,b \right \} $.
+\end{proof}
+
+\begin{veta}\label{veta3.12} % 3.12
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Použijeme lemma \ref{lemma3.11}. Předpokládejme, že $y_1,y_2 \in f(J)$ a $z\in \mathbb R $
+	splňují $y_1 < z < y_2$. Nalezneme $x_1,x_2 \in J$ takové, že $f(x_1) = y_1, f(x_2) = y_2$.
+	Podle věty \ref{veta3.10} nalezneme $\xi \in (x_1, x_2)$ (resp. $\xi \in (x_2, x_1)$) splňující
+	$f(\xi) = z$ ($f$ je spojitá na $J$, a tedy i na $\left [ x_1,x_2 \right ] $, resp. $\left [ x_2,x_1 \right ] $).
+	Máme tedy $z\in f(J)$. Podle lemmatu \ref{lemma3.11} je $f(J)$ interval.
+\end{proof}
+
+\begin{veta}\label{veta3.13}% 3.13
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Pro spor předpokládejme, že $f$ není omezená shora. Pro každé $n\in \mathbb N $
+	nalezneme $x_n \in \left [ a,b \right ] $ takový, že $f(x_n) > n$. Díky Weierstrassově větě
+	nalezneme vybranou posloupnost $\left \{ x_{n_k} \right \}_{k=1}^\infty $ z $\left \{ x_n \right \}_{n=1}^\infty $.
+	Pak $\lim_{k \to \infty} x_{n_k} = x^* \in \left [ a,b \right ] $. Z varianty Heineovy věty plyne
+	$\lim_{k \to \infty} f(x_{n_k})=f(x^*)\in \mathbb R $, $\forall k \in \mathbb N : f(x_{n_k}) > n_k \geq k$.
+	odstud plyne $\lim_{k \to \infty} f(x_{n_k}) = \infty$, což je spor.
+\end{proof}
+
+\begin{poznamka}
+	V důkazu věty \ref{veta3.13} jsme užili následující variantu Heineovy věty:
+	Nechť $I\subset \mathbb R $ je interval a $f:I\to \mathbb R $. Pak je ekvivalentní:
+	\begin{enumerate}[(i)]
+		\item $f$ je spojitá na $I$,
+		\item pro každé $c\in I$ a každou posloupnost $\left \{ x_n \right \} $ prvků intervalu $I$
+		splňující $\lim_{n \to \infty} x_n=c$ platí $\lim_{n \to \infty} f(x_n)=f(c)$.
+\end{enumerate}
+\end{poznamka}
+
+\begin{definice}
+	maxima, minima, body maxima, body minima
+	% TODO
+\end{definice}
+
+\begin{definice}
+	lokální maximum, lokální minimum
+	% TODO
+\end{definice}
+
+\begin{veta}\label{veta3.14} % 3.14
+    % TODO
+\end{veta}
+
+\begin{proof}
+	Dokážeme existenci maxima. Podle věty \ref{veta3.13} je $f$ omezená na intervalu $\left [ a,b \right ] $,
+	a proto $G=\sup f(\left [ a,b \right ] )$ je prvkem $\mathbb R $. Pro každé $n\in \mathbb N $
+	nalezneme $x_n \in \left [ a,b \right ] $ splňující $f(x_n)> G-\frac{1}{n}$. Pomocí Weierstrassovy
+	věty nalezneme vybranou posloupnost $\left \{ x_{n_k} \right \}_{k=1}^\infty $ z
+	$\left \{ x_n \right \}_{n=1}^\infty $ takovou, že $\lim_{n \to \infty} x_{n_k}\in \mathbb R $.
+	Potom platí, že $x^* = \lim x_{n_k} \in \left [ a,b \right ] $. Dále máme, že
+	$\lim_{n \to \infty} f(x_n)=G$, neboť
+	$$
+	    \forall n \in \mathbb N:G-\frac{1}{n} < f(x_n) \leq G,
+	$$
+	a tedy $\lim_{n \to \infty} f(x_{n_k})=G$. Podle Heineovy věty máme, že $\lim_{n \to \infty} f(x_{n_k})=f(x^*)$.
+	Odtud $f(x^*)=G$.
+\end{proof}
+
+\begin{veta}[O inverzní funkci]\label{veta3.15} % 3.15
+Nechť $f$ je spojitá a rostoucí (resp. klesající) funkce na intervalu $J$. Potom funkce
+$f^{-1}$ je spojitá a rostoucí (resp. klesjící) na intervalu $f(J)$.
+\end{veta}
+
+\begin{proof}
+	Funkce $f$ je rostoucí, a tedy prostá. Funkce $f^{-1}$ je tedy dobře definovaná na $f(J)$.
+	Množina $f(J)$ je interval podle věty \ref{veta3.12}. Je-li $f$ rostoucí (resp. klesající),
+	pak je snadné ukázat, že $f^{-1}$ je rostoucí (resp. klesající). Předpokládejme, že $y_0\in f(J)$
+	není pravým koncovým bodem intervalu $f(J)$. Budeme dokazovat, že $f^{-1}$ je spojitá zprava
+	v bodě $y_0$. Označme $x_0= f^{-1}(y_0)$. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$.
+	Bod $y_0$ není pravý koncový bod $f(J)$, a tedy $x_0$ není pravý koncový bod $J$, neboť $f$
+	je rostoucí. Nalezneme $x_1\in (x_0,x_0+\varepsilon) \cap J$. Nalezneme $\delta \in \mathbb R , \delta > 0$
+	takové, že $f(x_1)=y_0+ \delta$. Pak pro každé $y\in \left [ y_0,y_0+\delta \right ) $
+	platí $x_0=f^{-1}(y_0)\leq f^{-1}(y)\leq f^{-1}(y_0+\delta)=x_1$, takže
+	$f^{-1}(y) \in [x_0,x_1) \subseteq B(x_0,\varepsilon)= B(f^{-1}(y_0),\varepsilon)$. Spojitost
+	zleva v bodě, který není levým koncovým bodem $f(J)$, by se dokazovala analogicky.
+\end{proof}

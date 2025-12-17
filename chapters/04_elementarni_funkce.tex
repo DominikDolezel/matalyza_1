@@ -1,0 +1,265 @@
+\section{Elementární funkce}
+\begin{veta} % 4.1
+	% TODO
+\end{veta}
+
+\subsection{Vlastnosti exponenciální funkce}
+\begin{enumerate}
+	\item[(E3)] $\underline{\exp(0)=1}$
+	\par Podle (E1) platí $\exp(0) = \exp(0+0) = \exp(0)\cdot \exp(0)$, neboli $\exp(0)=\exp(0)^2$, tedy
+	$\exp(0)$ je buď 0 nebo 1. Kdyby $\exp(0)=0$, potom pro každé $x\in \mathbb R $ platí
+	$$
+	    \exp(x) = \exp(x+0)=\exp(x)\cdot \exp(0) = 0,
+	$$
+	což je spor s (E2).
+	\item[(E4)] $\underline{\forall x \in \mathbb R : \exp(x)\cdot \exp(-x)=1}$
+	\par Pro $x\in \mathbb R $ platí:
+	$$
+	    1=\exp(0)=\exp(x+(-x))=\exp(x)\cdot \exp(-x).
+	$$
+	\item[(E5)] $\underline{\forall n \in \mathbb Z \, \forall x \in \mathbb R : \exp(nx)=\exp(x)^n}$
+	\begin{itemize}
+		\item $n=0$: pro $x \in \mathbb R $ je $\exp(0\cdot x)=\exp(0)=1=\exp(x)^0$
+		\item $n \rightsquigarrow n+1$: pro $x \in \mathbb R $ je
+		\begin{align*}
+			\exp((n+1)x) & =\exp(nx+x) = \exp(nx)\cdot \exp(x) = \exp(x)^n \cdot \exp(x)\\
+			&=\exp(x)^{n+1}
+		\end{align*}
+		\item $n\in \mathbb Z , n < 0$: pro $x \in \mathbb R $ je
+		$$
+			\exp(nx) = \exp(-(-nx)) = \frac{1}{\exp(-nx)}=\frac{1}{\exp(x)^{-n}} = \exp(x)^n
+		$$
+	\end{itemize}
+	\item[(E6)] $\underline{\forall x \in(0,\infty):\exp(x)>1}$
+	\par Z vlastnosti (E2) plyne, že existuje $\delta \in \mathbb R , \delta > 0$ takové, že
+	$$
+	    \forall z \in (0,\delta]: \exp(z)-1 > 0.
+	$$
+	Položme $k=\left [ \frac{x}{\delta} \right ] $. Potom můžeme psát
+	$$
+	    x=k\delta + z, \,\,\, z \in [0,\delta).
+	$$
+	Potom máme
+	$$
+	    \exp(x) = \exp(k\delta + z)=\exp(k\delta) \cdot \exp(z) = \underbrace{\exp(\delta)^k}_{>1 \textrm{ pro } k\geq 1}\cdot \exp(z)>1,
+	$$
+	pokud $k=0$, pak $z>0$.
+	\item[(E7)] $\underline{\forall x \in (-\infty, 0): \exp(x)\in(0,1)}$
+	\par Plyne z (E4) a (E6).
+	\item[(E8)] \underline{$\exp$ je rostoucí na $\mathbb R $}
+	\par Zvolme $x,y \in \mathbb R , x<y$. Položme $k=y-x$. Potom $k>0$ a platí
+	$$
+	    \exp(y) = \exp(x+k) = \underbrace{\exp(x)}_{>0}\cdot \underbrace{\exp(k)}_{>1}>\exp(x).
+	$$
+	\item[(E9)] $\underline{\lim_{x \to \infty} \exp(x)=\infty}$
+	\par Podle věty % TODO 3.9 (A)
+	je $\lim_{x \to \infty} \exp(x)$ existuje, neboť $\exp$ je rostoucí. Podle Heineovy věty
+	platí, že $\lim_{n \to \infty} \exp(n)=\lim_{x \to \infty} \exp(x)$. Navíc máme
+	$$
+	    \lim_{n \to \infty} \exp(n)=\lim_{n \to \infty} (\exp(1))^n = \infty, \,\,\,\textrm{(E6)} \implies \exp(1) > 1.
+	$$
+	\item[(E10)] $\underline{\lim_{x \to -\infty} \exp(x)=0}$
+	\par Plyne z (E9) a (E4):
+	$$
+    \lim_{x \to -\infty} \exp(x)=\lim_{x \to -\infty} \frac{1}{\exp(-x)}=\frac{1}{\infty}=0
+	$$
+	\begin{align*}
+		&g(x) = x & \lim_{x \to -\infty} g(x)&=\infty \\
+		&f(y) = \exp(y) & \lim_{y \to \infty} f(y)&=\infty \\
+		&\textrm{je splněna podmínka (P)}
+	\end{align*}
+	\item[(E11)] \underline{$\exp$ je spojitá na $\mathbb R$}
+	\par spojitá v 0:
+	$$
+    \lim_{x \to 0} \exp(x) = \lim_{x\to 0} \left( \frac{\exp(x)-1}{x}\cdot x+1 \right ) = 1\cdot 0 + 1= 1=\exp(0)
+	$$
+	\par spojitá na $c\in \mathbb R $:
+	$$
+        \lim_{x \to c} \exp(x) = \lim_{x\to c} \exp(x-c+c) = \lim_{x \to c} \exp(x-c)\cdot \exp(c)=1 \cdot \exp(c) = \exp(c)
+	$$
+	\item[(E12)] \underline{$\mathcal H(\exp)=(0,\infty)$}
+	\par Díky větě \ref{veta3.12} a (E11) máme, že $\mathcal H(\exp)=\exp(\mathbb R )$ je interval.
+	Víme, že platí $\mathcal H(\exp)\subseteq (0,\infty)$. Z (E9) a (E10) plyne $\mathcal H(\exp)=(0,\infty)$.
+\end{enumerate}
+
+\begin{poznamka}[Označení]
+	Eulerovo číslo $e=\exp(1)$.
+\end{poznamka}
+
+\begin{definice}
+	% TODO
+	logaritmus
+\end{definice}
+
+\subsection{Vlastnosti logaritmu}
+\begin{enumerate}
+	\item[(L1)] \underline{$\mathcal D(\log)=(0,\infty)$}
+	\par Platí totiž $\mathcal H(\exp) = (0,\infty)$.
+	\item[(L2)] \underline{$\mathcal H(\log)=\mathbb R $}
+	\par Platí totiž $\mathcal D(\exp)=\mathbb R $.
+	\item[(L3)] \underline{$\log(1)=0$}
+	\par Je totiž $\exp(0)=1$.
+	\item[(L4)] \underline{$\forall x,y \in(0,\infty):\log(xy)=\log x + \log y$}
+	\par Pro $x,y\in (0,\infty)$ označme $a=\log x, b = \log y$. Potom
+	$$
+	    \log(xy)=\log(\exp(a)\exp(b))=\log(\exp(a+b))=a+b=\log x + \log y.
+	$$
+	\item[(L5)] \underline{$\forall x \in (0,\infty): \log \frac{1}{x} = - \log x$}
+	\par Platí
+	$$
+	    0=\log (1) = log \left( x\cdot \frac{1}{x} \right ) = \log (x)+ \log \left( \frac{1}{x} \right ),
+	$$
+	odkud máme $\log \frac{1}{x}=-\log x$.
+	\item[(L6)] \underline{$\forall n \in \mathbb Z  \, \forall x \in (0,\infty):\log (x^n)=n\log x$}
+	\begin{itemize}
+		\item $n=0:$ platí
+		\item $n \rightsquigarrow n+1:$ ($n\in \mathbb N \cup \left \{ 0 \right \}) , x \in (0,\infty)$
+		$$
+		    \log(x^{n+1})=\log(x^n\cdot x) = \log(x^n)+ \log (x) = n\log x + \log x = (n+1)\log x.
+		$$
+		\item $n\in \mathbb Z , n < 0:$ $x \in (0,\infty)$
+		$$
+		    \log(x^n)=\log \left( \frac{1}{x^{-n}} \right ) = -\log (x^{-n}) = (-1) \cdot (-n)\cdot \log x=n\log x.
+		$$
+	\end{itemize}
+	\item[(L7)] \underline{$\log$ je rostoucí na $(0,\infty)$}
+	\par $\exp$ je rostoucí na $\mathbb R $
+	\item[(L8)] \underline{$\lim_{x \to \infty} \log x=\infty$}
+	\par Z věty o limitě monotónní funkce, faktu že $\log $ je rostoucí a toho, že
+	$\mathcal H(\log) = \mathbb R $ plyne, že $\lim_{x \to \infty} \log x = \infty$.
+	\item[(L9)] \underline{$\lim_{x \to 0^+} \log x = -\infty$}
+	\par Podobně jako v (L8).
+	\item[(L10)] \underline{$\log$ je spojitá na $(0,\infty)$}
+	\par Plyne ze spojitosti $\exp$, (E5) a věty \ref{veta3.15}.
+	\item[(L11)] \underline{$\lim_{x \to 1} \frac{\log x}{x-1}=1$}
+	\par Vezměme si
+	\begin{align*}
+		 f(y)&=\frac{\exp(y)-1}{y} & & \lim_{y \to 0} f(y)=1\\
+		 g(x) &=\log x & & \lim_{x \to 1} g(x) = 0
+			\textrm{je splněna podmínka (P)},
+	\end{align*}
+	odkud máme
+	$$
+        \lim_{x \to 1} f\circ g(x) = 1,
+	$$
+	tedy že
+	$$
+	\lim_{x\to 1} \frac{\exp(\log x)-1}{\log x} = \lim_{x\to 1} \frac{x-1}{\log x} = 1.
+	$$
+\end{enumerate}
+
+\begin{poznamka}\,
+\begin{enumerate}[(i)]
+	\item Pro $a \in \mathbb R , a > 0, n \in \mathbb Z $ je
+	$$
+	    a^n= \exp(n\log a)=\exp(\log(a^n))=a^n,
+	$$
+	tedy definice obecné mocniny je kompatibilní s (L6).
+	\item Pro $n\in \mathbb N $ je funkce
+	$$
+	    x\mapsto \sqrt[n]{x}
+	$$
+	\begin{itemize}
+		\item pro $n$ sudé rovna inverzní funkci k $f(x)=x^n, x \in [0,\infty)$,
+		\item pro $n$ liché rovna inverzní funki k $h(x)=x^n, x \in \mathbb R $.
+	\end{itemize}
+	Platí $x\mapsto \sqrt[n]{x}$ je spojitá na svém definičním oboru (podle věty \ref{veta3.15}).
+\end{enumerate}
+\end{poznamka}
+
+\begin{veta}[Základní vlastnosti sinu a kosinu]\label{veta3.17} % veta 3.17
+	% TODO
+\end{veta}
+
+\subsection{Vlastnosti sinu a kosinu}
+\begin{enumerate}
+	\item[(G6)] $\underline{\cos(0)=1}$
+	\par Zvolme $x\in (0,\frac{\pi}{2})$. Podle (G1) platí
+	$$\sin x = \sin(x+0)=\sin x \cos 0+\cos x \sin 0 = \sin x \cos 0,$$
+	a protože $\sin x \ne 0$ pro $x\in (0,\frac{\pi}{2})$, je
+	$$
+	    \cos 0 = 1.
+	$$
+	\item[(G7)] $\underline{\forall x \in \mathbb R : \sin^2 x + \cos ^2 x = 1}$
+	\par Platí
+	$$
+	    1= \cos(0)=\cos(x-x)=\cos x \cos(-x)-\sin x \sin(-x)=\cos^2 x+ \sin^2 x.
+	$$
+	\item[(G8)] $\underline{\forall x \in \mathbb R : |\sin x|\leq 1 \land |\cos x| \leq 1}$
+	\par Plyne z (G7).
+	\item[(G9)] $\underline{\cos\left (\frac{\pi}{2}\right)=0}$
+	\par Podle (G7) máme
+	$$
+	    \sin^2 \left( \frac{\pi}{2} \right )  + \cos^2 \left( \frac{\pi}{2} \right ) = 1,
+	$$
+	ale $\sin^2 \left( \frac{\pi}{2} \right )$ je podle (G4) rovno 1, takže
+	$$
+	    \cos^2 \left( \frac{\pi}{2} \right ) = 0 \implies \cos \left( \frac{\pi}{2} \right ) =0.
+	$$
+	\item[(G10)] $\underline{\forall x \in \mathbb R : \sin \left( x+\frac{\pi}{2} \right )  = \cos x}$
+	\par Z (G1) a (G9) plyne
+	$$
+	    \sin \left( x+\frac{\pi}{2} \right ) = \sin x \cos \left( \frac{\pi}{2} \right ) +\cos x \sin \left( \frac{\pi}{2} \right ) =\cos x.
+	$$
+	\item[(G11)] $\underline{\forall x \in \mathbb R : \cos \left( x+\frac{\pi}{2} \right ) = - \sin x }$
+	\par Z (G2) plyne
+	$$
+	    \cos \left( x+ \frac{\pi}{2} \right ) = \cos x \cos \frac{\pi}{2} - \sin x \sin \frac{\pi}{2} = -\sin x.
+	$$
+	\item[(G12)] \underline{sinus a kosinus jsou $2\pi$ periodické}
+	\par Z (G10) a (G11) plyne
+	\begin{align*}
+	\sin(x+2\pi) &= \sin \left( x+\frac{3}{2}\pi + \frac{\pi}{2} \right )  = \cos \left( x+ \frac{3}{2}\pi \right )\\
+& = - \sin(x+\pi) = -\cos \left( x+\frac{\pi}{2} \right ) = \sin x.
+\end{align*}
+	\par $\cos(x+2\pi)=\cos x$ analogicky.
+	\item[(G13)] \underline{sinus a kosinus jsou spojité na $\mathbb R $}
+	\begin{itemize}
+		\item sinus je spojitý v nule:
+		$$
+  \lim_{x \to 0} \sin x = \lim_{x\to 0} \frac{\sin x}{x}\cdot x = 1\cdot 0 = 0 = \sin 0.
+		$$
+		\item kosinus je spojitý v nule:
+		\begin{align*}
+		\lim_{x\to 0} \cos x & = \lim_{x\to 0} \cos \left( \frac{x}{2}+\frac{x}{2} \right ) = \lim_{x\to 0} \left( \cos^2 \left( \frac{x}{2} \right ) - \sin^2 \left( \frac{x}{2} \right ) \right) \\
+	&= \lim_{x\to 0} \left( 1-2\sin^2 \left( \frac{x}{2} \right ) \right ) = 1-2\cdot 0^2 = 1 = \cos 0.
+\end{align*}
+		\item spojitost sinu v $x_0\in \mathbb R $:
+		\begin{align*}
+		\lim_{x\to x_0} \sin x & = \lim_{x\to x_0} \sin \left( \left( x-x_0 \right ) +x_0 \right )\\
+	& = \lim_{x\to x_0} \left( \sin(x-x_0)\cos x_0 + \cos (x-x_0)\sin x_0  \right )\\
+	& = 0 \cdot \cos x_0 + \cos 0 \cdot \sin x_0 = \sin x_0.
+\end{align*}
+		\item spojitost kosinu v $x_0 \in \mathbb R $: obdobně s pomocí (G2)
+	\end{itemize}
+	\item[(G14)] \underline{$\left \{ x\in \mathbb R , \sin x = 0 \right \} = \left \{ k\pi, k \in \mathbb Z  \right \}  $ a $\left \{ x\in \mathbb R , \cos x = 0 \right \} = \left \{ \frac{\pi}{2}+k\pi, k \in \mathbb Z  \right \}  $}
+	\par Platí
+	\begin{align*}
+		\forall x \in \left( 0, \frac{\pi}{2} \right ) : \sin x  > 0 &&  \forall x \in \left( -\frac{\pi}{2}, 0 \right ) :\sin x < 0.
+	\end{align*}
+	Dále pro $x \in \left( \frac{\pi}{2},\pi \right ) $ je
+	$$
+	    \sin x = \cos \left( x-\frac{\pi}{2} \right ) = - \sin (x-\pi).
+	$$
+	Podobně když $x\in \left( \pi, \frac{3\pi}{2} \right ) $, máme $\sin x = - \sin (x-\pi)$.
+	Odtud dostáváme, že nulové body jsou právě v $0, \frac{\pi}{2}, \pi$ a $\frac{3\pi}{2}$.
+	Pro kosinus dostaneme z (G11) posunutím o $\frac{\pi}{2}$.
+\end{enumerate}
+
+\begin{definice} % Tangens a kotangens
+	% TODO
+\end{definice}
+
+\begin{definice} % cyklometrické funkce
+	% TODO
+\end{definice}
+
+\begin{veta}\label{veta3.18}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Spojitosti funkcí $\log, \exp, \sin, \cos$ jsme již dokázali. Funkce $\tg$ a $\cotg$ dostaneme
+	pomocí věty o artimetice limit. Zbývá tedy dokázát spojitost funkcí $\arcsin$, $\arccos$, $\arctg$, $\arccotg$.
+	Do dostaneme podle věty \ref{veta3.15}.
+\end{proof}
