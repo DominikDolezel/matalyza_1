@@ -292,7 +292,7 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 \end{veta}
 
 \begin{proof}
-	Podle věty \ref{veta3.14} $f$ nabývá v intervalu $\left [ a,b \right ] $ svéh maxima i minima.
+	Podle věty \ref{veta3.14} $f$ nabývá v intervalu $\left [ a,b \right ] $ svého maxima i minima.
 	Označme $m=\min f (\left [ a,b \right ])  $ a $M = \max f (\left [ a,b \right ])$.  Potom platí
 	$$
 	    m \leq f(a) = f(b) \leq M.
@@ -308,5 +308,177 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 \end{veta}
 
 \begin{proof}
-
+Definujme pomocnou funkci
+$$
+    g(x)=f(x) - \frac{f(b)-f(a)}{b-a}(c-a), \quad x \in \left [ a,b \right ] .
+$$
+Platí, že
+\begin{itemize}
+	\item $g$ je spojitá na $\left [ a,b \right ] $,
+	\item $g(a)= f(a)$, $g(b)=f(b)-\frac{f(b)-f(a)}{b-a}(b-a)=f(a)$,
+\item $g^\prime(x)=\underbrace{f^\prime(x)}_{\in \mathbb R ^*}-\underbrace{\frac{f(b)-f(a)}{b-a}}_{\in \mathbb R }$, $x \in (a,b)$.
+\end{itemize}
+Podle Rolleovy věty \ref{veta5.6} nalezneme $c\in(a,b)$ takové, že $g^\prime(c)=0$. Potom platí
+$$
+    \underbrace{f^\prime(c)}_{\in \mathbb R }-\frac{f(b)-f(a)}{b-a}=0.
+$$
+Odsud dostáváme
+$$
+    f^\prime(c)=\frac{f(b)-f(a)}{b-a},
+$$
+což jsme chtěli dokázat.
 \end{proof}
+
+\begin{veta}[Cauchy] \label{veta5.8}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Podle Lagrangeovy věty \ref{veta5.7} nalezneme $d \in (a,b)$ takový, že
+	$$
+	    g^\prime(d)=\frac{g(b)-g(a)}{b-a}.
+	$$
+	Platí $g^\prime(d)\ne 0$, a tedy $g(a)\ne g(b)$. Položme
+	$$
+	\varphi(x) = (f(x)-f(a))(g(b)-g(a))-(f(b)-f(a))(g(x)-g(a)), \quad x \in \left [ a,b \right ].
+	$$
+	Platí, že
+	\begin{itemize}
+		\item $\varphi$ je spojitá na $\left [ a,b \right ] $,
+		\item $\varphi(a)=0$, $\varphi(b)=0$,
+		\item $\varphi^\prime(x)=\underbrace{f^\prime(x)}_{\in \mathbb R ^*}\underbrace{(g(b)-g(a))}_{\ne 0}-(f(b)-f(a))\underbrace{g^\prime(x)}_{\in \mathbb R}$, $x \in (a,b)$.
+	\end{itemize}
+	Podle Rolleovy věty \ref{veta5.6} nalezneme $c \in (a,b)$ takové, že $\varphi^\prime(c)=0$,
+	neboli
+	$$
+	    \underbrace{f^\prime(c)}_{\in \mathbb R }\underbrace{(g(b)-g(a))}_{\ne 0}-(f(b)-f(a))\underbrace{g^\prime(c)}_{\ne 0}=0.
+	$$
+	Odtud plyne
+	$$
+ \frac{f^\prime(c)}{g^\prime(c)}=\frac{f(b)-f(a)}{g(b)-g(a)},
+	$$
+	což jsme chtěli dokázat.
+\end{proof}
+
+\begin{veta}[l'H\^ospitalovo pravidlo] \label{veta5.9}
+    % TODO
+\end{veta}
+
+\begin{proof}
+	Provedeme důkaz (a), důkaz (b) umět nemusíme.
+	\par Označme $L=\lim_{x\to a_+} \frac{f^\prime(x)}{g^\prime(x)}.$
+	\paragraph{Pomocné tvrzení.}
+	\begin{enumerate}
+		\item[(i)] Pro každé $\alpha \in \mathbb R ,\alpha > L$ existuje $\delta > 0$ takové, že
+		$$
+		    \forall x \in P_+(a,\delta):\frac{f(x)}{g(x)}<\alpha.
+		$$
+		\item[(ii)] Pro každé $\beta \in \mathbb R , \beta < L$ existuje $\delta^\prime>0$ takové,
+		že
+		$$
+		    \forall x \in P_+(a,\delta^\prime):\frac{f(x)}{g(x)}>\beta.
+		$$
+	\end{enumerate}
+		\paragraph{Důkaz pomocného tvrzení.}
+		\begin{enumerate}
+			\item[(i)] Nalezneme $r\in (L,\alpha)$. Nalezneme $\delta > 0$ takové, že platí
+			\begin{itemize}
+				\item $f$, $f^\prime$, $g$ a $g^\prime$ jsou definovány na $P_+(a,\delta)$,
+				\item $f^\prime$, $g^\prime$ jsou vlastní na $P_+(a,\delta)$,
+				\item $g^\prime$ je nenulové na $P_+(a,\delta)$,
+				\item $\forall x \in P_+(a,\delta):\frac{f^\prime(x)}{g^\prime(x)}<r$,
+				\item $g$ je nenulová na $P_+(a,\delta)$; pokud by existoval nulový bod $f$ v
+				$P_+(a,\delta)$, pak je nejvýše jeden a $\delta$ vhodně zmenšíme.
+			\end{itemize}
+		Zvolme $x\in P_+(a,\delta)$. Předpokládejme, že $y \in P_+(a,\delta)$ a $y<x$. Podle Cauchyovy
+		věty \ref{veta5.8} nalezneme $c \in (y,x)$ takové, že
+		$$
+  \frac{f^\prime(c)}{g^\prime(c)}=\frac{f(x)-f(y)}{g(x)-g(y)}.
+		$$
+		Potom $\frac{f^\prime(c)}{g^\prime(c)}<r$, a tedy
+		$$
+  \frac{f(x)-f(y)}{g(x)-g(y)}<r.
+		$$
+		Potom máme, že
+		$$
+  \lim_{y\to a^+} \frac{f(x)-f(y)}{\underbrace{g(x)-g(y)}_{<r}}=\underbrace{\frac{f(x)}{\underbrace{g(x)}_{\ne 0}}}_{\leq r}<\alpha.
+		$$
+		\item[(ii)] Dokážeme analogicky.
+	\end{enumerate}
+	\paragraph{Vlastní důkaz.} Pokud $L= \infty$, resp. $L=-\infty$, pak věta plyne z (ii), resp. z (i).
+	Pokud $L\in \mathbb R $ a $\varepsilon > 0$, položíme $\alpha = L+\varepsilon$, $\beta = L-\varepsilon$
+	a nalezneme příslušná $\delta$ a $\delta^\prime$. Položme $\delta_1=\min \left \{ \delta, \delta^\prime \right \} $.
+	Pak pro každé $x \in P_+(a,\delta_1)$ platí
+	$$
+	    L-\varepsilon =\beta < \frac{f(x)}{g(x)}<\alpha = L+\varepsilon, \quad \textrm{tj. } \frac{f(x)}{g(x)}\in B(L,\varepsilon),
+	$$
+	což jsme chtěli dokázat.
+\end{proof}
+
+\begin{poznamka}\,
+\begin{enumerate}[$i.$]
+	\item $\lim_{x\to 0} \frac{2x+1}{3x+1} \ne \lim_{x\to 0} \frac{2}{3}$
+	\item $\lim_{x\to \infty} \frac{x}{x+\sin x}=1$, ale l'H\^ospitalovým pravidlem výsledek nedostaneme
+	\item $\lim_{x\to 0} \frac{e^{-\frac{1}{x^2}}}{x}= \lim_{x\to 0} \frac{e^{-\frac{1}{x^2}}\cdot \frac{2}{x^3}}{1}=\lim_{x\to 0} \frac{2e^{-\frac{1}{x^2}}}{x^3}$
+\end{enumerate}
+\end{poznamka}
+
+\begin{priklad}
+	Spočtěte $\lim_{x\to 0} \frac{\sin x -x}{x^3}$.
+\end{priklad}
+
+\begin{reseni}
+	L'H\^ospitalovým pravidlem dostáváme
+	$$
+	    \lim_{x\to 0} \frac{\sin x -x}{x^3} = \lim_{x\to 0} \frac{\cos x -1}{3x^2} = \frac{1}{3}\cdot \frac{-1}{2} = -\frac{1}{6}.
+	$$
+\end{reseni}
+
+\begin{veta}[Vztah derivace a monotonie]\label{veta5.10}
+	% TODO
+\end{veta}
+
+\begin{proof}
+Dokážeme (i), ostatní případy se dokážou analogicky.
+	Předpokládejme, že $x,y\in J$, $x<y$. Podle Lagrangeovy věty \ref{veta5.7} nalezneme
+	$c \in (x,y)$ takové, že
+	$$
+	    f^\prime(c) = \frac{f(y)-f(x)}{y-x}>0.
+	$$
+	Odtud plyne $f(x)<f(y)$.
+\end{proof}
+
+\begin{poznamka}[Varování!]
+	Věta \ref{veta5.10} je formulovaná pro \emph{interval}.
+\end{poznamka}
+
+\begin{veta}\label{veta5.11}
+	% TODO
+\end{veta}
+
+\begin{proof}
+    Je vlastně
+	$$
+	f_+^\prime(a)=\lim_{x\to a_+} \frac{f(x)-f(a)}{x-a}.
+	$$
+	Platí, že
+	$$
+ \lim_{x\to a_+} (f(x)-f(a))=0, \qquad \lim_{x\to a_+} (x-a)=0.
+	$$
+	Odtud z l'H\^ospitalova pravidla dostáváme
+	$$
+	    f_+^\prime(a) = \lim_{x\to a_+} \frac{f^\prime(x)}{1}=\lim_{x\to a_+} f^\prime(x).
+	$$
+\end{proof}
+
+\begin{definice}
+	% TODO
+	% n tá derivace
+\end{definice}
+
+\begin{poznamka}
+	Derivace značíme
+	$$
+	    f^\prime \quad f^{\prime\prime}\quad f^{\prime\prime\prime}\quad f^{(4)}\quad f^{(5)}\quad\dots\quad f^{(n)}.
+	$$
+\end{poznamka}
