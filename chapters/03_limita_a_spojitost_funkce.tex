@@ -1,4 +1,5 @@
 \section{Limita a spojitost funkce}
+\subsection{Základní pojmy}
 \begin{definice}
 \textbf{Funkce} $f$ \textbf{jedné reálné proměnné} (dále jen \textbf{funkce}) je zobrazení
 $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
@@ -6,36 +7,61 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 
 \begin{definice}
 	Funkce $f: J\to \mathbb R $ je \textbf{rostoucí} na intervalu $J$, jestliže pro
-	každou dvojici $x_1, x_2 \in J, x_1 < $
-	%TODO DOÚPLNIT
+	každou dvojici $x_1, x_2 \in J$, $x_1 < x_2$ platí nerovnost $f(x_1)<f(x_2)$. Analogicky
+	definujeme funkci \textbf{klesající} (\textbf{neklesající}, \textbf{nerostoucí}) na intervalu $J$.
 \end{definice}
 
 \begin{definice}
-\textbf{Monotónní funkce} %TODO DOPLNIT
+\textbf{Monotónní funkcí} (resp. \textbf{ryze monotónní funkcí}) na intervalu $J$ rozumíme funkci,
+která je neklesající nebo nerostoucí (resp. rostoucí nebo klesající) na $J$.
 \end{definice}
 
 \begin{definice}
-	Nechť $f$ je funkce a $M\subset \mathcal D(f)$. %TODO lichá atd. DOPLNIT
+Nechť $f$ je funkce a $M \subset \mathcal D(f)$. Řekneme, že funkce $f$ je
+\begin{itemize}
+  \item \textbf{lichá}, jestliže pro každé $x \in \mathcal D(f)$ platí $-x \in \mathcal D(f)$ a
+  $f(-x) = -f(x)$,
+  \item \textbf{sudá}, jestliže pro každé $x \in \mathcal D(f)$ platí $-x \in \mathcal D(f)$ a
+  $f(-x) = f(x)$,
+  \item \textbf{periodická s periodou} $a \in \mathbb{R}$, $a > 0$, jestliže pro každé
+  $x \in \mathcal D(f)$ platí $x + a \in \mathcal D(f)$, $x - a \in \mathcal D(f)$ a
+  $f(x + a) = f(x - a) = f(x)$,
+  \item \textbf{shora omezená} na $M$, jestliže existuje číslo $K \in \mathbb{R}$ takové,
+  že pro všechna $x \in M$ je $f(x) \le K$,
+  \item \textbf{zdola omezená} na $M$, jestliže existuje číslo $K \in \mathbb{R}$ takové,
+  že pro všechna $x \in M$ je $f(x) \ge K$,
+  \item \textbf{omezená} na $M$, jestliže existuje číslo $K \in \mathbb{R}$ takové,
+  že pro všechna $x \in M$ je $|f(x)| \le K$,
+  \item \textbf{konstantní} na $M$, jestliže pro všechna $x, y \in M$ platí
+  $f(x) = f(y)$.
+\end{itemize}
 \end{definice}
+
+\subsection{Limita funkce}
 
 \begin{definice}
 	Nechť $c \in \mathbb R $. Potom \textbf{okolím bodu} $c$ rozumíme každou množinu tvaru
 	$B(c, \varepsilon) = (c-\varepsilon, c+\varepsilon)$, kde $\varepsilon \in \mathbb R , \varepsilon > 0$.
 	\textbf{Okolím} bodu $\infty$ rozumíme každou množinu tvaru $B(\infty, \varepsilon) = \left( \frac{1}{\varepsilon}, \infty \right ) $,
 	kde $\varepsilon \in \mathbb R , \varepsilon > 0$. \textbf{Okolím} bodu $-\infty$
-	rozumíme každou množinu $B(-\infty, \varepsilon)$ %TODO DOPLNIT
+	rozumíme každou množinu $B(-\infty, \varepsilon)= \left( -\infty, -\frac{1}{\varepsilon} \right ) $, kde $\varepsilon \in \mathbb R $, $\varepsilon >0$.
 \end{definice}
 
 \begin{definice}
 	Nechť $c \in \mathbb R $. Potom \textbf{prstencovým okolím} bodu $c$ rozumíme
 	každou množinu tvaru $(c-\varepsilon, c+\varepsilon) \smallsetminus \left \{ c \right \} $,
-	kde % TODO DOPLNIT
+	kde $\varepsilon \in \mathbb R ,\varepsilon > 0$, a kterou značíme
+	$P(c,\varepsilon)$. \textbf{Prstencovým okolím} bodu $\infty$ rozumíme každou množinu tvaru $\left( \frac{1}{\varepsilon},\infty \right ) $,
+	kde $\varepsilon \in \mathbb R , \varepsilon > 0$, a kterou značíme $P(\infty, \varepsilon)$.
+	\textbf{Prstencovým okolím} bodu $-\infty$ rozumíme každou množinu tvaru
+	$\left( -\infty, -\frac{1}{\varepsilon} \right ) $, kde $\varepsilon \in \mathbb R ,\varepsilon > 0$,
+	a kterou značíme $p(-\infty, \varepsilon)$.
 \end{definice}
 
-\begin{poznamka}[Pozorování] %TODO
+\begin{pozorovani}
 	Nechť $c_1,c_2 \in \mathbb R ^*, c_1 \ne c_2$. Potom existuje $\varepsilon \in \mathbb R , \varepsilon > 0$
 	takové, že $B(c_1, \varepsilon) \cap B(c_2,\varepsilon) = \emptyset$.
-\end{poznamka}
+\end{pozorovani}
 
 \begin{definice}
 	Řekneme, že číslo $A \in \mathbb R ^*$ je \textbf{limitou funkce $f$ v bodě $c \in \mathbb R ^*$},
@@ -88,11 +114,43 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 \end{poznamka}
 
 \begin{definice}
-	Nechť $c\in \mathbb R $. %TODO PRAVÉ OKOLÍ APOD
+	Nechť $c\in \mathbb R $.
+	\begin{itemize}
+  \item \textbf{Pravým okolím} bodu $c$ rozumíme každý interval
+  $[c, c + \varepsilon)$, kde $\varepsilon > 0$, a který značíme $B^+(c,\varepsilon)$,
+  \item \textbf{levým okolím} bodu $c$ rozumíme každý interval
+  $(c - \varepsilon, c]$, kde $\varepsilon > 0$, a který značíme $B^-(c,\varepsilon)$,
+  \item \textbf{pravým prstencovým okolím} bodu $c$ rozumíme každý interval
+  $(c, c + \varepsilon)$, kde $\varepsilon > 0$, a který značíme $P^+(c,\varepsilon)$,
+  \item \textbf{levým prstencovým okolím} bodu $c$ rozumíme každý interval
+  $(c - \varepsilon, c)$, kde $\varepsilon > 0$, a který značíme $P^-(c,\varepsilon)$.
+\end{itemize}
+Pokračujme s definicí pro nevlastní hodnoty.
+\begin{itemize}
+  \item \textbf{Pravým okolím bodu $-\infty$} rozumíme každý interval
+  $\left(-\infty, -\frac{1}{\varepsilon}\right)$, kde $\varepsilon > 0$,
+  a který značíme $B^+(-\infty,\varepsilon)$,
+  \item \textbf{levým okolím bodu $\infty$} rozumíme každý interval
+  $\left(\frac{1}{\varepsilon}, \infty\right)$, kde $\varepsilon > 0$,
+  a který značíme $B^-(\infty,\varepsilon)$,
+  \item \textbf{pravým prstencovým okolím bodu $-\infty$} rozumíme každý interval
+  $\left(-\infty, -\frac{1}{\varepsilon}\right)$, kde $\varepsilon > 0$,
+  a který značíme $P^+(-\infty,\varepsilon)$,
+  \item \textbf{levým prstencovým okolím bodu $\infty$} rozumíme každý interval
+  $\left(\frac{1}{\varepsilon}, \infty\right)$, kde $\varepsilon > 0$,
+  a který značíme $P^-(\infty,\varepsilon)$.
+\end{itemize}
 \end{definice}
 
-\begin{definice} %TODO limita zprava apod
-	Nechť $A\in \mathbb R ^*$
+\begin{definice}
+Nechť $A \in \mathbb{R}^\star$, $c \in \mathbb{R} \cup \{-\infty\}$.
+Řekneme, že funkce $f$ má v bodě $c$ \textbf{limitu zprava} rovnou $A$, jestliže
+\[
+\forall \varepsilon \in \mathbb{R},\ \varepsilon > 0\ \exists \delta \in \mathbb{R},\
+\delta > 0\ \forall x \in P^+(c,\delta) : f(x) \in B(A,\varepsilon).
+\]
+Analogicky definujeme pojem \textbf{limity zleva} v bodě
+$c \in \mathbb{R} \cup \{\infty\}$.
 \end{definice}
 
 \begin{poznamka}
@@ -112,20 +170,21 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 \end{itemize}
 \end{priklad}
 
-\begin{poznamka}[Pozorování]
+\begin{pozorovani}
 	Nechť $f,g$ jsou funkce, $c\in \mathbb R ^*, \delta_0 \in \mathbb R , \delta_0 > 0$ a platí
 	$$
 	    \forall x\in P(c,\delta_0): f(x)=g(x).
 	$$
 	Potom $\lim_{x\to c}f(x)=A\in \mathbb R ^*$ právě tehdy, když $\lim_{x\to c}g(x)=A\in \mathbb R ^*$.
-\end{poznamka}
+\end{pozorovani}
 
 \begin{poznamka}
 	Limita funkce v bodě má \uv{lokální charakter}.
 \end{poznamka}
 
-\begin{definice} %TODO
-	Řekneme, že funkce $f$ je \textbf{spojitá v bodě} $c\in \mathbb R $
+\begin{definice}
+	Řekneme, že funkce $f$ je \textbf{spojitá v bodě} $c\in \mathbb R $, jestliže platí
+	$\lim_{x\to c} f(x)=f(c)$.
 \end{definice}
 
 \begin{poznamka}
@@ -135,12 +194,23 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 	$$
 \end{poznamka}
 
-\begin{definice} %TODO
-	spojitost zprava a spojitost zleva
+\begin{definice}
+Řekneme, že funkce $f$ je \textbf{spojitá zprava} (resp. \textbf{zleva}) v bodě $c \in \mathbb{R}$,
+jestliže platí
+\[
+\lim_{x \to c^+} f(x) = f(c)
+\quad
+(\text{resp. } \lim_{x \to c^-} f(x) = f(c)).
+\]
 \end{definice}
 
-\begin{definice} %TODO
-	funkce spojitá na intervalu
+\begin{definice}
+Nechť $J \subset \mathbb{R}$ je interval. Funkce $f \colon J \to \mathbb{R}$
+je \textbf{spojitá na intervalu} $J$, jestliže platí:
+\begin{itemize}
+  \item $f$ je spojitá zprava v každém bodě $J$, který není pravým koncovým bodem $J$,
+  \item $f$ je spojitá zleva v každém bodě $J$, který není levým koncovým bodem $J$.
+\end{itemize}
 \end{definice}
 
 \begin{poznamka}
@@ -163,7 +233,7 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 \end{poznamka}
 
 \subsection{Věty o limitách}
-\begin{veta} %3.2
+\begin{veta}\label{veta3.2}
 	Nechť funkce $f$ má v bodě $c\in \mathbb R ^*$ vlastní limitu. Pak existuje
 	$\delta\in \mathbb R ,\delta >0$ takové, že $f$ je na $P(c,\delta)$ omezená.
 \end{veta}
@@ -179,12 +249,30 @@ $f: M\to \mathbb R $, kde $M$ je podmnožinou množiny reálných čísel.
 \end{proof}
 
 \begin{veta}[Aritmetika limit]\label{veta3.3} % věta 3.3
-	% TODO
+Nechť $A, B, c \in \mathbb{R}^\star$, $\lim_{x \to c} f(x) = A$ a
+$\lim_{x \to c} g(x) = B$. Potom platí:
+\begin{itemize}
+  \item[(a)]
+  $
+  \lim_{x \to c} \bigl(f(x) + g(x)\bigr) = A + B,
+  $
+  pokud je výraz na pravé straně definován,
+  \item[(b)]
+  $
+  \lim_{x \to c} f(x) g(x) = AB,
+  $
+  pokud je výraz na pravé straně definován,
+  \item[(c)]
+  $
+  \lim_{x \to c} \frac{f(x)}{g(x)} = \frac{A}{B},
+  $
+  pokud je výraz na pravé straně definován.
+\end{itemize}
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}
-	\item[(b)] Případ $A,B \in \mathbb R $: Podle věty 3.2 % TODO
+	\item[(b)] Případ $A,B \in \mathbb R $: Podle věty \ref{veta3.2}
 	nalezneme $K\in \mathbb R , K > 0$ takové, že existuje $\delta_0 \in \mathbb R , \delta_0 > 0$ splňující
 	$$
 	    \forall x \in P(c,\delta_0):|f(x)| < K.
@@ -231,7 +319,14 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 \end{priklad}
 
 \begin{veta}\label{veta3.4} % věta 3.4
-	oprava: $A \in \mathbb R^* $ %TODO
+Nechť $A \in \mathbb{R}^\star$, $A > 0$, $c \in \mathbb{R}^\star$,
+$\lim_{x \to c} g(x) = 0$, $\lim_{x \to c} f(x) = A$ a existuje
+$\eta \in \mathbb{R}$, $\eta > 0$, takové, že pro každé
+$x \in P(c,\eta)$ platí $g(x) > 0$.
+Potom platí
+\[
+\lim_{x \to c} \frac{f(x)}{g(x)} = \infty.
+\]
 \end{veta}
 
 \begin{proof}
@@ -265,7 +360,25 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 \end{proof}
 
 \begin{veta}[Limita a uspořádání]\label{veta3.5} % 3.5
-	% TODO
+Nechť $c \in \mathbb{R}^\star$ a funkce $f$ a $g$ mají limity v $c$.
+\begin{itemize}
+  \item[(a)] Nechť
+  \[
+  \lim_{x \to c} f(x) > \lim_{x \to c} g(x).
+  \]
+  Pak existuje $\delta \in \mathbb{R}$, $\delta > 0$, takové, že platí
+  \[
+  \forall x \in P(c,\delta) : f(x) > g(x).
+  \]
+  \item[(b)] Nechť existuje $\delta \in \mathbb{R}$, $\delta > 0$, takové, že platí
+  \[
+  \forall x \in P(c,\delta) : f(x) \le g(x).
+  \]
+  Potom platí
+  \[
+  \lim_{x \to c} f(x) \le \lim_{x \to c} g(x).
+  \]
+\end{itemize}
 \end{veta}
 
 \begin{proof}
@@ -295,7 +408,13 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 \end{proof}
 
 \begin{veta}[O dvou strážnících] % 3.6
-	% TODO
+Nechť $A \in \mathbb{R}^\star$, $\eta \in \mathbb{R}$, $\eta > 0$, a funkce
+$f$, $g$ a $h$ splňují:
+\begin{itemize}
+  \item $\forall x \in P(c,\eta) : f(x) \le h(x) \le g(x)$,
+  \item $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = A$.
+\end{itemize}
+Potom existuje $\lim_{x \to c} h(x)$ a rovná se $A$.
 \end{veta}
 
 \begin{proof}
@@ -328,11 +447,16 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 	Odtud podle věty o dvou strážnících máme $\lim_{x\to c} f(x)g(x) = 0.$
 \end{proof}
 
-\begin{veta}[Limita složené funkce] % 3.7
-	% TODO
+\begin{veta}[Limita složené funkce] \label{veta3.7}
+Nechť $x_0,y_0\in\R^*$, $f,g$ jsou funkce, $\lim_{x\to x_0} g(x)=y_0$, $\lim_{y\to y_0} f(y)$ existuje a je splněna alespoň jedna z podmínek:
+\begin{enumerate}
+	\item[(P)] $\exists\eta \in \mathbb R , \eta >0\ \forall x\in P(x_0,\eta): g(x)\ne y_0$,
+	\item[(S)] $f$ je spojitá v bodě $y_0$.
+\end{enumerate}
+Potom platí $$\lim_{x\to x_0} (f\circ g)(x)=\lim_{y\to y_0} f(y)$$.
 \end{veta}
 
-\begin{proof}\label{v3.7}
+\begin{proof}
 	Označme $A=\lim_{y\to \_0}f(y)$. Chceme $\lim_{x\to x_0} f(g(x))=A$.
 	\begin{enumerate}
 		\item[(P)] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K nim nalezneme
@@ -365,7 +489,7 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 \end{dusledek}
 
 \begin{poznamka}
-	Platí i varianty věty \ref{v3.7} pro jednostranné limity, např.: Nechť $x_0,y_0 \in \mathbb R \smallsetminus \left \{ -\infty \right \} $,
+	Platí i varianty věty \ref{veta3.7} pro jednostranné limity, např.: Nechť $x_0,y_0 \in \mathbb R \smallsetminus \left \{ -\infty \right \} $,
 	$f,g$ jsou funkce, $\lim_{x\to x_0^+} g(x)=y_0,\lim_{y\to y_0^+} f(y)$ existuje a je splněna alespoň jedna z následujících
 	podmínke:
 	\begin{enumerate}
@@ -376,7 +500,16 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 \end{poznamka}
 
 \begin{veta}[Heine]\label{Heinehoveta}
-	% TODO
+Nechť $c,A\in \mathbb R ^*$ a $f$ je funkce. Pak jsou následující výroky ekvivalentní:
+\begin{enumerate}[(i)]
+  \item $\lim_{x\to c} f(x)=A$.
+  \item Pro každou posloupnost $\{x_n\}$ splňující
+  \begin{itemize}
+	\item $\forall n\in \mathbb N :x_n\ne c$ a
+	\item $\lim_{n\to\infty} x_n=c$
+  \end{itemize}
+  platí $\lim_{n\to\infty} f(x_n)=A$.
+\end{enumerate}
 \end{veta}
 
 \begin{proof}\,
@@ -450,11 +583,21 @@ K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ ta
 tedy $\lim_{x \to 0} f(x)$ neexistuje.
 \end{priklad}
 
-\begin{veta}[Monotónní funkce]
-	% TODO
+\begin{veta}[Limita monotónní funkce]\label{veta3.9}
+Nechť $a,b\in \mathbb R ^*$, $a<b$, $f$ je monotónní funkce na intervalu $(a,b)$. Potom existují $\lim_{x\to a^+} f(x)$ a $\lim_{x\to b^-} f(x)$, přičemž platí:
+\begin{enumerate}[(a)]
+  \item je-li $f$ na $(a,b)$ neklesající, pak
+  \begin{align*}
+	\lim_{x\to a^+} f(x)=\inf f((a,b)) && \textrm{a} & & \lim_{x\to b^-} f(x)=\sup f((a,b)),
+  \end{align*}
+  \item je-li $f$ na $(a,b)$ nerostoucí, pak
+  \begin{align*}
+	\lim_{x\to a^+} f(x)=\sup f((a,b)) && \textrm{a} & & \displaystyle \lim_{x\to b^-} f(x)=\inf f((a,b)).
+  \end{align*}
+\end{enumerate}
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}[(a)]
 	\item Označme $m=\inf f((a,b))$. Předpokládejme, že $m\in \mathbb R $. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$.
 	Podle definice infima není číslo $m+\varepsilon$ dolní závorou množiny $f((a,b))$. Nalezneme $x^\prime \in (a,b)$
@@ -470,7 +613,7 @@ tedy $\lim_{x \to 0} f(x)$ neexistuje.
 
 \subsection{Funkce spojité na intervalu}
 \begin{veta}[Bolzano]\label{veta3.10}
-	% TODO
+Nechť funkce $f$ je spojitá na intervalu $[a,b]$ a předpokládejme, že $f(a)<f(b)$. Potom pro každé $C\in (f(a),f(b))$ existuje $\xi\in(a,b)$ takové, že $f(\xi)=C$.
 \end{veta}
 
 \begin{proof}
@@ -500,7 +643,9 @@ tedy $\lim_{x \to 0} f(x)$ neexistuje.
 \end{poznamka}
 
 \begin{lemma}\label{lemma3.11} % 3.11
-	% TODO
+Nechť $M\subset \mathbb R $ a platí
+$$\forall x,y\in M\ \forall z\in \mathbb R :\ x<z<y\implies z\in M.$$
+Pak $M$ je interval.
 \end{lemma}
 
 \begin{proof}
@@ -512,7 +657,7 @@ tedy $\lim_{x \to 0} f(x)$ neexistuje.
 \end{proof}
 
 \begin{veta}\label{veta3.12} % 3.12
-	% TODO
+Nechť funkce $f\colon J\to\R$ je spojitá na intervalu $J$. Potom je $f(J)$ interval.
 \end{veta}
 
 \begin{proof}
@@ -524,7 +669,7 @@ tedy $\lim_{x \to 0} f(x)$ neexistuje.
 \end{proof}
 
 \begin{veta}\label{veta3.13}% 3.13
-	% TODO
+Nechť $f$ je spojitá funkce na intervalu $[a,b]$. Potom je $f$ na $[a,b]$ omezená.
 \end{veta}
 
 \begin{proof}
@@ -547,17 +692,29 @@ tedy $\lim_{x \to 0} f(x)$ neexistuje.
 \end{poznamka}
 
 \begin{definice}
-	maxima, minima, body maxima, body minima
-	% TODO
+Nechť $M\subset\R$, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subset\mathcal D(f)$).
+Řekneme, že $f$ nabývá v bodě $x$ \textbf{maxima} (resp. \textbf{minima}) na $M$, jestliže platí
+\begin{align*}
+	\forall y\in M:\ f(y)\le f(x) && \textrm{(resp. }\forall y\in M:\ f(y)\ge f(x)\textrm{)}.
+\end{align*}
+Bod $x$ nazýváme \textbf{bodem maxima}
+(resp. \textbf{minima}) funkce $f$ na množině $M$. Symbol $\max_M f$ (resp. $\min_M f$) označuje největší (resp. nejmenší) hodnotu,
+které funkce $f$ na množině $M$ nabývá (pokud taková hodnota existuje).
 \end{definice}
 
 \begin{definice}
-	lokální maximum, lokální minimum
-	% TODO
+Nechť $M\subset \mathbb R $, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subset \mathcal D(f)$).
+Řekneme, že funkce $f$ má v bodě $x$
+\begin{itemize}
+	\item \textbf{lokální maximum vzhledem k $M$}, jestliže existuje $\delta>0$ takové,
+	že pro každé $y\in P(x,\delta)\cap M$ platí $f(y)\le f(x)$,
+	\item \textbf{lokální minimum vzhledem k $M$}, jestliže existuje $\delta>0$ takové,
+	že pro každé $y\in P(x,\delta)\cap M$ platí $f(y)\geq f(x)$.
+\end{itemize}
 \end{definice}
 
 \begin{veta}\label{veta3.14} % 3.14
-    % TODO
+Nechť $a,b\in \mathbb R $, $a<b$, a $f$ je spojitá funkce na intervalu $[a,b]$. Potom $f$ nabývá na $[a,b]$ svého maxima a svého minima.
 \end{veta}
 
 \begin{proof}

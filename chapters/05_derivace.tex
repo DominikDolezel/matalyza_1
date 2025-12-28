@@ -1,14 +1,21 @@
 \section{Derivace}
 \subsection{Definice a základní vztahy}
 \begin{definice}
-	% TODO
-	% definice derivace
+Nechť $a\in\R$ a $f$ je funkce. Existuje-li limita
+\[
+\lim_{h\to 0} \frac{f(a+h)-f(a)}{h},
+\]
+pak její hodnotu nazýváme \textbf{derivací} funkce $f$ v bodě $a$. Obdobně definujeme \textbf{derivaci zprava} a \textbf{derivaci zleva} funkce $f$ v bodě $a$ předpisy
+\[
+\lim_{h\to 0^+} \frac{f(a+h)-f(a)}{h},\qquad \lim_{h\to 0^-} \frac{f(a+h)-f(a)}{h}.
+\]
+Derivaci zleva v bodě a derivaci zprava v bodě nazýváme \textbf{jednostrannými derivacemi}.
 \end{definice}
 
-\begin{poznamka}[Označení]
+\begin{oznaceni}
 	Pokud derivace existuje, je určena jednoznačně (důsledek věty \ref{3.1}). Používáme značení
 	$f^\prime(a)$, $f_+^\prime(a)$, $f_-^\prime(a)$.
-\end{poznamka}
+\end{oznaceni}
 
 \begin{poznamka}\,
 \begin{enumerate}[$i$.]
@@ -109,7 +116,7 @@ je-li výraz na pravé straně definován.
 \end{itemize}
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}[(a)]
 	\item Platí
 	\begin{align*}
@@ -136,6 +143,61 @@ je-li výraz na pravé straně definován.
 \end{enumerate}
 \end{proof}
 
+\begin{veta}[Derivace složené funkce] \label{veta5.3}
+	Nechť funkce $g$ je spojitá v bodě $a \in \mathbb R$, má v tomto bodě derivaci
+	a funkce $f$ má derivaci v bodě $g(a)$. Pak platí
+	$$
+	    (f\circ g)^\prime(a) = f^\prime(g(a))\cdot g^\prime(a),
+	$$
+	je-li výraz na pravé straně definován.
+\end{veta}
+
+\begin{proof}
+	Označme $b=g(a)$,
+	$$
+	\varphi(y)=\frac{f(y)-f(b)}{y-b}, \quad \mathcal D(f)\smallsetminus \left \{ b \right \} .
+	$$
+	Platí $\lim_{y\to b} \varphi(y)=f^\prime(b)$. Rozlišíme dva případy
+	\begin{enumerate}[(i)]
+		\item $g^\prime (a) \ne 0$: nalezneme $\eta > 0$ takové, že platí
+		$$
+		    \forall x in P(a,\eta):\frac{g(x)-g(a)}{x-a} \ne 0.
+		$$
+		odtud plyne, že
+		$$
+		    \forall x \in P(a, \eta): g(x)\ne g(a).
+		$$
+		Počítejme
+		\begin{align*}
+			(f\circ g)^\prime (a) &= \lim_{x\to a} \frac{f(g(x))-f(g(a))}{x-a}=\lim_{x\to a} \frac{f(g(x))-f(g(a))}{g(x)-g(a)}\cdot \frac{g(x)-g(a)}{x-a}\\
+			&=\lim_{x\to a} \varphi(g(x))\cdot \frac{g(x)-g(a)}{x-a}.
+		\end{align*}
+		\item $g^\prime(a) = 0$: Výraz na pravé straně je definován, a proto
+		$f^\prime(b)\in \mathbb R $. Nalezneme $c>0, \delta>0$ taková, že
+		$$
+		    \forall y \in P(b,\delta): |\varphi(y)|<c \quad (\textrm{věta }\ref{veta3.2}).
+		$$
+		Dále
+		\begin{align*}
+			& \forall y \in P(b,\delta): \left | \frac{f(y)-f(b)}{y-b} \right |<c,\\
+			& \forall y \in B(b,\delta): |f(y)-f(b)| \leq c\cdot |y-b|.
+\end{align*}
+    Zvolme $\varepsilon>0$. Nalezneme $\rho_1>0$ takové, že
+    $$
+        \forall x \in P(a,\rho_1): \left | \frac{g(x)-g(a)}{x-a}-0 \right|<\varepsilon.
+    $$
+    Dále nalezneme $\rho_2 \in (0,\rho_1)$ takové, že
+    $$
+        \forall x \in B(a,\rho_2): g(x)\in B(b,\delta).
+    $$
+    Pro každé $x \in P(a,\rho_2)$ platí
+    $$
+	\left | \frac{f(g(x))-f(g(a))}{x-a} \right | \leq \frac{c|g(x)-g(a)|}{|x-a|} = c\cdot \left | \frac{g(x)-g(a)}{x-a} \right |<c\varepsilon,
+    $$
+    odkud plyne $(f\circ g)^\prime(a)=0=f^\prime(b)\cdot 0 = f^\prime(b)\cdot g^\prime(a)$.\qedhere
+\end{enumerate}
+\end{proof}
+
 \begin{poznamka}
 	V čem je problém:
 	\begin{align*}
@@ -149,12 +211,15 @@ je-li výraz na pravé straně definován.
     \end{align*}
 \end{poznamka}
 
-DOPLNIT Z CHYBĚJÍCÍ HODINY
-
------
-
 \begin{veta}[Derivace inverzní funkce] \label{veta5.4}
-	% TODO
+Nechť $a$ je vnitřním bodem intervalu $I$ a $f$ je spojitá a ryze monotónní funkce na $I$. Označme $b=f(a)$.
+\begin{enumerate}[(a)]
+  \item Nechť $f'(a)$ existuje a je nenulová. Potom platí
+  $$(f^{-1})'(b)=\dfrac{1}{f'(a)}.$$
+  (Je-li $f'(a)=\pm\infty$, pak $(f^{-1})'(b)=0$.)
+  \item Nechť $f'(a)=0$ a $f$ je rostoucí na $I$. Potom $(f^{-1})'(b)=\infty$.
+  \item Nechť $f'(a)=0$ a $f$ je klesající na $I$. Potom $(f^{-1})'(b)=-\infty$.
+\end{enumerate}
 \end{veta}
 
 \begin{proof}
@@ -183,7 +248,7 @@ DOPLNIT Z CHYBĚJÍCÍ HODINY
 		$$
 		    (f^{-1})^\prime = \lim_{y\to b} \frac{1}{\frac{y-b}{f^{-1}(y)-f^{-1}(b)}}=\infty.
 		$$
-		\item Analogicky jako (b).
+		\item Analogicky jako (b).\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -253,7 +318,7 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 \end{itemize}
 
 \begin{veta}[Nutná podmínka lokálního extrému] \label{veta5.5}
-	% TODO
+Jestliže $a$ je bodem lokálního extrému funkce $f$, potom buď $f'(a)$ neexistuje, nebo $f'(a)=0$.
 \end{veta}
 
 \begin{proof}
@@ -288,7 +353,7 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 
 \subsection{Věty o střední hodnotě}
 \begin{veta}[Rolle] \label{veta5.6}
-	% TODO
+Nechť $a,b \in \R, a<b$ a $f\colon[a,b]\to\R$ je spojitá funkce. Je-li $f(a)=f(b)$ a $f$ má derivaci v každém bodě intervalu $(a,b)$, pak existuje $c\in(a,b)$ takové, že $f'(c)=0$.
 \end{veta}
 
 \begin{proof}
@@ -304,7 +369,10 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 \end{proof}
 
 \begin{veta}[Lagrange] \label{veta5.7}
-	% TODO
+Nechť $a,b \in \R, a<b$ a $f\colon[a,b]\to\R$ je spojitá funkce, která má v každém bodě intervalu $(a,b)$ derivaci. Pak existuje $c\in(a,b)$ takové, že
+\[
+ f'(c)=\frac{f(b)-f(a)}{b-a}.
+\]
 \end{veta}
 
 \begin{proof}
@@ -330,7 +398,10 @@ což jsme chtěli dokázat.
 \end{proof}
 
 \begin{veta}[Cauchy] \label{veta5.8}
-	% TODO
+Nechť $a,b \in \R, a<b$, $f$ a $g$ jsou funkce spojité na $[a,b]$, $f$ má v každém bodě $x\in(a,b)$ derivaci a $g$ má v každém bodě $x\in(a,b)$ vlastní nenulovou derivaci. Potom $g(a)\ne g(b)$ a existuje $c\in(a,b)$ takové, že
+\[
+ \frac{f'(c)}{g'(c)}=\frac{f(b)-f(a)}{g(b)-g(a)}.
+\]
 \end{veta}
 
 \begin{proof}
@@ -361,7 +432,13 @@ což jsme chtěli dokázat.
 \end{proof}
 
 \begin{veta}[l'H\^ospitalovo pravidlo] \label{veta5.9}
-    % TODO
+Nechť $a\in\R\cup\{-\infty\}$, $f,g$ jsou funkce, existuje
+$$\displaystyle \lim_{x\to a^+}\frac{f'(x)}{g'(x)}$$ a platí buď
+\begin{enumerate}[(a)]
+  \item $\lim_{x\to a^+} f(x)=\lim_{x\to a^+} g(x)=0$, nebo
+  \item $\lim_{x\to a^+} \abs{g(x)}=\infty$.
+\end{enumerate}
+Potom platí $$ \lim_{x\to a^+}\frac{f(x)}{g(x)}=\lim_{x\to a^+}\frac{f'(x)}{g'(x)}.$$
 \end{veta}
 
 \begin{proof}
@@ -435,7 +512,13 @@ což jsme chtěli dokázat.
 \end{reseni}
 
 \begin{veta}[Vztah derivace a monotonie]\label{veta5.10}
-	% TODO
+Nechť $f$ je spojitá na intervalu $J$ a v každém vnitřním bodě $J$ (množinu všech vnitřních bodů intervalu $J$ označme jako $\operatorname{int} J$) existuje derivace $f$.
+\begin{enumerate}[(i)]
+  \item Je-li $f'(x)>0$ pro všechna $x\in\operatorname{int} J$, pak $f$ je rostoucí na $J$.
+  \item Je-li $f'(x)<0$ pro všechna $x\in\operatorname{int} J$, pak $f$ je klesající na $J$.
+  \item Je-li $f'(x)\ge 0$ pro všechna $x\in\operatorname{int} J$, pak $f$ je neklesající na $J$.
+  \item Je-li $f'(x)\le 0$ pro všechna $x\in\operatorname{int} J$, pak $f$ je nerostoucí na $J$.
+\end{enumerate}
 \end{veta}
 
 \begin{proof}
@@ -453,7 +536,7 @@ Dokážeme (i), ostatní případy se dokážou analogicky.
 \end{poznamka}
 
 \begin{veta}\label{veta5.11}
-	% TODO
+Nechť $f$ je spojitá zprava v bodě $a\in\R$ a existuje $\displaystyle \lim_{x\to a^+} f'(x)$. Potom existuje $f'_+(a)$ a platí $f'_+(a)=\displaystyle \lim_{x\to a^+} f'(x)$.
 \end{veta}
 
 \begin{proof}
@@ -472,8 +555,10 @@ Dokážeme (i), ostatní případy se dokážou analogicky.
 \end{proof}
 
 \begin{definice}
-	% TODO
-	% n tá derivace
+Nechť $n\in\N$, $a\in\R$ a $f$ má vlastní $n$-tou derivaci na okolí bodu $a$. Potom \textbf{$(n+1)$-ní derivací funkce} $f$ v bodě $a$ rozumíme
+\[
+ f^{(n+1)}(a)=\lim_{h\to 0} \frac{f^{(n)}(a+h)-f^{(n)}(a)}{h}.
+\]
 \end{definice}
 
 \begin{poznamka}

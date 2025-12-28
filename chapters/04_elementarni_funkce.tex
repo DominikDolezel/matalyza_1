@@ -1,6 +1,10 @@
 \section{Elementární funkce}
-\begin{veta} % 4.1
-	% TODO
+\begin{veta}\label{veta4.1}
+Existuje právě jedna funkce $\exp\colon\R\to\R$ splňující
+\begin{enumerate}
+  \item[(E1)] $\forall x,y\in\R:\ \exp(x+y)=\exp(x)\cdot\exp(y)$,
+  \item[(E2)] $\displaystyle \lim_{x\to 0} \frac{\exp(x)-1}{x}=1$.
+\end{enumerate}
 \end{veta}
 
 \subsection{Vlastnosti exponenciální funkce}
@@ -82,13 +86,18 @@
 	Víme, že platí $\mathcal H(\exp)\subseteq (0,\infty)$. Z (E9) a (E10) plyne $\mathcal H(\exp)=(0,\infty)$.
 \end{enumerate}
 
-\begin{poznamka}[Označení]
+\begin{oznaceni}
 	Eulerovo číslo $e=\exp(1)$.
-\end{poznamka}
+\end{oznaceni}
 
-\begin{definice}
-	% TODO
-	logaritmus
+\begin{definice}\,
+\begin{enumerate}[(a)]
+  \item Funkce $\log\colon(0,\infty)\to \mathbb R $ je definována jako inverzní funkce k funkci $\exp$. Nazývá se \textbf{přirozeným logaritmem}.
+  \item Je-li $a\in(0,\infty)\smallsetminus\{1\}$, pak definujeme $\log_a\colon(0,\infty)\to\R$ předpisem
+  $$\log_a x=\dfrac{\log x}{\log a}.$$
+  \item Nechť $a \in \R, a>0$ a $b\in \mathbb R $. Potom definujeme reálné číslo $a^b$ předpisem $a^b=\exp\big(b\,\log a\big)$.
+  \item Nechť $a\in \R, a>0$. Potom funkci $x\mapsto a^x$, $x\in\R$, nazýváme \textbf{obecnou mocninou}.
+\end{enumerate}
 \end{definice}
 
 \subsection{Vlastnosti logaritmu}
@@ -136,7 +145,7 @@
 	\begin{align*}
 		 f(y)&=\frac{\exp(y)-1}{y} & & \lim_{y \to 0} f(y)=1\\
 		 g(x) &=\log x & & \lim_{x \to 1} g(x) = 0
-			\textrm{je splněna podmínka (P)},
+			\textrm{ je splněna podmínka (P)},
 	\end{align*}
 	odkud máme
 	$$
@@ -168,7 +177,17 @@
 \end{poznamka}
 
 \begin{veta}[Základní vlastnosti sinu a kosinu]\label{veta3.17} % veta 3.17
-	% TODO
+Existuje právě jedno kladné reálné číslo (budeme ho značit $\pi$) a právě jedna dvojice funkcí \textbf{sinus} ($\sin$) a \textbf{kosinus} ($\cos$),
+které mají následující vlastnosti:
+\begin{enumerate}
+  \item[(G1)] pro každé $x,y\in\R$ platí
+  $$\sin(x+y)=\sin x\,\cos y+\cos x\,\sin y,$$
+  \item[(G2)] pro každé $x,y\in\R$ platí
+  $$\cos(x+y)=\cos x\,\cos y-\sin x\,\sin y,$$
+  \item[(G3)] $\sin$ je lichá a $\cos$ je sudá funkce,
+  \item[(G4)] $\sin$ je rostoucí na $\big[0,\tfrac{\pi}{2}\big]$, $\sin(0)=0$, $\sin\big(\tfrac{\pi}{2}\big)=1$,
+  \item[(G5)] $\displaystyle \lim_{x\to 0} \frac{\sin x}{x}=1$.
+\end{enumerate}
 \end{veta}
 
 \subsection{Vlastnosti sinu a kosinu}
@@ -247,19 +266,30 @@
 \end{enumerate}
 
 \begin{definice} % Tangens a kotangens
-	% TODO
+Funkce \textbf{tangens} (značíme ji $\operatorname{tg}$) a \textbf{kotangens} (značíme ji $\operatorname{cotg}$) definujeme předpisy
+\begin{align*}
+	\operatorname{tg}(x)=\frac{\sin x}{\cos x}&, &&x\in\R\smallsetminus\left\{\frac{\pi}{2}+k\pi;\ k\in\Z\right\}, \\
+	\operatorname{cotg}(x)=\frac{\cos x}{\sin x}&, &&x\in\R\smallsetminus\{k\pi;\ k\in\Z\}.
+\end{align*}
+\textbf{Goniometrickými funkcemi} rozumíme $\sin,\cos,\operatorname{tg},\operatorname{cotg}$.
 \end{definice}
 
-\begin{definice} % cyklometrické funkce
-	% TODO
+\begin{definice}
+Cyklometrické funkce \textbf{arkussinus} ($\arcsin$), \textbf{arkuskosinus} ($\arccos$), \textbf{arkustangens} ($\operatorname{arctg}$) a \textbf{arkuskotangens} ($\operatorname{arccotg}$) definujeme následovně:
+\begin{align*}
+\arcsin&=\big(\sin\vert_{[-\frac{\pi}{2},\frac{\pi}{2}]}\big)^{-1},\\
+\arccos&=\big(\cos\vert_{[0,\pi]}\big)^{-1},\\
+\operatorname{arctg}&=\big(\operatorname{tg}\vert_{(-\frac{\pi}{2},\frac{\pi}{2})}\big)^{-1},\\
+\operatorname{arccotg}&=\big(\operatorname{cotg}\vert_{(0,\pi)}\big)^{-1}.
+\end{align*}
 \end{definice}
 
 \begin{veta}\label{veta3.18}
-	% TODO
+Funkce $\log$, $\exp$, $\sin$, $\cos$, $\operatorname{tg}$, $\operatorname{cotg}$, $\arcsin$, $\arccos$, $\operatorname{arctg}$ a $\operatorname{arccotg}$ jsou spojité na svých definičních oborech.
 \end{veta}
 
 \begin{proof}
-	Spojitosti funkcí $\log, \exp, \sin, \cos$ jsme již dokázali. Funkce $\tg$ a $\cotg$ dostaneme
+	Spojitosti funkcí $\log$, $\exp$, $\sin$, $\cos$ jsme již dokázali. Funkce $\tg$ a $\cotg$ dostaneme
 	pomocí věty o artimetice limit. Zbývá tedy dokázát spojitost funkcí $\arcsin$, $\arccos$, $\arctg$, $\arccotg$.
-	Do dostaneme podle věty \ref{veta3.15}.
+	To dostaneme podle věty \ref{veta3.15}.
 \end{proof}

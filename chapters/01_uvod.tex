@@ -1,1 +1,413 @@
 \section{Logika, množiny a základní číselné obory}
+\subsection{Logika}
+
+\textbf{Výrokem} nazveme jakékoliv tvrzení, o němž má smysl říci, že platí (je pravdivé), nebo že neplatí (je nepravdivé).
+
+\begin{definice}
+\textbf{Negací} $\neg A$ výroku $A$ rozumíme výrok:
+\begin{center}
+	\emph{Není pravda, že platí $A$.}
+\end{center}
+\[
+\begin{array}{c|c}
+A & \neg A \\
+\hline
+0 & 1 \\
+1 & 0
+\end{array}
+\]
+\end{definice}
+
+\begin{definice}
+\textbf{Konjunkcí} $A \wedge B$ výroků $A$ a $B$ nazveme výrok:
+
+\begin{center}
+	\emph{Platí $A$ i $B$.}
+\end{center}
+\end{definice}
+
+\begin{definice}
+\textbf{Disjunkcí} $A \vee B$ výroků $A$ a $B$ nazveme výrok:
+
+\begin{center}
+	\emph{Platí $A$ nebo $B$.}
+\end{center}
+\end{definice}
+
+\begin{definice}
+\textbf{Implikací} $A \implies B$ nazýváme výrok:
+
+\begin{center}
+	\emph{Jestliže platí výrok $A$, potom platí výrok $B$.}
+\end{center}
+
+Výroku $A$ v implikaci se říká \textbf{premisa}, výrok $B$ se nazývá \textbf{závěr}.
+Výrok $A$ je \textbf{postačující podmínkou} pro platnost $B$ a $B$ je \textbf{nutnou podmínkou} pro platnost $A$.
+\end{definice}
+
+\begin{definice}
+\textbf{Ekvivalencí} $A \iff B$ nazýváme výrok:
+
+\begin{center}
+	\emph{Výrok $A$ platí tehdy a jen tehdy, když platí výrok $B$.}
+\end{center}
+
+(Platnost výroku) $A$ je \textbf{nutnou a postačující} podmínkou (platnosti výroku) $B$.
+
+\[
+\begin{array}{c|c|c|c|c|c}
+A & B & A\wedge B & A\vee B & A\Rightarrow B & A\Leftrightarrow B \\
+\hline
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 & 1 & 1
+\end{array}
+\]
+
+\textbf{Výroková forma} $V$ je výraz, který má konečný počet proměnných, přičemž když za tyto proměnné dosadíme prvky z daného oboru, obdržíme výrok.
+\end{definice}
+
+\begin{definice}
+Nechť $V$ je výroková forma s jednou proměnnou.
+\begin{enumerate}[(i)]
+\item Výrok „Pro každé $x$ platí $V(x)$.“ symbolicky zapisujeme ve tvaru
+\[
+\forall x : V(x).
+\]
+Symbol $\forall$ nazýváme \textbf{obecným kvantifikátorem}.
+\item Výrok „Existuje $x$ takové, že platí $V(x)$.“ zapisujeme ve tvaru
+\[
+\exists x : V(x).
+\]
+Symbol $\exists$ nazýváme \textbf{existenčním kvantifikátorem}.
+\end{enumerate}
+\end{definice}
+
+\subsection{Metody důkazů}
+
+\begin{itemize}
+\item přímý důkaz
+\item nepřímý důkaz
+\item důkaz sporem
+\item důkaz rozborem případů
+\item důkaz matematickou indukcí
+\end{itemize}
+
+\subsection{Množiny}
+
+\paragraph{G. Cantor:} \uv{\textbf{Množinou} rozumíme každé shrnutí určitých a navzájem různých objektů, které nazýváme \textbf{prvky}, do jediného celku.}
+\par Množinu definujeme výčtem prvků nebo pomocí vlastnosti, kterou musejí splňovat její prvky, tj. píšeme
+$\{x \in M ; V(x)\}$, kde $M$ je množina a $V$ je výroková forma.
+
+\begin{definice}
+Řekneme, že množina $A$ je \textbf{částí množiny} $B$ (nebo $A$ je \textbf{podmnožinou} $B$), jestliže každý prvek množiny $A$ je rovněž prvkem množiny $B$. Tomuto vztahu
+říkáme \textbf{inkluze} a značíme jej $A \subset B$.
+Množiny $A$ a $B$ jsou si rovny ($A = B$), jestliže mají stejné prvky.
+\textbf{Prázdnou množinou} nazveme množinu, která neobsahuje žádný prvek. Označíme ji symbolem $\emptyset$.
+\end{definice}
+
+\begin{definice}
+\textbf{Sjednocením} množin $A$ a $B$ nazveme množinu tvořenou všemi prvky, které patří alespoň do jedné z množin $A$ či $B$. Značíme $A \cup B$.
+\par Je-li $\mathcal{A}$ systém množin, pak jeho \textbf{sjednocení}
+$\bigcup \mathcal{A}$
+definujeme jako množinu všech prvků $a$, pro které existuje $A \in \mathcal{A}$ takové, že $a \in A$.
+\end{definice}
+
+\begin{definice}
+\textbf{Průnikem} množin $A$ a $B$ nazveme množinu všech prvků, které náležejí současně do $A$ i do $B$. Značíme $A \cap B$. Mají-li množiny $A$ a $B$
+prázdný průnik, řekneme o nich, že jsou \textbf{disjunktní}.
+\par Je-li $\mathcal A$ neprázdný systém množin, pak jeho \textbf{průnik} $ \bigcap \mathcal A$ definujeme jako
+množinu všech prvků $a$, které pro každé $A\in \mathcal A$ splňují $a\in A$.
+\end{definice}
+
+\begin{definice}
+\textbf{Rozdílem} množin $A$ a $B$ nazveme množinu prvků, které patří do množiny $A$ a nepatří do množiny $B$. Značíme $A \smallsetminus B$.
+\end{definice}
+
+\begin{definice}
+\textbf{Kartézským součinem} množin $A_1,\dots,A_n$ nazveme množinu všech uspořádaných $n$-tic
+\[
+A_1\times A_2 \times \cdots \times A_n
+= \{[a_1,\dots,a_n];\, a_i \in A_i\}.
+\]
+\end{definice}
+
+\begin{veta}[de Morganova pravidla]\label{veta1.1}
+Nechť $X$ je množina a $\mathcal{A}$ je neprázdný systém množin. Pak platí
+\[
+X \smallsetminus \bigcup \mathcal{A}
+= \bigcap \{X \smallsetminus A;\, A \in \mathcal{A}\}
+\]
+a dále
+\[
+X \smallsetminus \bigcap \mathcal{A}
+= \bigcup \{X \smallsetminus A;\, A \in \mathcal{A}\}.
+\]
+\end{veta}
+
+\subsection{Relace uspořádání a zobrazení}
+
+\begin{definice}
+\textbf{Binární relací} rozumíme libovolnou množinu uspořádaných dvojic. Pokud $R$ je
+binární relace a $[a,b]\in R$, pak říkáme, že prvek $a$ je v relaci $R$ s prvkem $b$.
+Často v tomto případě používáme zápis $a\,R\,b$.
+\par Pokud binární relace $R$ splňuje $R\subset A\times B$, pak říkáme, že $R$ je \textbf{binární relací
+mezi prvky množin} $A$ \textbf{a} $B$. Pokud $A=B$, pak říkáme, že $R$ je \textbf{binární relací na} $A$.
+\end{definice}
+
+\begin{definice}
+Nechť $X$ je množina a $R$ je relace na $X$. Řekneme, že $R$ je
+\begin{itemize}
+\item \textbf{reflexivní}, jestliže pro každé $x\in X$ platí $[x,x]\in R$,
+\item \textbf{symetrická}, jestliže pro každé $x,y\in X$ splňující $[x,y]\in R$ platí $[y,x]\in R$,
+\item \textbf{tranzitivní}, jestliže pro každé $x,y,z\in X$ splňující $[x,y]\in R$ a $[y,z]\in R$
+platí $[x,z]\in R$,
+\item \textbf{antisymetrická}, jestliže pro každé $x,y\in X$ splňující $[x,y]\in R$ platí
+$[y,x]\notin R$,
+\item \textbf{slabě antisymetrická}, jestliže pro každé $x,y\in X$ splňující
+$[x,y]\in R$ a $[y,x]\in R$ platí $x=y$.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+Nechť $R$ je relace na množině $A$. Řekneme, že $R$ je na $A$
+\begin{itemize}
+\item \textbf{uspořádání} (někdy také částečné uspořádání či neostré uspořádání),
+jestliže je reflexivní, slabě antisymetrická a tranzitivní,
+\item \textbf{ostré uspořádání}, jestliže je antisymetrická a tranzitivní,
+\item \textbf{lineární uspořádání}, jestliže jde o uspořádání a pro každé $x,y\in A$ platí
+$[x,y]\in R$ nebo $[y,x]\in R$.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
+$x\in X$ je
+\begin{itemize}
+\item \textbf{maximálním} prvkem (\textbf{maximem}) množiny $A$, jestliže $x\in A$ a neexistuje
+$a\in A$ takové, že $x\le a$ a $x\ne a$,
+\item \textbf{největším} prvkem množiny $A$, jestliže $x\in A$ a pro každé $a\in A$ platí
+$a\le x$.
+\end{itemize}
+\par Pojmy \textbf{minimální} prvek (\textbf{minimum}) množiny a \textbf{nejmenší} prvek množiny jsou definovány
+zřejmým způsobem.
+\end{definice}
+
+\begin{definice}
+Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
+$x\in X$ je
+\begin{itemize}
+\item \textbf{horní závorou} množiny $A$, jestliže pro každé $a\in A$ platí $a\le x$,
+\item \textbf{dolní závorou} množiny $A$, jestliže pro každé $a\in A$ platí $x\le a$.
+\end{itemize}
+\par Množina $A$ je
+\begin{itemize}
+\item \textbf{shora omezená}, jestliže existuje prvek $x\in X$, který je horní závorou množiny $A$,
+\item \textbf{zdola omezená}, jestliže existuje prvek $x\in X$, který je dolní závorou množiny $A$,
+\item \textbf{omezená}, jestliže je omezená shora i zdola.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+Nechť $\le$ je relace uspořádání na množině $X$ a $M\subset X$. Řekneme, že prvek
+$G\in X$ je \textbf{supremem} množiny $M$, jestliže platí:
+\begin{enumerate}
+\item $G$ je horní závorou množiny $M$,
+\item je-li prvek $G'\in X$ horní závorou množiny $M$, potom $G\le G'$.
+\end{enumerate}
+
+Řekneme, že prvek $g\in X$ je \textbf{infimem} množiny $M$, jestliže platí:
+\begin{enumerate}
+\item $g$ je dolní závorou množiny $M$,
+\item je-li prvek $g'\in X$ dolní závorou množiny $M$, potom $g'\le g$.
+\end{enumerate}
+
+\end{definice}
+
+
+\begin{veta}\label{veta1.2}
+Nechť $\le$ je relace uspořádání na množině $X$, $M\subset X$ je neprázdná množina
+a existuje infimum a supremum množiny $M$. Potom platí
+$\inf M \le \sup M.$
+\end{veta}
+
+\begin{definice}
+	Binární relaci $F$ nazýváme \textbf{zobrazením}, pokud splňuje
+	$$
+	    \forall x \, \forall y_1\, \forall y_2: \left( \left( \left [ c,y_1 \right ] \in F \land \left [ x,y_2 \right ] \in F \right ) \implies y_1 = y_2 \right ) .
+	$$
+	Řekneme, že zobrazení $F$ je \textbf{zobrazení z množiny $A$ do množiny $B$}, jestliže platí $F\subset A\times B$.
+\end{definice}
+
+\begin{definice}
+	Nechť $F$ je zobrazení.
+	\begin{itemize}
+		\item \textbf{Definičním oborem} zobrazení $F$ nazýváme množinu
+		$$
+		    \mathcal H(F)=\left \{ y; \, \exists x : \left [ x,y \right ] \in F \right \}.
+		$$
+		Pro $x \in \mathcal D(F)$ označujeme jednoznačně určený prvek $y$ splňující $\left [ x,y \right ] \in F$ symbolem $F(x)$.
+		\item \textbf{Oborem hodnot} zobrazení $F$ nazýváme množinu
+		$$
+		    \mathcal H(f) = \left \{ y;\, \exists x:\left [ x,y \right ] \in F \right \}.
+		$$
+	\end{itemize}
+\end{definice}
+
+\begin{oznaceni}
+    Nechť $A$ a $B$ jsou množiny a $F$ je zobrazení.
+    \begin{enumerate}[(a)]
+	\item Pak symbol $F:A\to B$ znamená, že $F$ je zobrazením z množiny $A$ do množiny $B$
+	a $\mathcal D(F) = A$. Takové zobrazení $F$ nazýváme také \textbf{zobrazením množiny $A$ do množiny $B$}.
+	\item Pokud je $B=\mathbb R $, pak  místo termínu zobrazení používáme termín \textbf{funkce}.
+    \end{enumerate}
+\end{oznaceni}
+
+\begin{definice}
+	Nechť $A$, $B$ jsou množiny a $f$ je zobrazení.
+	\begin{itemize}
+		\item \textbf{Obrazem množiny} $A$ pri zobrazení $f$ rozumíme množinu
+		$$
+  \left \{ y\in \mathcal H(f);\, \exists x \in \mathcal D(f) \cap A: f(x)=y \right \},
+		$$
+		kterou značíme $f(a)$.
+		\item \textbf{Vzorem množiny} $B$ při zobrazení $f$ rozumíme množinu
+		$$
+		\left \{ x\in \mathcal D(f); \, f(x) \in B \right \},
+		$$
+		kterou značíme $f^{-1}(B)$.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+	Řekneme, že zobrazení $f$
+	\begin{itemize}
+		\item je \textbf{prosté}, jestliže platí
+		$$
+		    \forall x,y \in \mathcal D(f): f(x)=f(y)\implies x=y,
+		$$
+		\item je \textbf{na množinu} $B$, jestliže platí $\mathcal H(f)=B$,
+		\item je \textbf{bijekcí množiny $A$ na množinu $B$}, jestliže $\mathcal D(f) = A$ a jde o prosté zobrazení na $B$.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+	Nechť $f$ je zobrazení a $C$ je množina. Pak zobrazení definované předpisem $x\mapsto f(x)$, $x \in C\cap \mathcal D(f)$, nazýváme
+	\textbf{restrikcí} nebo \textbf{zúžením} zobrazení $f$ na množinu $C$ a značíme jej $f|_C$.
+\end{definice}
+
+\begin{definice}
+	NechŤ $f$ a $g$ jsou zobrazení. Pak zobrazení $g\circ f$ je definováno předpisem
+	$(g\circ f)(x)=g(f(x))$ pro všechna $x \in \mathcal D(f)$ taková, že $f(x)\in \mathcal D(g)$. Zobrazení
+	$g\circ f$ nazýváme \textbf{složeným zobrazením} (\textbf{složením zobrazení}) $f$ a $g$, přičemž
+$g$ nazýváme \textbf{vnějším} zobrazením a $f$ nazýváme \textbf{vnitřním} zobrazením.
+\end{definice}
+
+\begin{definice}
+	Nechť $f:A\to B$ je prosté zobrazení. Pak zobrazení $f^{-1}:f(A)\to A$ definované pro $y\in f(A)$ předpisem $f^{-1}(y)=x$, kde $x\in A$ je jednoznačně určeno vztahem $y=f(x)$, nazýváme \textbf{inverzním zobrazením} k zobrazení $f$.
+\end{definice}
+
+\begin{definice}
+	Nechť $A$ je neprázdná množina.
+	\begin{enumerate}[(a)]
+		\item \textbf{Konečnou posloupností} prvků $A$ rozumíme každé zobrazení množiny $\left \{ 1,\dots, n \right \} $, kde
+		$n \in \mathbb N $, do množiny $A$. Pokud $k\mapsto a_k$, $k\in \left \{ 1,\dots, k \right \} $, je takové zobrazení,
+		pak tuto posloupnost značíme $\left \{ a_k \right \}_{k=1}^n $. Prvek $a_k$ nazýváme $k$-tým \textbf{členem} této posloupnosti.
+		\item \textbf{Nekonečnou posloupností} prvků $A$ rozumíme každé zobrazení $n\mapsto a_n$, $n\in \mathbb N $,
+		množiny přirozených čísel $\mathbb N $ do množiny $A$. Takovou posloupnost
+		obvykle značíme $\left \{ a_n \right \}_{n=1}^\infty $, případně jen $\left \{ a_n \right \} $. Prvek $a_n$
+		nazýváme $n-$tým \textbf{členem} této posloupnosti.
+	\end{enumerate}
+\end{definice}
+
+\subsection{Konečné a spočetné množiny}
+\begin{definice}
+	\,
+	\begin{enumerate}
+    \item[(a)] Řekneme, že množina $A$ \textbf{má stejnou mohutnost} jako množina $B$, jestliže existuje
+    bijekce $A$ na $B$. Značíme $A\approx B$.
+    \item[(b)] Řekneme, že množina $A$ \textbf{má mohutnost menší nebo rovnou} mohutnosti množiny $B$,
+    jestliže existuje prosté zobrazení $A$ do $B$. Značíme $A\preceq B$.
+    \item[(c)] Řekneme, že množina $A$ \textbf{má menší mohutnost} než množina $B$, jestliže existuje
+    prosté zobrazení $A$ do $B$ a přitom $A$ nemá stejnou mohutnost jako $B$. Značíme $A\prec B$.
+    \end{enumerate}
+\end{definice}
+
+\begin{definice}
+Řekneme, že množina $X$ je \textbf{konečná}, pokud je buď prázdná, nebo existuje
+$n\in\mathbb{N}$ takové, že $X$ má stejnou mohutnost jako $\{1,\dots,n\}$.
+Řekneme, že množina $X$ je \textbf{nekonečná}, pokud není konečná.
+Řekneme, že množina $X$ je \textbf{spočetná}, jestliže je konečná, nebo má stejnou mohutnost jako
+$\mathbb{N}$. Nekonečná množina, která není spočetná, se nazývá \textbf{nespočetná}.
+\end{definice}
+
+\begin{poznamka}
+	Pro počet prvků konečné množiny $X$ používáme často značení $|X|$.
+	Dvě konečné množiny $X$, $Y$ mají stejnou mohutnost právě tehdy, když $|X|=|Y|$.
+\end{poznamka}
+
+\begin{veta}[Cantor-Bernstein] \label{veta1.3}
+Nechť $A,B$ jsou množiny takové, že $A\preceq B$ a zároveň $B\preceq A$.
+Pak $A$ a $B$ mají stejnou mohutnost.
+\end{veta}
+
+\begin{veta}[Cantor] \label{veta1.4}
+Nechť $X$ je množina. Pak $X\prec \mathcal{P}(X)$, kde $\mathcal{P}(X)$ je množina všech
+podmnožin množiny $X$.
+\end{veta}
+
+\begin{veta}[Vlastnosti spočetných množin]\label{veta1.5}
+\,
+\begin{enumerate}
+\item[(a)] Podmnožina spočetné množiny je spočetná.
+\item[(b)] Nechť zobrazení $f:A\to\mathbb{N}$ je prosté. Potom je množina $A$ spočetná.
+\item[(c)] Sjednocení spočetně mnoha spočetných množin je spočetné.
+\item[(d)] Obraz spočetné množiny je spočetná množina.
+\item[(e)] Každá nekonečná množina obsahuje nekonečnou spočetnou podmnožinu.
+\end{enumerate}
+\end{veta}
+
+\subsection{Číselné obory}
+
+Množinu reálných čísel $\mathbb{R}$ lze popsat jako množinu, na níž jsou definovány operace
+\textbf{sčítání} a \textbf{násobení} a relace \textbf{uspořádání} $(\le)$, přičemž jsou splněny následující tři skupiny vlastností:
+
+\begin{enumerate}
+\item[I.] vlastnosti sčítání a násobení a jejich vzájemný vztah,
+\item[II.] vztah uspořádání a operací sčítání a násobení,
+\item[III.] vlastnost suprema: \textit{Každá neprázdná shora omezená podmnožina $\mathbb{R}$ má supremum}.
+\end{enumerate}
+
+\begin{veta}\label{veta1.6}
+Nechť $M\subset\mathbb{R}$ je neprázdná zdola omezená množina.
+Pak existuje infimum množiny $M$.
+\end{veta}
+
+\begin{veta}\label{veta1.7}
+	Ke každému $x \in \mathbb R $ existuje $n \in \mathbb N $ splňující $x<n$.
+\end{veta}
+
+\begin{veta}\label{veta1.8}
+	Pro každé $r \in \mathbb R $ existuje právě jedno číslo $k\in \mathbb Z $ takové, že $k\leq r<k+1$.
+\end{veta}
+
+\begin{veta}\label{veta1.9}
+	Nechť $a,b\in \mathbb R$, $a<b$. Pak existuje $q \in \mathbb Q $ takové, že $a<q<b$.
+\end{veta}
+
+\begin{definice}
+\textbf{Množinu komplexních čísel} $\mathbb C $ definujeme jako množinu
+všech uspořádaných dvojic $(a,b)$, kde $a,b \in \mathbb R $, přičemž pro komplexní čísla
+$x=(a,b)$, $y=(c,d)$ definujeme operace \textbf{sčítaní} a \textbf{násobení} následovně:
+\begin{itemize}
+	\item $x+y=(a+c,b+d)$,
+	\item $x\cdot y = (ac-bd, ad+bc)$.
+\end{itemize}
+\par Nechť $x=(a,b)\in \mathbb C $. Prvek $a$ nazýváme \textbf{reálnou částí} $x$,
+prvek $b$ nazýváme \textbf{imaginární čásí} $x$. \textbf{Absulotní hodnotou} komplexního čísla $x$
+rozumíme $\sqrt{a^2+b^2}$. Dále definujeme $0=(0,0)$, $1=(1,0)$ a $i=(0,1)$.
+\textbf{Komplexně sdruženým číslem} k $x$ rozumíme číslo $\bar{x} =(a,-b)$, symbol $-x$
+značí číslo $(-a,-b)$ a symbol $1/x$ značí pro $x\ne 0$ (jednoznačně určené)
+číslo splňující $x\cdot \frac{1}{x}=1$.
+\end{definice}

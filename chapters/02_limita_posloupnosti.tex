@@ -1,8 +1,149 @@
 \section{Limita posloupnosti}
 
-% kapitola 2.3.
+\subsection{Úvod}
+
+\begin{definice}
+Řekneme, že posloupnost $\{a_n\}$ je
+\begin{itemize}
+  \item \textbf{shora omezená}, jestliže množina všech členů této posloupnosti je shora omezená,
+  \item \textbf{zdola omezená}, jestliže množina všech členů této posloupnosti je zdola omezená,
+  \item \textbf{omezená}, jestliže množina všech členů této posloupnosti je omezená.
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+Řekneme, že posloupnost $\{a_n\}$ je
+\begin{itemize}
+  \item \textbf{neklesající}, je-li $a_n \le a_{n+1}$ pro každé $n \in \mathbb{N}$,
+  \item \textbf{rostoucí}, je-li $a_n < a_{n+1}$ pro každé $n \in \mathbb{N}$,
+  \item \textbf{nerostoucí}, je-li $a_n \ge a_{n+1}$ pro každé $n \in \mathbb{N}$,
+  \item \textbf{klesající}, je-li $a_n > a_{n+1}$ pro každé $n \in \mathbb{N}$.
+\end{itemize}
+Posloupnost $\{a_n\}$ je \textbf{monotónní}, pokud splňuje některou z výše uvedených podmínek.
+Posloupnost $\{a_n\}$ je \textbf{ryze monotónní}, pokud je rostoucí či klesající.
+\end{definice}
+
+\subsection{Vlastní limita posloupnosti}
+
+\begin{definice}
+Nechť $\{a_n\}$ je posloupnost reálných čísel a $A \in \mathbb{R}$.
+Řekneme, že posloupnost $\{a_n\}$ \textbf{má limitu rovnou} $A$, jestliže platí
+\[
+\forall \varepsilon \in \mathbb{R}, \ \varepsilon > 0 \ \exists n_0 \in \mathbb{N}
+\ \forall n \in \mathbb{N}, \ n \ge n_0 : |a_n - A| < \varepsilon.
+\]
+\end{definice}
+
+\begin{veta}[Jednoznačnost limity]\label{veta2.1}
+Nechť $\{a_n\}$ je posloupnost, která má limitu rovnou $A \in \mathbb{R}$ a zároveň má
+limitu rovnou $B \in \mathbb{R}$. Potom platí $A = B$.
+\end{veta}
+
+\begin{definice}
+Řekneme, že posloupnost $\{a_n\}$ \textbf{konverguje} (je \textbf{konvergentní}), jestliže existuje
+$A \in \mathbb{R}$ takové, že $\lim a_n = A$, neboli platí
+\[
+\exists A \in \mathbb{R} \ \forall \varepsilon \in \mathbb{R}, \ \varepsilon > 0
+\ \exists n_0 \in \mathbb{N} \ \forall n \in \mathbb{N}, \ n \ge n_0 :
+|a_n - A| < \varepsilon.
+\]
+Je-li posloupnost konvergentní, říkáme též, že má \textbf{vlastní limitu}.
+Jestliže posloupnost nemá vlastní limitu, pak říkáme, že \textbf{diverguje}
+(je \textbf{divergentní}).
+\end{definice}
+
+\begin{lemma}\label{lemma 2.2}
+Nechť $\{a_n\}$ je posloupnost a $A \in \mathbb{R}$. Pak $\lim a_n = A$ právě tehdy,
+když existuje $K \in \mathbb{R}$, $K > 0$, takové, že platí
+\[
+\forall \varepsilon \in \mathbb{R}, \ \varepsilon > 0 \ \exists n_0 \in \mathbb{N}
+ \forall n \in \mathbb{N}, \ n \ge n_0 : |a_n - A| < K\varepsilon.
+\]
+\end{lemma}
+
+\begin{veta} \label{veta2.3}
+Nechť $\lim a_n = A \in \mathbb{R}$. Potom $\lim |a_n| = |A|$.
+\end{veta}
+
+\begin{veta}\label{veta2.4}
+Nechť $\{a_n\}$ je konvergentní posloupnost. Potom je $\{a_n\}$ omezená.
+\end{veta}
+
+\begin{definice}
+Nechť $\{a_n\}$ je posloupnost a $\{n_k\}_{k=1}^{\infty}$ je rostoucí posloupnost
+přirozených čísel. Pak $\{a_{n_k}\}_{k=1}^{\infty}$ nazýváme \textbf{vybranou posloupností}
+z posloupnosti $\{a_n\}$, případně \textbf{podposloupností} posloupnosti $\{a_n\}$.
+\end{definice}
+
+\begin{veta}\label{veta2.5}
+Nechť $\{a_n\}$ je posloupnost, $\lim a_n = A \in \mathbb{R}$ a
+$\{n_k\}_{k=1}^{\infty}$ je rostoucí posloupnost přirozených čísel.
+Potom $\lim_{k \to \infty} a_{n_k} = A.$
+\end{veta}
+
+\begin{veta}[Aritmetika limit] \label{veta2.6}
+Nechť $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti, $\lim a_n = A \in \mathbb{R}$ a
+$\lim b_n = B \in \mathbb{R}$. Potom platí:
+\begin{itemize}
+  \item[(a)] $\lim (a_n + b_n) = A + B$,
+  \item[(b)] $\lim (a_n \cdot b_n) = A \cdot B$,
+  \item[(c)] je-li $B \ne 0$ a pro každé $n \in \mathbb{N}$ platí $b_n \ne 0$, pak
+  \[
+  \lim \frac{a_n}{b_n} = \frac{A}{B}.
+  \]
+\end{itemize}
+\end{veta}
+
+\begin{veta}\label{veta2.7}
+Nechť $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti, $\lim a_n = 0$ a $\{b_n\}$ je omezená.
+Pak $\lim a_n b_n = 0.$
+\end{veta}
+
+\begin{veta}[Limita a uspořádání] \label{veta2.8}
+Nechť $A, B \in \mathbb{R}$, $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti splňující
+$\lim a_n = A$ a $\lim b_n = B$.
+\begin{itemize}
+  \item[(a)] Nechť $A < B$. Potom existuje $n_0 \in \mathbb{N}$ takové, že pro každé
+  $n \in \mathbb{N}$, $n \ge n_0$, platí $a_n < b_n$.
+  \item[(b)] Nechť existuje $n^\ast \in \mathbb{N}$ takové, že pro každé
+  $n \in \mathbb{N}$, $n \ge n^\ast$, platí $a_n \ge b_n$. Potom $A \ge B$.
+\end{itemize}
+\end{veta}
+
+\begin{veta}[O dvou strážnících] \label{veta2.9}
+Nechť $\{a_n\}$, $\{b_n\}$ a $\{c_n\}$ jsou posloupnosti splňující:
+\begin{itemize}
+  \item[(a)] existuje $n_0 \in \mathbb{N}$ takové, že pro každé $n \in \mathbb{N}$,
+  $n \ge n_0$, platí $a_n \le c_n \le b_n$,
+  \item[(b)] $\{a_n\}$ a $\{b_n\}$ jsou konvergentní a platí
+  $\lim a_n = \lim b_n$.
+\end{itemize}
+Potom je $\{c_n\}$ konvergentní a platí
+$\lim c_n = \lim a_n$.
+\end{veta}
+
 \subsection{Nevlastní limita posloupnosti}
-\begin{veta}[jednoznačnost limit podruhé]
+
+\begin{definice}
+Řekneme, že posloupnost $\{a_n\}$ \textbf{má limitu rovnou} $\infty$ (čteme plus nekonečno),
+jestliže
+\[
+\forall K \in \mathbb{R} \ \exists n_0 \in \mathbb{N}
+\ \forall n \in \mathbb{N}, \ n \ge n_0 : a_n > K.
+\]
+Řekneme, že posloupnost $\{a_n\}$ \textbf{má limitu rovnou} $-\infty$ (čteme mínus nekonečno),
+jestliže
+\[
+\forall K \in \mathbb{R} \ \exists n_0 \in \mathbb{N}
+\ \forall n \in \mathbb{N}, \ n \ge n_0 : a_n < K.
+\]
+\par Má-li posloupnost limitu rovnou plus nebo mínus nekonečnu, říkáme, že \textbf{má nevlastní
+limitu}. Jestliže má posloupnost limitu rovnou $\infty$, pak říkáme, že \textbf{diverguje} k
+$\infty$. Jestliže má posloupnost limitu rovnou $-\infty$, pak říkáme, že \textbf{diverguje}
+k $-\infty$.
+\end{definice}
+
+\begin{veta}[Jednoznačnost limit podruhé]
 Nechť $\left \{ a_n \right \} $ je posloupnost, která má limitu rovnou
 $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom platí $A= B$.
 \end{veta}
@@ -29,7 +170,7 @@ $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom pla
 	Pokud má vlastní limitu, říkáme, že konverguje. V ostatních případech diverguje.
 \end{poznamka}
 
-\begin{veta}[aritmetika limit podruhé]
+\begin{veta}[Aritmetika limit podruhé]
     Necht’ $\left \{ a_n \right \} $ a $\left \{ b_n \right \} $ jsou posloupnosti, $ \lim a_n = A \in \mathbb R ^*$ a
     $\lim b_n = B \in \mathbb R ^*$. Potom platí:
     \begin{enumerate}[(a)]
@@ -41,7 +182,7 @@ $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom pla
 \end{veta}
 
 \begin{proof}
-	Dokážeme případ $(a)$, ostatní analogicky. Pokud $A,B\in \mathbb R $, pak znění plyne z věty 2.6. %TODO dát odkaz
+	Dokážeme případ $(a)$, ostatní analogicky. Pokud $A,B\in \mathbb R $, pak znění plyne z věty \ref{veta2.6}.
 	Díky komutativitě stačí dokázat tvrzení v následujících případech:
 	\begin{enumerate}[(i)]
 		\item $A=B=\infty$,
@@ -83,7 +224,7 @@ $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom pla
 	Potom $\lim c_n = \infty$.
 \end{poznamka}
 
-\begin{veta}%2.12
+\begin{veta}\label{veta2.12}
 Nechť $\left \{ a_n \right \} $ a $\left \{ b_n \right \} $ jsou posloupnosti splňující:
 \begin{itemize}
 	\item pro každé $n \in \mathbb N $ platí $b_n \ne 0$,
@@ -185,12 +326,12 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 \begin{priklad}
 	Nechť $q\in (0,1)$. Potom platí $\lim_{n\to \infty} q^n = 0.$ Pro každé $n\in \mathbb N $ platí
 	$q^n \geq q^{n+1}\geq 0$. Podle věty \ref{v213} existuje $A\in \mathbb R $ takové, že
-	$\lim_{n\to \infty} q^n=A$. Podle VĚTY 2.8. %TODO
+	$\lim_{n\to \infty} q^n=A$. Podle věty \ref{veta2.8}
 	platí $A\geq 0$.
 	$$
 	    A= \lim_{n\to\infty} q^{n+1} = \lim_{n\to\infty} q\cdot q^n = q\cdot A,
 	$$
-	odtud plyne $A=0$. Použili jsme VĚTU 2.5. % TODO
+	odtud plyne $A=0$. Použili jsme větu \ref{veta2.5}.
 	Pro úplnost uveďme ještě toto:
 	$$
 	    \lim_{n\to\infty} q^n \begin{cases}
@@ -201,7 +342,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 		\end{cases}
 	$$
 	\begin{enumerate}[(a)]
-		\item $\lim_{n \to \infty} q^n = \lim_{n \to \infty} \frac{1}{\left( \frac{1}{q} \right )^n } = \infty$ dle věty 2.12 % TODO
+		\item $\lim_{n \to \infty} q^n = \lim_{n \to \infty} \frac{1}{\left( \frac{1}{q} \right )^n } = \infty$ dle věty \ref{veta2.12}
 		\item $\lim_{n \to \infty} q^n = \lim_{n \to \infty} 1=1$
 		\item Pro každé $n\in \mathbb N $ platí $- |q|^n\leq q^n \leq |q|^n$, což konverguje k nule, takže i
 		$- |q|^n$ konverguje k nule, a tedy $\lim_{n \to \infty} q^n = 0.$
@@ -213,7 +354,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 			-\infty & q < -1
 		\end{cases}$
 	\end{enumerate}
-	Věta 2.5. dává tvrzení. % TODO
+	Věta \ref{veta2.5} dává tvrzení.
 \end{priklad}
 
 \begin{poznamka}[Varování]
@@ -244,7 +385,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 		$\left \{ j\in \mathbb N ,a_j \in \left [ \alpha_k, \beta_k \right ]  \right \} $ je
 		nekonečná.
 	\end{enumerate}
-	\par Konstrukce $\left \{ \alpha_k \right \}, \left \{ \beta_k \right \}  $: Posloupnost
+	\paragraph{Konstrukce $\left \{ \alpha_k \right \}, \left \{ \beta_k \right \}  $.} Posloupnost
 	$\left \{ a_n \right \} $ je omezená, takže nalezneme $\alpha_1, \beta_1 \in \mathbb R $ splňující
 	$$
 	    \forall n \in \mathbb N : \alpha_1 \leq a_n \leq \beta_1.
@@ -262,7 +403,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 	Pokud je $L$ nekonečná, klademe $\alpha_{k+1}=\alpha_k$, $\beta_{k+1}=\frac{1}{2}\left( \alpha_k + \beta_k \right ) $.
 	Pokud je $L$ konečná, potom je $P$ nekonečná a klademe $\alpha_{k+1}=\frac{1}{2}\left( \alpha_k+\beta_k \right ) $,
 	$\beta_{k+1}=\beta_k$.
-	\par Limita pomocných posloupností: Z konstrukce plyne, že $\left \{ a_k \right \} $ je neklesající a podobně
+	\paragraph{Limita pomocných posloupností.} Z konstrukce plyne, že $\left \{ a_k \right \} $ je neklesající a podobně
 	$\left \{ \beta_k \right \} $ je nerostoucí. Dále platí, že
 	$$
 	    \forall k \in \mathbb N: \alpha_1 \leq \alpha_k \leq \beta_k \leq \beta_1.
@@ -277,7 +418,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
         \beta - \alpha=\lim_{n \to \infty} \left( \beta_k - \alpha_k \right ) = \lim_{n \to \infty} \left( \beta_1 - \alpha_1 \right ) \cdot 2^{-k+1} = 0
 	$$
 	Odtud plyne $\alpha = \beta$.
-	\par Konstrukce vybrané posloupnosti: Položme $n_1=1$. Konstrukce indukcí. Předpokládejme, že
+	\paragraph{Konstrukce vybrané posloupnosti.} Položme $n_1=1$. Konstrukce indukcí. Předpokládejme, že
 	již máme přirozená čísla $n_1 < n_2 < \dots < n_k$ a pro každé $j\in \mathbb N ,j\leq k$
 	platí $a_{n_j} \in \left [ \alpha_j,\beta_j \right ] $. Budeme hledat $n_{k+1}$. Množina
 	$\left \{ i\in \mathbb N , a_i \in \left [ \alpha_{k+1}, \beta_{k+1} \right ]  \right \} $
@@ -313,30 +454,30 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 	$$
 \end{definice}
 
-\begin{poznamka}
+\begin{poznamka}\,
     \begin{enumerate}[(i)]
-    	\item Definice \ref{limsup} je korektní díky větě o limitě monotónní posloupnosti. %TODO
+    	\item Definice \ref{limsup} je korektní díky větě o limitě monotónní posloupnosti \ref{v213}.
         \item Místo $\limsup_{n\to\infty} a_n$ někdy píšeme $\overline{\lim_{n\to\infty}}$ a místo $\liminf a_n$
         $\underline{\lim_{n\to\infty}}$.
     \end{enumerate}
 \end{poznamka}
 
-\begin{priklad}
+\begin{priklad}\,
 \begin{enumerate}[(i)]
 	\item $\limsup_{n\to\infty} (-1)^n = 1$, $\liminf_{n\to\infty} = -1$.
 	\item $\limsup_{n\to\infty} (-n) = -\infty$, $\liminf_{n\to\infty} (-n) = -\infty$.
 \end{enumerate}
 \end{priklad}
 
-\begin{veta}[limita, limes superior a limes inferior]
+\begin{veta}[Limita, limes superior a limes inferior]\label{veta2.15}
 	Nechť $\left \{ a_n \right \}$ je posloupnost a $A\in \mathbb R ^*$. Potom
 $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}[(i)]
-	\item \uv{$\implies$} \begin{itemize}
-		\item $A \in \mathbb R $: Podle věty % TODO 2.4
+	\item[$\implies$] \begin{itemize}
+		\item $A \in \mathbb R $: Podle věty \ref{veta2.4}
 		$\left \{ a_n \right \} $ omezená. Označme $b_n = \sup \left \{ a_n, k \geq n \right \}$,
 		$c_n = \inf \left \{ a_k, k \geq n \right \} $. Zvolme $\varepsilon \in \mathbb R , \varepsilon> 0.$
 		Nalezneme $n_0 \in \mathbb N $ takové, že
@@ -351,7 +492,7 @@ $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 		$$
 		    A - \varepsilon \leq c_n \leq b_n \leq A+ \varepsilon.
 		$$
-		Podle věty % TODO 2.8
+		Podle věty \ref{veta2.8}
 		plyne, že
 		$$
 		    A- \varepsilon \leq \underbrace{\lim c_n}_{\liminf a_n} \leq \underbrace{\lim b_n}_{\limsup a_n} \leq A+\varepsilon,
@@ -370,29 +511,29 @@ $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 		Je tedy $\liminf a_n = \lim c_n = \infty$.
 		\item $A = -\infty$: Proveďte samostatně.
 \end{itemize}
-\item \uv{$\impliedby$} \begin{itemize}
+\item[$\impliedby$] \begin{itemize}
 	\item $A \in \mathbb R $: $\limsup a_n = \liminf a_n = A$. Zde máme, že $\left \{ a_n \right \} $
 	je omezená posloupnost. Potom pro každé $n \in \mathbb N $ platí $b_n, c_n\in \mathbb R $ a
 	$$
 	    c_n \leq a_n \leq b_n.
 	$$
 	Protože $c_n$ konverguje k $\liminf a_n = A$ a $b_n$ k $\limsup a_n = A$, je podle věty o dvou strážnících
-	%TODO
+	\ref{veta2.9}
 	$\lim a_n = A$.
 	\item $A = \infty$: $\left \{ a_n \right \} $ není shora omezená, ale je zdola omezená.
 	Potom pro každé $n \in \mathbb N $ platí $c_n \in \mathbb R $ a platí $c_n \leq a_n$.
 	Protože $c_n$ konverguje k $\liminf a_n = \infty$, je podle věty
-	o dvou strážnících % TODO
+	o dvou strážnících \ref{veta2.9}
 	i $\lim a_n = \infty$.
 	\item $A = -\infty$: Samostatně. \qedhere
 \end{itemize}
 \end{enumerate}
 \end{proof}
 
-\begin{veta}
+\begin{veta}\label{veta2.16}
 	Nechť $\left \{ x_n \right \} $ a $\left \{ y_n \right \} $ jsou postloupnosti. Předpokládejme, že platí
 	$$
-	    \exists n_0 \in \mathbb N  \forall n \in \mathbb N , n \geq n_0: x_n \leq y_n.
+	    \exists n_0 \in \mathbb N \, \forall n \in \mathbb N , n \geq n_0: x_n \leq y_n.
 	$$
 	Potom $\limsup x_n \leq \limsup y_n$ a $\liminf x_n \leq \liminf y_n$.
 \end{veta}
@@ -418,14 +559,14 @@ $\lim_{k\to \infty} a_{n_k} = A.$ Množinu všech hromadných hodnot posloupnost
 značíme $H \left( \left \{ a_n \right \}  \right ) $.
 \end{definice}
 
-\begin{priklad}
+\begin{priklad}\,
 \begin{enumerate}[(i)]
 	\item $H \left( \left \{ (-1)^n \right \}  \right )  = \left \{ -1,1 \right \} $
 	\item $H \left( \left \{ \sin n \right \}  \right )  = \left [ -1,1 \right ] $
 \end{enumerate}
 \end{priklad}
 
-\begin{veta}[limes superior, limes inferior a hromadné hodnoty]
+\begin{veta}[Limes superior, limes inferior a hromadné hodnoty]\label{veta2.17}
 	Nechť $\left \{ a_n \right \} $ je posloupnost. Potom $\limsup a_n, \liminf a_n \in H \left( \left \{ a_n \right \}  \right ) $
 	a pro každé $y \in H \left( \left \{ a_n \right \}  \right ) $ platí $\liminf a_n \leq y \leq \limsup a_n$.
 \end{veta}
@@ -472,15 +613,15 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 			Množina $\left \{ a_j, j > n_k \right \}$ není shora omezená, takže nalezneme
 			$n_{k+1} \in \mathbb N , n_{k+1} > n_k$ takové, že $a_{n_{k+1}} > k+1$.
 			Pro každé $k \in \mathbb N $ platí $a_{n_k} > k$, ale $k$ diverguje do $\infty$, takže
-			podle věty o dvou strážnících %TODO
+			podle věty o dvou strážnících \ref{veta2.9}
 			$\lim a_{n_k} = \infty$.
 		\end{itemize}
 		\item $A = -\infty$: $\left \{ a_n \right \} $ není zdola omezená. Máme tedy $\liminf a_n = -\infty$.
-		Podle věty o dvou strážnících % TODO
+		Podle věty o dvou strážnících \ref{veta2.9}
 		je $\lim a_n = -\infty$, a tedy $-\infty \in H \left(  \left \{ a_n \right \}  \right ) $.
 	\end{enumerate}
-	Důkaz nerovnosti pro $\liminf a_n$.
-	\par Označme $y\in H \left( \left \{ a_n \right \}  \right ) $. Pokud $\liminf a_n = -\infty$,
+	\paragraph{Důkaz nerovnosti pro $\liminf a_n$.}
+	Označme $y\in H \left( \left \{ a_n \right \}  \right ) $. Pokud $\liminf a_n = -\infty$,
 	pak $\liminf a_n = -\infty \leq y$. Předpokládejme tedy, že $\liminf a_n < -\infty$. Potom
 	platí
 	$$
@@ -497,7 +638,7 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 \end{proof}
 
 \begin{dusledek}
-	Nechť $\left \{ a_n \right \} $ je posloupnost.Potom je $H \left( \left \{ a_n \right \}  \right ) $
+	Nechť $\left \{ a_n \right \} $ je posloupnost. Potom je $H \left( \left \{ a_n \right \}  \right ) $
 	neprázdná.
 \end{dusledek}
 
@@ -513,11 +654,11 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 	$$
 \end{definice}
 
-\begin{veta}
+\begin{veta} \label{veta2.18}
 	Posloupnost $\left \{ a_n \right \} $ má vlastní limitu právě tehdy, když splňuje Bolzanovu--Cauchyovu podmínku.
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}
 	\item[$\implies$] Předpokládáme, že $\lim a_n = A\in \mathbb R $. Zvolme $\varepsilon \in \mathbb R ,\varepsilon > 0$.
 	K němu nalezneme $n_0 \in \mathbb N $ takové, že
@@ -547,7 +688,7 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 	    a_{n_0} - \varepsilon \leq \liminf a_n \leq \limsup a_n \leq a_{n_0} + \varepsilon.
 	$$
 	Dostáváme tak, že $\limsup a_n, \liminf a_n \in \mathbb R $ a $0 \leq \limsup a_n - \liminf a_n \leq 2\varepsilon$.
-	Platí tedy $\limsup a_n = \liminf a_n \in \mathbb R $, a tedy podle věty %TODO 2.15
+	Platí tedy $\limsup a_n = \liminf a_n \in \mathbb R $, a tedy podle věty \ref{veta2.15}
 	existuje vlastní limita $a_n$.\qedhere
 \end{enumerate}
 \end{proof}

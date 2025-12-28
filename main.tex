@@ -22,6 +22,7 @@
 \usepackage{centernot}
 \usepackage{pgfplots}
 \usepackage{caption}
+\usepackage{fontawesome}
 \graphicspath{{images/}}
 \pgfplotsset{width=10cm,compat=1.9}
 
@@ -72,7 +73,7 @@
 ]{pozn}
 
 \declaretheoremstyle[
-  headfont=\color{brown}\normalfont\bfseries,
+  headfont=\color{olive}\normalfont\bfseries,
   bodyfont=\color{black}\normalfont,
 ]{dusl}
 
@@ -87,10 +88,28 @@
   numbered=no
 ]{motivace}
 
+\declaretheoremstyle[
+  headfont=\color{olive}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+  numbered=no
+]{ozn}
+
+\declaretheoremstyle[
+  headfont=\color{black}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+  numbered=no,
+  headpunct=
+]{pozorovani}
+
 \declaretheorem[
   style=def,
   name=Definice,
 ]{definice}
+
+\declaretheorem[
+  style=ozn,
+  name=Označení,
+]{oznaceni}
 
 \declaretheorem[
   style=pr,
@@ -136,6 +155,11 @@
   style=motivace,
   name=Motivace,
 ]{motivace}
+
+\declaretheorem[
+  style=pozorovani,
+  name=\faEye,
+]{pozorovani}
 
 \DeclareMathOperator{\tg}{tg}
 \DeclareMathOperator{\cotg}{cotg}
