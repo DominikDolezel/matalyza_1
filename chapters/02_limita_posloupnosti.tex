@@ -39,6 +39,28 @@ Nechť $\{a_n\}$ je posloupnost, která má limitu rovnou $A \in \mathbb{R}$ a z
 limitu rovnou $B \in \mathbb{R}$. Potom platí $A = B$.
 \end{veta}
 
+\begin{proof}
+	Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K tomuto $\varepsilon$ nalezneme nějaké $n_0$
+	takové, že
+	$$
+	    \forall n\in \mathbb N , n \geq n_0: |a_n-A|<\varepsilon.
+	$$
+	Dále nalezneme $n_0^\prime\in \mathbb N $ takové, že
+	$$
+	    \forall n\in \mathbb N , n \geq n_0^\prime: |a_n - B|<\varepsilon.
+	$$
+	Nalezneme $m\in \mathbb N $, které splňuje $m\geq n_0$ a $m_0 \geq n_0^\prime$. Potom platí
+	$$
+	    0\leq |A-B| = |A-a_n+a_n-B|\leq |A-a_m|+|a_m-B| < \varepsilon + \varepsilon = 2\varepsilon.
+	$$
+	Odtud plyne, že $|A-B|=0$, neboli $A=B$.
+\end{proof}
+
+\begin{oznaceni}
+	Má-li posloupnost $\left \{ a_n \right \}$ limitu $A\in \mathbb R $, potom ji značíme
+$\lim_{n \to \infty} a_n$ nebo jen $\lim a_n$.
+\end{oznaceni}
+
 \begin{definice}
 Řekneme, že posloupnost $\{a_n\}$ \textbf{konverguje} (je \textbf{konvergentní}), jestliže existuje
 $A \in \mathbb{R}$ takové, že $\lim a_n = A$, neboli platí
@@ -61,13 +83,120 @@ když existuje $K \in \mathbb{R}$, $K > 0$, takové, že platí
 \]
 \end{lemma}
 
+\begin{proof}
+	\,
+	\begin{enumerate}
+		\item[$\impliedby$] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Položme $\tilde \varepsilon = \frac{\varepsilon}{K}$.
+		Podle předpokladu nalezneme pro $\tilde\varepsilon$ číslo $n_0\in \mathbb N $ takové, že
+		$$
+		    \forall n\in \mathbb N : n \geq n_0: |a_n-A|<K\tilde\varepsilon = \varepsilon.
+		$$
+		Odtud plyne $\lim_{n \to \infty} a_n = A$.
+		\item[$\implies$] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Položme $\tilde\varepsilon = K\varepsilon$. Podle
+		předpokladu nalezneme číslo $n_0\in \mathbb N $ takové, že
+		$$
+		    \forall n\in \mathbb N : n \geq n_0: |a_n-A|<\tilde\varepsilon = K\varepsilon.
+		$$
+\end{enumerate}
+\end{proof}
+
+\begin{priklad}
+	\,
+	\begin{enumerate}
+		\item Nechť $\left \{ a_n \right \} $ je posloupnost a existuje $n^\star\in \mathbb N $ a $c \in \mathbb R $ taková,
+		že $\forall n \in \mathbb N , n\geq n^\star:a_n = c$. Potom $\lim_{n \to \infty} a_n = c$.
+		\par Zvolme $\varepsilon > 0$. Položme $n_0 = n^\star$. Potom $\forall n \in \mathbb N , n \geq n_0$ máme
+		$|a_n-c|=|c-c|<\varepsilon.$
+		\item $\lim_{n \to \infty} \frac{1}{n}=0$
+		\par Nechť $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n_0 \in \mathbb N $ takové, že
+		$n_0 > \frac{1}{\varepsilon}$ podle věty \ref{veta1.7}. Potom
+		$$\forall n\in \mathbb N , n > n_0: \left | \frac{1}{n}-0\right |=\frac{1}{n}\leq \frac{1}{n_0}<\varepsilon.$$
+		\item $\lim_{n \to \infty} \sqrt[n]{n}=1$
+		\par Sporem. Předpokládejme, že
+		\begin{equation}\label{limitarovnice}
+			\exists \varepsilon \in \mathbb R , \varepsilon > 0\, \forall n_0 \in \mathbb N  \, \exists n \in \mathbb N , n \geq n_0: |a_n - 1| = |\sqrt[n]{n}-1| \geq \varepsilon.
+		\end{equation}
+		Zafixujeme $\varepsilon \in \mathbb R , \varepsilon > 0$ takové, že platí (\ref{limitarovnice}). Nalezneme rostoucí posloupnost
+		přirozených čísel $\left \{ n_k \right \}_{n=1}^\infty $ takové, že
+		$$
+		    \forall k \in \mathbb N : \left | \sqrt[n_k]{n_k}  -1\right| \geq \varepsilon.
+		$$
+		\paragraph{Konstrukce $\left \{ n_k \right \}_{k=1}^\infty $.}
+		\begin{itemize}
+			\item $k=1$: Položme $n_0 = 1$ a použijme (\ref{limitarovnice}). Nalezneme $n_1 \in \mathbb N $ splňující
+			$\left | \sqrt[n_1]{n_1}  -1\right|\geq \varepsilon$.
+			\item $k\rightsquigarrow k+1$: Již máme  $n_1 < n_2 < \dots < n_k$. Položme $n_0= n_k+1$ a použijeme (\ref{limitarovnice}).
+			Nalezneme $n_{k+1}\in \mathbb N $ splňující $n_{k+1}\geq n_0 > n_k$ a $\left | \sqrt[n_{k+1}]{n_{k+1}}  -1\right|\geq \varepsilon$.
+			Pro každé $k\in \mathbb N , k \geq 2$ platí
+			\begin{align*}
+				\left | \sqrt[n_{k}]{n_{k}}  -1\right|&\geq \varepsilon\\
+				\sqrt[n_{k}]{n_{k}}  -1&\geq \varepsilon\\
+				n_k  &\geq (1+\varepsilon)^{n_k} \geq 1+ \binom{n_k}{1}\varepsilon + \binom{n_k}{2}\varepsilon^2 \\
+				n_k & \geq \binom{n_k}{2}\varepsilon^2 = \frac{1}{2}n_k(n_k-1)\varepsilon^2.
+			\end{align*}
+			Pro každé $k\in \mathbb N , k \geq 2$ platí
+			\begin{align*}
+			\frac{2}{\varepsilon^2}&\geq n_k - 1 \\
+			\frac{2}{\varepsilon^2} + 1 &\geq n_k \geq k \implies \mathbb N  \textrm{ je shora omezená,}
+			\end{align*}
+		což je spor.
+		\end{itemize}
+		\item Posloupnost $\left \{ (-1)^n \right \}_{n=1}^\infty $ není konvergentní.
+		\par Sporem. Předpokládejme, že existuje  $A\in \mathbb R $ splňující
+		$\lim_{n \to \infty} (-1)^n=A$. Položme $\varepsilon = \frac{1}{2}$. K němu nalezneme $n_0 \in \mathbb N $ takové, že
+		$$
+		    \forall n \in \mathbb N , n\geq n_0: \left | (-1)^n -A\right | < \varepsilon = \frac{1}{2}.
+		$$
+		Odtud plyne $A\in \left( \frac{1}{2}, \frac{1}{2} \right ) $ a zároveň $A\in \left( -\frac{3}{2}, -\frac{1}{2} \right ) $,
+		což je spor.
+	\end{enumerate}
+\end{priklad}
+
 \begin{veta} \label{veta2.3}
 Nechť $\lim a_n = A \in \mathbb{R}$. Potom $\lim |a_n| = |A|$.
 \end{veta}
 
+\begin{proof}
+	Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu nalezneme  $n_0 \in \mathbb N $ takové, že
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: |a_n - A| < \varepsilon.
+	$$
+	Potom pro každé $n \in \mathbb N , n \geq n_0$ platí
+	$$
+	\left | |a_n| - |A| \right | \geq |a_n - A| < \varepsilon.
+	$$
+	\paragraph{Důkaz nerovnosti $||x| - |y||\leq |x-y|$.} Pro všechny $x,y \in \mathbb R $ platí
+	\begin{align*}
+		|x| = |x-y+y| \leq |x-y| + |y| \\
+		|x| - |y| \leq |x-y|.
+\end{align*}
+\end{proof}
+
 \begin{veta}\label{veta2.4}
 Nechť $\{a_n\}$ je konvergentní posloupnost. Potom je $\{a_n\}$ omezená.
 \end{veta}
+
+\begin{proof}
+	Hodnot před $n_0$ je konečně mnoho. Označme $A = \lim a_n$. Zvolme $\varepsilon = 1$. K němu nalezneme $n_0 \in \mathbb N $
+	takové, že
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: |a_n - A| < \varepsilon = 1.
+	$$
+	Množina $\left \{ a_1, \dots, a_{n_0} \right \} $ je konečná, a proto $\exists c \in \mathbb R $ takové,
+	že
+	$$
+	    \forall n \in \mathbb N , n \leq n _0: |a_n| \leq c.
+	$$
+	Dále platí
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: |a_n| = |a_n +A-A| \leq |a_n - A|+ |A|< 1+|A|.
+	$$
+	Položme $K = \max \left \{ c, 1+|A| \right \} $. Potom platí
+	$$
+	    \forall n \in \mathbb N : |a_n| \leq K,
+	$$
+	odkud máme, že $\left \{ a_n \right \} $ je omezená.
+\end{proof}
 
 \begin{definice}
 Nechť $\{a_n\}$ je posloupnost a $\{n_k\}_{k=1}^{\infty}$ je rostoucí posloupnost
@@ -75,11 +204,29 @@ přirozených čísel. Pak $\{a_{n_k}\}_{k=1}^{\infty}$ nazýváme \textbf{vybra
 z posloupnosti $\{a_n\}$, případně \textbf{podposloupností} posloupnosti $\{a_n\}$.
 \end{definice}
 
+\begin{priklad}
+	Ať $\left \{ \frac{1}{n} \right \}_{n=1}^\infty $ je posloupnost. Pak posloupnost $n_a = k^2, k \in \mathbb N $ je vybraná posloupnost:
+	$\left \{ \frac{1}{k^2} \right \}_{k=1}^\infty $.
+\end{priklad}
+
 \begin{veta}\label{veta2.5}
 Nechť $\{a_n\}$ je posloupnost, $\lim a_n = A \in \mathbb{R}$ a
 $\{n_k\}_{k=1}^{\infty}$ je rostoucí posloupnost přirozených čísel.
 Potom $\lim_{k \to \infty} a_{n_k} = A.$
 \end{veta}
+
+\begin{proof}
+	Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n^\prime \in \mathbb N $ takové, že
+	\begin{equation}\label{rovnicelimita2}
+	\forall n \geq n^\prime, n \in \mathbb N : |a_n - A| < \varepsilon.
+\end{equation}
+    Pro každé $k \in \mathbb N , k \geq n^\prime$ platí $n_k \geq k \geq n^\prime$. Potom $|a_{n_k} -A| < \varepsilon$ podle (\ref{rovnicelimita2}).
+\end{proof}
+
+\begin{poznamka}
+	Větu \ref{veta2.5} lze užít k důkazu, že jistá posloupnost $\left \{ a_n \right \} $ nemá limitu.
+	Stačí nalézt dvě podposloupnosti z $\left \{ a_n \right \} $ s rozdílnými limitami.
+\end{poznamka}
 
 \begin{veta}[Aritmetika limit] \label{veta2.6}
 Nechť $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti, $\lim a_n = A \in \mathbb{R}$ a
@@ -94,10 +241,114 @@ $\lim b_n = B \in \mathbb{R}$. Potom platí:
 \end{itemize}
 \end{veta}
 
+\begin{proof}\,
+\begin{enumerate}[(a)]
+	\item Zvolíme $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n_A, n_B\in \mathbb N $ taková, že
+	\begin{equation}\label{dvojrovnice}
+	\begin{aligned}
+	&\forall n \in \mathbb N , n \geq n_A : |a_n - A| < \varepsilon, \\
+	&\forall n \in \mathbb N , n \geq n_B : |b_n - B|<\varepsilon.
+\end{aligned}
+	\end{equation}
+	Položme $n_0 = \max \left \{ n_A, n_B \right \}. $ Pro každé $n \in \mathbb N , n \geq n_0$ platí
+	$$
+	    |(a_n + b_n) - (A+B)| = |(a_n - A) +(b_n - B)| \leq |a_n - A| + |b_n - B| < \varepsilon + \varepsilon = 2\varepsilon.
+	$$
+	Odtud dle lemmatu \ref{lemma 2.2} plyne $\lim_{n \to \infty} (a_n + b_n)=A+B$.
+	\item Posloupnost $\left \{ b_n \right \} $ je konvergentní, a tedy omezená podle věty \ref{veta2.4}. Nalezneme $K\in \mathbb R , K>0$
+	takové, že
+	\begin{equation*}
+		\forall n \in \mathbb N : |b_n| \leq K.
+\end{equation*}
+    Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0.$ Nalezneme $n_A, n_B\in \mathbb N $ taková, že
+    \begin{equation*}
+    \begin{aligned}
+    &\forall n \in \mathbb N , n \geq n_A : |a_n - A| < \varepsilon, \\
+	&\forall n \in \mathbb N , n \geq n_B : |b_n - B|<\varepsilon.
+    \end{aligned}
+    \end{equation*}
+    Položme $n_0 = \max \left \{ n_A, n_B \right \} $. Vezměme $n\in \mathbb N , n \geq n_0$. Počítejme
+    \begin{align*}
+        |a_nb_n-AB|& = |a_nb_n-Ab_n+Ab_n-AB| = |(a_n-A)b_n + A(b_n-B)|\\
+        &\leq |(a_n-A)b_n| + |A(b_n-B)| = |a_n-A| \cdot |b_n| + |A| \cdot |b_n-B| \\
+        &< \varepsilon K + |A|\cdot \varepsilon = \varepsilon ( K+|A|),
+    \end{align*}
+    odkud máme podle lemmatu \ref{lemma 2.2} $\lim a_nb_n = AB$.
+    \item Pro každé $n\in \mathbb N $ platí
+    \begin{equation}\label{velkarovnice}
+    \begin{aligned}
+        \left | \frac{a_n}{b_n}-\frac{A}{B} \right | & = \left | \frac{a_nB-AB+AB-Ab_n}{b_nB} \right |\\
+        & < \frac{|a_nB-AB|+|AB-Ab_n|}{|b_nB|} = \frac{|a_n-A|\cdot |B|+ |A|\cdot |B-b_n|}{|b_nB|}\\
+        &= \frac{1}{|b_n|}\cdot |a_n - A|+ \frac{|A|}{|b_n|\cdot |B|}\cdot |b_n-B|.
+    \end{aligned}
+    \end{equation}
+    Poněvadž $\lim b_n =B$ a $|B|>0$, lze nalézt $n^\star \in \mathbb N $ takové, že
+    $$
+        \forall n \in \mathbb N , n \geq n^\star : |b_n-B| < \frac{1}{2}|B|.
+    $$
+    Potom pro každé $n \in \mathbb N , n \geq n^\star$ platí $|b_n| > \frac{1}{2}|B|$.
+    Nechť $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu nalezneme $m^\star \in \mathbb N $ takové, že
+    $$
+        \forall n \in \mathbb N , n\geq m^\star: |a_n - A| < \varepsilon \land |b_n - B| < \varepsilon.
+    $$
+    Položme $n_0 = \max \left \{ m^\star, n^\star \right \} $. Pro každé $n\in \mathbb N , n \geq n_0$ podle (\ref{velkarovnice})
+    platí
+    \begin{align*}
+    \left | \frac{a_n}{b_n}-\frac{A}{B} \right |& \leq \frac{1}{|b_n|} \cdot |a_n -A| + \frac{|A|}{|b_n| \cdot |B|} \cdot |b_n-B|\\
+    & < \frac{1}{\frac{1}{2}\cdot |B|}\cdot \varepsilon + \frac{|A|}{\frac{1}{2}\cdot |B|\cdot |B|}\cdot \varepsilon,
+    \end{align*}
+    odkud podle lemmatu \ref{lemma 2.2} dostáváme $\lim \frac{a_n}{b_n}=\frac{A}{B}$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{priklad}
+	\,
+	\begin{enumerate}[(1)]
+		\item $\lim_{n \to \infty} \frac{1}{n^2} = 0$, neboť $\lim \frac{1}{n} = 0$ a $\lim \frac{1}{n^2} = \left( \lim \frac{1}{n} \right )^2 $.
+		\item Nechť $k \in \mathbb N .$ Potom platí $\lim_{n \to \infty} \frac{1}{n^k}=0$.
+		\item $\lim \frac{n-1}{n}=\lim \left( 1-\frac{1}{n} \right ) =1+(-1)\cdot 0 = 1$.
+\end{enumerate}
+\end{priklad}
+
+\begin{poznamka}[Varování!]
+	Vztah $\lim (a_n + b_n) = \lim a_n + \lim b_n$ obecní neplatí! Položme $\left \{ a_n \right \} = \left \{ (-1)^n \right \}  $,
+	$\left \{ b_n \right \} = \left \{ (-1) \right \}^{n+1}  $. Potom platí
+	$$
+	    \lim(a_n+b_n) = \lim 0 = 0,
+	$$
+	ale $\lim a_n$ ani $\lim b_n$ neexistují.
+\end{poznamka}
+
+\begin{poznamka}
+	Pokud změníme konečně mnoho členů posloupnosti, nebude to mít žádný vliv na existenci či neexistenci limity ani na její
+	případnou hodnotu. Odtud plyne, že můžeme počítat limity \uv{posloupností}, které jsou definovány na $\mathbb N $
+	vyjma konečné množiny.
+\end{poznamka}
+
 \begin{veta}\label{veta2.7}
 Nechť $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti, $\lim a_n = 0$ a $\{b_n\}$ je omezená.
 Pak $\lim a_n b_n = 0.$
 \end{veta}
+
+\begin{proof}
+	Nalezneme $K \in \mathbb R , K > 0$ takové, že
+	$$
+	    \forall n \in \mathbb N : |b_n| \leq K.
+	$$
+	Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu nalezneme $n_0 \in \mathbb N $ takové, že
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: |a_n - 0| = |a_n|< \varepsilon.
+	$$
+	Pro každé $n \in \mathbb N , n \geq n_0$ platí
+	$$
+	    |a_nb_n| = |a_n|\cdot |b_n| < \varepsilon K,
+	$$
+	odkud podle lemmatu \ref{lemma 2.2} máme $\lim a_nb_n = 0$.
+\end{proof}
+
+\begin{priklad}
+	$\lim_{n \to \infty} \frac{1}{n}\cdot \sin n = 0.$
+\end{priklad}
 
 \begin{veta}[Limita a uspořádání] \label{veta2.8}
 Nechť $A, B \in \mathbb{R}$, $\{a_n\}$ a $\{b_n\}$ jsou posloupnosti splňující
@@ -110,6 +361,34 @@ $\lim a_n = A$ a $\lim b_n = B$.
 \end{itemize}
 \end{veta}
 
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Položme $\varepsilon = \frac{1}{4} (B-A)$. Nalezneme $n_1,n_2\in \mathbb N $ taková, že
+		platí
+		$$
+		    \forall n \in \mathbb N , n \geq n_1: |a_n - a| < \varepsilon.
+		$$
+		Podobně
+		$$
+		    \forall n \in \mathbb N , n \geq n_2: |b_n-B|<\varepsilon.
+		$$
+		Položme $n_0=\max \left \{ n_1,n_2 \right \} $. Pak $\forall n \in \mathbb N , n \geq n_0$ platí
+		$a_n < A+\varepsilon$ a $a+A+\varepsilon < B-\varepsilon<b_n$.
+		\item Sporem. Předpokládejme, že $A<B$. Podle (a) nalezneme $n_0$ takové, že $\forall n \in \mathbb N , n \geq n_0$
+		platí $a_n < b_n$. Zvolme $n_1 = \max \left \{ n_0, n^\star \right \} $. Potom platí $a_{n_1}<b_{n_1}\leq a_{n_1}$
+		z předpokladu, což je spor.
+	\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	V bodě $A$ nelze uvažovat neostrou nerovnost místo ostré. Pak
+	\begin{align*}
+		a_n = \frac{1}{n} && b_n = 0 && \lim a_n=0=\lim b_n.
+\end{align*}
+Podobně v (b).
+\end{poznamka}
+
 \begin{veta}[O dvou strážnících] \label{veta2.9}
 Nechť $\{a_n\}$, $\{b_n\}$ a $\{c_n\}$ jsou posloupnosti splňující:
 \begin{itemize}
@@ -121,6 +400,33 @@ Nechť $\{a_n\}$, $\{b_n\}$ a $\{c_n\}$ jsou posloupnosti splňující:
 Potom je $\{c_n\}$ konvergentní a platí
 $\lim c_n = \lim a_n$.
 \end{veta}
+
+\begin{proof}
+	Označme $\lim a_n é \lim b_n=A$. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n_1 \in \mathbb N $
+	takové, že
+	\begin{align*}
+		&\forall n \in \mathbb N , n \geq n_1: |a_n-A| < \varepsilon,\\
+		&\forall n \in \mathbb N , n \geq n_1: |b_n-A|< \varepsilon.
+\end{align*}
+    Položme $n_2 = \max \left \{ n_0, n_1 \right \} $. Potom pro každé $n \in \mathbb N , n \geq n_2$ platí
+    $$
+        A-\varepsilon < a_n \leq c_n \leq b_n < A+ \varepsilon,
+    $$
+    tedy také $|c_n-A|<\varepsilon$.
+\end{proof}
+
+\begin{priklad}
+	Nechť $c \in \mathbb R , c > 0$. Potom platí $\lim_{n \to \infty} \sqrt[n]{c}=1$.
+	\begin{enumerate}[(1)]
+		\item $c\geq 1$: Platí $\forall n \in \mathbb N : \sqrt[n]{c} \geq 1$. Existuje $n_0 \in \mathbb N $ takové, že
+		$$
+		    \forall n \in \mathbb N , n \geq n_0: \sqrt[n]{n} \geq \sqrt[n]{c}.
+		$$
+		Podle věty o dvou strážnících \ref{veta2.9}, vezmeme-li $a_n = 1, b_n = \sqrt[n]{n}, c_n = \sqrt[n]{c}$,
+		dostaneme $\lim_{n \to \infty} \sqrt[n]{c}=1$.
+		\item $0<c<1$: Je $\lim \sqrt[n]{c} = \lim \frac{1}{\sqrt[n]{\frac{1}{c}}}$, $\frac{1}{c}>1$. Zbytek dostaneme z (a).
+\end{enumerate}
+\end{priklad}
 
 \subsection{Nevlastní limita posloupnosti}
 
@@ -143,10 +449,40 @@ $\infty$. Jestliže má posloupnost limitu rovnou $-\infty$, pak říkáme, že 
 k $-\infty$.
 \end{definice}
 
-\begin{veta}[Jednoznačnost limit podruhé]
+\begin{priklad}
+	Ukážeme, že $\lim_{n \to \infty} n= \infty$. Zvolme $K\in \mathbb R $. Podle věty \ref{veta1.7} nalezneme $n_0\in \mathbb N $
+	takové, že $n_0 > K$. Potom $\forall n \in \mathbb N , n \geq n_0$ platí $n\geq n_0 >K$. Odtud plyne
+	$\lim_{n \to \infty} n=\infty$.
+\end{priklad}
+
+\begin{oznaceni}
+	$\mathbb R ^\star=\mathbb R \cup \left \{ -\infty, +\infty \right \} $.
+\end{oznaceni}
+
+\begin{veta}[Jednoznačnost limit podruhé]\label{veta2.10}
 Nechť $\left \{ a_n \right \} $ je posloupnost, která má limitu rovnou
 $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom platí $A= B$.
 \end{veta}
+
+\begin{proof}
+	Sporem. Předpokládejme, že $A\ne B$. BÚNO $A<B$. Rozlišíme následující případy:
+	\begin{enumerate}[(1)]
+		\item $A=-\infty, B \in \mathbb R $,
+		\item $A = -\infty, B = \infty$,
+		\item $A\in \mathbb R , B\in \mathbb R $,
+		\item $A\in \mathbb R , B=\infty$.
+\end{enumerate}
+Ukážeme případ (1), v ostatních se postupuje analogicky. Zvolme $\varepsilon = 1$. Nalezneme $n_1\in \mathbb N $
+takové, že
+$$
+    \forall n \in \mathbb N , n \geq n_1: |a_n - B| < \varepsilon = 1.
+$$
+Zvolme $K = B-1$. Nalezneme $n_2 \in \mathbb N ,$ takové že
+$$
+    \forall n \in \mathbb N , n\geq n_2: a_n < K = B-1.
+$$
+Položme $m = \max \left \{ n_1,n_2 \right \} $. Pak platí $a_m < B-1<a_m$, což je spor.
+\end{proof}
 
 \begin{poznamka}
 	Označení. Symbol $\lim_{n\to \infty} a_n$ bude značit vlastní nebo nevlastní limitu posloupnosti
@@ -168,6 +504,31 @@ $A\in \mathbb R ^*$ a zároveň má limitu rovnou $B\in \mathbb R ^*$. Potom pla
 		\end{cases}
 	$$
 	Pokud má vlastní limitu, říkáme, že konverguje. V ostatních případech diverguje.
+\end{poznamka}
+
+\begin{poznamka}[Rozšířená reální osa $\mathbb R ^\star$]\,
+\begin{itemize}
+	\item uspořádání na $\mathbb R ^\star$
+	\begin{align*}
+		-\infty < \inft\, && \forall a \in \mathbb R : -\infty < a, && \forall a \in \mathbb R  < \infty,
+	\end{align*}
+	tedy $\leq$ na $\mathbb R ^\star$ je lineární
+	\item sčítání na $\mathbb R ^\star$
+	\begin{align*}
+		-(\infty) = -\infty, && - (-\infty) = \infty, && \forall a \in \mathbb R : a+\infty = \infty + a = \infty,
+	\end{align*}
+	obdobně pro
+	\begin{align*}
+		\forall a \in \mathbb R : a + (-\infty) = -\infty + a = -\infty, && \infty + \infty = \infty, && -\infty + (-\infty) = -\infty.
+	\end{align*}
+	Výraz $\infty - \infty$ není definován.
+	\item násobení na $\mathbb R ^\star$
+	\begin{align*}
+		&\forall a \in \mathbb R ^\star, a>0: a\cdot (\pm\infty) = (\pm \infty) \cdot a = \pm \infty,\\
+		&\forall a \in \mathbb R ^\star, a<0: a\cdot (\pm\infty) = (\pm \infty) \cdot a = \mp \infty,\\
+		&\infty ^{-1} = 0, \quad (-\infty)^{-1}=0.
+\end{align*}
+\end{itemize}
 \end{poznamka}
 
 \begin{veta}[Aritmetika limit podruhé]

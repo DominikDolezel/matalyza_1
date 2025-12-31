@@ -3,6 +3,15 @@
 
 \textbf{Výrokem} nazveme jakékoliv tvrzení, o němž má smysl říci, že platí (je pravdivé), nebo že neplatí (je nepravdivé).
 
+\begin{priklad}\,
+\begin{itemize}
+	\item Číslo čtyři je sudé. (pravda)
+	\item Vídeň je hlavní město ČR. (nepravda)
+	\item Ahoj! (není výrok)
+	\item $\pi^\pi$ je iracionální. (je výrok, ale nevíme, jestli je to pravda)
+\end{itemize}
+\end{priklad}
+
 \begin{definice}
 \textbf{Negací} $\neg A$ výroku $A$ rozumíme výrok:
 \begin{center}
@@ -68,6 +77,22 @@ A & B & A\wedge B & A\vee B & A\Rightarrow B & A\Leftrightarrow B \\
 \textbf{Výroková forma} $V$ je výraz, který má konečný počet proměnných, přičemž když za tyto proměnné dosadíme prvky z daného oboru, obdržíme výrok.
 \end{definice}
 
+\begin{poznamka}[Vytváření nových výroků]
+	Platí následující:
+	\begin{enumerate}[(i)]
+		\item $(A\implies B)\iff (\neg B\implies \neg A)$
+		\item $((A\land B)\land C)\iff (A\land (B\land C))$
+		\item $((A\lor B)\lor C) \iff (A\lor (B\lor C))$
+		\item $(\neg (A\implies B))\iff (A\land \neg B)$
+		\item $(\neg (A\lor B))\iff (\neg A\land \neg B)$
+		\item $(A\iff B)\iff ((A\implies B)\land (B\implies A))$
+	\end{enumerate}
+\end{poznamka}
+
+\begin{priklad}
+	Výrok \textit{Kočka leze dírou, pes oknem, nebude-li pršet, nezmoknem.} znegujeme jako \textit{Kočka neleze dírou nebo pes neleze oknem nebo (nebude pršet a nezmokneme).}
+\end{priklad}
+
 \begin{definice}
 Nechť $V$ je výroková forma s jednou proměnnou.
 \begin{enumerate}[(i)]
@@ -84,14 +109,72 @@ Symbol $\exists$ nazýváme \textbf{existenčním kvantifikátorem}.
 \end{enumerate}
 \end{definice}
 
+\begin{priklad}
+	$V(x):x<3, x \in \mathbb N $ je výroková forma. $V(1), V(3)$ jsou výroky.
+\end{priklad}
+
+\begin{oznaceni}[Kvantifikátor s podmínkou]
+	Nechť $V$, $P$ jsou výrokové formy s jednou proměnnou a $M$ je množina. Pak
+	$$
+	\forall x \in M,P(x):V(x)
+	$$
+	znamená
+	$$
+	    \forall (x\in M\land P(x))\implies V(x),
+	$$
+	podobně
+	$$
+	    \exists x \in M, P(x):V(x)
+	$$
+	znamená
+	$$
+	    \exists x: (x\in M\land P(x)\land V(x)).
+	$$
+\end{oznaceni}
+
+\begin{poznamka}[Formule s více kvantifikátory]
+	Nechť $V$ je výroková forma se dvěma proměnnými. Pak $V(x,y)$ je tedy výroková forma o dvou proměnných,
+	$\exists x:V(x,y)$ je výroková forma o jedné proměnné ($y$) a $\forall y\, \exists x: V(x,y)$ je výrok.
+\end{poznamka}
+
+\begin{poznamka}[Negování formulí s kvantifikátory]
+	Nechť $V$ je výroková forma s jednou proměnnou. Pak
+	\begin{align*}
+		\neg (\forall x : V(x)) &= \exists x: \neg V(x),\\
+		\neg (\exists x: V(x)) &= \forall x: \neg V(x).
+\end{align*}
+\end{poznamka}
+
+\begin{priklad}
+	Určíme negaci výroku $\forall x \in M, P(x):V(x)$. Je
+	\begin{align*}
+	\neg (\forall x \in M, P(x):V(x)) &\iff \neg (\forall x \in M\land P(x)\implies V(x)) \\
+	& \iff \exists x : \neg (x\in M\land P(x) \implies V(x)) \\
+& \iff \exists x: x\in M\land P(x)\land \neg V(x) \\
+	&\iff \exists x \in M, P(x):\neg V(x).
+\end{align*}
+\end{priklad}
+
+\begin{poznamka}[Varování!]
+	Záleží na pořadí kvantifikátorů. Uvažme $Z$ množinu žen, $D$ množinu dětí a $M(z,d)$ výrokovou formu žena $z$ je maminkou dítěte $d$. Pak srovnej
+	\begin{align*}
+	\forall d \in D \, \exists z \in Z: M(z,d), && \exists z \in Z \forall d\in D: M(z,d).
+\end{align*}
+\end{poznamka}
+
 \subsection{Metody důkazů}
 
 \begin{itemize}
-\item přímý důkaz
-\item nepřímý důkaz
-\item důkaz sporem
-\item důkaz rozborem případů
-\item důkaz matematickou indukcí
+\item přímý důkaz: chceme $A\implies B$, k tomu dojdeme přes jednotlivé implikace $A\implies C_1 \implies \dots \implies C_n \implies B$
+\item nepřímý důkaz: chceme $A\implies B$, dokazujeme $\neg B\implies \neg A$
+\item důkaz sporem: chceme $A\implies B$, předpokládáme negaci a dojdeme ke sporu
+\item důkaz rozborem případů: chceme $(A\lor B)\implies C$, dokazujeme $A\implies C\land B\implies C$
+\item důkaz matematickou indukcí: Nechť $V$ je výroková forma s jednou proměnnou. Chceme dokázat, že $\forall n\in \mathbb N :V(n)$.
+Stačí dokázat
+\begin{enumerate}
+	\item $V(1)$
+	\item $\forall n\in \mathbb N : (V(n)\implies V(n+1))$
+\end{enumerate}
 \end{itemize}
 
 \subsection{Množiny}
@@ -100,12 +183,18 @@ Symbol $\exists$ nazýváme \textbf{existenčním kvantifikátorem}.
 \par Množinu definujeme výčtem prvků nebo pomocí vlastnosti, kterou musejí splňovat její prvky, tj. píšeme
 $\{x \in M ; V(x)\}$, kde $M$ je množina a $V$ je výroková forma.
 
+\par Pojmy \textit{množina}, \textit{prvek} a \textit{býti prvkem} považujeme za primitivní pojmy.
+
 \begin{definice}
 Řekneme, že množina $A$ je \textbf{částí množiny} $B$ (nebo $A$ je \textbf{podmnožinou} $B$), jestliže každý prvek množiny $A$ je rovněž prvkem množiny $B$. Tomuto vztahu
 říkáme \textbf{inkluze} a značíme jej $A \subset B$.
 Množiny $A$ a $B$ jsou si rovny ($A = B$), jestliže mají stejné prvky.
 \textbf{Prázdnou množinou} nazveme množinu, která neobsahuje žádný prvek. Označíme ji symbolem $\emptyset$.
 \end{definice}
+
+\begin{poznamka}
+	$A\subset B$ připouští i $A=B$. Systémem množin rozumíme množinu množin.
+\end{poznamka}
 
 \begin{definice}
 \textbf{Sjednocením} množin $A$ a $B$ nazveme množinu tvořenou všemi prvky, které patří alespoň do jedné z množin $A$ či $B$. Značíme $A \cup B$.
@@ -146,6 +235,18 @@ X \smallsetminus \bigcap \mathcal{A}
 \]
 \end{veta}
 
+\begin{proof}
+	\,
+	\begin{enumerate}
+		\item[$\subseteq$] Předpokládejme, že $x\in X\smallsetminus \bigcup \mathcal A.$ Potom platí
+		$x\in X$ a $x\notin \bigcup \mathcal A$, tzn. $\forall A\in \mathcal A:x \notin A$. Odtud máme, že
+		$\forall A\in \mathcal A$ je $x\in X\smallsetminus A$. Potom dostáváme $x\in \bigcap \left \{ x\smallsetminus A, A\in \mathcal A \right \} $.
+		\item[$\supseteq$] Předpokládejme, že $x\in \bigcap \left \{ X\smallsetminus A, A \in \mathcal A \right \} $. Pro každé
+		$A\in \mathcal A$ platí $x\in X\smallsetminus A$. Odtud plyne $x\in X$ a pro každé $A\in \mathcal A$ máme $x\notin A$.
+		Potom $x\notin \bigcup \mathcal A$. Dostáváme $x\in X\smallsetminus \bigcup\mathcal A$.
+	\end{enumerate}
+\end{proof}
+
 \subsection{Relace uspořádání a zobrazení}
 
 \begin{definice}
@@ -181,6 +282,10 @@ $[x,y]\in R$ nebo $[y,x]\in R$.
 \end{itemize}
 \end{definice}
 
+\begin{priklad}
+	Uvažujme množinu podmnožin $\mathbb N $ s relací $A\subset B$. To je uspořádání, ale není to lineární uspořádání.
+\end{priklad}
+
 \begin{definice}
 Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
 $x\in X$ je
@@ -193,6 +298,11 @@ $a\le x$.
 \par Pojmy \textbf{minimální} prvek (\textbf{minimum}) množiny a \textbf{nejmenší} prvek množiny jsou definovány
 zřejmým způsobem.
 \end{definice}
+
+\begin{priklad}
+	V množině $\left \{ \left \{ 1 \right \}, \left \{ 2 \right \} ,\emptyset  \right \} $ uspořádané inkluzí jsou
+	$\left \{ 1 \right \} $ a $\left \{ 2 \right \} $ maximální, ale množina nemá největší prvek.
+\end{priklad}
 
 \begin{definice}
 Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
@@ -211,13 +321,13 @@ $x\in X$ je
 
 \begin{definice}
 Nechť $\le$ je relace uspořádání na množině $X$ a $M\subset X$. Řekneme, že prvek
-$G\in X$ je \textbf{supremem} množiny $M$, jestliže platí:
+$G\in X$ je \textbf{supremem} množiny $M$ a značíme $\sup M$, jestliže platí:
 \begin{enumerate}
 \item $G$ je horní závorou množiny $M$,
 \item je-li prvek $G'\in X$ horní závorou množiny $M$, potom $G\le G'$.
 \end{enumerate}
 
-Řekneme, že prvek $g\in X$ je \textbf{infimem} množiny $M$, jestliže platí:
+Řekneme, že prvek $g\in X$ je \textbf{infimem} množiny $M$ a značíme $\inf M$, jestliže platí:
 \begin{enumerate}
 \item $g$ je dolní závorou množiny $M$,
 \item je-li prvek $g'\in X$ dolní závorou množiny $M$, potom $g'\le g$.
@@ -225,12 +335,36 @@ $G\in X$ je \textbf{supremem} množiny $M$, jestliže platí:
 
 \end{definice}
 
+\begin{priklad}
+	Supremum množiny $(0,1)$ je 1.
+\end{priklad}
+
+\begin{poznamka}
+	Supremum a infimum jsou určeny jednoznačně, pokud existují (plyne ze slabé antisymetrie).
+\end{poznamka}
+
+\begin{poznamka}
+	Má-li množina největší prvek, je to supremum.
+\end{poznamka}
+
+\begin{proof}
+	Ať $L$ je největší prvek množiny $M$.
+	\begin{enumerate}[(a)]
+		\item $L\in M, \forall x\in M:x\leq L \implies L$ je horní závora,
+		\item Je-li $G^\prime$ horní závora $M$, pak $L\leq G^\prime$, protože $L\in M$, tedy $L$ je supremum množiny $M$.
+\end{enumerate}
+\end{proof}
 
 \begin{veta}\label{veta1.2}
 Nechť $\le$ je relace uspořádání na množině $X$, $M\subset X$ je neprázdná množina
 a existuje infimum a supremum množiny $M$. Potom platí
 $\inf M \le \sup M.$
 \end{veta}
+
+\begin{proof}
+	Předpokládejme, že $M\ne \emptyset$. Nalezneme $a\in M$. Potom platí $\inf M\leq a$ a $a\leq \sup M$. Díky tranzitivitě
+	máme $\inf M \leq \sup M$.
+\end{proof}
 
 \begin{definice}
 	Binární relaci $F$ nazýváme \textbf{zobrazením}, pokud splňuje
@@ -239,6 +373,10 @@ $\inf M \le \sup M.$
 	$$
 	Řekneme, že zobrazení $F$ je \textbf{zobrazení z množiny $A$ do množiny $B$}, jestliže platí $F\subset A\times B$.
 \end{definice}
+
+\begin{oznaceni}
+	Je-li $X$ takové, že existuje $y: \left [ x,y \right ]\in F $, je $y$ určené jednoznačně a značíme ho $F(x)$.
+\end{oznaceni}
 
 \begin{definice}
 	Nechť $F$ je zobrazení.
@@ -263,6 +401,10 @@ $\inf M \le \sup M.$
 	\item Pokud je $B=\mathbb R $, pak  místo termínu zobrazení používáme termín \textbf{funkce}.
     \end{enumerate}
 \end{oznaceni}
+
+\begin{poznamka}
+	Graf $F$ je $\left \{ \left [ x,F(x) \right ] ,x\in \mathcal D(F) \right \} $.
+\end{poznamka}
 
 \begin{definice}
 	Nechť $A$, $B$ jsou množiny a $f$ je zobrazení.
@@ -321,6 +463,14 @@ $g$ nazýváme \textbf{vnějším} zobrazením a $f$ nazýváme \textbf{vnitřn�
 	\end{enumerate}
 \end{definice}
 
+\begin{poznamka}
+	Posloupnost můžeme zadat
+	\begin{itemize}
+		\item explicitně: $a_n=\frac{n}{n+1}, n\in \mathbb N $,
+		\item rekurentně: $a_1 = 2, a_n = a_{n-1} +4$.
+\end{itemize}
+\end{poznamka}
+
 \subsection{Konečné a spočetné množiny}
 \begin{definice}
 	\,
@@ -331,8 +481,14 @@ $g$ nazýváme \textbf{vnějším} zobrazením a $f$ nazýváme \textbf{vnitřn�
     jestliže existuje prosté zobrazení $A$ do $B$. Značíme $A\preceq B$.
     \item[(c)] Řekneme, že množina $A$ \textbf{má menší mohutnost} než množina $B$, jestliže existuje
     prosté zobrazení $A$ do $B$ a přitom $A$ nemá stejnou mohutnost jako $B$. Značíme $A\prec B$.
+    Říkáme taky, že $A$ je \textbf{subvalentní} $B$.
     \end{enumerate}
 \end{definice}
+
+\begin{priklad}
+	Ať $A = \left \{ n^2, n \in \mathbb N  \right \} $, $B=\mathbb N $. Pak z $t:n^2\mapsto n^2$ a $f: n^2\mapsto n$ plyne
+	$A\approx B$.
+\end{priklad}
 
 \begin{definice}
 Řekneme, že množina $X$ je \textbf{konečná}, pokud je buď prázdná, nebo existuje
@@ -357,6 +513,10 @@ Nechť $X$ je množina. Pak $X\prec \mathcal{P}(X)$, kde $\mathcal{P}(X)$ je mno
 podmnožin množiny $X$.
 \end{veta}
 
+\begin{priklad}
+	$\mathbb N < \mathcal P (\mathbb N )$.
+\end{priklad}
+
 \begin{veta}[Vlastnosti spočetných množin]\label{veta1.5}
 \,
 \begin{enumerate}
@@ -371,11 +531,26 @@ podmnožin množiny $X$.
 \subsection{Číselné obory}
 
 Množinu reálných čísel $\mathbb{R}$ lze popsat jako množinu, na níž jsou definovány operace
-\textbf{sčítání} a \textbf{násobení} a relace \textbf{uspořádání} $(\le)$, přičemž jsou splněny následující tři skupiny vlastností:
-
+\textbf{sčítání} ($\mathbb R \times \mathbb R \to \mathbb R$) a \textbf{násobení} ($\mathbb R \times \mathbb R \to \mathbb R$) a relace \textbf{uspořádání} $(\le)$, přičemž jsou splněny následující tři skupiny vlastností:
 \begin{enumerate}
 \item[I.] vlastnosti sčítání a násobení a jejich vzájemný vztah,
+\begin{itemize}
+	\item $\forall x,y,z\in \mathbb R :x+(y+z)=(x+y)+z$ (asociativita sčítání),
+\item $\forall x,y\in \mathbb R : x+y = y+x$ (komutativita sčítání),
+\item $\exists w \in \mathbb R \, \forall x \in \mathbb R : w+x = x$ (prvek $w$ je určen jednoznačně, značíme ho 0 a říkáme mu nulový prvek),
+\item $\forall x \in \mathbb R  \, \exists z \in \mathbb R : x+z=0$ ($z$ je tzv. opačné číslo k číslu $x$, je určeno jednoznačně a značíme ho $-x$),
+\item $\forall x,y,z\in \mathbb R :x\cdot(y\cdot z)=(x\cdot y)\cdot z$ (asociativita násobení),
+\item $\forall x,y\in \mathbb R : x\cdot y = y\cdot x$ (komutativita násobení),
+\item $\exists v \in \mathbb R\smallsetminus \left \{ 0 \right \}  \, \forall x \in \mathbb R : v\cdot x = x$ (prvek $v$ je určen jednoznačně, značíme ho 1 a říkáme mu jednotkový prvek),
+\item $\forall x \in \mathbb R\smallsetminus \left \{ 0 \right \}   \, \exists y \in \mathbb R : x\cdot y=1$ (prvek $y$ je určen jednoznačně a značíme ho $x^{-1}$),
+\item $\forall x,y,z\in \mathbb R : (x+y)\cdot z = x\cdot z + y\cdot z$ (distributivita).
+\end{itemize}
 \item[II.] vztah uspořádání a operací sčítání a násobení,
+\begin{itemize}
+\item $\leq$ je lineární uspořádání,
+\item $\forall x,y,z \in \mathbb R : x\leq y \implies x+z \leq y+z$,
+\item $\forall x,y \in \mathbb R : (0\leq x \land 0\leq y)\implies 0\leq x\cdot y$.
+\end{itemize}
 \item[III.] vlastnost suprema: \textit{Každá neprázdná shora omezená podmnožina $\mathbb{R}$ má supremum}.
 \end{enumerate}
 
@@ -384,17 +559,68 @@ Nechť $M\subset\mathbb{R}$ je neprázdná zdola omezená množina.
 Pak existuje infimum množiny $M$.
 \end{veta}
 
+\begin{proof}
+	Předpokládejme, že $M\subset \mathbb R $ je neprázdná zdola omezená množina. Definujeme
+	$$
+	    -M = \left \{ -m, m \in M \right \}.
+	$$
+	Množina $-M$ je neprázdná, protože $M$ je neprázdná.
+	\paragraph{$-M$ je omezená shora.} $M$ je omezená zdola, takže nalezneme $K\in \mathbb R $ takové, že
+	$\forall x\in M: K\leq x$. Odtud plyne $\forall x\in M: -x \leq -k$. Prvek $-k$ je tedy horní závorou množiny $-M$, odkud máme,
+	že $-M$ je shora omezená.
+	\par Podle vlastnosti suprema existuje $\sup(-M)$. Položme $g=-\sup(-M)$.
+	\begin{enumerate}[(a)]
+		\item $\sup(-M)$ je horní závorou $-M$, takže $g=-\sup (-M)$ je dolní závorou množiny $M$.
+		\item Předpokládejme, že $g^\prime$ je dolní závorou množiny $M$. Potom $g^\prime$ je horní závorou množiny $-M$.
+		Platí, že $\sup(-M)\leq -g^\prime$. Odtud $g^\prime \leq -\sup (-M)=g$.\qedhere
+\end{enumerate}
+\end{proof}
+
 \begin{veta}\label{veta1.7}
 	Ke každému $x \in \mathbb R $ existuje $n \in \mathbb N $ splňující $x<n$.
 \end{veta}
+
+\begin{proof}
+	Dokazujeme sporem. Pak $\forall n\in \mathbb N : n\leq x$, takže $x$ je horní závorou množiny $\mathbb N $,
+	a tedy $\mathbb N $ je shora omezená. Množina $\mathbb N $ je neprázdná, a proto podle vlastnosti suprema existuje supremum
+	$\mathbb N $, které označíme jako $G$. Potom platí
+	$$
+	    \forall n\in \mathbb N : n\leq G.
+	$$
+	Odtud plyne $\forall n\in \mathbb N : n+1 \leq G$, neboli $\forall  n\in \mathbb N :n\leq G-1$. Číslo
+	$G-1$ je horní závorou množiny $\mathbb N $ a platí $G-1<G$, což je spor s definicí suprema.
+\end{proof}
 
 \begin{veta}\label{veta1.8}
 	Pro každé $r \in \mathbb R $ existuje právě jedno číslo $k\in \mathbb Z $ takové, že $k\leq r<k+1$.
 \end{veta}
 
+\begin{proof} Postupně dokážeme existenci a jednoznačnost.
+	\paragraph{Existence.} Položme $M=\left \{ n\in \mathbb Z , r < n \right \} $. Množina $M$ je zdola omezená, neboť $r$ je její
+	dolní závorou. Podle věty \ref{veta1.7} platí $m\ne \emptyset$. Podle věty \ref{veta1.6} existuje infimum
+	množiny $M$, které označíme $g$. Nalezneme $k^\prime\in M$ takové, že $k^\prime<g+1$. Položme $k=k^\prime - 1$.
+	Platí $k\in \mathbb Z $, neboť $k^\prime \in M\subset \mathbb Z $. Poněvadž $k^\prime \in M$, máme
+	$r<k^\prime = k+1$. Platí $k^\prime - 1 < g$, a tedy $k^\prime - 1 \notin M$. Máme tedy $k=k^\prime - 1\leq r$.
+	\paragraph{Jednoznačnost.} Předpokládejme pro spor, že existují $k,j \in \mathbb Z , k\ne j$ taková, že
+	$k\leq r < k+1$ a $j\leq r<j+1$. BÚNO $j<k$. Potom $0<k-j<1$, $k-j \in \mathbb Z $, což je spor.
+\end{proof}
+
+\begin{oznaceni}
+	Celou část čísla $r$ značíme $\left [ r \right ] $.
+\end{oznaceni}
+
 \begin{veta}\label{veta1.9}
 	Nechť $a,b\in \mathbb R$, $a<b$. Pak existuje $q \in \mathbb Q $ takové, že $a<q<b$.
 \end{veta}
+
+\begin{proof}
+	Podle věty \ref{veta1.7} nalezneme $n\in \mathbb N $ takové, že
+	\begin{equation}\label{rovnice1}
+	n> \frac{1}{b-a}.
+	\end{equation}
+    Položíme $q=\frac{[na]+1}{n}$. Potom $q\in \mathbb Q $ a $$a=\frac{na}{n}<\frac{[na]+1}{n}\leq \frac{na+1}{n}.$$ Podle
+    rovnice \ref{rovnice1} máme $nb-na > 1 \iff nb>1+na$, a tedy $\frac{na+1}{n}<\frac{nb}{n}=b.$
+\end{proof}
 
 \begin{definice}
 \textbf{Množinu komplexních čísel} $\mathbb C $ definujeme jako množinu
