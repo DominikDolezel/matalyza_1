@@ -90,7 +90,7 @@ A & B & A\wedge B & A\vee B & A\Rightarrow B & A\Leftrightarrow B \\
 \end{poznamka}
 
 \begin{priklad}
-	Výrok \textit{Kočka leze dírou, pes oknem, nebude-li pršet, nezmoknem.} znegujeme jako \textit{Kočka neleze dírou nebo pes neleze oknem nebo (nebude pršet a nezmokneme).}
+	Výrok \textit{Kočka leze dírou, pes oknem, nebude-li pršet, nezmoknem.} znegujeme jako \textit{Kočka neleze dírou nebo pes neleze oknem nebo (nebude pršet a zmokneme).}
 \end{priklad}
 
 \begin{definice}
@@ -187,13 +187,13 @@ $\{x \in M ; V(x)\}$, kde $M$ je množina a $V$ je výroková forma.
 
 \begin{definice}
 Řekneme, že množina $A$ je \textbf{částí množiny} $B$ (nebo $A$ je \textbf{podmnožinou} $B$), jestliže každý prvek množiny $A$ je rovněž prvkem množiny $B$. Tomuto vztahu
-říkáme \textbf{inkluze} a značíme jej $A \subset B$.
+říkáme \textbf{inkluze} a značíme jej $A \subseteq B$.
 Množiny $A$ a $B$ jsou si rovny ($A = B$), jestliže mají stejné prvky.
 \textbf{Prázdnou množinou} nazveme množinu, která neobsahuje žádný prvek. Označíme ji symbolem $\emptyset$.
 \end{definice}
 
 \begin{poznamka}
-	$A\subset B$ připouští i $A=B$. Systémem množin rozumíme množinu množin.
+	$A\subseteq B$ připouští i $A=B$. Systémem množin rozumíme množinu množin.
 \end{poznamka}
 
 \begin{definice}
@@ -243,7 +243,7 @@ X \smallsetminus \bigcap \mathcal{A}
 		$\forall A\in \mathcal A$ je $x\in X\smallsetminus A$. Potom dostáváme $x\in \bigcap \left \{ x\smallsetminus A, A\in \mathcal A \right \} $.
 		\item[$\supseteq$] Předpokládejme, že $x\in \bigcap \left \{ X\smallsetminus A, A \in \mathcal A \right \} $. Pro každé
 		$A\in \mathcal A$ platí $x\in X\smallsetminus A$. Odtud plyne $x\in X$ a pro každé $A\in \mathcal A$ máme $x\notin A$.
-		Potom $x\notin \bigcup \mathcal A$. Dostáváme $x\in X\smallsetminus \bigcup\mathcal A$.
+		Potom $x\notin \bigcup \mathcal A$. Dostáváme $x\in X\smallsetminus \bigcup\mathcal A$.\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -253,7 +253,7 @@ X \smallsetminus \bigcap \mathcal{A}
 \textbf{Binární relací} rozumíme libovolnou množinu uspořádaných dvojic. Pokud $R$ je
 binární relace a $[a,b]\in R$, pak říkáme, že prvek $a$ je v relaci $R$ s prvkem $b$.
 Často v tomto případě používáme zápis $a\,R\,b$.
-\par Pokud binární relace $R$ splňuje $R\subset A\times B$, pak říkáme, že $R$ je \textbf{binární relací
+\par Pokud binární relace $R$ splňuje $R\subseteq A\times B$, pak říkáme, že $R$ je \textbf{binární relací
 mezi prvky množin} $A$ \textbf{a} $B$. Pokud $A=B$, pak říkáme, že $R$ je \textbf{binární relací na} $A$.
 \end{definice}
 
@@ -283,11 +283,11 @@ $[x,y]\in R$ nebo $[y,x]\in R$.
 \end{definice}
 
 \begin{priklad}
-	Uvažujme množinu podmnožin $\mathbb N $ s relací $A\subset B$. To je uspořádání, ale není to lineární uspořádání.
+	Uvažujme množinu podmnožin $\mathbb N $ s relací $A\subseteq B$. To je uspořádání, ale není to lineární uspořádání.
 \end{priklad}
 
 \begin{definice}
-Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
+Nechť $\le$ je relace uspořádání na množině $X$ a $A\subseteq X$. Řekneme, že prvek
 $x\in X$ je
 \begin{itemize}
 \item \textbf{maximálním} prvkem (\textbf{maximem}) množiny $A$, jestliže $x\in A$ a neexistuje
@@ -305,7 +305,7 @@ zřejmým způsobem.
 \end{priklad}
 
 \begin{definice}
-Nechť $\le$ je relace uspořádání na množině $X$ a $A\subset X$. Řekneme, že prvek
+Nechť $\le$ je relace uspořádání na množině $X$ a $A\subseteq X$. Řekneme, že prvek
 $x\in X$ je
 \begin{itemize}
 \item \textbf{horní závorou} množiny $A$, jestliže pro každé $a\in A$ platí $a\le x$,
@@ -320,7 +320,7 @@ $x\in X$ je
 \end{definice}
 
 \begin{definice}
-Nechť $\le$ je relace uspořádání na množině $X$ a $M\subset X$. Řekneme, že prvek
+Nechť $\le$ je relace uspořádání na množině $X$ a $M\subseteq X$. Řekneme, že prvek
 $G\in X$ je \textbf{supremem} množiny $M$ a značíme $\sup M$, jestliže platí:
 \begin{enumerate}
 \item $G$ je horní závorou množiny $M$,
@@ -356,7 +356,7 @@ $G\in X$ je \textbf{supremem} množiny $M$ a značíme $\sup M$, jestliže plat�
 \end{proof}
 
 \begin{veta}\label{veta1.2}
-Nechť $\le$ je relace uspořádání na množině $X$, $M\subset X$ je neprázdná množina
+Nechť $\le$ je relace uspořádání na množině $X$, $M\subseteq X$ je neprázdná množina
 a existuje infimum a supremum množiny $M$. Potom platí
 $\inf M \le \sup M.$
 \end{veta}
@@ -369,13 +369,13 @@ $\inf M \le \sup M.$
 \begin{definice}
 	Binární relaci $F$ nazýváme \textbf{zobrazením}, pokud splňuje
 	$$
-	    \forall x \, \forall y_1\, \forall y_2: \left( \left( \left [ c,y_1 \right ] \in F \land \left [ x,y_2 \right ] \in F \right ) \implies y_1 = y_2 \right ) .
+	    \forall x \, \forall y_1\, \forall y_2: \left( \left( \left [ x,y_1 \right ] \in F \land \left [ x,y_2 \right ] \in F \right ) \implies y_1 = y_2 \right ) .
 	$$
-	Řekneme, že zobrazení $F$ je \textbf{zobrazení z množiny $A$ do množiny $B$}, jestliže platí $F\subset A\times B$.
+	Řekneme, že zobrazení $F$ je \textbf{zobrazení z množiny $A$ do množiny $B$}, jestliže platí $F\subseteq A\times B$.
 \end{definice}
 
 \begin{oznaceni}
-	Je-li $X$ takové, že existuje $y: \left [ x,y \right ]\in F $, je $y$ určené jednoznačně a značíme ho $F(x)$.
+	Je-li $x$ takové, že existuje $y: \left [ x,y \right ]\in F $, je $y$ určené jednoznačně a značíme ho $F(x)$.
 \end{oznaceni}
 
 \begin{definice}
@@ -383,7 +383,7 @@ $\inf M \le \sup M.$
 	\begin{itemize}
 		\item \textbf{Definičním oborem} zobrazení $F$ nazýváme množinu
 		$$
-		    \mathcal H(F)=\left \{ y; \, \exists x : \left [ x,y \right ] \in F \right \}.
+		    \mathcal D(F)=\left \{ x; \, \exists y : \left [ x,y \right ] \in F \right \}.
 		$$
 		Pro $x \in \mathcal D(F)$ označujeme jednoznačně určený prvek $y$ splňující $\left [ x,y \right ] \in F$ symbolem $F(x)$.
 		\item \textbf{Oborem hodnot} zobrazení $F$ nazýváme množinu
@@ -409,11 +409,11 @@ $\inf M \le \sup M.$
 \begin{definice}
 	Nechť $A$, $B$ jsou množiny a $f$ je zobrazení.
 	\begin{itemize}
-		\item \textbf{Obrazem množiny} $A$ pri zobrazení $f$ rozumíme množinu
+		\item \textbf{Obrazem množiny} $A$ při zobrazení $f$ rozumíme množinu
 		$$
   \left \{ y\in \mathcal H(f);\, \exists x \in \mathcal D(f) \cap A: f(x)=y \right \},
 		$$
-		kterou značíme $f(a)$.
+		kterou značíme $f(A)$.
 		\item \textbf{Vzorem množiny} $B$ při zobrazení $f$ rozumíme množinu
 		$$
 		\left \{ x\in \mathcal D(f); \, f(x) \in B \right \},
@@ -440,7 +440,7 @@ $\inf M \le \sup M.$
 \end{definice}
 
 \begin{definice}
-	NechŤ $f$ a $g$ jsou zobrazení. Pak zobrazení $g\circ f$ je definováno předpisem
+	Nechť $f$ a $g$ jsou zobrazení. Pak zobrazení $g\circ f$ je definováno předpisem
 	$(g\circ f)(x)=g(f(x))$ pro všechna $x \in \mathcal D(f)$ taková, že $f(x)\in \mathcal D(g)$. Zobrazení
 	$g\circ f$ nazýváme \textbf{složeným zobrazením} (\textbf{složením zobrazení}) $f$ a $g$, přičemž
 $g$ nazýváme \textbf{vnějším} zobrazením a $f$ nazýváme \textbf{vnitřním} zobrazením.
@@ -454,12 +454,12 @@ $g$ nazýváme \textbf{vnějším} zobrazením a $f$ nazýváme \textbf{vnitřn�
 	Nechť $A$ je neprázdná množina.
 	\begin{enumerate}[(a)]
 		\item \textbf{Konečnou posloupností} prvků $A$ rozumíme každé zobrazení množiny $\left \{ 1,\dots, n \right \} $, kde
-		$n \in \mathbb N $, do množiny $A$. Pokud $k\mapsto a_k$, $k\in \left \{ 1,\dots, k \right \} $, je takové zobrazení,
+		$n \in \mathbb N $, do množiny $A$. Pokud $k\mapsto a_k$, $k\in \left \{ 1,\dots, n \right \} $, je takové zobrazení,
 		pak tuto posloupnost značíme $\left \{ a_k \right \}_{k=1}^n $. Prvek $a_k$ nazýváme $k$-tým \textbf{členem} této posloupnosti.
 		\item \textbf{Nekonečnou posloupností} prvků $A$ rozumíme každé zobrazení $n\mapsto a_n$, $n\in \mathbb N $,
 		množiny přirozených čísel $\mathbb N $ do množiny $A$. Takovou posloupnost
 		obvykle značíme $\left \{ a_n \right \}_{n=1}^\infty $, případně jen $\left \{ a_n \right \} $. Prvek $a_n$
-		nazýváme $n-$tým \textbf{členem} této posloupnosti.
+		nazýváme $n$-tým \textbf{členem} této posloupnosti.
 	\end{enumerate}
 \end{definice}
 
@@ -514,7 +514,7 @@ podmnožin množiny $X$.
 \end{veta}
 
 \begin{priklad}
-	$\mathbb N < \mathcal P (\mathbb N )$.
+	$\mathbb N \prec \mathcal P (\mathbb N )$.
 \end{priklad}
 
 \begin{veta}[Vlastnosti spočetných množin]\label{veta1.5}
@@ -555,23 +555,23 @@ Množinu reálných čísel $\mathbb{R}$ lze popsat jako množinu, na níž jsou
 \end{enumerate}
 
 \begin{veta}\label{veta1.6}
-Nechť $M\subset\mathbb{R}$ je neprázdná zdola omezená množina.
+Nechť $M\subseteq\mathbb{R}$ je neprázdná zdola omezená množina.
 Pak existuje infimum množiny $M$.
 \end{veta}
 
 \begin{proof}
-	Předpokládejme, že $M\subset \mathbb R $ je neprázdná zdola omezená množina. Definujeme
+	Předpokládejme, že $M\subseteq \mathbb R $ je neprázdná zdola omezená množina. Definujeme
 	$$
 	    -M = \left \{ -m, m \in M \right \}.
 	$$
 	Množina $-M$ je neprázdná, protože $M$ je neprázdná.
 	\paragraph{$-M$ je omezená shora.} $M$ je omezená zdola, takže nalezneme $K\in \mathbb R $ takové, že
-	$\forall x\in M: K\leq x$. Odtud plyne $\forall x\in M: -x \leq -k$. Prvek $-k$ je tedy horní závorou množiny $-M$, odkud máme,
+	$\forall x\in M: K\leq x$. Odtud plyne $\forall x\in M: -x \leq -K$. Prvek $-K$ je tedy horní závorou množiny $-M$, odkud máme,
 	že $-M$ je shora omezená.
 	\par Podle vlastnosti suprema existuje $\sup(-M)$. Položme $g=-\sup(-M)$.
 	\begin{enumerate}[(a)]
 		\item $\sup(-M)$ je horní závorou $-M$, takže $g=-\sup (-M)$ je dolní závorou množiny $M$.
-		\item Předpokládejme, že $g^\prime$ je dolní závorou množiny $M$. Potom $g^\prime$ je horní závorou množiny $-M$.
+		\item Předpokládejme, že $g^\prime$ je dolní závorou množiny $M$. Potom $-g^\prime$ je horní závorou množiny $-M$.
 		Platí, že $\sup(-M)\leq -g^\prime$. Odtud $g^\prime \leq -\sup (-M)=g$.\qedhere
 \end{enumerate}
 \end{proof}
@@ -597,9 +597,9 @@ Pak existuje infimum množiny $M$.
 
 \begin{proof} Postupně dokážeme existenci a jednoznačnost.
 	\paragraph{Existence.} Položme $M=\left \{ n\in \mathbb Z , r < n \right \} $. Množina $M$ je zdola omezená, neboť $r$ je její
-	dolní závorou. Podle věty \ref{veta1.7} platí $m\ne \emptyset$. Podle věty \ref{veta1.6} existuje infimum
+	dolní závorou. Podle věty \ref{veta1.7} platí $M\ne \emptyset$. Podle věty \ref{veta1.6} existuje infimum
 	množiny $M$, které označíme $g$. Nalezneme $k^\prime\in M$ takové, že $k^\prime<g+1$. Položme $k=k^\prime - 1$.
-	Platí $k\in \mathbb Z $, neboť $k^\prime \in M\subset \mathbb Z $. Poněvadž $k^\prime \in M$, máme
+	Platí $k\in \mathbb Z $, neboť $k^\prime \in M\subseteq \mathbb Z $. Poněvadž $k^\prime \in M$, máme
 	$r<k^\prime = k+1$. Platí $k^\prime - 1 < g$, a tedy $k^\prime - 1 \notin M$. Máme tedy $k=k^\prime - 1\leq r$.
 	\paragraph{Jednoznačnost.} Předpokládejme pro spor, že existují $k,j \in \mathbb Z , k\ne j$ taková, že
 	$k\leq r < k+1$ a $j\leq r<j+1$. BÚNO $j<k$. Potom $0<k-j<1$, $k-j \in \mathbb Z $, což je spor.

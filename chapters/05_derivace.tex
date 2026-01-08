@@ -567,3 +567,228 @@ Nechť $n\in\N$, $a\in\R$ a $f$ má vlastní $n$-tou derivaci na okolí bodu $a$
 	    f^\prime \quad f^{\prime\prime}\quad f^{\prime\prime\prime}\quad f^{(4)}\quad f^{(5)}\quad\dots\quad f^{(n)}.
 	$$
 \end{poznamka}
+
+\begin{veta}\label{veta5.12}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Předpokládejme, že $f^{\prime\prime}(a) > 0$. Nalezneme $\delta > 0$ takové, že platí
+	\begin{align*}
+	&\forall x \in B(a,\delta): f^\prime(x) \textrm{ existuje vlastní},\\
+	&\forall x \in P(a,\delta): \frac{f^\prime(x)-f^\prime(a)}{x-a}>0.
+	\end{align*}
+    Odtud plyne, že $\forall x \in (a-\delta, a)$ máme $f^\prime(x) < 0$ a $\forall x \in (a,a+\delta)$ je $f^\prime(x)>0$.
+    Funkce $f$ je na $(a-\delta, a+\delta)$ spojitá, neboť má na $(a-\delta, a+\delta)$ vlastní derivaci.
+    Potom je $f$ klesající na $(a-\delta, a)$ podle věty \ref{veta5.10}. Podobně $f$ je rostoucí na $(a, a+\delta)$.
+   Odtud máme, že $a$ je bodem lokálního minima $f$. Případ $f^{\prime\prime}(a) < 0$ lze řešit obdobně.
+\end{proof}
+
+\begin{poznamka}\label{poznamkaveta5.12}
+	Ve větě \ref{veta5.12} je $a$ dokonce bodem \emph{ostrého} lokálního minima (resp. maxima).
+\end{poznamka}
+
+\subsection{Konvexní a konkávní funkce}
+
+\begin{definice}
+	% TODO konvexní a konkávní funkce
+\end{definice}
+
+\begin{poznamka}
+$f$ je [ryze] konvexní na $I$ právě tehdy, když $-f$ je [ryze] konkávní na $I$.
+\end{poznamka}
+
+\begin{lemma}[Ekvivalentní podmínky pro konvexitu]\label{lemma5.13}
+	% TODO
+\end{lemma}
+
+\begin{proof}
+	Předpokládejme, že $x_1,x_2,x_3 \in I$, $x_1< x_2< x_3$. Nalezneme $\lambda \in (0,1)$ takové, že  $x_2 = \lambda x_1 + (1-\lambda)x_3$.
+	Vyjde
+	$$
+	    \lambda = \frac{x_3-x_2}{x_3-x_1}.
+	$$
+	Označme $c=\lambda f(x_1+ (1-\lambda)f(x_3)$. Platí
+	\begin{equation}\label{rovnicenerovnost}
+	\frac{c-f(x_1)}{x_2-x_1} = \frac{f(x_3)-c}{x_3-x_2}=\frac{f(x_3)-f(x_1)}{x_3-x_1}.
+	\end{equation}
+	\begin{enumerate}
+		\item[(i) $\implies$ (ii)] Potom platí $c\geq f(x_2)$. Z (\ref{rovnicenerovnost}) plyne
+		$$
+            \frac{f(x_2)-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_1)}{x_3-x_1}.
+		$$
+		\item[(ii) $\implies$ (i)] Mějme $x_1, x_3 \in I$ a $\lambda \in (0,1). $ BÚNO $x_1<x_3$. Položme
+		$x_2 = \lambda x_1 + (1-\lambda)x_3$. Máme, že
+		$$
+  \frac{f(x_2-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_1)}{x_3-x_1} \leq \frac{c-f(x_1)}{x_2-x_1},
+		$$
+		odkud plyne $c\geq f(x_2)$.
+		\par Ostatní implikace analogicky. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{veta}[Konvexita a jednostranná derivace] \label{veta5.14}
+	% TODO
+\end{veta}
+
+\begin{proof}
+\begin{enumerate}[(a)]
+	\item Zvolme $b \in I, b < a$. Definujme pomocnou funkci
+	$$
+	    \varphi (x) = \frac{f(x)-f(a)}{x-a}, \quad x\in I, x < a.
+	$$
+	Podle lemmatu \ref{lemma5.13} je $\varphi$ na intervalu $\mathcal D(\varphi)$ neklesající.
+	Pro každé $x \in I, x > a$ platí
+	$$
+ \frac{f(a)-f(b)}{a-b} \leq \frac{f(x)-f(a)}{x-a} = \varphi(x),
+	$$
+	takže $\varphi(x)$ je zdola omezená na $\mathcal D(\varphi)$. Podle věty \ref{veta3.9} existuje
+	$$
+ \lim_{x\to a^+} \varphi(x)
+	$$
+	vlastní, tj. $f^\prime_+(a)\in \mathbb R $. Tvrzení, že $f^\prime_-(a) \in \mathbb R $
+	lze dokázat analogicky.
+	Nerovnost $f^\prime_-(a) \leq f^\prime_+(a)$ plyne z následujícího.
+	$$
+	    \forall x,y \in I, x< a< y: \frac{f(x)-f(a)}{x-a} \leq \frac{f(y)-f(a)}{y-a}
+	$$
+	\par Ostatní případy analogicky. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}\label{veta5.15}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Nechť $a \in J$. Potom $a$ je vnitřním bodem $J$, a tedy $f_+^\prime(a), f^\prime(a) \in \mathbb R $.
+	Podle jednostranných variant věty \ref{veta5.1} dostáváme spojitost $f$ v bodě $a$ zprava a zleva, a tedy i spojitost v bodě $a$.
+\end{proof}
+
+\begin{veta}\label{veta5.16}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Dokážeme tvrzení (iii), ostatní se potvrdí obdobně. Podle věty \ref{veta5.10} je $f^\prime$ neklesající.
+	Ověříme (iv) z lemmatu \ref{lemma5.13}. Zvolme $x_1,x_2,x_3\in (a,b)$ tak, že $x_1<x_2<x_3$.
+	Použijeme Lagrangeovu větu o střední hodnotě \ref{veta5.7} na $f$ na intervalu $[x_1, x_2$ a $[x_2,x_3]$.
+	Podmínky Lagrangeovy věty jsou splněny, neboť $f^\prime$ existuje vlastní na $(a,b)$. Nalezneme $\xi \in (x_1,x_2)$
+takové, že
+$$
+f^\prime(\xi) = \frac{f(x_2)-f(x_1)}{x_2-x_1}.
+$$
+Dále nalezneme $\eta \in (x_2,x_3)$ takové, že
+$$
+    f^\prime(\eta) = \frac{f(x_3)-f(x_2)}{x_3-x_2}.
+$$
+Platí, že $f^\prime(\xi) \leq f^\prime(\eta)$, neboť $\xi < \eta$. Máme tedy, že
+$$
+\frac{f(x_2)-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_2)}{x_3-x_2},
+$$
+což jsme chtěli dokázat.
+\end{proof}
+
+\begin{poznamka}[Varování!]
+	Větu \ref{veta5.16} používáme na \emph{invtervalu}.
+\end{poznamka}
+
+\begin{definice}
+	% TODO inflexní bod
+\end{definice}
+
+\begin{veta}[Nutná podmínka inflexe] \label{veta5.17}
+
+\end{veta}
+
+\begin{proof}
+	Předpokládejme, že $f^{\prime\prime}(a)>0$. Definujme pomocnou funkci $g$ předpisem
+	$$g(x) = f(x)-f(a)-f^\prime(a)(x-a), \quad x \in \mathcal D(f).$$
+	Platí, že
+	\begin{align*}
+	&g^\prime(x) = f^\prime(x)-f^\prime(a), \quad x \in \mathcal D(f),\\
+	&g^{\prime\prime}(a) = f^{\prime\prime}(a)>0, \quad g^\prime(a) = 0, g(a)=0.
+	\end{align*}
+	Podle věty \ref{veta5.12} a poznámky \ref{poznamkaveta5.12} máme, že existuje $\delta > 0$ takové, že
+	$$
+	    \forall x \in P(,\delta): g(x) > 0.
+	$$
+	Z toho plyne, že $a$ není inflexním bodem $f$. Pokud $f^{\prime\prime}(a) < 0$, postupujeme obdobně.
+\end{proof}
+
+\begin{veta}[Postačující podmínka pro inflexi] \label{veta5.18}
+	% TODO
+\end{veta}
+
+\begin{proof}
+	Uvažujme první možnost, druhá se dokáže analogicky. Definujme
+	$$
+	    g(x)=f(x)-f(a)-f^\prime(a)(x-c), \quad x \in (a,b).
+	$$
+	Pak
+	\begin{align*}
+		&g^\prime(x) = f^\prime(x)-f(c),\quad x\in (a,b),\\
+		&g^{\prime\prime} = f^{\prime\prime}(x), \quad x \in (a,c) \cup (c,b).
+	\end{align*}
+	Funkce $g^\prime$ je spojitá na $(a,c]$ a pro každé $x \in (a,c)$ máme $g^{\prime\prime}(x)>0$.
+	Podle věty \ref{veta5.10} je $g^\prime$ rostoucí na $(a,c]$. Podobně $g^\prime$ je klesající na $[c,b)$.
+	Platí $g^\prime(c)=0$. Opět podle věty \ref{veta5.10} dostaneme, že $g$ je klesající na $(a,b)$, neboť
+	\begin{align*}
+	&\forall x \in (a,c): g^\prime(x) < 0,\\
+	&\forall x \in (c,b): g^\prime(x) < 0
+	\end{align*}
+	a $g$ je spojitá na intervalu (a,b), neboť zde má vlastní derivaci. Platí $g(c)=0$, a proto
+	\begin{align*}
+	&\forall x \in (a,c): g(x) > 0, \\
+	&\forall x \in (c,b): g(x) < 0,
+	\end{align*}
+	a tedy graf přechází z jedné strany na druhou, což jsme chtěli dokázat.
+\end{proof}
+
+\begin{definice}
+	% TODO asymptota
+\end{definice}
+
+\begin{veta}\label{veta5.19}
+	% TODO
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}
+	\item[$\implies$] Počítejme
+	$$
+        \lim_{x \to \infty} \frac{f(x)}{x}=\lim_{x \to \infty} \left( \frac{f(x)-ax-b}{x}+\frac{ax+b}{x} \right ) = \frac{0}{\infty}+a = a.
+	$$
+	Pak
+	$$
+        \lim_{x \to \infty} (f(x)-ax)=\lim_{x \to \infty} (f(x)-ax-b+b)=0+b = b.
+	$$
+	\item[$\impliedby$] Platí
+	$$
+        \lim_{x \to \infty} (f(x)-ax-b) = b-b = 0.
+	$$
+	\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{priklad}\,
+\begin{enumerate}[(1)]
+	\item $f(x)=\sqrt[3]{x^3+x^2}, x \in \mathbb R $
+	\par Asymptotu spočítáme jako
+	$$
+ \lim_{x \to \infty} \frac{\sqrt[3]{x^3+x^2}}{x} = \lim_{x \to \infty} \sqrt[3]{1+\frac{1}{x}}=1.
+	$$
+	Pak dopočteme $b$ jako
+	$$
+ \lim_{x \to \infty} (f(x)-1\cdot x) = \lim_{x \to \infty} \left( \sqrt[3]{x^3+x^2}-\sqrt[3]{x^3} \right ) = \dots = \frac{1}{3}.
+	$$
+	Funkce $f(x)$ má tedy asymptotu $x\mapsto x+\frac{1}{3}$.
+	\item $f(x)=e^x$ nemá asymptotu, neboť
+	$$
+ \lim_{x \to \infty} \frac{e^x}{x}=\infty.
+	$$
+\end{enumerate}
+\end{priklad}
+
+\subsection{Průběh funkce}
+% TODO

@@ -1,0 +1,28 @@
+\section{Taylorův polynom}
+\begin{motivace}
+	Máme-li funkci $f$, která má v bodě $a$ vlastní derivaci, pak je tečna
+	$$
+	    t(x) = f(a) + f^\prime(a)(x-a).
+	$$
+	Podíváme-li se na limitu
+	$$
+ \lim_{x \to a} \frac{f(x)-t(x)}{x-a} = 0 = \lim_{x \to a} \frac{f(x)-f(a)-f^\prime(a)(x-a)}{x-a},
+	$$
+	zjistíme, že aproximuje chování funkce.
+\end{motivace}
+
+\subsection{Základní vlastnosti}
+\begin{definice}
+	% TODO
+\end{definice}
+
+\begin{poznamka}\,
+\begin{enumerate}[(1)]
+	\item $\operatorname{st} \left( T_n^{f,a} \right ) \leq n $
+	\item $T:=T_n^{f,a}$, pak $T(a) = f(a)$,
+	$$T^\prime(a) = f^\prime(a)+ f^{\prime\prime}(a)(x-a)+\dots+ \frac{1}{(n-1)!}f^{(n)}(a)(x-a)^{n-1}=T_{n-1}^{f^\prime,a}(a)=f^\prime(a)$$
+	$$
+	    T^{\prime\prime}(a) = f^{\prime\prime}(a)\quad \dots\quad T^{(n)}(a)=f^{(n)}(a)
+	$$
+\end{enumerate}
+\end{poznamka}

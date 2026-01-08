@@ -49,7 +49,7 @@ limitu rovnou $B \in \mathbb{R}$. Potom platí $A = B$.
 	$$
 	    \forall n\in \mathbb N , n \geq n_0^\prime: |a_n - B|<\varepsilon.
 	$$
-	Nalezneme $m\in \mathbb N $, které splňuje $m\geq n_0$ a $m_0 \geq n_0^\prime$. Potom platí
+	Nalezneme $m\in \mathbb N $, které splňuje $m\geq n_0$ a $m \geq n_0^\prime$. Potom platí
 	$$
 	    0\leq |A-B| = |A-a_n+a_n-B|\leq |A-a_m|+|a_m-B| < \varepsilon + \varepsilon = 2\varepsilon.
 	$$
@@ -117,7 +117,7 @@ když existuje $K \in \mathbb{R}$, $K > 0$, takové, že platí
 			\exists \varepsilon \in \mathbb R , \varepsilon > 0\, \forall n_0 \in \mathbb N  \, \exists n \in \mathbb N , n \geq n_0: |a_n - 1| = |\sqrt[n]{n}-1| \geq \varepsilon.
 		\end{equation}
 		Zafixujeme $\varepsilon \in \mathbb R , \varepsilon > 0$ takové, že platí (\ref{limitarovnice}). Nalezneme rostoucí posloupnost
-		přirozených čísel $\left \{ n_k \right \}_{n=1}^\infty $ takové, že
+		přirozených čísel $\left \{ n_k \right \}_{n=1}^\infty $ takovou, že
 		$$
 		    \forall k \in \mathbb N : \left | \sqrt[n_k]{n_k}  -1\right| \geq \varepsilon.
 		$$
@@ -163,9 +163,9 @@ Nechť $\lim a_n = A \in \mathbb{R}$. Potom $\lim |a_n| = |A|$.
 	$$
 	Potom pro každé $n \in \mathbb N , n \geq n_0$ platí
 	$$
-	\left | |a_n| - |A| \right | \geq |a_n - A| < \varepsilon.
+	\left | |a_n| - |A| \right | \leq |a_n - A| < \varepsilon.
 	$$
-	\paragraph{Důkaz nerovnosti $||x| - |y||\leq |x-y|$.} Pro všechny $x,y \in \mathbb R $ platí
+	\paragraph{Důkaz nerovnosti $||x| - |y||\leq |x-y|$.} Pro všechna $x,y \in \mathbb R $ platí
 	\begin{align*}
 		|x| = |x-y+y| \leq |x-y| + |y| \\
 		|x| - |y| \leq |x-y|.
@@ -367,17 +367,17 @@ $\lim a_n = A$ a $\lim b_n = B$.
 		\item Položme $\varepsilon = \frac{1}{4} (B-A)$. Nalezneme $n_1,n_2\in \mathbb N $ taková, že
 		platí
 		$$
-		    \forall n \in \mathbb N , n \geq n_1: |a_n - a| < \varepsilon.
+		    \forall n \in \mathbb N , n \geq n_1: |a_n - A| < \varepsilon.
 		$$
 		Podobně
 		$$
 		    \forall n \in \mathbb N , n \geq n_2: |b_n-B|<\varepsilon.
 		$$
 		Položme $n_0=\max \left \{ n_1,n_2 \right \} $. Pak $\forall n \in \mathbb N , n \geq n_0$ platí
-		$a_n < A+\varepsilon$ a $a+A+\varepsilon < B-\varepsilon<b_n$.
+		$a_n < A+\varepsilon$ a $A+\varepsilon < B-\varepsilon<b_n$.
 		\item Sporem. Předpokládejme, že $A<B$. Podle (a) nalezneme $n_0$ takové, že $\forall n \in \mathbb N , n \geq n_0$
 		platí $a_n < b_n$. Zvolme $n_1 = \max \left \{ n_0, n^\star \right \} $. Potom platí $a_{n_1}<b_{n_1}\leq a_{n_1}$
-		z předpokladu, což je spor.
+		z předpokladu, což je spor.\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -402,7 +402,7 @@ $\lim c_n = \lim a_n$.
 \end{veta}
 
 \begin{proof}
-	Označme $\lim a_n é \lim b_n=A$. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n_1 \in \mathbb N $
+	Označme $\lim a_n = \lim b_n=A$. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. Nalezneme $n_1 \in \mathbb N $
 	takové, že
 	\begin{align*}
 		&\forall n \in \mathbb N , n \geq n_1: |a_n-A| < \varepsilon,\\
@@ -510,7 +510,7 @@ Položme $m = \max \left \{ n_1,n_2 \right \} $. Pak platí $a_m < B-1<a_m$, co�
 \begin{itemize}
 	\item uspořádání na $\mathbb R ^\star$
 	\begin{align*}
-		-\infty < \inft\, && \forall a \in \mathbb R : -\infty < a, && \forall a \in \mathbb R  < \infty,
+		-\infty < \infty, && \forall a \in \mathbb R : -\infty < a, && \forall a \in \mathbb R  < \infty,
 	\end{align*}
 	tedy $\leq$ na $\mathbb R ^\star$ je lineární
 	\item sčítání na $\mathbb R ^\star$
@@ -620,12 +620,12 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 		$$
 		Položme $L = \max \left \{ K,1 \right \} $. Nalezneme  $n_2\in \mathbb N $ takové, že
 		$$
-		    \forall n \in \mathbb N , n \geq n_2: |_n - 0| < \frac{1}{L}.
+		    \forall n \in \mathbb N , n \geq n_2: |b_n - 0| < \frac{1}{L}.
 		$$
 		Položme $n^* = \max \left \{ n_0, n_1, n_2 \right \} $. Potom pro každé $n \in \mathbb N , n \geq n^*$
 		platí
 		$$
-            \frac{a_n}{b_n} > \frac{1}{b_n} > \frac{1}{\frac{1}{L}} = l \geq K,
+            \frac{a_n}{b_n} > \frac{1}{b_n} > \frac{1}{\frac{1}{L}} = L \geq K,
 		$$
 		což jsme chtěli dokázat. \qedhere
 	\end{enumerate}
@@ -730,7 +730,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 \end{poznamka}
 
 \begin{veta}[Bolzano--Weierstrass]\label{bolzano-weierstrass} %2.14
-	Nechť $\left \{ a_n \right \} $ je posloupnost. Potom existuje vybraná posloupnost
+	Nechť $\left \{ a_n \right \} $ je omezená posloupnost. Potom existuje vybraná posloupnost
 	$\left \{ a_{n_k} \right \}_{k=1}^\infty $, která je konvergentní.
 \end{veta}
 
@@ -798,7 +798,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 \end{proof}
 
 \begin{definice}\label{limsup}
-	Nechť $\{a_n\}$je posloupnost reálných čísel. Pak definujeme
+	Nechť $\{a_n\}$ je posloupnost reálných čísel. Pak definujeme
 	$$
 	    \limsup_{n\to \infty} a_n = \begin{cases}
 			\lim_{n\to\infty} \sup \left \{ a_k, k \geq n \right \}, & \textrm{jestliže je } {a_n} \textrm{ shora omezená},\\
@@ -838,8 +838,8 @@ $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 \begin{proof}\,
 \begin{enumerate}[(i)]
 	\item[$\implies$] \begin{itemize}
-		\item $A \in \mathbb R $: Podle věty \ref{veta2.4}
-		$\left \{ a_n \right \} $ omezená. Označme $b_n = \sup \left \{ a_n, k \geq n \right \}$,
+		\item $A \in \mathbb R $: Podle věty \ref{veta2.4} je
+		$\left \{ a_n \right \} $ omezená. Označme $b_n = \sup \left \{ a_k, k \geq n \right \}$,
 		$c_n = \inf \left \{ a_k, k \geq n \right \} $. Zvolme $\varepsilon \in \mathbb R , \varepsilon> 0.$
 		Nalezneme $n_0 \in \mathbb N $ takové, že
 		$$
@@ -903,7 +903,7 @@ $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 	Dokážeme jen druhou nerovnost, první se provede obdobně. Pokud $\left \{ x_n \right \} $ není zdola
 	omezená, potom $\liminf x_n = -\infty$ a dokazovaná nerovnost zřejmě platí. Předpokládejme tedy,
 	že $\left \{ x_n \right \} $ je zdola omezená. Potom je zdola omezená i posloupnost $\left \{ y_n \right \}$.
-	Potom pro každé $n \in \mathbb N , n \leq n_0$ platí
+	Potom pro každé $n \in \mathbb N , n \geq n_0$ platí
 	$$
 	    \inf \left \{ x_k, k \geq n \right \} \leq \inf \left \{ y_k, k \geq n \right \}.
 	$$
@@ -949,8 +949,8 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 			Nalezneme $n_1 \geq m_1$ splňující $b_{m_1} \geq a_{n_1} > b_{m_1} - \frac{2}{k}$.
 			\item Indukční krok z $k$ na $k+1$: Máme
 			\begin{align*}
-				n_1 < n_2 < n_3 < \dots & < n_k, \\
-				m_1 < m_2 < m_3 < \dots & < m_k.
+				n_1 < n_2 < n_3 < \dots  < n_k, &\\
+				m_1 < m_2 < m_3 < \dots  < m_k.&
 			\end{align*}
 			Nalezneme $m_{k+1}\in \mathbb N $ takové, že $m_{k+1}>n_k$:
 			$$
@@ -958,9 +958,9 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 			$$
 			Nalezneme
 			$$
-			    n_{k+1} >\geq a_{n_{k+1}} > b_{m_{k+1}} - \frac{2}{k+1}.
+			    n_{k+1} \geq a_{n_{k+1}} > b_{m_{k+1}} - \frac{2}{k+1}.
 			$$
-			Pak podle \ref{rovnicelimsup} je
+			Pak podle (\ref{rovnicelimsup}) je
 			$$
 			    |b_{m_{k+1}} - a_{m_{k+1}}| < \frac{2}{k+1}.
 			$$
