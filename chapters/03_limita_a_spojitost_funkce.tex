@@ -17,7 +17,7 @@ která je neklesající nebo nerostoucí (resp. rostoucí nebo klesající) na $
 \end{definice}
 
 \begin{definice}
-Nechť $f$ je funkce a $M \subset \mathcal D(f)$. Řekneme, že funkce $f$ je
+Nechť $f$ je funkce a $M \subseteq \mathcal D(f)$. Řekneme, že funkce $f$ je
 \begin{itemize}
   \item \textbf{lichá}, jestliže pro každé $x \in \mathcal D(f)$ platí $-x \in \mathcal D(f)$ a
   $f(-x) = -f(x)$,
@@ -205,7 +205,7 @@ jestliže platí
 \end{definice}
 
 \begin{definice}
-Nechť $J \subset \mathbb{R}$ je interval. Funkce $f \colon J \to \mathbb{R}$
+Nechť $J \subseteq \mathbb{R}$ je interval. Funkce $f \colon J \to \mathbb{R}$
 je \textbf{spojitá na intervalu} $J$, jestliže platí:
 \begin{itemize}
   \item $f$ je spojitá zprava v každém bodě $J$, který není pravým koncovým bodem $J$,
@@ -227,7 +227,7 @@ je \textbf{spojitá na intervalu} $J$, jestliže platí:
 	$$
 	Položme $\delta_3=\min \left \{ \delta_1, \delta_2 \right \} $. Potom máme
 	$$
-	    P(c,\delta_3) \subseteq P_+(c,\delta_1) \cup P_-(c,\delta_2).
+	    P(c,\delta_3) \subseteq P^+(c,\delta_1) \cup P^-(c,\delta_2).
 	$$
 	Pro každé $x \in P(c,\delta_3)$ platí $f(x)\in B(A,\varepsilon)$.
 \end{poznamka}
@@ -283,18 +283,18 @@ $\lim_{x \to c} g(x) = B$. Potom platí:
 		&\forall x \in P(c,\delta_1): |f(x)-A|<\varepsilon, \\
 		&\forall x \in P(c,\delta_2): |g(x)-B|< \varepsilon.
 	\end{align*}
-	Položme $\delta = \min \left \{ \delta_0, \delta_1, \delta_2 \right \} $.Pro každé $x\in P(c,\delta)$ platí
+	Položme $\delta = \min \left \{ \delta_0, \delta_1, \delta_2 \right \} $. Pro každé $x\in P(c,\delta)$ platí
 	\begin{align*}
 	|f(x)g(x)-AB| & = |f(x)g(x)-f(x)B+f(x)B-AB| \\
-	& \leq |f(x)(g(x)-B)| + |(f(x)-A)B|++
+	& \leq |f(x)(g(x)-B)| + |(f(x)-A)B|\\
 	& < K\varepsilon + \varepsilon |B| = (K+|B|)\varepsilon.
 \end{align*}
 Odtud plyne $\lim_{x\to c} f(x)g(x)=AB.$
-\item[(c)] Případ $A = \infty, B\in \mathbb R , B> 0$. Potom $\frac{A}{B}\infty$. Zvolme $\varepsilon \in \mathbb R ,\varepsilon > 0$.
+\item[(c)] Případ $A = \infty, B\in \mathbb R , B> 0$. Potom $\frac{A}{B}=\infty$. Zvolme $\varepsilon \in \mathbb R ,\varepsilon > 0$.
 K němu nalezneme $\delta_1, \delta_2 \in \mathbb R , \delta_1, \delta_2 > 0$ taková, že platí
 \begin{align*}
-\forall x \in P(c,\delta_1): f(x)\in B(\infty, \frac{1}{2B}\varepsilon),\\
-\forall x \in P(c,\delta_2): g(x) \in B(B,\frac{1}{2}B).
+\forall x \in P(c,\delta_1): f(x)\in B\left (\infty, \frac{1}{2B}\varepsilon\right),\\
+\forall x \in P(c,\delta_2): g(x) \in B\left(B,\frac{1}{2}B\right).
 \end{align*}
     Položme $\delta = \min \left \{ \delta_1, \delta_2 \right \} $. Pro každé $x \in P(c,\delta)$ platí
     $$
@@ -430,7 +430,7 @@ Potom existuje $\lim_{x \to c} h(x)$ a rovná se $A$.
 \end{proof}
 
 \begin{poznamka}
-	Pokud $A = \infty$, stačí strážník $f$. Podobně pro $A = \infty$.
+	Pokud $A = \infty$, stačí strážník $f$. Podobně pro $A = -\infty$.
 \end{poznamka}
 
 \begin{dusledek}
@@ -457,7 +457,7 @@ Potom platí $$\lim_{x\to x_0} (f\circ g)(x)=\lim_{y\to y_0} f(y).$$
 \end{veta}
 
 \begin{proof}
-	Označme $A=\lim_{y\to \_0}f(y)$. Chceme $\lim_{x\to x_0} f(g(x))=A$.
+	Označme $A=\lim_{y\to y_0}f(y)$. Chceme $\lim_{x\to x_0} f(g(x))=A$.
 	\begin{enumerate}
 		\item[(P)] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K nim nalezneme
 		$\psi \in \mathbb R , \psi > 0$ takové, že
@@ -468,7 +468,7 @@ Potom platí $$\lim_{x\to x_0} (f\circ g)(x)=\lim_{y\to y_0} f(y).$$
 		$$
 		Nechť $\eta \in \mathbb R,\eta>0 $ splňuje podmínku (P). Položme
 		$\delta = \min \left \{ \delta^\prime, \eta \right \} $.
-		Pro každé $x \in P(x_0,\delta)$ platí $g(x\in B(y_0,\psi)$ a $g(x)\ne y_0$, tedy $g(x)\in P(y_0, \psi)$.
+		Pro každé $x \in P(x_0,\delta)$ platí $g(x)\in B(y_0,\psi)$ a $g(x)\ne y_0$, tedy $g(x)\in P(y_0, \psi)$.
 		Odtud plyne $f(g(x))\in B(A,\varepsilon).$
 		\item[(S)] Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$. K němu díky (S) nalezneme
 		$\psi \in \mathbb R , \psi > 0 $ takové, že
@@ -551,10 +551,10 @@ Nechť $c,A\in \mathbb R ^*$ a $f$ je funkce. Pak jsou následující výroky ek
 	$n_0 \in \mathbb N $ splňující $\frac{1}{n_0} < \tau$. Potom pro každé $n\in \mathbb N , n \geq n_0$
 	platí
 	$$
-	    x_n \in P(c, \frac{1}{n}) \subseteq P(c,\frac{1}{n_0})\subseteq B(c,\tau).
+	    x_n \in P\left(c, \frac{1}{n}\right) \subseteq P\left(c,\frac{1}{n_0}\right)\subseteq B(c,\tau).
 	$$
 	Neplatí však $\lim_{n \to \infty} f(x_n)=A$, neboť pro každé $n \in \mathbb N $ máme
-	$\neq (f(x_n)\in B(A,\varepsilon))$.\qedhere
+	$\neg (f(x_n)\in B(A,\varepsilon))$.\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -602,7 +602,7 @@ Nechť $a,b\in \mathbb R ^*$, $a<b$, $f$ je monotónní funkce na intervalu $(a,
 	\item Označme $m=\inf f((a,b))$. Předpokládejme, že $m\in \mathbb R $. Zvolme $\varepsilon \in \mathbb R , \varepsilon > 0$.
 	Podle definice infima není číslo $m+\varepsilon$ dolní závorou množiny $f((a,b))$. Nalezneme $x^\prime \in (a,b)$
 	takové, že $m\leq f(x^\prime)< m + \varepsilon$. Nalezneme $\delta \in \mathbb R , \delta  > 0$ takové, že
-	$P_+(a,\delta)\subset (a,x^\prime).$ Potom pro každé $x\in P_+(a,\delta)$ platí, že $a<x<x^\prime$, a tedy
+	$P^+(a,\delta)\subseteq (a,x^\prime).$ Potom pro každé $x\in P^+(a,\delta)$ platí, že $a<x<x^\prime$, a tedy
 	$$
 	    m-\varepsilon < m \leq f(x) \leq f(x^\prime) < m+ \varepsilon.
 	$$
@@ -620,16 +620,16 @@ Nechť funkce $f$ je spojitá na intervalu $[a,b]$ a předpokládejme, že $f(a)
 	Nechť $C\in (f(a),f(b)).$ Položme $M = \left \{ z\in \left [ a,b \right ] , f(z)< C \right \} $.
 	Množina $M$ je neprázdná ($a \in M$) a shora omezená, neboť $M \subseteq \left [ a,b \right ] $.
 	Označme $\xi=\sup M$ (používáme vlastnost suprema). Přivedeme ke sporu možnost, že $f(\xi) < C$ i
-	$f(\xi) < C$.
+	$f(\xi) > C$.
 	\begin{enumerate}[($i$)]
 		\item Pro spor předpokládejme, že $f(\xi)<C$. Platí tedy, že $\xi < b$. Funkce $f$ je v
 		$\xi$ spojitá zprava. Podle věty \ref{veta3.5} (a) nalezneme $\delta \in \mathbb R ,\delta > 0$
 		takové, že
 		$$
-		    \forall x \in \left [ \xi,\xi<\delta \right ):f(x)< C.
+		    \forall x \in \left [ \xi,\xi+\delta \right ):f(x)< C.
 		$$
-		Potom máme, že $\left [ \xi, \xi+ \delta \right ) \subset M $, což je spor.
-		\item Pro spor předpokládejme, že $f(\xi) < C$. Potom $\xi > a$. Funkce $f$ je zleva spojitá
+		Potom máme, že $\left [ \xi, \xi+ \delta \right ) \subseteq M $, což je spor.
+		\item Pro spor předpokládejme, že $f(\xi) > C$. Potom $\xi > a$. Funkce $f$ je zleva spojitá
 		v $\xi$. Podle věty \ref{veta3.5} (a) nalezneme $\delta \in \mathbb R , \delta > 0$
 		takové, že
 		$$\forall x \in (\xi-\delta, \xi]:f(x)>C.$$
@@ -643,7 +643,7 @@ Nechť funkce $f$ je spojitá na intervalu $[a,b]$ a předpokládejme, že $f(a)
 \end{poznamka}
 
 \begin{lemma}\label{lemma3.11} % 3.11
-Nechť $M\subset \mathbb R $ a platí
+Nechť $M\subseteq \mathbb R $ a platí
 $$\forall x,y\in M\ \forall z\in \mathbb R :\ x<z<y\implies z\in M.$$
 Pak $M$ je interval.
 \end{lemma}
@@ -674,16 +674,16 @@ Nechť $f$ je spojitá funkce na intervalu $[a,b]$. Potom je $f$ na $[a,b]$ omez
 
 \begin{proof}
 	Pro spor předpokládejme, že $f$ není omezená shora. Pro každé $n\in \mathbb N $
-	nalezneme $x_n \in \left [ a,b \right ] $ takový, že $f(x_n) > n$. Díky Weierstrassově větě
+	nalezneme $x_n \in \left [ a,b \right ] $ takové, že $f(x_n) > n$. Díky Weierstrassově větě
 	nalezneme vybranou posloupnost $\left \{ x_{n_k} \right \}_{k=1}^\infty $ z $\left \{ x_n \right \}_{n=1}^\infty $.
 	Pak $\lim_{k \to \infty} x_{n_k} = x^* \in \left [ a,b \right ] $. Z varianty Heineovy věty plyne
 	$\lim_{k \to \infty} f(x_{n_k})=f(x^*)\in \mathbb R $, $\forall k \in \mathbb N : f(x_{n_k}) > n_k \geq k$.
-	odstud plyne $\lim_{k \to \infty} f(x_{n_k}) = \infty$, což je spor.
+	Odstud plyne $\lim_{k \to \infty} f(x_{n_k}) = \infty$, což je spor.
 \end{proof}
 
 \begin{poznamka}
 	V důkazu věty \ref{veta3.13} jsme užili následující variantu Heineovy věty:
-	Nechť $I\subset \mathbb R $ je interval a $f:I\to \mathbb R $. Pak je ekvivalentní:
+	Nechť $I\subseteq \mathbb R $ je interval a $f:I\to \mathbb R $. Pak je ekvivalentní:
 	\begin{enumerate}[(i)]
 		\item $f$ je spojitá na $I$,
 		\item pro každé $c\in I$ a každou posloupnost $\left \{ x_n \right \} $ prvků intervalu $I$
@@ -692,7 +692,7 @@ Nechť $f$ je spojitá funkce na intervalu $[a,b]$. Potom je $f$ na $[a,b]$ omez
 \end{poznamka}
 
 \begin{definice}
-Nechť $M\subset\R$, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subset\mathcal D(f)$).
+Nechť $M\subseteq\R$, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subseteq\mathcal D(f)$).
 Řekneme, že $f$ nabývá v bodě $x$ \textbf{maxima} (resp. \textbf{minima}) na $M$, jestliže platí
 \begin{align*}
 	\forall y\in M:\ f(y)\le f(x) && \textrm{(resp. }\forall y\in M:\ f(y)\ge f(x)\textrm{)}.
@@ -703,7 +703,7 @@ které funkce $f$ na množině $M$ nabývá (pokud taková hodnota existuje).
 \end{definice}
 
 \begin{definice}
-Nechť $M\subset \mathbb R $, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subset \mathcal D(f)$).
+Nechť $M\subseteq \mathbb R $, $x\in M$ a funkce $f$ je definována alespoň na $M$ (tj. $M\subseteq \mathcal D(f)$).
 Řekneme, že funkce $f$ má v bodě $x$
 \begin{itemize}
 	\item \textbf{lokální maximum vzhledem k $M$}, jestliže existuje $\delta>0$ takové,

@@ -161,9 +161,9 @@ je-li výraz na pravé straně definován.
 	\begin{enumerate}[(i)]
 		\item $g^\prime (a) \ne 0$: nalezneme $\eta > 0$ takové, že platí
 		$$
-		    \forall x in P(a,\eta):\frac{g(x)-g(a)}{x-a} \ne 0.
+		    \forall x \in P(a,\eta):\frac{g(x)-g(a)}{x-a} \ne 0.
 		$$
-		odtud plyne, že
+		Odtud plyne, že
 		$$
 		    \forall x \in P(a, \eta): g(x)\ne g(a).
 		$$
@@ -378,7 +378,7 @@ Nechť $a,b \in \R, a<b$ a $f\colon[a,b]\to\R$ je spojitá funkce, která má v 
 \begin{proof}
 Definujme pomocnou funkci
 $$
-    g(x)=f(x) - \frac{f(b)-f(a)}{b-a}(c-a), \quad x \in \left [ a,b \right ] .
+    g(x)=f(x) - \frac{f(b)-f(a)}{b-a}(x-a), \quad x \in \left [ a,b \right ] .
 $$
 Platí, že
 \begin{itemize}
@@ -443,31 +443,31 @@ Potom platí $$ \lim_{x\to a^+}\frac{f(x)}{g(x)}=\lim_{x\to a^+}\frac{f'(x)}{g'(
 
 \begin{proof}
 	Provedeme důkaz (a), důkaz (b) umět nemusíme.
-	\par Označme $L=\lim_{x\to a_+} \frac{f^\prime(x)}{g^\prime(x)}.$
+	\par Označme $L=\lim_{x\to a^+} \frac{f^\prime(x)}{g^\prime(x)}.$
 	\paragraph{Pomocné tvrzení.}
 	\begin{enumerate}
 		\item[(i)] Pro každé $\alpha \in \mathbb R ,\alpha > L$ existuje $\delta > 0$ takové, že
 		$$
-		    \forall x \in P_+(a,\delta):\frac{f(x)}{g(x)}<\alpha.
+		    \forall x \in P^+(a,\delta):\frac{f(x)}{g(x)}<\alpha.
 		$$
 		\item[(ii)] Pro každé $\beta \in \mathbb R , \beta < L$ existuje $\delta^\prime>0$ takové,
 		že
 		$$
-		    \forall x \in P_+(a,\delta^\prime):\frac{f(x)}{g(x)}>\beta.
+		    \forall x \in P^+(a,\delta^\prime):\frac{f(x)}{g(x)}>\beta.
 		$$
 	\end{enumerate}
 		\paragraph{Důkaz pomocného tvrzení.}
 		\begin{enumerate}
 			\item[(i)] Nalezneme $r\in (L,\alpha)$. Nalezneme $\delta > 0$ takové, že platí
 			\begin{itemize}
-				\item $f$, $f^\prime$, $g$ a $g^\prime$ jsou definovány na $P_+(a,\delta)$,
-				\item $f^\prime$, $g^\prime$ jsou vlastní na $P_+(a,\delta)$,
-				\item $g^\prime$ je nenulové na $P_+(a,\delta)$,
-				\item $\forall x \in P_+(a,\delta):\frac{f^\prime(x)}{g^\prime(x)}<r$,
-				\item $g$ je nenulová na $P_+(a,\delta)$; pokud by existoval nulový bod $f$ v
-				$P_+(a,\delta)$, pak je nejvýše jeden a $\delta$ vhodně zmenšíme.
+				\item $f$, $f^\prime$, $g$ a $g^\prime$ jsou definovány na $P^+(a,\delta)$,
+				\item $f^\prime$, $g^\prime$ jsou vlastní na $P^+(a,\delta)$,
+				\item $g^\prime$ je nenulové na $P^+(a,\delta)$,
+				\item $\forall x \in P^+(a,\delta):\frac{f^\prime(x)}{g^\prime(x)}<r$,
+				\item $g$ je nenulová na $P^+(a,\delta)$; pokud by existoval nulový bod $f$ v
+				$P^+(a,\delta)$, pak je nejvýše jeden a $\delta$ vhodně zmenšíme.
 			\end{itemize}
-		Zvolme $x\in P_+(a,\delta)$. Předpokládejme, že $y \in P_+(a,\delta)$ a $y<x$. Podle Cauchyovy
+		Zvolme $x\in P^+(a,\delta)$. Předpokládejme, že $y \in P^+(a,\delta)$ a $y<x$. Podle Cauchyovy
 		věty \ref{veta5.8} nalezneme $c \in (y,x)$ takové, že
 		$$
   \frac{f^\prime(c)}{g^\prime(c)}=\frac{f(x)-f(y)}{g(x)-g(y)}.
@@ -485,7 +485,7 @@ Potom platí $$ \lim_{x\to a^+}\frac{f(x)}{g(x)}=\lim_{x\to a^+}\frac{f'(x)}{g'(
 	\paragraph{Vlastní důkaz.} Pokud $L= \infty$, resp. $L=-\infty$, pak věta plyne z (ii), resp. z (i).
 	Pokud $L\in \mathbb R $ a $\varepsilon > 0$, položíme $\alpha = L+\varepsilon$, $\beta = L-\varepsilon$
 	a nalezneme příslušná $\delta$ a $\delta^\prime$. Položme $\delta_1=\min \left \{ \delta, \delta^\prime \right \} $.
-	Pak pro každé $x \in P_+(a,\delta_1)$ platí
+	Pak pro každé $x \in P^+(a,\delta_1)$ platí
 	$$
 	    L-\varepsilon =\beta < \frac{f(x)}{g(x)}<\alpha = L+\varepsilon, \quad \textrm{tj. } \frac{f(x)}{g(x)}\in B(L,\varepsilon),
 	$$
@@ -569,7 +569,8 @@ Nechť $n\in\N$, $a\in\R$ a $f$ má vlastní $n$-tou derivaci na okolí bodu $a$
 \end{poznamka}
 
 \begin{veta}\label{veta5.12}
-	% TODO
+	Nechť $f^\prime(a)=0$, $f^{\prime\prime}>0$ (resp. $f^{\prime\prime}<0$). Potom $f$ má v $a$ lokální minimum
+	(resp. lokální maximum).
 \end{veta}
 
 \begin{proof}
@@ -591,7 +592,25 @@ Nechť $n\in\N$, $a\in\R$ a $f$ má vlastní $n$-tou derivaci na okolí bodu $a$
 \subsection{Konvexní a konkávní funkce}
 
 \begin{definice}
-	% TODO konvexní a konkávní funkce
+Nechť $I$ je interval, $f$ je funkce a $I\subset \mathcal D(f)$. Řekneme, že $f$ je
+\begin{itemize}
+	\item \textbf{konvexní} na $I$, jestliže
+	$$
+	    \forall x, y \in I \, \forall \lambda\in(0,1): f(\lambda x + (1-\lambda)y)\leq \lambda f(x)+ (1-\lambda)f(y),
+	$$
+	\item \textbf{konkávní} na $I$, jestliže
+	$$
+	    \forall x, y \in I \, \forall \lambda\in(0,1): f(\lambda x + (1-\lambda)y)\geq \lambda f(x)+ (1-\lambda)f(y),
+	$$
+	\item \textbf{ryze konvexní} na $I$, jestliže
+	$$
+	    \forall x, y \in I \, \forall \lambda\in(0,1): f(\lambda x + (1-\lambda)y)< \lambda f(x)+ (1-\lambda)f(y),
+	$$
+	\item \textbf{ryze konkávní} na $I$, jestliže
+	$$
+	    \forall x, y \in I \, \forall \lambda\in(0,1): f(\lambda x + (1-\lambda)y)> \lambda f(x)+ (1-\lambda)f(y).
+	$$
+\end{itemize}
 \end{definice}
 
 \begin{poznamka}
@@ -599,7 +618,13 @@ $f$ je [ryze] konvexní na $I$ právě tehdy, když $-f$ je [ryze] konkávní na
 \end{poznamka}
 
 \begin{lemma}[Ekvivalentní podmínky pro konvexitu]\label{lemma5.13}
-	% TODO
+Nechť $I \subset \mathbb{R}$ je interval a $f : I \to \mathbb{R}$. Pak jsou následující výroky ekvivalentní:
+\begin{enumerate}[(i)]
+\item $f$ je konvexní na $I$,
+\item $\forall x_1 < x_2 < x_3 \in I:\ \dfrac{f(x_2)-f(x_1)}{x_2 - x_1} \leq \dfrac{f(x_3)-f(x_1)}{x_3 - x_1}$,
+\item $\forall x_1 < x_2 < x_3 \in I:\ \dfrac{f(x_3)-f(x_1)}{x_3 - x_1} \leq \dfrac{f(x_3)-f(x_2)}{x_3 - x_2}$,
+\item $\forall x_1 < x_2 < x_3 \in I:\ \dfrac{f(x_2)-f(x_1)}{x_2 - x_1} \leq \dfrac{f(x_3)-f(x_2)}{x_3 - x_2}$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}
@@ -628,7 +653,15 @@ $f$ je [ryze] konvexní na $I$ právě tehdy, když $-f$ je [ryze] konkávní na
 \end{proof}
 
 \begin{veta}[Konvexita a jednostranná derivace] \label{veta5.14}
-	% TODO
+Nechť $f$ je konvexní funkce na nedegenerovaném intervalu $I$ a $a \in I$.
+\begin{enumerate}[(a)]
+\item Je-li $a$ vnitřní bod $I$, potom existují vlastní jednostranné derivace $f'_-(a)$, $f'_+(a)$, které splňují
+\[
+f'_-(a) \leq f'_+(a).
+\]
+\item Je-li $a$ pravý krajní bod $I$, pak $f'_-(a)$ existuje.
+\item Je-li $a$ levý krajní bod $I$, pak $f'_+(a)$ existuje.
+\end{enumerate}
 \end{veta}
 
 \begin{proof}
@@ -657,7 +690,7 @@ $f$ je [ryze] konvexní na $I$ právě tehdy, když $-f$ je [ryze] konkávní na
 \end{proof}
 
 \begin{veta}\label{veta5.15}
-	% TODO
+Nechť $f$ je konvexní na otevřeném intervalu $J$. Pak $f$ je spojitá na $J$.
 \end{veta}
 
 \begin{proof}
@@ -666,7 +699,13 @@ $f$ je [ryze] konvexní na $I$ právě tehdy, když $-f$ je [ryze] konkávní na
 \end{proof}
 
 \begin{veta}\label{veta5.16}
-	% TODO
+Nechť $f : (a,b) \to \mathbb{R}$, $a<b$ a $f'$ je spojitá na $(a,b)$.
+\begin{itemize}
+\item Jestliže $f''(x) > 0$ pro každé $x \in (a,b)$, pak $f$ je ryze konvexní na $(a,b)$.
+\item Jestliže $f''(x) < 0$ pro každé $x \in (a,b)$, pak $f$ je ryze konkávní na $(a,b)$.
+\item Jestliže $f''(x) \geq 0$ pro každé $x \in (a,b)$, pak $f$ je  konvexní na $(a,b)$.
+\item Jestliže $f''(x) \leq 0$ pro každé $x \in (a,b)$, pak $f$ je  konkávní na $(a,b)$.
+\end{itemize}
 \end{veta}
 
 \begin{proof}
@@ -694,11 +733,24 @@ což jsme chtěli dokázat.
 \end{poznamka}
 
 \begin{definice}
-	% TODO inflexní bod
+Nechť $f$ je reálná funkce a $a \in \mathbb R $. Řekneme, že
+$f$ má v bodě $a$ \textbf{inflexi} nebo také že $a$ je
+\textbf{infelxním bodem} funkce $f$, jestliže existuje vlastní
+$f^\prime(a)$ a existuje $\delta > 0$ takové, že buď
+\begin{align*}
+	&\forall x \in P^-(a,\delta):f(x)>f(a)+f^\prime(a)(x-a) \quad \textrm{a}\\
+	&\forall x \in P^+(a,\delta):f(x)<f(a)+f^\prime(a)(x-a),
+\end{align*}
+nebo
+\begin{align*}
+	&\forall x \in P^-(a,\delta):f(x)<f(a)+f^\prime(a)(x-a) \quad \textrm{a}\\
+	&\forall x \in P^+(a,\delta):f(x)>f(a)+f^\prime(a)(x-a).
+\end{align*}
 \end{definice}
 
 \begin{veta}[Nutná podmínka inflexe] \label{veta5.17}
-
+Nechť $f$ je funkce, $a\in \mathbb R $ a $f^{\prime\prime}(a)$ existuje
+a je různá od nuly. Potom $a$ není inflexním bodem funkce $f$.
 \end{veta}
 
 \begin{proof}
@@ -717,7 +769,15 @@ což jsme chtěli dokázat.
 \end{proof}
 
 \begin{veta}[Postačující podmínka pro inflexi] \label{veta5.18}
-	% TODO
+Nechť funkce $f$ má spojitou první derivaci na intervalu $(a,b)$, $c \in (a,b)$ a platí
+\[
+\forall x \in (a,c): f''(x) > 0 \quad \text{a} \quad \forall x \in (c,b): f''(x) < 0,
+\]
+nebo
+\[
+\forall x \in (a,c): f''(x) < 0 \quad \text{a} \quad \forall x \in (c,b): f''(x) > 0.
+\]
+Pak $c$ je inflexním bodem funkce $f$.
 \end{veta}
 
 \begin{proof}
@@ -745,12 +805,20 @@ což jsme chtěli dokázat.
 	a tedy graf přechází z jedné strany na druhou, což jsme chtěli dokázat.
 \end{proof}
 
+
+\subsection{Průběh funkce}
 \begin{definice}
-	% TODO asymptota
+Řekneme, že funkce $x \mapsto ax + b$, $a,b \in \mathbb{R}$, je \textbf{asymptotou funkce} $f$ v $\infty$ (resp. v $-\infty$), jestliže
+\[
+\lim_{x \to \infty} (f(x) - ax - b) = 0,\quad (\text{resp. } \lim_{x \to -\infty} (f(x) - ax - b) = 0).
+\]
 \end{definice}
 
 \begin{veta}\label{veta5.19}
-	% TODO
+Funkce $f$ má v $\infty$ asymptotu $x \mapsto ax + b$, $a,b\in \mathbb R $ právě když
+\[
+\lim_{x \to \infty} \frac{f(x)}{x} = a\in \mathbb R ,\qquad \lim_{x \to \infty} (f(x) - ax) = b\in \mathbb R .
+\]
 \end{veta}
 
 \begin{proof}\,
@@ -789,6 +857,3 @@ což jsme chtěli dokázat.
 	$$
 \end{enumerate}
 \end{priklad}
-
-\subsection{Průběh funkce}
-% TODO
