@@ -155,7 +155,7 @@ je-li výraz na pravé straně definován.
 \begin{proof}
 	Označme $b=g(a)$,
 	$$
-	\varphi(y)=\frac{f(y)-f(b)}{y-b}, \quad \mathcal D(f)\smallsetminus \left \{ b \right \} .
+	\varphi(y)=\frac{f(y)-f(b)}{y-b}, \quad y\in\mathcal D(f)\smallsetminus \left \{ b \right \} .
 	$$
 	Platí $\lim_{y\to b} \varphi(y)=f^\prime(b)$. Rozlišíme dva případy
 	\begin{enumerate}[(i)]
@@ -233,14 +233,14 @@ Nechť $a$ je vnitřním bodem intervalu $I$ a $f$ je spojitá a ryze monotónn�
 	$\lim_{y\to b} f^{-1}(y)=f^{-1}(b)=a$, neboť $b$ je vnitřním bodem $J$ a $f^{-1}$ je spojitá
 	na intervalu $J$.
 	\begin{enumerate}[(a)]
-		\item $\lim_{y\to b} (\varphi \circ f^{-1})(y)$, a je splněna podmínka (P), protože
+		\item Počítáme $\lim_{y\to b} (\varphi \circ f^{-1})(y)$, a je splněna podmínka (P), protože
 		$f^{-1}$ je ryze monotónní. Máme tedy
 		$$
-  \lim_{y\to b} \frac{f(f^{-1}(y))-f(a)}{f^{-1}(y)-a} = \lim_{y\to b} \frac{y-b}{f^{-1}(y)-f^{-1}(b)},
+  f^\prime(a)=\lim_{x\to a}\varphi(x)=\lim_{y\to b} (\varphi \circ f^{-1})(y)=\lim_{y\to b} \frac{f(f^{-1}(y))-f(a)}{f^{-1}(y)-a} = \lim_{y\to b} \frac{y-b}{f^{-1}(y)-f^{-1}(b)},
 		$$
 		tedy
 		$$
-		    (f^{-1})^\prime(y) = \lim_{y\to b} \frac{f^{-1}-f^{-1}(b)}{y-b} = \lim_{y\to b} \frac{1}{\frac{y-b}{f^\prime(y)-f^\prime(b)}}=\frac{1}{f^\prime(a)}.
+		    (f^{-1})^\prime(y) = \lim_{y\to b} \frac{f^{-1}(y)-f^{-1}(b)}{y-b} = \lim_{y\to b} \frac{1}{\frac{y-b}{f^\prime(y)-f^\prime(b)}}=\frac{1}{f^\prime(a)}.
 		$$
 		\item Podobně jako v (a) máme, že
 		$$\lim_{y\to b} \frac{y-b}{f^{-1}(y)-f^{-1}(b)}=f^\prime (a) = 0.$$
@@ -281,7 +281,7 @@ Nechť $a$ je vnitřním bodem intervalu $I$ a $f$ je spojitá a ryze monotónn�
 
 \begin{poznamka}
 	Funkce $x^x$ se nehodí derivovat podle žádného z předchozích bodů, ale
-$$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\cdot (x\log x + x\cdot \frac{1}{x}) = x^x (\log x +1), x > 0.  $$
+$$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\cdot \left (x\log x + x\cdot \frac{1}{x}\right ) = x^x (\log x +1), x > 0.  $$
 \end{poznamka}
 
 \begin{itemize}
@@ -290,7 +290,7 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 	$(\sqrt[n]{x})_+^\prime = \infty$ pro $x=0$ a $n\in \mathbb N $ sudé.
 	\item $(\sin x )^\prime = \cos x, x \in \mathbb R $
 	\begin{align*}
-	(\sin x )^\prime &=\lim_{h\to 0} \frac{\sin(x+k)-\sin x}{h} = \lim_{h\to 0} \frac{\sin x \cos h + \cos x \sin h-\sin x}{h} \\
+	(\sin x )^\prime &=\lim_{h\to 0} \frac{\sin(x+h)-\sin x}{h} = \lim_{h\to 0} \frac{\sin x \cos h + \cos x \sin h-\sin x}{h} \\
 	&= \lim_{h\to 0} \left( \sin x \cdot \frac{\cos h - 1}{h} + \cos x \cdot \frac{\sin h }{h} \right ),
 	\end{align*}
 	ale
@@ -309,7 +309,7 @@ $$\left( x^x \right )^\prime = \left( e^{x\log x} \right )^\prime = e^{x\log x}\
 		f(z) &= \sin z, z \in \left [ -\frac{\pi}{2}, \frac{\pi}{2} \right ]  \\
 		f^{-1}(x) &= \arcsin x, x \in \left [ -1,1 \right ] \\
 		(\arcsin x)^\prime &= \frac{1}{\cos(\arcsin x)}, \quad x \in (-1,1)\\
-		\cos^2 y &= 1-\sin^2 y, \quad \ in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right ) \implies \cos y = \sqrt{1-\sin ^2y} \\
+		\cos^2 y &= 1-\sin^2 y, \quad y \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right ) \implies \cos y = \sqrt{1-\sin ^2y} \\
 		\cos(\arcsin x) &= \sqrt{1-\sin^2(\arcsin x)}=\sqrt{1-x^2}.
 	\end{align*}
 	\item $(\arccos x)^\prime = -\frac{1}{\sqrt{1-x^2}}, x \in (-1,1)$
@@ -405,7 +405,7 @@ Nechť $a,b \in \R, a<b$, $f$ a $g$ jsou funkce spojité na $[a,b]$, $f$ má v k
 \end{veta}
 
 \begin{proof}
-	Podle Lagrangeovy věty \ref{veta5.7} nalezneme $d \in (a,b)$ takový, že
+	Podle Lagrangeovy věty \ref{veta5.7} nalezneme $d \in (a,b)$ takové, že
 	$$
 	    g^\prime(d)=\frac{g(b)-g(a)}{b-a}.
 	$$
@@ -633,7 +633,7 @@ Nechť $I \subset \mathbb{R}$ je interval a $f : I \to \mathbb{R}$. Pak jsou ná
 	$$
 	    \lambda = \frac{x_3-x_2}{x_3-x_1}.
 	$$
-	Označme $c=\lambda f(x_1+ (1-\lambda)f(x_3)$. Platí
+	Označme $c=\lambda f(x_1)+ (1-\lambda)f(x_3)$. Platí
 	\begin{equation}\label{rovnicenerovnost}
 	\frac{c-f(x_1)}{x_2-x_1} = \frac{f(x_3)-c}{x_3-x_2}=\frac{f(x_3)-f(x_1)}{x_3-x_1}.
 	\end{equation}
@@ -645,7 +645,7 @@ Nechť $I \subset \mathbb{R}$ je interval a $f : I \to \mathbb{R}$. Pak jsou ná
 		\item[(ii) $\implies$ (i)] Mějme $x_1, x_3 \in I$ a $\lambda \in (0,1). $ BÚNO $x_1<x_3$. Položme
 		$x_2 = \lambda x_1 + (1-\lambda)x_3$. Máme, že
 		$$
-  \frac{f(x_2-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_1)}{x_3-x_1} \leq \frac{c-f(x_1)}{x_2-x_1},
+  \frac{f(x_2)-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_1)}{x_3-x_1} = \frac{c-f(x_1)}{x_2-x_1},
 		$$
 		odkud plyne $c\geq f(x_2)$.
 		\par Ostatní implikace analogicky. \qedhere
@@ -668,7 +668,7 @@ f'_-(a) \leq f'_+(a).
 \begin{enumerate}[(a)]
 	\item Zvolme $b \in I, b < a$. Definujme pomocnou funkci
 	$$
-	    \varphi (x) = \frac{f(x)-f(a)}{x-a}, \quad x\in I, x < a.
+	    \varphi (x) = \frac{f(x)-f(a)}{x-a}, \quad x\in I, x > a.
 	$$
 	Podle lemmatu \ref{lemma5.13} je $\varphi$ na intervalu $\mathcal D(\varphi)$ neklesající.
 	Pro každé $x \in I, x > a$ platí
@@ -694,7 +694,7 @@ Nechť $f$ je konvexní na otevřeném intervalu $J$. Pak $f$ je spojitá na $J$
 \end{veta}
 
 \begin{proof}
-	Nechť $a \in J$. Potom $a$ je vnitřním bodem $J$, a tedy $f_+^\prime(a), f^\prime(a) \in \mathbb R $.
+	Nechť $a \in J$. Potom $a$ je vnitřním bodem $J$, a tedy $f_+^\prime(a), f_-^\prime(a) \in \mathbb R $.
 	Podle jednostranných variant věty \ref{veta5.1} dostáváme spojitost $f$ v bodě $a$ zprava a zleva, a tedy i spojitost v bodě $a$.
 \end{proof}
 
@@ -711,7 +711,7 @@ Nechť $f : (a,b) \to \mathbb{R}$, $a<b$ a $f'$ je spojitá na $(a,b)$.
 \begin{proof}
 	Dokážeme tvrzení (iii), ostatní se potvrdí obdobně. Podle věty \ref{veta5.10} je $f^\prime$ neklesající.
 	Ověříme (iv) z lemmatu \ref{lemma5.13}. Zvolme $x_1,x_2,x_3\in (a,b)$ tak, že $x_1<x_2<x_3$.
-	Použijeme Lagrangeovu větu o střední hodnotě \ref{veta5.7} na $f$ na intervalu $[x_1, x_2$ a $[x_2,x_3]$.
+	Použijeme Lagrangeovu větu o střední hodnotě \ref{veta5.7} na $f$ na intervalu $[x_1, x_2]$ a $[x_2,x_3]$.
 	Podmínky Lagrangeovy věty jsou splněny, neboť $f^\prime$ existuje vlastní na $(a,b)$. Nalezneme $\xi \in (x_1,x_2)$
 takové, že
 $$
@@ -729,13 +729,13 @@ což jsme chtěli dokázat.
 \end{proof}
 
 \begin{poznamka}[Varování!]
-	Větu \ref{veta5.16} používáme na \emph{invtervalu}.
+	Větu \ref{veta5.16} používáme na \emph{intervalu}.
 \end{poznamka}
 
 \begin{definice}
 Nechť $f$ je reálná funkce a $a \in \mathbb R $. Řekneme, že
 $f$ má v bodě $a$ \textbf{inflexi} nebo také že $a$ je
-\textbf{infelxním bodem} funkce $f$, jestliže existuje vlastní
+\textbf{inflexním bodem} funkce $f$, jestliže existuje vlastní
 $f^\prime(a)$ a existuje $\delta > 0$ takové, že buď
 \begin{align*}
 	&\forall x \in P^-(a,\delta):f(x)>f(a)+f^\prime(a)(x-a) \quad \textrm{a}\\
@@ -759,11 +759,11 @@ a je různá od nuly. Potom $a$ není inflexním bodem funkce $f$.
 	Platí, že
 	\begin{align*}
 	&g^\prime(x) = f^\prime(x)-f^\prime(a), \quad x \in \mathcal D(f),\\
-	&g^{\prime\prime}(a) = f^{\prime\prime}(a)>0, \quad g^\prime(a) = 0, g(a)=0.
+	&g^{\prime\prime}(a) = f^{\prime\prime}(a)>0, \quad g^\prime(a) = 0,\quad g(a)=0.
 	\end{align*}
 	Podle věty \ref{veta5.12} a poznámky \ref{poznamkaveta5.12} máme, že existuje $\delta > 0$ takové, že
 	$$
-	    \forall x \in P(,\delta): g(x) > 0.
+	    \forall x \in P(a,\delta): g(x) > 0.
 	$$
 	Z toho plyne, že $a$ není inflexním bodem $f$. Pokud $f^{\prime\prime}(a) < 0$, postupujeme obdobně.
 \end{proof}
@@ -783,12 +783,12 @@ Pak $c$ je inflexním bodem funkce $f$.
 \begin{proof}
 	Uvažujme první možnost, druhá se dokáže analogicky. Definujme
 	$$
-	    g(x)=f(x)-f(a)-f^\prime(a)(x-c), \quad x \in (a,b).
+	    g(x)=f(x)-f(c)-f^\prime(c)(x-c), \quad x \in (a,b).
 	$$
 	Pak
 	\begin{align*}
-		&g^\prime(x) = f^\prime(x)-f(c),\quad x\in (a,b),\\
-		&g^{\prime\prime} = f^{\prime\prime}(x), \quad x \in (a,c) \cup (c,b).
+		&g^\prime(x) = f^\prime(x)-f^\prime(c),\quad x\in (a,b),\\
+		&g^{\prime\prime}(x) = f^{\prime\prime}(x), \quad x \in (a,c) \cup (c,b).
 	\end{align*}
 	Funkce $g^\prime$ je spojitá na $(a,c]$ a pro každé $x \in (a,c)$ máme $g^{\prime\prime}(x)>0$.
 	Podle věty \ref{veta5.10} je $g^\prime$ rostoucí na $(a,c]$. Podobně $g^\prime$ je klesající na $[c,b)$.
@@ -797,7 +797,7 @@ Pak $c$ je inflexním bodem funkce $f$.
 	&\forall x \in (a,c): g^\prime(x) < 0,\\
 	&\forall x \in (c,b): g^\prime(x) < 0
 	\end{align*}
-	a $g$ je spojitá na intervalu (a,b), neboť zde má vlastní derivaci. Platí $g(c)=0$, a proto
+	a $g$ je spojitá na intervalu $(a,b)$, neboť zde má vlastní derivaci. Platí $g(c)=0$, a proto
 	\begin{align*}
 	&\forall x \in (a,c): g(x) > 0, \\
 	&\forall x \in (c,b): g(x) < 0,

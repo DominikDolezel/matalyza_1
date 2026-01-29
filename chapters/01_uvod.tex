@@ -158,7 +158,7 @@ Symbol $\exists$ nazýváme \textbf{existenčním kvantifikátorem}.
 \begin{poznamka}[Varování!]
 	Záleží na pořadí kvantifikátorů. Uvažme $Z$ množinu žen, $D$ množinu dětí a $M(z,d)$ výrokovou formu žena $z$ je maminkou dítěte $d$. Pak srovnej
 	\begin{align*}
-	\forall d \in D \, \exists z \in Z: M(z,d), && \exists z \in Z \forall d\in D: M(z,d).
+	\forall d \in D \, \exists z \in Z: M(z,d), && \exists z \in Z \,\forall d\in D: M(z,d).
 \end{align*}
 \end{poznamka}
 
@@ -240,7 +240,7 @@ X \smallsetminus \bigcap \mathcal{A}
 	\begin{enumerate}
 		\item[$\subseteq$] Předpokládejme, že $x\in X\smallsetminus \bigcup \mathcal A.$ Potom platí
 		$x\in X$ a $x\notin \bigcup \mathcal A$, tzn. $\forall A\in \mathcal A:x \notin A$. Odtud máme, že
-		$\forall A\in \mathcal A$ je $x\in X\smallsetminus A$. Potom dostáváme $x\in \bigcap \left \{ x\smallsetminus A, A\in \mathcal A \right \} $.
+		$\forall A\in \mathcal A$ je $x\in X\smallsetminus A$. Potom dostáváme $x\in \bigcap \left \{ X\smallsetminus A, A\in \mathcal A \right \} $.
 		\item[$\supseteq$] Předpokládejme, že $x\in \bigcap \left \{ X\smallsetminus A, A \in \mathcal A \right \} $. Pro každé
 		$A\in \mathcal A$ platí $x\in X\smallsetminus A$. Odtud plyne $x\in X$ a pro každé $A\in \mathcal A$ máme $x\notin A$.
 		Potom $x\notin \bigcup \mathcal A$. Dostáváme $x\in X\smallsetminus \bigcup\mathcal A$.\qedhere

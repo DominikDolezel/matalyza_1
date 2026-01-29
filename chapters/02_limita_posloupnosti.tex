@@ -699,7 +699,7 @@ Potom $\lim \frac{a_n}{b_n}=\infty$.
 			\infty & \textrm{pro } q >1, \\
 			1 & \textrm{pro } q =1, \\
 			0 & \textrm{pro } q \in (-1,1), \\
-			\textrm{neexistuje} & \textrm{pro } q \leq 1.
+			\textrm{neexistuje} & \textrm{pro } q \leq -1.
 		\end{cases}
 	$$
 	\begin{enumerate}[(a)]
@@ -892,7 +892,7 @@ $\lim a_n = A$ právě tehdy, když $\limsup a_n = \liminf a_n = A$.
 \end{proof}
 
 \begin{veta}\label{veta2.16}
-	Nechť $\left \{ x_n \right \} $ a $\left \{ y_n \right \} $ jsou postloupnosti. Předpokládejme, že platí
+	Nechť $\left \{ x_n \right \} $ a $\left \{ y_n \right \} $ jsou posloupnosti. Předpokládejme, že platí
 	$$
 	    \exists n_0 \in \mathbb N \, \forall n \in \mathbb N , n \geq n_0: x_n \leq y_n.
 	$$
@@ -942,7 +942,7 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 		a rostoucí posloupnost přirozených čísel $\left \{ m_k \right \}_{k=1}^\infty $
 		takové, že $m_k \leq n_k$ a
 		\begin{equation}\label{rovnicelimsup}
-		    \left | b_{m_n} - a_{n_k}\right |< \frac{2}{k}.
+		    \left | b_{m_k} - a_{n_k}\right |< \frac{2}{k}.
 		\end{equation}
 		\begin{itemize}
 			\item $k = 1$: Položme $m_1 = 1$. Podle definice je $b_{m_1} = \sup \left \{ a_k, k \geq m_1 \right \}$.
@@ -956,15 +956,15 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 			$$
 			    b_{m_{k+1}} = \sup \left \{ a_j, j \geq m_{k+1} \right \}.
 			$$
-			Nalezneme
+			Nalezneme $n_{k+1}$ takové, že
 			$$
-			    n_{k+1} \geq a_{n_{k+1}} > b_{m_{k+1}} - \frac{2}{k+1}.
+			    b_{m_{k+1}} \geq a_{n_{k+1}} > b_{m_{k+1}} - \frac{2}{k+1}.
 			$$
 			Pak podle (\ref{rovnicelimsup}) je
 			$$
 			    |b_{m_{k+1}} - a_{m_{k+1}}| < \frac{2}{k+1}.
 			$$
-			platí $\lim_{k\to\infty} b_{m_k} = A = \lim_{k\to\infty} \left( b_{m_k}-\frac{2}{k+1} \right ) $,
+			Platí $\lim_{k\to\infty} b_{m_k} = A = \lim_{k\to\infty} \left( b_{m_k}-\frac{2}{k+1} \right ) $,
 			takže $\lim a_{n_k} = A.$
 		\end{itemize}
 		\item $A = \infty$: $\left \{ a_n \right \} $ není shora omezená.
@@ -983,7 +983,7 @@ značíme $H \left( \left \{ a_n \right \}  \right ) $.
 	\end{enumerate}
 	\paragraph{Důkaz nerovnosti pro $\liminf a_n$.}
 	Označme $y\in H \left( \left \{ a_n \right \}  \right ) $. Pokud $\liminf a_n = -\infty$,
-	pak $\liminf a_n = -\infty \leq y$. Předpokládejme tedy, že $\liminf a_n < -\infty$. Potom
+	pak $\liminf a_n = -\infty \leq y$. Předpokládejme tedy, že $\liminf a_n > -\infty$. Potom
 	platí
 	$$
 	    \liminf a_n = \lim_{n\to \infty} \inf \left \{ a_k, k\geq n \right \}.
