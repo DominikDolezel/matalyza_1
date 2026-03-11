@@ -1,0 +1,812 @@
+\section{Číselné řady}
+\subsection{Základní pojmy}
+\begin{definice}
+Nechť $\{a_n\}_{n=1}^\infty$ je posloupnost.
+\begin{enumerate}[(a)]
+\item Pro $m\in\mathbb{N}$ položme $s_m=\sum_{n=1}^m a_n$. \textbf{Součet řady} $\sum_{n=1}^\infty a_n$ je limita posloupnosti $\{s_m\}$, pokud tato limita existuje.
+\item Řekneme, že řada $\sum_{n=1}^\infty a_n$ \textbf{konverguje} (\textbf{je konvergentní}), je-li $\lim_{m\to \infty} s_m$ vlastní.
+Řekneme, že řada $\sum_{n=1}^\infty a_n$ \textbf{diverguje} (\textbf{je divergentní}), jestliže $\lim_{m\to \infty} s_m$ neexistuje nebo je nevlastní.
+Pro jemnější rozlišení budeme někdy říkat, že řada $\sum_{n=1}^\infty a_n$ \textbf{diverguje k $\infty$}, respektive
+\textbf{diverguje k $-\infty$}, jestliže $\lim s_m = \infty$, resp. $\lim s_m = -\infty$.
+\item Číslo $a_n, n \in \mathbb N $ je \textbf{$n$-tým členem} řady $\sum_{n=1}a_n$
+a číslo $s_m, m \in \mathbb N $ je jejím \textbf{$m$-tým částečným součtem}.
+\end{enumerate}
+\end{definice}
+
+\begin{poznamka}
+	Nekonečná řada
+	$$
+	\sum_{n=1}^\infty a_n \begin{cases}
+	\textrm{má součet } \begin{cases}
+		\textrm{konverguje}\\
+		\textrm{diverguje } \begin{cases}
+			\textrm{k } \infty,\\
+			\textrm{k } -\infty
+\end{cases}
+\end{cases}	\\
+\textrm{nemá součet}.
+\end{cases}
+	$$
+\end{poznamka}
+
+\begin{priklad}\,
+\begin{enumerate}[(1)]
+	\item $\sum_{n=1}^\infty (-1)^n$ nemá součet (diverguje)
+	\item $\sum_{n=1}^\infty q^{n-1}$ konverguje $\iff q \in (-1,1)$, je totiž
+	$$
+	    s_n = 1+q+q^2+\dots + q^{n-1}= \begin{cases}
+					\frac{q^n-1}{q-1}, & q \in \mathbb R  \smallsetminus \left \{ 1 \right \}\\
+				 n, & q=1.
+					\end{cases}
+	$$
+	\item $\sum_{n=1}^\infty \frac{1}{n(n+1)}=1$, neboť
+	\begin{align*}
+	\frac{1}{n(n+1)} &= \frac{1}{n}-\frac{1}{n+1},\\
+	s_m &= \left (\frac{1}{1} - \frac{1}{2}\right) + \left( \frac{1}{2} - \frac{1}{3} \right ) + \dots + \left( \frac{1}{m} - \frac{1}{m+1}\right ) = 1 - \frac{1}{m+1} .
+\end{align*}
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Nutná podmínka konvergence řady] \label{veta7.1}
+Nechť řada $\sum_{n=1}^\infty a_n$ konverguje. Pak platí $\lim a_n=0$.
+\end{veta}
+
+\begin{proof}
+	Označme $x_n = \sum_{j=1}^n a_j$. Počítáme
+	$$
+ \lim a_n = \lim (s_n - s_{n-1}).
+	$$
+	Protože $\sum_{n=1}^\infty a_n$ konverguje, pak $\lim_{n \to \infty} s_n = s \in \mathbb R $.
+	Odtud máme
+	$$
+	\lim a_n = \lim (s_n - s_{n-1}) = s - s = 0.
+	$$
+\end{proof}
+
+\begin{veta}[Bolzanova--Cauchyova podmínka konvergence řady] \label{7.2}
+Nechť $\sum_{n=1}^\infty a_n$ je řada. Pak jsou následující tvrzení ekvivalentní:
+\begin{enumerate}[(i)]
+	\item $\sum_{n=1}^\infty a_n$ je konvergentní,
+	\item platí výrok
+	\[
+\forall \varepsilon \in \mathbb R , \varepsilon>0 \, \exists n_0\in \mathbb N  \, \forall m, n\in \mathbb N , m\ge n\ge n_0:\left| \sum_{k=n}^m a_k \right| < \varepsilon.
+\]
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+	Ať je $s_n = \sum_{j = 1}^n a_j$.
+	\begin{itemize}
+		\item[$\impliedby$] Platí
+		\begin{equation}\label{bcpodminka}
+		\forall \varepsilon > 0 \exists n_0 \in \mathbb N  \forall m, n \in \mathbb N , m \geq n \geq n_0: s_m - s_{n-1}| < \varepsilon.
+\end{equation}
+		Ověříme BC-podmínku pro posloupnost $\left \{ s_m \right \} $. Zvolme $\varepsilon > 0$. Podle
+		(\ref{bcpodminka}) nalezneme k $\varepsilon$ příslušné $n_0\in \mathbb N $. Zvolme
+		libovolně $m_1, n_1 \in \mathbb N , m_1 \geq n_0, n_1 \geq n_0$. Rozlišíme následující možnosti:
+		\begin{enumerate}[(i)]
+			\item $m_1 > n_1$: $|s_{m_1} - s_{n_1}|< \varepsilon $, neboť $m_1 \geq n_1 + 1 \geq n_0$,
+			\item $m_1 = n_1$: $|s_{m_1} - s_{n_1}| = 0 < \varepsilon$,
+			\item $m_1 < n_1$: $|s_{m_1} - s_{n_1}| = < |s_{n_1} - s_{m_1}|\varepsilon $, neboť $n_1 \geq m_1 + 1 \geq n_0$.
+		\end{enumerate}
+		Máme tedy že $\left \{ a_n \right \} $ splňuje BC-podmínku, tedy $\left \{ s_n \right \} $ je konvergentní,
+		a proto $\sum_{n=1}\infty a_n$ konverguje.
+		\item[$\implies$] Protože $\sum a_n$ konverguje, splňuje $\left \{ s_n \right \} $ BC-podmínku, odkud plyne (ii).\qedhere
+	\end{itemize}
+\end{proof}
+
+\begin{priklad}
+    Řada $\sum_{n=1}^\infty \frac{1}{n}$ (harmonická řada) je divergentní.
+    \par Vezměme
+    $$
+    s_{2n}-s_n=\underbrace{\frac{1}{n+1} + \frac{1}{n+2}+ \dots + \frac{1}{n+n}}_{n \textrm{ členů}} \geq n \cdot \frac{1}{2n} = \frac{1}{2}.
+    $$
+    Protože $\sum_{n=1}^\infty \frac{1}{n}$ nesplňuje BC-podmínku, a tedy diverguje (k nekonečnu).
+    Zároveň je to protipříklad na opačnou implikaci ve větě \ref{veta7.1}.
+\end{priklad}
+
+\begin{poznamka}
+	Platí $\lim_{n \to \infty} \left( \sum_{j=1}^\infty \frac{1}{j} - \log n \right ) = \gamma \in \mathbb R  $.
+	Konstantě $\gamma$ říkáme Eulerova-Mascheroniho konstanta.
+\end{poznamka}
+
+\begin{veta}\label{veta7.3}
+Nechť řady $\sum_{n=1}^\infty a_n$ a $\sum_{n=1}^\infty b_n$ mají součet.
+\begin{enumerate}[(a)]
+	\item Nechť $\alpha \in \mathbb R $ a výraz $\alpha\sum_{n=1}^\infty a_n$ je definován.
+	Potom má řada $\sum_{n=1}^\infty \alpha a_n$ součet a platí
+	$$
+	    \sum_{n=1}^\infty \alpha a_n = \alpha\sum_{n=1}^\infty a_n.
+	$$
+	\item Nechť je výraz $\sum_{n=1}^\infty a_n+\sum_{n=1}^\infty b_n$ definován.
+	Potom má řada $\sum_{n=1}^\infty (a_n+b_n)$ součet a platí
+	$$
+	    \sum_{n=1}^\infty (a_n+b_n) = \sum_{n=1}^\infty a_n +\sum_{n=1}^\infty b_n.
+	$$
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Označme $s_n = \sum_{j=1}^n a_j, \sigma_n= \sum_{j=1}^n \alpha a_j$. Platí $\sigma_n = \alpha s_n$.
+		Platí $\lim s_n = s \in \mathbb R ^*$. Podle předpokladu je výraz definován, takže
+		$\lim \sigma _n = \lim \alpha s_n$, tedy $\sum_{j=1}^\infty \alpha a_j = \alpha \sum_{j=1}^\infty  a_j$.
+		\item Označme $s_n = \sum_{j=1}^n a_j, \sigma_n= \sum_{j=1}^n b_j$. Pak je
+		$t_n = \sum_{j=1}^n \left( s_n + \sigma s_n \right ) $. Pak $\lim t_n = \lim \left( s_n + \sigma_n \right )  = s + \sigma$,
+		neboť tento výraz je definován.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Řady s nezápornými členy}
+\begin{veta}\label{veta7.4}
+Nechť je $\sum_{n=1}^\infty a_n$ řda s nezápornými členy. Pak má $\sum_{n=1}^\infty a_n$ součet.
+\end{veta}
+
+\begin{proof}
+	Poněvadž pro každé $n \in \mathbb N $ platí $a_n \geq 0$, je posloupnost $\left \{ s_j \right \}_{j=1}^\infty $
+	neklesající. Odtud máme podle věty \ref{v213}, že $\lim_{j\to \infty} s_j \in \mathbb R ^*$.
+\end{proof}
+
+\begin{veta}[Srovnávací kritérium] \label{veta7.5}
+Nechť $\sum_{n=1}^{\infty} a_n$ je řada s nezápornými členy, $\sum_{n=1}^{\infty} b_n$ je řada s kladnými členy a
+existuje $n_0 \in \mathbb{N}$ takové, že pro každé $n \in \mathbb{N}$, $n \ge n_0$, platí
+$a_n \le b_n$.
+\begin{enumerate}[(a)]
+\item Je-li $\sum_{n=1}^{\infty} b_n$ konvergentní, pak je i
+$\sum_{n=1}^{\infty} a_n$ konvergentní.
+\item Je-li $\sum_{n=1}^{\infty} a_n$ divergentní, pak je i
+$\sum_{n=1}^{\infty} b_n$ divergentní.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(a)]
+	\item Máme
+	\begin{align*}
+	s_n &= a_1 + a_2 + \dots + a_{n_0} + a_{n_0+1} + \dots + a_n, \quad n > n_0\\
+	t_n &= b_1 + b_2 + \dots + b_{n_0} + b_{n_0+1} + \dots + b_n.
+\end{align*}
+    Platí
+    $$
+        s_n \leq s_{n_0-1} + t_n - t_{n_0-1} = t_n + s_{n_0-1} - t_{n_0-1}.
+    $$
+    Dále platí $\lim s_n = s \in \mathbb R ^*$ a $\lim t_n = t \in \mathbb R ^*$ podle věty \ref{veta7.4}.
+    Potom $s \leq t + s_{n_0-1} - t_{n_0-1}$. Podle předpokladu je $t \in \mathbb R $, takže
+    celá pravá strana je prvekm $\mathbb R $, a tedy $s \in \mathbb R $, neboť všechny členy jsou nezáporné.
+    \item Plyne z (a) obměnou, což jsme již dokázali. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}[Limitní srovnávací kritérium] \label{veta7.6}
+Nechť $\sum_{n=1}^{\infty} a_n$ je řada s nezápornými členy,
+$\sum_{n=1}^{\infty} b_n$ je řada s kladnými členy a
+$\lim \frac{a_n}{b_n}$ existuje. Označme
+$
+A = \lim \frac{a_n}{b_n}.
+$
+\begin{enumerate}[(a)]
+	\item Nechť $A \in (0,\infty)$. Pak $\sum_{n=1}^{\infty} a_n$ konverguje právě tehdy,
+když konverguje $\sum_{n=1}^{\infty} b_n$.
+\item Nechť $A = 0$. Pokud $\sum_{n=1}^{\infty} b_n$ konverguje,
+pak konverguje i $\sum_{n=1}^{\infty} a_n$.
+\item Nechť $A = \infty$. Pokud $\sum_{n=1}^{\infty} a_n$ konverguje,
+pak konverguje i $\sum_{n=1}^{\infty} b_n$.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item
+		\begin{itemize}
+			\item[$\implies$]
+			Nalezneme $n_0 \in \mathbb N $ takové, že
+			$$\forall n \in \mathbb N , n \geq n_0 : \frac{a_n}{b_n} > \frac{1}{2}A,$$
+			tedy že
+			$$
+			    \forall n \in \mathbb N , n \geq n_0 : a_n > \frac{1}{2}A b_n.
+			$$
+			Věta \ref{veta7.5} dává, že řada
+			$$
+			    \sum_{n=1}^\infty \left( \frac{1}{2}Ab_n \right )
+			$$
+			konverguje. Dále podle věty \ref{veta7.3}(a) máme, že
+			$$
+			    \sum_{n=1}^\infty b_n
+			$$
+			konverguje.
+			\item[$\impliedby$] Nalezneme $n_0 \in \mathbb N $ takové, že
+			$$
+			    \forall n  \geq n_0: \frac{a_n}{b_n} < 2A.
+			$$
+			Potom máme
+			$$
+			    \forall n \geq n_0: a_n < 2Ab_n.
+			$$
+			Protože $\sum b_n$ konverguje, konverguje i $\sum 2Ab_n$
+			podle věty \ref{veta7.3}. Odtud podle věty \ref{veta7.5} dostáváme,
+			že konverguje i $\sum a_n$.
+		\end{itemize}
+		\item Nalezneme $n_0 \in \mathbb N $ takové, že
+		$$
+		    \forall n \geq n_0: \frac{a_n}{b_n} < 1.
+		$$
+		Odtud máme
+		$$
+		    \forall n \geq n_0: a_n < b_n.
+		$$
+		Protože $\sum b_n$ konverguje, konverguje podle věty \ref{veta7.5} i $\sum a_n$.
+		\item Obdobně. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{priklad}\,
+\begin{enumerate}[(1)]
+	\item $\sum a_n=\sum_{n=1}^\infty \frac{n+ \sqrt{n}}{n^2+3n}$
+	\par Zvolme $b_n = \frac{1}{n}$. Z limitního srovnávacího kritéria dostaneme
+	$$
+ \lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \frac{n^2+n \sqrt{n}}{n^2+3n} = 1 \in (0,\infty),
+	$$
+	a tedy $\sum a_n$ diverguje, neboť $\sum \frac{1}{n}$ diverguje.
+	\item $\sum a_n=\sum_{n=1}^\infty \frac{1}{n^2}$
+	\par Zvolme $b_n = \frac{1}{n(n+1)}$, přičemž $\sum b_n = 1$. Pak máme
+	$$
+ \lim_{n \to \infty} \frac{n(n+1)}{n^2} = 1 \in (0,\infty),
+	$$
+	takže $\sum a_n$ konverguje, neboť $\sum b_n$ konverguje.
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Cauchyovo odmocninové kritérium] \label{veta7.7}
+Nechť $\sum_{n=1}^{\infty} a_n$ je řada s nezápornými členy.
+\begin{enumerate}[(a)]
+	\item Jestliže platí
+\[
+\exists q \in (0,1)\ \exists n_0 \in \mathbb{N}\ \forall n \in \mathbb{N}, n \ge n_0 :
+\sqrt[n]{a_n} \le q,
+\]
+pak je $\sum_{n=1}^{\infty} a_n$ konvergentní.
+
+\item  Jestliže $\limsup \sqrt[n]{a_n} < 1$, pak je
+$\sum_{n=1}^{\infty} a_n$ konvergentní.
+
+\item  Jestliže $\lim \sqrt[n]{a_n} < 1$, pak je
+$\sum_{n=1}^{\infty} a_n$ konvergentní.
+
+\item  Jestliže $\limsup \sqrt[n]{a_n} > 1$, pak není pravda, že $\lim a_n = 0$,
+a tedy $\sum_{n=1}^{\infty} a_n$ je divergentní.
+
+\item Jestliže $\lim \sqrt[n]{a_n} > 1$, pak není pravda, že $\lim a_n = 0$,
+a tedy $\sum_{n=1}^{\infty} a_n$ je divergentní.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(a)]
+	\item Platí
+	$$
+	    \forall n \geq n_0: 0 \leq a_n \leq \underbrace{q^n}_{b_n}.
+	$$
+	Protože je $\sum b_n$ konvergentní, podle věty \ref{veta7.5} dostáváme, že
+	$\sum a_n$ je konvergentní.
+	\item Nalezneme $q\in (\limsup \sqrt[n]{a_n}, 1)$. Potom nalezneme
+	$n_0\in \mathbb N $ takové, že
+	$$
+	    \sup \left \{ \sqrt[n]{a_n}, n \geq n_0 \right \} < q.
+	$$
+	Odsud plyne
+	$$
+	    \forall n \in \mathbb N , n \geq n_0: \sqrt[n]{a_n} < q.
+	$$
+	Z (a) plyne, že $\sum a_n$ konverguje.
+	\item $\limsup a_n = \lim a_n$, a tedy můžeme použít (b).
+	\item Nalezneme rostoucí posloupnost přirozených čísel $\left \{ n_k \right \}_{k=1}^\infty $ takovou, že
+	$$
+ \lim_{k \to \infty} \sqrt[n]{a_{n_k}} = \limsup_{n\to \infty} \sqrt[n]{a_n} > 1.
+	$$
+	Nalezneme $k_0 \in \mathbb N $ takové, že
+	$$
+	    \forall k \geq k_0: \sqrt[n]{a_{n_k}} > 1.
+	$$
+	Zároveň tedy platí
+	$$
+	    \forall k \geq k_0: a_{n_k} > 1.
+	$$
+	Neplatí tedy, že $\lim a_{n_k} =0$, a tedy neplatí, že $\lim a_n = 0$. Proto
+	podle věty \ref{veta7.1} $\sum a_n$ diverguje.
+	\item Je $\limsup \sqrt[n]{a_n} = \lim \sqrt[n]{a_n} > 1$. Dále použitím (d).\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	Pokud $\limsup \sqrt[n]{a_n} = 1$, pak nelze z této informace odvodit ani konvergenci, ani divergenci.
+	Například řada $\sum \frac{1}{n}$ diverguje, přičemž $\lim \sqrt[n]{\frac{1}{n}} = 1$. Naopak
+	řada $\sum \frac{1}{n^2}$ konverguje, přičemž $\lim \sqrt[n]{\frac{1}{n^2}}= 1$.
+\end{poznamka}
+
+\begin{veta}[D'Alembertovo podílové kritérium]\label{veta7.8}
+Nechť $\sum_{n=1}^{\infty} a_n$ je řada s kladnými členy.
+\begin{enumerate}[(a)]
+	\item Jestliže platí
+\[
+\exists q \in (0,1)\ \exists n_0 \in \mathbb{N}\ \forall n \in \mathbb{N}, n \ge n_0 :
+\frac{a_{n+1}}{a_n} \le q,
+\]
+pak je řada $\sum_{n=1}^{\infty} a_n$ konvergentní.
+
+\item  Jestliže $\limsup \frac{a_{n+1}}{a_n} < 1$, pak je řada
+$\sum_{n=1}^{\infty} a_n$ konvergentní.
+\item  Jestliže $\lim \frac{a_{n+1}}{a_n} < 1$, pak je řada
+$\sum_{n=1}^{\infty} a_n$ konvergentní.
+
+\item  Jestliže $\lim \frac{a_{n+1}}{a_n} > 1$, pak neplatí $\lim a_n = 0$,
+a tedy je řada $\sum_{n=1}^{\infty} a_n$ divergentní.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+\begin{enumerate}[(a)]
+	\item Pro každé $n \in \mathbb N , n \geq n_0$ platí
+	$$
+	    a_n \leq a_{n_0}q^{n-n_0}.
+	$$
+	Použijeme matematickou indukci.
+	\begin{itemize}
+		\item $n = n_0$: Platí.
+		\item $n \rightsquigarrow n+ 1$: Je
+		$$a_{n+1} \leq qa_n \leq qa_{n_0}q^{n-n_0}=a_{n_0}q^{(n+1)-n_0}.$$
+		Protože $\sum a_{n_0}a^{n-n_0}=\sum_{n=1}^\infty a_{n_0}q^{-n_0+1}q^{n-1}$ konverguje,
+		konverguje i $\sum a_n$ podle věty \ref{veta7.5}.
+	\end{itemize}
+	\item Nalezneme $q \in \left( \limsup \frac{a_{n+1}}{a_n},1 \right ) $ a $n_0 \in \mathbb N $
+	taková, že
+	$$
+	    \sup \left \{ \frac{a_{n+1}}{a_n}, n \geq n_0 \right \} < q \in (0,1).
+	$$
+	Potom
+	$$
+	    \forall n \geq n_0: \frac{a_{n+1}}{a_n} < q.
+	$$
+	Z již dokázané části (a) pak vyplývá, že $\sum a_n$ je konvergentní.
+	\item Je $\limsup \frac{a_{n+1}}{a_n} = \lim \frac{a_{n+1}}{a_n} < 1$, dále podle (b).
+	\item Nalezneme $n_0 \in \mathbb N $ takové, že
+	$$
+	    \forall n \geq n_0 : \frac{a_{n+1}}{a_n} > 1,
+	$$
+	neboli
+	$$
+	    \forall n \geq n_0: a_{n+1} > a_n.
+	$$
+	Odsud plyne, že
+	$$
+	    \forall n \geq n_0: a_n \geq a_{n_0} > 0.
+	$$
+	Tedy neplatí, že $\lim a_n = 0$, a proto $\sum a_n$ není konvergentní podle věty \ref{veta7.1}.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}[Kondenzační kritérium] \label{veta7.9}
+Nechť $\{a_n\}$ je nerostoucí posloupnost s nezápornými členy.
+Pak řada
+$
+\sum_{n=1}^{\infty} a_n
+$
+konverguje právě tehdy, když konverguje řada
+$
+\sum_{n=0}^{\infty} 2^n a_{2^n}.
+$
+\end{veta}
+
+\begin{proof}
+Označme
+\begin{align*}
+s_n & = a_1+ a_2+ \dots a_n,\\
+t_k &= a_1 + 2a_2 + \dots + 2^ka_{2^k}, \quad k \in \mathbb N _0.
+\end{align*}
+	Pro $n \leq 2^k$ platí
+	\begin{align}\label{prvni}
+	\begin{split}
+	s_n &\leq a_1 + (a_2 + a_3) + (a_4 + a_5 + a_6 + a_7) + \dots + (a_{2^k}+ \dots + a_{2^{k+1}-1})\\
+	& \leq a_1 + (a_2 + a_2) + (a_4 + a_4 + a_4 + a_4) + \dots + (a_{2^k}+ \dots + a_{2^k})\\
+	&= a_1 + 2a_2 + \dots + 2^ka_{2^k} = t_k.
+\end{split}
+	\end{align}
+	Pokud $n \geq 2^k$, platí
+	\begin{align}\label{druha}
+	\begin{split}
+	s_n& \geq a_1 + a_2 + (a_3 + a_4) + (a_5+ a_6+a_7+a_8) + \dots + (a_{2^{k-1}+1}+a_{2^k})\\
+	& \leq \frac{1}{2} a_1+ a_2 + 2 a_4+ 4a_8 + \dots + 2^{k-1} a_{2^k} \\
+	&= \frac{1}{2} \cdot \left( a_1 + 2a_2 + 4a_4+8a_8+ \dots + 2^ka_{2^k} \right ) = \frac{1}{2} \cdot t_k.
+\end{split}
+\end{align}
+
+\begin{enumerate}
+	\item[$\implies$] Máme, že $\lim s_n = s\in \mathbb R $, neboť $\sum a_n$ konverguje. Pro každé
+	$n, k$ splňující $n\geq 2^k$ platí podle (\ref{druha}) $t_k \leq 2s_n \leq 2s$. Odsud máme, že
+	$\lim t_k \in \mathbb R$, neboť $\sum 2^k a_{2^k}$ je konvergentní
+	\item[$\impliedby$] Podle předpokladu $\lim_{k\to \infty}t_k = t\in \mathbb R $.
+	Zvolme $n\in \mathbb N $. Potom pro každé $k\in \mathbb N, n \leq 2^k $ platí (\ref{druha}),
+	tedy $s_n \leq t_k \leq t$. Odtud plyne $\lim s_n \leq t$. Proto je $\sum a_n$ konvergentní. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}\label{veta7.10}
+
+\end{veta}
+
+\begin{proof}
+	Rozlišíme dva případy.
+	\begin{enumerate}[(i)]
+		\item $\alpha > 1$: Použijeme větu \ref{veta7.9}. Místo řady $\sum_{n=1}^\infty \frac{1}{n^\alpha}$
+		vyšetřujeme řadu
+		$$\sum_{k=0}^\infty 2^k \frac{1}{{2^k}^\alpha} = \sum_{k=0}^\infty \left( 2^k \right )^{1-\alpha} = \sum_{k=0}^\infty \left( 2^{1-\alpha} \right )^k , $$
+		která konverguje, neboť $2^{1-\alpha < 0} \in (0,1)$; proto konverguje i původní řada.
+		\item $\alpha \leq 1$: Platí
+		$$
+		    \forall n \in \mathbb N : \frac{1}{n^\alpha} \geq \frac{1}{n} \geq 0.
+		$$
+		Řada $\sum \frac{1}{n}$ diverguje, a tedy máme podle srovnávacího kritéria \ref{veta7.5},
+		že i řada $\sum \frac{1}{n^\alpha}$ diverguje.\qedhere
+\end{enumerate}
+\end{proof}
+
+\subsection{Řady s obecnými členy}
+\begin{veta}[Leibniz] \label{veta7.11}
+
+\end{veta}
+
+\begin{proof}
+	BÚNO $\left \{ a_n \right \} $ je nerostoucí. Potom
+	$$
+	    \lim a_n = \inf \left \{ a_n, n \in \mathbb N  \right \}.
+	$$
+	Z předpokladu víme, že $\lim a_n = 0$, a tedy $\forall n \in \mathbb N : a_n \geq 0$.
+	Pak je
+	$$
+	    s_n = -a_1 + a_2 - a_3 +a_4 + \dots + (-1)^na_n.
+	$$
+	Pro každé $n\in \mathbb N $ platí
+	\begin{align*}
+	s_{2n} &= \underbrace{(a_1+a_2)}_{\leq 0}+\underbrace{(-a_3+a_4)}_{\leq 0}+\dots +\underbrace{(-a_{2n-1}+a_{2n})}_{\leq 0},\\
+    s_{2n+2} &= s_{2n} + \underbrace{(-a_{2n+1} + a_{2n+2})}_{\leq 0} \leq s_{2n}.
+    \end{align*}
+	Dále platí
+	$$
+	    s_{2n} = -a_1 + \underbrace{(a_2 - a_3)}_{\leq 0} + \underbrace{(a_4  -a_5)}_{\leq 0}+ \dots + \underbrace{(a_{2n-2}+a_{2n-1})}_{\leq 0} + a_{2n}\geq -a_1,
+	$$
+	odkud máme, že $\lim s_{2n}=s \in \mathbb R $.
+	\par Pro každé $n \in \mathbb N $ platí
+	$$
+	    s_{2n+1} = s_{2n}-a_{2n+1}.
+	$$
+	Potom
+	$$
+	    \lim s_{2n+1} = \lim(s_{2n}-a_{2n+1}) = s - 0 = s.
+	$$
+	Chceme dokázat, že $\lim s_n = s$. Zvolme $\varepsilon > 0$. K němu nalezneme
+	$k_1, k_2 \in \mathbb N $ taková, že
+	$$
+	    \forall k \in \mathbb N , k \geq k_1: |s_{2k} - s| < \varepsilon.
+	$$
+	Podobně
+	$$
+	    \forall k \in \mathbb N , k \geq k_2: |s_{2k+1}-s| < \varepsilon.
+	$$
+	Položme $n_0 = \max \left \{ 2k_1, 2k_2 +1 \right \} $. Vezměme $n\geq n_0$. Pokud je $n$ sudé,
+	je $n = 2k$ a $k\geq k_1$. Pak platí
+	$$
+	    |s_n - s| = |s_{2k}-s| < \varepsilon.
+	$$
+	Pokud je $n$ liché, je $n = 2k+1$, $k\geq k_2$. Pak platí
+	$$
+	    |s_n-s| = |s_{2k+1}-s| < \varepsilon.
+	$$
+\end{proof}
+
+\begin{priklad}
+Řada $\sum_{n=1}^\infty (-1)^n \frac{1}{n}$ konverguje.
+\end{priklad}
+
+\subsection{Absolutní konvergence řad}
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}\label{veta7.12}
+
+\end{veta}
+
+\begin{proof}
+	Použijeme větu \ref{7.2}, tj. ověříme BC-podmínku pro řadu $\sum_{n=1}^\infty a_n$.
+	\par Zvolme $\varepsilon > 0$. Protože $\sum |a_n|$ konverguje, platí
+	$$
+	    \exists n_0 \, \forall m \geq n \geq n_0: \left | \sum_{j=n}^m |a_j| \right | < \varepsilon.
+	$$
+	Pro každé $m,n \in \mathbb N , m \geq n \geq n_0$ platí
+	$$
+	\left | \sum_{j=n}^m a_j  \right | \leq \sum _{j=n}^m |a_j| < \varepsilon
+	$$
+	díky trojúhelníkové nerovnosti. Odtud máme podle věty \ref{7.2}, že $\sum a_n$ konverguje.
+	\par Označme
+	\begin{align*}
+	s_n &= a_1 + a_2 + \dots + a_n,\\
+		\sigma_n &= |a_1| +|a_2| + \dots + |a_n|.
+\end{align*}
+	Potom $\lim s_n = s \in \mathbb R $ a $\lim \sigma_n = \sigma \in \mathbb R $ a platí
+	$$
+	\forall n \in \mathbb N : s_n \leq \sigma _n,
+	$$
+	odkud máme, že $s \leq \sigma$.
+\end{proof}
+
+\begin{poznamka}
+Někdy je možné ukázat konvergenci řady $\sum_{n=1}^\infty a_n$ tako, že ukážeme konvergenci
+řady $\sum_{n=1}^\infty |a_n|$, což je řada s nezápornými členy.
+\end{poznamka}
+
+\subsection{Přerovnání řad}
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}\label{veta7.13}
+
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(1)]
+	\item Předpokládejme nejprve, že $\sum a_n$ má nezáporné členy.
+	Pro každé $n$ platí
+	$$
+	    a_{\pi(1)}+a_{\pi(2)} + \dots + a_{\pi(n)} \leq a_1 + a_2 + +\dots a_m \leq \sum_{j=1}^\infty a_j,
+	$$
+	pokud $m \geq \max \left \{ \pi(1), \pi(2), \dots, \pi(n) \right \} $. Odtud plyne
+	$$
+	    \sum_{k=1}^\infty a_{\pi(k)} \leq \sum_{j=1}^\infty a_j.
+	$$
+	Protože je $\sum a_j$ konvergentní, je taky $\sum a_{\pi(k)}$ konvergentní. Poněvadž
+	$\sum a_j$ je přerovnáním řady $\sum a_{\pi(k)}$, dostáváme podle předchozího
+	$$
+	\sum_{k=1}^\infty a_{\pi(k)} \geq \sum_{j=1}^\infty a_j,
+	$$
+	a tedy
+	$$
+	    \sum_{k=1}^\infty a_{\pi(k)} = \sum_{j=1}^\infty a_j
+	$$
+	\item Obecný případ. Pro $a \in \mathbb R $ budeme značit $a^+ = \max \left \{ a,0 \right \} $.
+	Obdobně $a^- = \max \left \{ -a, 0 \right \} $. Platí $a=a^+-a^-$, $0\leq a^+\leq |a|$ a konečně
+	$0\leq a^-\leq |a|$.
+	\par Máme-li $\sum a_n$ absolutně konvergentní řadu, je i $\sum |a_n|$ konvergentní.
+	Dostáváme, že $\sum a_n^+$ a $\sum a_n^-$ jsou konvergentní řady s nezápornými členy.
+	Podle bodu (1) máme
+	\begin{align*}
+	\sum a_{\pi(n)}^+ &= \sum a_n^+,\\
+	\sum a_{\pi(n)}^- &= \sum a_n^-.
+\end{align*}
+Dále je
+$$
+    \sum a_{\pi(n)} = \sum  (a_{\pi(n)}^+ - a_{\pi(n)}^-) = \sum a_{\pi(n)}^+ - \sum a_{\pi(n)}^-
+$$
+podle věty \ref{veta7.3}. Dále je
+$$
+    = \sum a_n^+ - \sum a_n^- = \sum (a_n^+ - a_n^-) = \sum a_n,
+$$
+čímž je důkaz u konce. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}[Riemann] \label{veta7.14}
+
+\end{veta}
+
+\begin{proof}
+	Hlavní myšlenka důkazu. Označme
+	\begin{align*}
+	P = \left \{ n \in \mathbb N , a_n \geq 0 \right \},  & Q = \left \{ n \in \mathbb N , a_n < 0 \right \}.
+\end{align*}
+Pak je $\mathbb N = P \cup Q$ a taky $P\cap Q = \emptyset$. Množiny $P$ a $Q$ jsou nekonečné (kdyby nějaká z nich
+byla konečná, řada by byla absolutně konvergentní). Nalezneme posloupnosti přirozených čísel
+$\left \{ p_n \right \}_{n=1}^\infty $ a $\left \{ q_n \right \}_{n=1}^\infty $ takové, že jsou prosté
+a $P = \left \{ p_n, n \in \mathbb N  \right \} $, $Q = \left \{ q_n, n \in \mathbb N  \right \} $.
+Dále je $\sum_{n=1}^\infty a_{p_n} = \infty$ a $\sum_{n=1}^\infty a_{q_n} = -\infty$, jinak by řada nebyla
+neabsolutně konvergentní. Bereme členy z $P$, dokud částečný součet není větší než $s$. Pak beru z $Q$,
+dokud částečný součet není menší než $s$, a tak podobně. Platí $\lim a_n = 0$, neboť $\sum a_n$ je konvergentní
+řada. Proto částečné součty konvergují k $s$. Pro $s=\infty$ začneme s hranicí 1, pak zařadíme záporný člen,
+pak máme hranici 2, a tak podobně.
+\end{proof}
+
+\subsection{Součin řad}
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}[Mertens] \label{veta7.15}
+
+\end{veta}
+
+\begin{proof}
+	Označme
+	\begin{align*}
+		A_n &= \sum_{i=1}^na_i, & A &= \sum_{n=1}^\infty, & \alpha = \sum_{n=1}^\infty|a_n|,\\
+	 B_m &= \sum_{i=1}^m b_i & B &= \sum_{n=1}^\infty b_n, & \beta _n = B_n-B,\\
+	 C_n &= \sum_{i=1}^n, \quad c_i = \sum_{j=1}^i a_{i+1-j}b_j.
+\end{align*}
+Je
+\begin{align*}
+C_n &= \underbrace{(a_1b_1)}_{c_1} + \underbrace{(a_1b_2+a_2b_1)}_{c_2} + \dots + \underbrace{(a_1b_n + a_2 + b_{n-1}+ \dots + a_nb_1)}_{c_n}\\
+&= a_1(b_1+b_2+\dots +b_n) + a_2(b_1+b_1+\dots+b_{n-1}) +\dots + a_nb_1\\
+&= a_1 (B+ \beta_n) + a_2 (B+ \beta_{n-1}) +\dots +a_n(B+\beta_1)\\
+&= (a_1+a_2+\dots+a_n)B + \undebrace{(a_1\beta_n + a_2\beta_{n-1} +\dots + a_n\beta_1)}_{\gamma_n}\\
+&= A_nB+\gamma_n.
+\end{align*}
+Chceme, že $\lim C_n = A\cdot B$. Stačí ukázat, že $\lim \gamma_n = 0$, neboť
+$
+    \lim A_n = A
+$ a
+$$
+    \lim C_n = \lim (A_nB+\gamma_n) = A\cdot B + 0 = A\cdot B.
+$$
+Budeme dokazovat $\lim_{n\to \infty} \gamma_n = 0$. Víme, že
+\begin{equation}\label{limitarovnic}
+    \lim_{n \to \infty} \beta _n = 0.
+\end{equation}
+Zvolme $\varepsilon > 0$. Díky (\ref{limitarovnic}) nalezneme $N \in \mathbb N $ takové, že
+$$
+    \forall n \geq N: |\beta_n|< \varepsilon.
+$$
+Potom pro každé $n\geq N$ platí
+$$
+    \gamma_n = (a_1\beta_n+a_2\beta_{n-1}+\dots+a_{n+1-N}\beta_N)+ (a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1).
+$$
+Odhadneme $|\gamma_n|$ jako
+\begin{align*}
+|\gamma_n| &\leq (|a_1|\cdot \underbrace{|\beta_n|}_{<\varepsilon} + \dots + |a_{n+1-N}|\cdot \underbrace{|\beta_N|}_{<\varepsilon})+ |a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1|\\
+& \leq \alpha \varepsilon + |a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1|.
+\end{align*}
+Poněvadž $\lim_{j\to \infty} a_j = 0$, dostáváme, že
+$$
+0\leq \limsup |\gamma_n| \leq \alpha \cdot \varepsilon,
+$$
+a proto $\limsup |\gamma_n| = 0$. Dále platí
+$$
+    0 \leq \liminf |\gamma_n| \leq \limsup |\gamma_n|  = 0,
+$$
+a tedy $\liminf |\gamma _n| = 0$ a taky $\lim \gamma _n = 0$.
+\end{proof}
+
+\begin{priklad}
+	Řada
+	$$c_k\sum_{n=1}\infty \underbrace{\frac{(-1)^n}{\sqrt{n}}_{a_n = b_n}}$$ konverguje podle Leibnitzova kritéria, neboť $\frac{1}{\sqrt{n}}$
+	konverguje. Řada
+	$$
+	c_k\sum _{i=1}^k a_{k+1-i}b_i = \sum_{i=1}^k \frac{(-1)^{k+i-1}}{\sqrt{k+1-i}}\cdot \frac{(-1)^i}{\sqrt{i}}= (-1)^{k+1} \sum_{i=1}^k \frac{1}{\sqrt{(k+1-i)i}},
+	$$
+	díky AG nerovnosti máme
+	$$
+ \frac{1}{\sqrt{(k+1-i)i}} \geq \frac{1}{\frac{(k+1-i)+i}{2}}=\frac{2}{k+1},
+	$$
+	a tedy i
+	$$
+	c_k \geq \frac{2}{k+1},
+	$$
+	a proto $\sum c_k$ diverguje, neboť není splněna nutná podmínka konvergence.
+\end{priklad}
+
+\begin{veta}[Abel] \label{veta7.16}
+
+\end{veta}
+
+\subsection{Taylorovy řady elementárních funkcí}
+\begin{definice}
+
+\end{definice}
+
+\paragraph{Exponenciální funkce.} Použijeme Lagrangeův tvar zbytku (věta \ref{veta6.4}). Máme funkce
+$f(x)=\exp (x)$ v bodě $a=0$. Uvažujme $x\ne a$. Pro každé $n \in \mathbb N $ nalezneme podle
+věty \ref{veta6.4} bod $\xi _n$ mezi 0 a $x$ splňující
+$$
+    f(x)-T_n^{f,a}=\frac{1}{(n+1)!}f^{(n+1)}(\xi_n)x^{n+1}.
+$$
+Potom
+$$
+    |f(x)-T_n^{f,0}(x)| \leq  \frac{1}{(n+1)!}|x|^{n+1}e^{|x|}
+$$
+jde pro $n \to \infty$ k nule. Tedy
+$$
+    f(x) = \lim_{n \to \infty} T_n^{f,0}(x) = \lim_{n \to \infty} \sum_{j=0}^n \frac{1}{j!}x^j = \boxed{\sum_{j=0}^\infty \frac{1}{j!}x^j}.
+$$
+Odtud plyne pro $x=1$:
+$$
+    e = \sum_{j=0}^\infty \frac{1}{j!}.
+$$
+\paragraph{Logaritmická funkce.} Opět použijeme Lagrangeovu větu. Máme $f(x)=\log(1+x)$, $x \in \left ( 0,1 \right ] $.
+Pro každé $n \in \mathbb N $ nalezneme podle věty \ref{veta6.4} $\xi_n \in (0,x)$ splňující
+$$
+    |f(x) - T_n^{f,0}(x)| = \left | \frac{1}{(n+1)!}f^{(n+1)}(\xi_n) x^{n+1} \right|.
+$$
+Je
+\begin{align*}
+	f^\prime(x) &= \frac{1}{1+x} \\
+	f^{\prime\prime}(x) &= -\frac{1}{(1+x)^2} \\
+	f^{\prime\prime\prime}(x) &= (-1)(-2)\frac{1}{(1+x)^3} \\
+	& \dots \\
+	f^{(n)}(x) &= (-1)(-2) \dots (-(n-1)) \frac{1}{(1+x)^n} = (-1)^{n-1}(n-1)! \frac{1}{(1+x)^n}.
+\end{align*}
+Přepíšeme tedy původní výraz
+$$
+    = \left |\frac{1}{(n+1)!} (-1)^n n! \frac{1}{(1+\xi_n)^{n+1}}x^{n+1} \right |\leq \frac{1}{n+1},
+$$
+a tedy
+$$
+\lim_{n \to \infty} T_n^{f,0}(x)=f(x).
+$$
+
+\par Dále ať je $x \in (-1,0)$. Podle věty \ref{veta6.5} nalezneme $\xi_n \in (x,0)$ splňující
+\begin{align*}
+|f(x)-T_n^{f,0}(x)| &= \left |\frac{1}{n!}f^{(n+1)}(\xi_n)(x-\xi_n)^n x\right |\\
+	&= \left | \frac{1}{n!}(-1)^n \frac{1}{(1+\xi_n)^{n+1}}(x-\xi_n)^n x\right| = \left | \left( \frac{x-\xi_n}{1+\xi_n} \right )^n \frac{x}{1+\xi_n}  \right|,
+\end{align*}
+ale
+\begin{align*}
+\frac{\xi_n - x}{1+\xi_n} &\leq -x, \qquad \textrm{neboť} \\
+\xi_n -x&\leq -x-x\xi_n \\
+\xi_n(1+x)=\xi_n+x\xi_n &\leq 0.
+\end{align*}
+Původní výraz je tedy roven
+$$
+    = \left( \frac{\xi_n - x}{1+\xi_n} \right )^n \frac{|x|}{1-|x|} \leq \frac{|x|^{n+1}}{1-|x|},
+$$
+což pro $n\to \infty$ konverguje k nule.
+
+Odtud plyne pro $x=1$:
+$$
+    \log 2 = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}.
+$$
+
+\paragraph{Funkce sinus.} Máme $f(x)=\sin x$. Vezměme $x \in \mathbb R $, $x\ne 0$. Pro každé
+$n \in \mathbb N $ nalezneme $\xi_n$ mezi 0 a $x$ splňující
+$$
+    f(x)-T_n^{f,0}(x) = \frac{1}{(n+1)!}f^{(n+1)}(\xi_n)x^{n+1}.
+$$
+Pak máme
+$$
+    |f(x) - T_n^{f,0}(x)| \leq \frac{1}{(n+1)!}|x|^{n+1},
+$$
+což pro $n \to \infty$ jde k nule.
+
+\subsection{Posloupnosti a řady s komplexními členy}
+\begin{definice}
+
+\end{definice}
+
+\begin{poznamka}
+	\,
+	\begin{enumerate}[(1)]
+		\item $\left \{ a_n \right \} $ konverguje k $z$ právě tehdy, když $\lim_{n\to \infty} |a_n - z|=0$.
+		\item Limita posloupnosti $\left \{ a_n \right \} $ je určena jednoznačně. Kdyby
+		$\left \{ a_n \right \} $ konvergovala k $z_1$ a $z_2$, je
+		$$
+		    |z_1 -z_2| \leq \underbrace{|z_1-a_n|}_{\to 0} + \underbrace{|a_n-z_2|}_{\to 0},
+		$$
+		odkud máme $z_1=z_2$.
+		\item Platí věta o aritmetice limit.
+		\item $\lim a_n = z \iff (\lim \operatorname{Re} a_n = \operatorname{Re} z \land \lim \operatorname{Im}  a_n = \operatorname{Im} z)$.
+	\end{enumerate}
+\end{poznamka}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}\label{veta7.17}
+
+\end{veta}
+
+\begin{definice}
+
+\end{definice}

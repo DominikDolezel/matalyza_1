@@ -15,7 +15,7 @@
 \begin{definice}
 Nechť $f$ je funkce, $a \in \mathbb{R}$ a $f^{(n)}(a) \in \mathbb{R}$. Pak polynom
 \[
-T^{f,a}_n(x) = f(a) + f'(a)(x - a) + \dots + \frac{1}{n!} f^{(n)}(a)(x - a)^n
+T^{f,a}_n(x) = f(a) + f'(a)(x - a) + \dots + \frac{1}{n!} f^{(n)}(a)(x - a)^n, \qquad x \in \mathbb R
 \]
 nazýváme \textbf{Taylorovým polynomem} řádu $n$ funkce $f$ v bodě $a$.
 \end{definice}
@@ -29,4 +29,306 @@ nazýváme \textbf{Taylorovým polynomem} řádu $n$ funkce $f$ v bodě $a$.
 	    T^{\prime\prime}(a) = f^{\prime\prime}(a)\quad \dots\quad T^{(n)}(a)=f^{(n)}(a)
 	$$
 \end{enumerate}
+\end{poznamka}
+
+\begin{poznamka}
+	Idea: Chceme, aby $T^{(n)}(x)=f^{(n)}(a)$. Cíl: Studovat aproximační vlastnosti $T$, odhady chyby $|f-T|$ apod.
+\end{poznamka}
+
+\begin{lemma}\label{lemma6.1.}
+Nechť $Q$ je polynom, $\deg Q \le n$ a
+\[
+\lim_{x \to a} \frac{Q(x)}{(x-a)^n} = 0.
+\]
+Pak $Q$ je nulový polynom.
+\end{lemma}
+
+\begin{proof}
+	Nutně $Q(a)=0$. Předpokládejme, že $Q\ne 0$. Potom existuje $k\in \left \{ 1,\dots,n \right \} $
+	a polynom $R$ tak, že $$Q(x)=(x-a)^kR(x) \land R(a) \ne 0.$$ Potom
+	$$
+	    0=\lim_{x\to a} \frac{Q(x)}{(x-a)^n}=\lim_{x\to a} \frac{R(x)}{(x-a)^{n-k}}.
+	$$
+	Avšak tato limita
+	$$
+ \begin{cases}
+		\textrm{neexistuje} & k<n \land (n-k) \textrm{ liché},\\
+		\textrm{je nevlastní} & k <n \land (n-k) \textrm{ sudé},\\
+		\textrm{je vlastní a nenulová} & k=n,
+ \end{cases}
+	$$
+	což je spor v každém případě.
+\end{proof}
+
+\begin{veta}[Peanův tvar zbytku]\label{veta6.2}
+Nechť $a \in \mathbb{R}$, $f^{(n)}(a) \in \mathbb{R}$ a $P$ je polynom stupně nejvýše $n$. Pak
+\[
+\lim_{x \to a} \frac{f(x) - P(x)}{(x-a)^n} = 0
+\quad \Longleftrightarrow \quad
+P = T^{f,a}_n.
+\]
+\end{veta}
+
+\begin{proof}\,
+\begin{itemize}
+	\item[$\impliedby$] Matematickou indukcí máme
+	\begin{enumerate}
+		\item $n=1$: Máme
+		$$
+		    T_1^{f,a}=f(a)+f^\prime(a)(x-a)=t(x),
+		$$
+		a tedy
+		\begin{align*}
+		\lim_{x\to a} \frac{f(x)-t(x)}{x-a}&=\lim_{x\to a}\frac{f(x)-(f(a)+f^\prime(a)(x-a))^\prime}{x-a}\\
+		&=\lim_{x\to a} \left( \frac{f(x)-f(a)}{x-a}-f^\prime(a) \right ) = f^\prime(a)-f^\prime(a)=0.
+		\end{align*}
+		\item $n-1\rightsquigarrow n$: Předpokládejme, že platí pro $n-1$. Jest
+		$$
+		    \lim_{x\to a} \frac{f(x)-T^{f,a}_n(x)}{(x-a)^n},
+		$$
+		$f$ je spojitá (má vlastní derivaci), $T$ je spojitý, tedy
+	 $$ \lim_{x\to a}\left( f(x)-T_n^{f,a}(x) \right ) = f(a)-T_n^{f,a}(a)=f(a)-f(a)=0,$$
+		a proto je limita typu $\frac{0}{0}$. Pak můžeme použít L'H\^{o}spitalovo pravidlo.
+		$$
+		\lim_{x\to a} \frac{f(x)-T_n^{f,a}(x)}{(x-a)^n}=\lim_{x\to a} \frac{f^\prime(x)-T_{n-1}^{f^\prime,a}(x)}{n(x-a)^{n-1}}=0
+		$$
+		dle indukčního předpokladu.
+	\end{enumerate}
+	\item[$\implies$] Jest
+	\begin{align*}
+	0&=\lim_{x\to a} \frac{f(x)-P(x)}{(x-a)^n}=\lim_{x\to a} \frac{f(x)-T_n^{f,a}(x)+T_n^{f,a}(x)-P(x)}{(x-a)^n}\\
+	&= \lim_{x\to a} \left( \frac{f(x)-T_n^{f,a}(x)}{(x-a)^n}+\frac{T_n^{f,a}(x)-P(x)}{(x-a)^n} \right ) .
+	\end{align*}
+	Dále jest
+	$$
+	\frac{f(x)-T_n^{f,a}(x)}{(x-a)^n} = 0
+	$$
+	dle již dokázané implikace a
+	$$
+	    \frac{T_n^{f,a}(x)-P(x)}{(x-a)^n} = 0
+	$$
+	dle věty o aritmetice limit, neboť
+	$$\lim_{x\to a}\frac{T_n^{f,a}-P(x)}{(x-a)^n} = \lim_{x\to a} \bigg( \underbrace{\frac{f(x)-P(x)}{(x-a)^n}}_{=0\textrm{ z předpokladu}}-\underbrace{\frac{f(x)-T_n^{f,a}(x)}{(x-a)^n}}_{=0\textrm{ z již dokázaného}} \bigg)=0 ,$$
+	a tedy podle lemmatu \ref{lemma6.1.} je
+	$$
+	T_n^{f,a}(x)-P(x)=0,
+	$$
+	čili $P(x)=T_n^{f,a}(x)$.\qedhere
+\end{itemize}
+\end{proof}
+
+\begin{veta}\label{veta6.3}
+Nechť $a,x \in \mathbb{R}$, $a < x$. Předpokládejme, že:
+\begin{itemize}
+\item $f$ je funkce, která má v každém bodě intervalu $[a,x]$ vlastní $(n+1)$-ní derivaci,
+\item $\varphi$ je spojitá funkce na $[a,x]$, která má v každém bodě intervalu $(a,x)$ vlastní nenulovou derivaci.
+\end{itemize}
+Pak existuje $\xi \in (a,x)$ takové, že
+\[
+f(x) - T^{f,a}_n(x)
+=
+\frac{1}{n!}
+\frac{\varphi(x)-\varphi(a)}{\varphi'(\xi)}
+f^{(n+1)}(\xi)(x-\xi)^n.
+\]
+\end{veta}
+
+\begin{proof}
+	Idea: Cauchyho věta $\frac{F(x)-F(a)}{\varphi(x)-\varphi(a)}=\frac{F^\prime(\xi)}{\varphi^\prime(\xi)}$, $F$ definujeme (trik)
+	\par Položme
+	$$F(t)=f(x)-\left (f(t)+f^\prime(t)(x-t)+\dots +\frac{f^{(n)}(t)}{n!}(x-t)^n\right),\qquad t\in \left [ a,x \right ]. $$
+	Pak \begin{itemize}
+		\item $F: \left [ a,x \right ] \to \mathbb R $, $F$ je spojitá na $\left [ a,x \right ] $,
+		\item $F(a)=f(x)-T_n^{f,a}(x)$,
+		\item $F(x)=0$,
+		\item $F$ má vlastní derivaci v každém bodě $(a,x)$.
+\end{itemize}
+Tedy lze použít Cauchyovu větu \ref{veta5.8}. Máme tedy, že existuje $\xi \in (a,x)$ takové, že
+$$
+\frac{F(x)-F(a)}{\varphi(x)-\varphi(a)}= \frac{F^\prime(\xi)}{\varphi^\prime(\xi)}.
+$$
+Dále jest
+$$
+    F^\prime(t)=- \left( f^\prime(t) -f^\prime(t) + f^{\prime\prime}(x-t)+ \dots + \frac{1}{n!}f^{(n+1)}(t)(x-t)^n \right ),
+$$
+tedy $F^\prime(\xi) = - \frac{1}{n!}f^{(n+1)}(\xi)(x-\xi)^n$. Dosadíme:
+$$
+\frac{0-(f(x)-T_n^{f,a}(x))}{\varphi(x)-\varphi(a)}=\frac{-\frac{1}{n!}f^{(n+1)}(\xi)(x-\xi)^n}{\varphi^\prime(\xi)}.
+$$
+Odtud plyne
+$$
+    f(x)-T_n^{f,a}(x) = \frac{\varphi(x)-\varphi(a)}{\varphi^\prime(\xi)}\cdot \frac{1}{n!}\cdot f^{(n+1)}(\xi)(x-\xi)^n,
+$$
+což jsme chtěli dokázat.
+\end{proof}
+
+\begin{poznamka}
+\begin{enumerate}[(a)]
+	\item Věta platí i pro $x<a$, důkaz je stejný.
+	\item O $f$ stačí předpokládat, že $f^{(n)}$ je spojitá na $\left [ a,x \right ] $ a $f^{(n+1)}$ existuje
+	na $(a,x)$ (vlastní či nevlastní).
+\end{enumerate}
+\end{poznamka}
+
+\begin{veta}[Lagrangeův tvar zbytku]\label{veta6.4}
+Nechť $a,x,f$ jsou jako ve větě \ref{veta6.3}. Pak existuje $\xi \in (a,x)$ takové, že
+\[
+f(x) - T^{f,a}_n(x)
+=
+\frac{1}{(n+1)!}
+f^{(n+1)}(\xi)(x-a)^{n+1}.
+\]
+\end{veta}
+
+\begin{proof}
+	Ve větě \ref{veta6.3} položíme $\varphi(t)=(x-t)^{n+1}$. Potom $\varphi$ je spojitá na $\left [ a,x \right ] $,
+	má vlastní a nenulovou derivaci $(n+1)(x-t)^n$ na $(a,x)$. Tedy dle věty \ref{veta6.3} najdeme $\xi \in (a,x)$
+	takové, že
+	$$
+	    f(x)-T_n{f,a}(x)=\frac{1}{n!}\cdot \frac{0-(x-a)^{n+1}}{-(n+1)(x-\xi)^n}\cdot f^{(n+1)}(\xi)(x-\xi)^n = \frac{1}{(n+1)!}f^{(n+1)}(\xi)(x-a)^{n+1}.
+	$$
+\end{proof}
+
+\begin{veta}[Cauchyův tvar zbytku] \label{veta6.5}
+Nechť $a,x,f$ jsou jako ve větě \ref{veta6.3}.  Pak existuje $\xi \in (a,x)$ takové, že
+\[
+f(x) - T^{f,a}_n(x)
+=
+\frac{1}{n!}
+f^{(n+1)}(\xi)(x-\xi)^n (x-a).
+\]
+\end{veta}
+
+\begin{proof}
+	Použijeme větu \ref{veta6.3} pro funkci $\varphi(t)=t, t\in \mathbb R $. Pak existuje $\xi\in(a,x)$ takové,
+	že
+	$$
+	    f(x)-T_n^{f,a}(x)=\frac{1}{n!}\frac{x-a}{1}f^{(n+1)}(\xi)(x-\xi)^n.
+	$$
+\end{proof}
+
+\subsection{Symbol malé $o$}
+\begin{definice}
+Nechť $f,g$ jsou funkce, $a \in \mathbb{R}^*$. Řekneme, že funkce $f$ je v bodě $a$
+\textbf{malé $o$ od $g$} (píšeme $f(x) = o(g(x)), x \to a$), jestliže platí
+\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = 0.
+\]
+\end{definice}
+
+\begin{poznamka}
+\begin{enumerate}[(1)]
+	\item Podobně můžeme definovat i jednostranné verze:
+	$x\to a+$ nebo $x\to a-$.
+	\item Zápis $f(x)=h(x)+o(g(x)), x\to a$ znamená jednak
+	$$
+	    f(x)-h(x)=o(g(x)), \quad x\to a,
+	$$
+	ekvivalentně
+	$$
+	    \lim_{x\to a} \frac{f(x)-h(x)}{g(x)}=0;
+	$$
+	a také
+	$$
+	    f(x)=h(x)+\omega(x), \textrm{ kde } \omega(x) = o(g(x)), \quad x \to a.
+	$$
+\end{enumerate}
+\end{poznamka}
+
+
+\begin{veta}\label{veta6.6}
+Nechť $a \in \mathbb{R}^*$.
+\begin{enumerate}[(i)]
+\item Jestliže
+\begin{align*}
+	f_1(x) = o(g(x)), \quad x \to a && \textrm{a} && f_2(x) = o(g(x)),\quad x \to a,
+\end{align*}
+potom
+$$
+f_1(x) + f_2(x) = o(g(x)), \quad x \to a.
+$$
+\item Jestliže
+\begin{align*}
+	f_1(x) = o(g(x)), \quad x \to a && \textrm{a} && f_2(x) = o(g(x)),\quad x \to a,
+\end{align*}
+potom
+$$
+f_1(x) f_2(x) = o(g(x)), \quad x \to a.
+$$
+\item Jestliže
+\begin{align*}
+	f(x) = o(g_1(x)), \quad x \to a && \textrm{a} && \lim_{x\to a} \frac{g_1(x)}{g_2(x)} \in \mathbb R ,
+\end{align*}
+potom
+$$
+f(x)  = o(g_2(x)), \quad x \to a.
+$$
+\end{enumerate}
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(i)]
+	\item Je
+	$$
+		\lim_{x\to a} \frac{f_1(x)+f_2(x)}{g(x)}= \lim_{x\to a} \frac{f_1(x)}{g(x)} + \lim_{x\to a} \frac{f_2(x)}{g(x)} = 0+0=0.
+	$$
+	\item Je
+	$$
+	\lim_{x\to a} \frac{f_1(x)f_2(x)}{g(x)}= \lim_{x\to a} \frac{f_1(x)}{g(x)} \cdot  \lim_{x\to a} \frac{f_2(x)}{g(x)} = 0\cdot0=0.
+	$$
+	\item Je
+	$$
+ \lim_{x\to a} \frac{f(x)}{g_2(x)}=\lim_{x\to a} \frac{f(x)}{g_1(x)}\cdot \lim_{x\to a} \frac{g_1(x)}{g_2(x)} = 0\cdot L = 0.
+	$$
+	\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{veta}\label{veta6.7}
+Nechť $a,b \in \mathbb R ^*$, $f(y)=o(g(y))$, $y \to b$, $\lim_{x\to a}\varphi(x)=b$ a existuje $\delta\in \mathbb R , \delta>0$ takové, že
+\[
+\forall x \in P(a,\delta) : \varphi(x) \ne b.
+\]
+Pak $f(\varphi(x))=o(g(\varphi(x)))$, $x \to a$.
+\end{veta}
+
+\begin{proof}
+	Chceme spočítat
+	\begin{align*}
+	&\lim_{x\to a} \frac{f(\varphi(x))}{g(\varphi(x))} = \lim_{x\to a} \frac{f}{g}\circ \varphi(x)=0\\
+	&\lim_{y\to b} \frac{f}{g}(y)=0, \\
+	&\lim_{x\to a} \varphi(x)=b,\\
+	&\varphi \textrm{ splňuje podmínku (P) v bodě } a.
+\end{align*}
+\end{proof}
+
+\begin{poznamka}
+	Věta \ref{veta6.2} dává
+	\begin{align*}
+	&\lim_{x\to a} \frac{f(x)-T_n^{f,a}(x)}{(x-a)^n}=0\\
+	& f(x)- T_n^{f,a}(x)=o((x-a)^n), \quad x\to a\\
+	& f(x)= T_n^{f,a}(x) + o((x-a)^n), \quad x \to a
+\end{align*}
+\end{poznamka}
+
+\begin{priklad}
+Počítejme
+	$$
+ \lim_{x \to 0} \frac{\sin x -x}{x^3}.
+	$$
+	Je však
+	$$
+	    \sin x  = x - \frac{1}{6}x^3 + o(x^3), \quad x \to 0.
+	$$
+	Máme tedy
+	$$
+	\lim_{x \to 0} \frac{x - \frac{1}{6}x^3 + o(x^3) -x}{x^3} = \lim_{x\to 0} \frac{-\frac{1}{6}x^3+o(x^3)}{x^3}=-\frac{1}{6}.
+	$$
+\end{priklad}
+
+\begin{poznamka}
+Platí
+	$$
+ \lim_{x\to a} \frac{o(g(x))}{g(x)}=0.
+	$$
 \end{poznamka}
