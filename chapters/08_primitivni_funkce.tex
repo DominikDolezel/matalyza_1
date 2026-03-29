@@ -1,5 +1,712 @@
 \section{Primitivní funkce}
 \subsection{Základní vlastnosti}
 \begin{definice}
+Nechť $I$ je otevřený interval a $f : I \to \mathbb{R}$. Řekneme, že funkce $F : I \to \mathbb{R}$
+je \textbf{primitivní funkcí} k funkci $f$ na $I$, jestliže pro každé $x \in I$ existuje $F'(x)$ a platí $F'(x) = f(x)$.
+\end{definice}
+
+\begin{poznamka}
+	\,
+	\begin{enumerate}[(1)]
+		\item Existují funkce, které nemají funkci primitivní, např. $\sgn$ na $\mathbb R $.
+		\item Je-li funkce $F$ primitivní k funkci $f$ na $I$, potom $F$ je spojitá na $I$.
+		\item Hledání primitivní funkce označujeme jako \textbf{integraci}. Primitivní funkci někdy říkáme
+		\textbf{neurčitý integrál}.
+		\item Je-li $F$ primitivní k $f$ na $I$, potom $F+c$, kde $c \in \mathbb R $, je také
+		primitivní k $f$ na $I$.
+	\end{enumerate}
+\end{poznamka}
+
+\begin{veta}\label{veta8.1}
+Nechť $I$ je otevřený interval, $f, F, G : I \to \mathbb{R}$ jsou funkce, přičemž $F$ a $G$ jsou primitivní funkce k $f$ na $I$. Pak existuje $c \in \mathbb{R}$ takové, že
+$F = G + c$.
+\end{veta}
+
+\begin{proof}
+	Položme
+	$$
+	    H(x)=F(x)-G(x), \qquad x \in I.
+	$$
+	Potom pro každé $x\in I$ platí
+	$$
+	    H^\prime(x) = F^\prime(x) - G^\prime(x) = f(x)-f(x)=0.
+	$$
+	Odtud máme, že $H(x)$ je konstantní na $I$.
+\end{proof}
+
+\begin{oznaceni}
+Množinu všech primitivních funkcí k funkci $f$ označujeme symbolem
+\[
+\int f(x) \d x.
+\]
+Pro popis této množiny budeme používat značení
+\[
+\int f(x) \d x \stackrel{c}{=} F(x), \qquad x \in I.
+\]
+Jednotlivé části symbolu $\int f(x) \d x$ jsou znak integrálu $\int$, integrand $f(x)$ a symbol $\d x$ označující proměnnou, vzhledem k níž integrujeme.
+\end{oznaceni}
+
+\paragraph{Tabulkové integrály.}
+\begin{align*}
+&\int x^n \d x \stackrel{c}{=} \frac{x^{n+1}}{n+1}, \quad x \in \mathbb R  \quad \text{pro } n \in \mathbb{Z},\ n \ge 0;x \in (-\infty,0)\text{ nebo } (0,\infty)\text{ pro }n \in \mathbb Z , n < -1\\
+&\int x^\alpha \d x \stackrel{c}{=} \frac{x^{\alpha+1}}{\alpha+1}, \quad x \in (0,\infty) \quad \text{pro } \alpha \in \mathbb{R} \smallsetminus \mathbb{Z}\\
+&\int \frac{1}{x}\d x \stackrel{c}{=} \log |x|, \quad x \in (-\infty,0)\text{ nebo }x \in (0,\infty) \\
+&\int e^x \d x \stackrel{c}{=} e^x, \quad x \in \mathbb R \\
+&\int \sin x \d x \stackrel{c}{=} -\cos x,\quad x \in \mathbb R \\
+&\int \cos x \d x \stackrel{c}{=} \sin x,\quad x \in \mathbb R\\
+&\int \frac{1}{\cos^2 x}\d x \stackrel{c}{=} \tg x, \quad x \in (-\pi/2+k\pi, \pi/2+k\pi),\ k \in \mathbb Z \\
+&\int \frac{-1}{\sin^2 x}\d x \stackrel{c}{=} \cotg x, \quad x \in (k\pi, \pi+k\pi),\ k \in \mathbb Z \\
+&\int \frac{1}{\sqrt{1-x^2}}\d x \stackrel{c}{=} \arcsin x, \quad x \in (-1,1)\\
+&\int -\frac{1}{\sqrt{1-x^2}}\d x \stackrel{c}{=} \arccos x,\quad x \in (-1,1)\\
+&\int \frac{1}{1+x^2}\d x \stackrel{c}{=} \arctg x,\quad x \in \mathbb R\\
+&\int -\frac{1}{1+x^2}\d x \stackrel{c}{=} \arccotg x,\quad x \in \mathbb R
+\end{align*}
+
+\begin{veta}\label{veta8.2}
+Nechť $f$ je spojitá funkce na otevřeném neprázdném intervalu $I$. Pak $f$ má na $I$ primitivní funkci.
+\end{veta}
+
+\begin{veta}\label{veta8.3}
+Nechť $\alpha \in \mathbb{R} \smallsetminus \{0\}$ a funkce $f$ a $g$ mají na otevřeném intervalu $I$ primitivní funkce. Pak mají funkce $\alpha f$ a $f+g$ primitivní funkce na $I$ a platí
+\[
+\int (f+g) = \int f + \int g,\qquad
+\int \alpha f = \alpha \int f.
+\]
+\end{veta}
+
+\begin{proof}Obě rovnosti dokážeme zvlášť.
+\begin{itemize}
+	\item První rovnost
+	\begin{enumerate}
+		\item[$\subseteq$] Označme $H\in \int(f+g)$, Zvolme $F \in \in f, G\in \int g$. Pak je
+		\begin{align*}
+		H &= (H-F-G)+F+G, \qquad \text{a}\\
+		(H-F-G)^\prime + F^\prime &= f+g-f-g+f = f.
+		\end{align*}
+		\item[$\supseteq$] Označme $H\in \int f + \int g$. Je
+		\begin{align*}
+		H &= F_1+G_1, & F_1 \in \int f, \qquad G_1\in \int g\\
+		H^\prime &= F^\prime _1+ G_1^\prime = f+g,
+		\end{align*}
+		a tedy $(H-F-G) +F \in \int f$ a $G\in \int g$.
+	\end{enumerate}
+	\item Druhá rovnost
+	\begin{enumerate}
+		\item[$\subseteq$] Vezměme $H\in \int \alpha f$. Pak je $H=\alpha \frac{1}{\alpha}H$, a tedy
+		$$
+  \left( \frac{1}{\alpha}H \right )^\prime = \frac{1}{\alpha}\alpha f = f,
+		$$
+		a proto $\frac{1}{\alpha}H \in \int f$.
+		\item[$\supseteq$] Vezměme $F \in \int f$. Pak je
+		$$
+		    (\alpha F)^\prime = \alpha f \in \int \alpha f.
+		$$
+		\qedhere
+	\end{enumerate}
+\end{itemize}
+\end{proof}
+
+\begin{veta}[Integrace per partes]\label{veta8.4}
+Nechť funkce $f$ a $g$ mají na otevřeném intervalu $I$ po řadě primitivní funkce $F$ a $G$ a $f$ je spojitá na $I$. Pak platí
+\[
+\int fG = FG - \int Fg \quad \text{na } I.
+\]
+\end{veta}
+
+\begin{proof}
+	Dokážeme dvě inkluze.
+	\begin{enumerate}
+		\item[$\subseteq$] Funkce $f$ i $G$ jsou spojité na $I$. Proto je i $fG$ spojitá
+		a podle věty \ref{veta8.3} má primitivní funkci, označme ji $L$, je tedy $L\in \int fG$.
+		Je
+		$$
+		    L = FG-FG+L = FG- ( FG-L).
+		$$
+		Chceme ověřit, že $(FG-L) \in \int Fg$. Počíáme
+		$$
+		    (FG-L)^\prime = F^\prime G + FG^\prime - L^\prime = fG+Fg - fG = Fg,
+		$$
+		což jsme chtěli dokázat.
+		\item[$\supseteq$] Již víme, že $Fg$ má primitivní funkci na $I$.  Vezměme si $U\in \int Fg$.
+		Chceme dokázat, že
+		$
+		    FG-U \in \int fG
+		$.
+		Je
+		$$
+		    (FG-U)^\prime = F^\prime G + FG^\prime - U^\prime = fG+Fg-Fg=fG,
+		$$
+		což jsme chtěli dokázat. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{priklad}\,
+\begin{enumerate}[(1)]
+	\item Najděte $\int\log x \d x$.
+	\par Funkci přepíšeme jako $\int 1\cdot \log x \d x.$ Pak je
+	$$
+	    \int 1\cdot \log x \d x = x\log x - \int x \cdot \frac{1}{x} \d x = x\log x - \int 1 \d x \stackrel{c}{=} x\log x -x, \quad x \in (0,\infty).
+	$$
+	\item Najděte $\int \frac{1}{(1+x^2)^n}\d x$ pro nějaké $n \in \mathbb N $.
+	\par Označme $I_n = \int \frac{1}{(1+x^2)^n}\d x$. Pak je
+	\begin{align*}
+	I_n &= \int \underbrace{1}_{f}\cdot \underbrace{\frac{1}{(1+x^2)^n}}_{G}\d x = \underbrace{x}_{F}\cdot \underbrace{\frac{1}{(1+x^2)^n}}_{G} - \int \underbrace{x}_{F} \underbrace{(-n)\frac{1}{(1+x^2)^{n+1}}2x}_{g}\d x\\
+&= \frac{x}{(1+x^2)^n}+ 2n \int \frac{x^2}{(1+x^2)^{n+1}}\d x\\
+&= \frac{x}{(1+x^2)^n} + 2n \left( \int \frac{1+x^2}{(1+x^2)^{n+1}}\d x - \int \frac{1}{(1+x^2)^{n+1}}\d x \right )\\
+&= \frac{x}{(1+x^2)^n} + 2n \left( \int \frac{1}{(1+x^2)^n}\d x - \int \frac{1}{(1+x^2)^{n+1}}\d x \right )\\
+&= \frac{x}{(1+x^2)^n} + 2nI_n - 2nI_{n+1}
+\end{align*}
+a po vyjádření máme
+\begin{align*}
+	I_{n+1} &= \frac{x}{(1+x^2)^n} + \frac{2n-1}{2n} I_n\\
+	I_1 &= \int \frac{1}{1+x^2}\d x \stackrel{c}{=} \arctg x, \quad x \in \mathbb R
+	I_2 &\stackrel{c}{=} \frac{x}{2(1+x^2)}+\frac{1}{2}\arctg x, \quad x \in \mathbb R\\
+	& \dots
+\end{align*}
+\item Najděte $\int x \sin x \d x$.
+\par Je
+\begin{align*}
+\int \underbrace{e^x}_{f}\underbrace{\sin x}_{G} \d x &= \underbrace{e^x}_{F}\underbrace{\sin x }_{G} - \int \underbrace{e^x}_{F}\underbrace{\cos x}_g \d x\\
+&= e^x - \sin x - \left( e^x\cos x - \int e^x (-\sin x)\d x\right )\\
+&= e^x(\sin x -\cos x) - \int e^x \sin x \d x,
+\end{align*}
+a tedy
+$$
+    \int e^x \sin x \d x \stackrel{c}{=} \frac{1}{2} e^x (\sin x - \cos x), \quad x \in \mathbb R.
+$$
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Darboux] \label{veta8.5}
+Nechť $f$ má na otevřeném intervalu $I$ primitivní funkci. Potom $f$ zobrazuje každý interval $J \subset I$ opět na interval.
+\end{veta}
+
+\begin{proof}
+    Nechť $J\subset I$ je interval. Chceme ukázat, že $f(J)$ je interval.
+    Vezměme $y_1, y_2 \in f(J)$, $y_1 < y_2$ a $z\in (y_1,y_2)$. Nalezneme
+    $x_1, x_2 \in J$ takové, že $f(x_1) = y_1$, $f(x_2)=y_2$. Předpokládejme, že
+    $x_1 < x_2$. Druhý případ by se řešil analogicky. Označme $F$ funkci primitivní k $f$ na $I$.
+    Položme
+    $$
+        H(x) = F(x)-zx, \qquad x \in I.
+    $$
+    Funkce $H$ je spojitá na $I$, a tedy i na $[x_1,x_2]$. Existuje $x^*\in [x_1,x_2]$, kde
+    $H$ nabývá minima na $[x_1,x_2]$. Platí
+    $$
+    H^\prime(x) = F^\prime(x)-z=f(x)-z, \qquad x \in I,
+    $$
+    tedy
+    \begin{align}
+    H^\prime(x_1) &= f(x_1)-z = y_1 - z < 0,\label{rovniceder1:1}\\
+    H^\prime(x_2) &= f(x_2)-z = y_2 - z > 0.\label{rovniceder1:2}
+    \end{align}
+    Z (\ref{rovniceder1:1}) plyne, že existuje $\delta_1 > 0$ takové, že
+    $$
+        \forall x \in (x_1, x_1+\delta_1): H(x_1)>H(x).
+    $$
+    Z (\ref{rovniceder1:2}) plyne, že existuje $\delta_2>0$ takové, že
+    $$
+        \forall x \in (x_2-\delta_2, x_2):H(x)<H(x_2).
+    $$
+    Odtud plyne, že $x^* \in (x_1,x_2)$. Proto je $x^*$ bodem lokálního minima $H$,
+    a tedy $H^\prime(x^*)=0$. Proto je $f(x^*)=z$, což jsme chtěli dokázat.
+\end{proof}
+
+\begin{veta}[První věta o substituci] \label{veta8.6}
+Nechť $a,b,\alpha,\beta \in \mathbb{R}^*$, $a<b$, $\alpha<\beta$, $F$ je primitivní funkce k $f$ na $(a,b)$,
+$\varphi : (\alpha,\beta) \to (a,b)$ a pro každé $t \in \left(\alpha, \beta \right ) $ existuje vlastní
+$\varphi^\prime(t)$. Potom platí
+\[
+\int f(\varphi(t))\, \varphi'(t)\d t \stackrel{c}{=} F(\varphi(t)), \qquad t \in (\alpha,\beta).
+\]
+\end{veta}
+
+\begin{proof}
+	Platí
+	$$
+	    (F(\varphi(t)))^\prime = F^\prime(\varphi(t))\cdot \varphi^\prime(t) = f(\varphi(t))\cdot \varphi^\prime(t), \qquad t \in (\alpha, \beta).
+	$$
+\end{proof}
+
+\begin{veta}[Druhá věta o substituci] \label{veta8.7}
+Nechť $a,b,\alpha,\beta \in \mathbb{R}^*$, $a<b$, $\alpha<\beta$, $\varphi : (\alpha,\beta) \to (a,b)$,
+pro každé $t \in(\alpha, \beta)$ existuje $\varphi^\prime(t)$ vlastní a nenulová a
+$\varphi((\alpha, \beta)) = (a,b)$. Nechť $f$ je funkce definovaná na intervalu $(a,b)$ a platí
+\[
+\int f(\varphi(t)) \cdot\varphi'(t)\d t \stackrel{c}{=} G(t), \qquad t \in (a,b).
+\]
+Pak platí
+\[
+\int f(x)\d x \stackrel{c}{=} G(\varphi^{-1}(x)), \qquad x \in (a,b).
+\]
+\end{veta}
+
+\begin{proof}
+	Podle věty \ref{veta8.5} je $\varphi^\prime$ na $(\alpha, \beta)$ kladná nebo je
+	$\varphi^\prime$ na $(\alpha, \beta)$
+	záporná. Předpokládejme první možnost, druhá se dokáže analogicky. Potom je $\varphi$ rostoucí na
+	$(\alpha, \beta)$, a je tedy prostá. Potom $\varphi^{-1}: (a,b)\to (\alpha, \beta)$ je dobře definována.
+	Počítejme
+	\begin{align*}
+	\left( G\circ \varphi^{-1} \right )^\prime &= G^\prime \left(\varphi^{-1}(x)\right)\cdot \left(\varphi^{-1}(x)\right)^\prime\\
+&= f \left( \varphi(\varphi^{-1}(x)) \right )\cdot \varphi^\prime \left( \varphi^{-1}(x) \right )\cdot \frac{1}{\underbrace{\varphi^\prime \left( \varphi^{-1}(x) \right ) }_{\ne 0}}.
+\end{align*}
+\end{proof}
+
+\begin{priklad}
+	Mějme funkci
+	$$
+	    F(x) = \begin{cases}
+						x^2 \sin \frac{1}{x^2}, & x \ne 0,\\
+						0, & x=0.
+					\end{cases}
+	$$
+	Pak je $F^\prime(x)=0$ a pro $x\ne 0$ je
+	$$
+	    F^\prime(x)=\underbrace{2x\sin \frac{1}{x^2}}_{\to 0} + x^2 \cos \frac{1}{x^2}\cdot \frac{-2}{x^2}.
+	$$
+	Derivace $F(x)$ není spojitá v nule.
+\end{priklad}
+
+\begin{poznamka}
+	viz prezentaci
+\end{poznamka}
+
+\subsection{Integrace racionálních funkcí}
+\begin{definice}
+\textbf{Racionální funkcí} rozumíme reálnou funkci, která je podílem dvou polynomů, přičemž jmenovatel není identicky roven nule.
+\end{definice}
+
+\paragraph{Integrace parciálních zlomků.} Rozlišujeme parciální zlomky více typů.
+\begin{enumerate}[(a)]
+	\item Parciální zlomky prvního typu jsou zlomky tvaru
+	$$\int \frac{A}{(x-a)^n}\d x, \quad a \in \mathbb R , A\in \mathbb R , n \in \mathbb N .$$
+	Integrujeme je následovně:
+	$$
+	    \int \frac{A}{(x-a)^n}\d x\stackrel{c}{=}\begin{cases}
+						A\log |x-a|, \, x \in (-\infty, a) \text{ nebo } x \in (a,\infty) & n=1,\\
+						\frac{1}{1-n}\cdot \frac{A}{(x-a)^{n-1}}, \, x \in (-\infty, a) \text{ nebo } x \in (a,\infty) & n > 1.
+					\end{cases}
+	$$
+	\item Parciální zlomky druhého typu jsou zlomky tvaru
+	$$
+	    I=\int \frac{Bx+C}{(x^2+\alpha x + \beta)^q}\d x,
+	$$
+	kde $B,C,\alpha, \beta \in \mathbb R , q \in \mathbb N $ a $\alpha^2-4\beta < 0$ (tedy
+	polynom ve jmenovateli nemá reálné kořeny). Pak je:
+	\begin{align*}
+	I &= \frac{B}{2}\underbrace{\int \frac{2x+\alpha}{(x^2+\alpha x + \beta)^q}\d x}_{I_1} + \left( C-\frac{B\alpha}{2} \right ) \underbrace{\int \frac{1}{(x^2+\alpha x+\beta)^q}\d x}_{I_2}.
+\end{align*}
+Jednotlivé funkce zintegrujeme následovně:
+\begin{align*}
+I_1 &\stackrel{c}{=} \begin{cases}
+\log \left( x^2+\alpha x + \beta \right ),\,  x \in \mathbb R , & q=1,\\
+\frac{1}{1-q}\frac{1}{(x^2+\alpha x +\beta)^{q-1}}, \, x \in \mathbb R, & q > 1.
+\end{cases}\\
+I_2 &= \int \frac{1}{\left(\left( x+ \frac{\alpha}{2} \right )^2+\beta - \frac{\alpha^2}{4} \right)^q}\d x\\
+&= \frac{1}{\left( \beta - \frac{\alpha^2}{4} \right )^q }\int \frac{1}{\left( \left( \frac{x+\frac{\alpha}{2}}{\sqrt{\beta - \frac{\alpha^2}{4}}} \right )^2+1  \right )^q }\d x,
+\end{align*}
+a tento případ převedeme substitucí na integraci
+$$
+    \int \frac{1}{(t^2+1)^q}\d t
+$$
+až na nějakou konstantu. Zvolme
+$$
+    \varphi(x) = \frac{x+ \frac{\alpha}{2}}{\sqrt{\beta - \frac{\alpha^2}{4}}}.
+$$
+Pak je
+$$
+    \varphi^\prime(x) = \frac{1}{\sqrt{\beta - \frac{\alpha^2}{4}}}
+$$
+a můžeme přepsat
+$$
+    \int \frac{1}{\left( \left( \frac{x+\frac{\alpha}{2}}{\sqrt{\beta - \frac{\alpha^2}{4}}} \right )^2+1  \right )^q }\d x = \sqrt{\beta - \frac{\alpha^2}{4}}\int \frac{1}{\left( \left( \frac{x+\frac{\alpha}{2}}{\sqrt{\beta - \frac{\alpha^2}{4}}} \right )^2+1  \right )^q } \frac{1}{\sqrt{\beta - \frac{\alpha^2}{4}}}\d x,
+$$
+a tedy počítáme integrál
+$$
+f(z)= \frac{1}{\left( z^2+1 \right )^q },
+$$
+což už umíme.
+\end{enumerate}
+
+\begin{veta}\label{veta8.8}
+Nechť
+$
+P(x) = a_n x^n + \cdots + a_1 x + a_0
+$
+je polynom stupně $n$ s reálnými koeficienty. Pak existují reálná čísla $x_1,\dots,x_k$, $\alpha_1,\dots,\alpha_l$, $\beta_1,\dots,\beta_l$ a přirozená čísla $p_1,\dots,p_k$, $q_1,\dots,q_l$ taková, že
+\begin{itemize}
+	\item platí
+	\[
+P(x) = a_n (x-x_1)^{p_1}\cdots(x-x_k)^{p_k}
+(x^2+\alpha_1 x+\beta_1)^{q_1}\cdots(x^2+\alpha_l x+\beta_l)^{q_l},
+\]
+\item žádné dva z polynomů $x-x_1, \dots, x-x_k, x^2+\alpha_1x+\beta_1, \dots, x^2+\alpha_lx+\beta_l$
+nemají společný kořen,
+\item polynomy $x^2+\alpha_1x+\beta_1, \dots, x^2+\alpha_lx+\beta_l$ nemají žádný reálný kořen.
+\end{itemize}
+\end{veta}
+
+\begin{veta}[Rozklad na parciální zlomky]\label{veta8.9}
+Nechť $P,Q$ jsou polynomy s reálnými koeficienty, takové, že $\operatorname{st} P < \operatorname{st} Q$ a nechť
+$$
+Q(x) = a_n(x-x_1)^{p_1}\dots (x-x_k^{p_k})\left( x^2+\alpha_1x+\beta_1 \right )^{q_1}\dots \left( x^2+\alpha_l x + \beta_l \right )^{q_l}
+$$
+je rozklad polynomu $Q$ z věty \ref{veta8.8}. Pak existují jednoznačně určená čísla $A_1^1,\dots,A_{p_1}^1,\dots, A_1^{k},\dots,A_{p_k}^k$,
+$B_1^1,C_1^1\dots, B_{q_1}^1C_{q_1}^1,\dots,B_1^l,C_1^l,B_{q_l}^lC_{q_l}^l$ taková, že platí
+\begin{align*}
+\frac{P(x)}{Q(x)} &= \frac{A_1^1}{(x-x_1)}+\dots + \frac{A_{p_1}^1}{(x-x_1)^{p_1}} + \dots + \frac{A_1^k}{(x-x_k)}+ \dots + \frac{A_{p_k}^k}{(x-x_k)^{p_k}}\\
+&+ \frac{B_1^1 x+C_1^1}{(x^2+\alpha_1 x+\beta_1)}+\dots + \frac{B_{q_1}^1x+C_{q_1}^1}{(x^1+\alpha_1 x+\beta_1)^{q_1}}\\
+&+  \dots \\
+&+ \frac{B_1^l x+C_1^l}{(x^2+\alpha_l x+\beta_l)} + \dots + \frac{B_{q_l}^l x+C_{q_l}^l}{(x^2+\alpha_l x+\beta_l)^{q_l}}
+\end{align*}
+\end{veta}
+
+\paragraph{Postup při integraci racionální lomené funkce.} Úloha: Spočíteje $\int R(x) \d x$, kde
+$$
+    R(x) = \frac{P(x)}{Q(x)} = P_1(x) + \frac{P_2(x)}{Q(x)},
+$$
+přičemž $P(x), P_1(x), P_2(x), Q(x)$ jsou polynomy, $\operatorname{st} P_2(x) < \operatorname{st} Q(x)$.
+Dále rozložíme $\frac{P_2(x)}{Q(x)}$ na parciální zlomky a konečně zintegrujeme polynom
+$P_1(x)$ a jednotlivé parciální zlomky.
+
+\begin{priklad}
+	Spočtěte $\int\frac{x^2+1}{(x+1)(x^2+x+1)}\d x$.
+	\par Podle věty \ref{veta8.9} existují $A,B,C \in \mathbb R $ taková, že
+	$$
+	    \frac{x^2+1}{(x+1)(x^2+x+1)} = \frac{A}{x+1}+ \frac{Bx+C}{x^2+x+1}, \qquad x \in \mathbb R \smallsetminus \left \{ -1 \right \}.
+	$$
+	Tuto rovnost přepíšeme na
+	$$
+	    x^2+1 = A(x^2+x+1) + (Bx+C)(x+1), \qquad x \in \mathbb R \smallsetminus \left \{ -1 \right \}.
+	$$
+	Protože se tyto dvě funkce shodují na prstencovém okolí bodu $-1$ a jsou spojité,
+	platí druhá rovnost dokonce na $\mathbb R $. Upravíme
+	$$
+	    x^2+1 = (A+B)x^2+(A+B+C)x+A+C, \qquad x \in \mathbb R.
+	$$
+	Metodou porovnání koeficientů dostaneme
+	\begin{align*}
+		x^2: & 1 = A+B,\\
+		x^1: & 0=A+B+C, \\
+		x^0: & 1 = A+C.
+	\end{align*}
+	Lze postupovat jednodušeji, třeba pro $x=1$ dostaneme $A=2$. Pak $B=-1$ a $C = -1$. Máme tedy
+	$$
+	    \int \frac{x^2+1}{(x+1)(x^2+x+1)}\d x = \underbrace{\int \frac{2}{x+1} \d x}_{I_1}- \underbrace{\int \frac{x+1}{x^2+x+1}\d x}_{I_2}.
+	$$
+	Spočteme
+	\begin{align*}
+	I_1 &\stackrel{c}{=} 2\log |x+1|, \qquad x \in (-\infty, -1) \text{ nebo } x \in (-1,\infty),\\
+	I_2 &= \int \frac{x+1}{x^2+x+1}\d x = \frac{1}{2} \underbrace{\int \frac{2x+1}{x^2+x+1}\d x}_{I_3} + \frac{1}{2} \underbrace{\int \frac{1}{x^2+x+1}\d x }_{I_4},
+\end{align*}
+je tedy
+\begin{align*}
+I_3 &\stackrel{c}{=} \log (x^2+x+1), \qquad x \in \mathbb R, \\
+I_4 &= \int \frac{1}{\left( x+\frac{1}{2} \right )^2 + \frac{3}{4} } \d x= \frac{4}{3} \int \frac{1}{\left( \frac{2x+1}{\sqrt{3}} \right )^2 +1} \d x \\
+&\stackrel{c}{=} \frac{4}{3}\cdot \frac{\sqrt{3}}{2} \arctg{\frac{2x+1}{\sqrt{3}}}, \qquad x \in \mathbb R.
+\end{align*}
+Původní integrál je tedy roven
+$$
+    \int\frac{x^2+1}{(x+1)(x^2+x+1)}\d x \stackrel{c}{=} 2\log |x+1| - \frac{1}{2} \log (x^2+x+1) - \frac{1}{\sqrt{3}}\arctg \frac{2x+1}{\sqrt{3}},
+$$
+kde $x \in (-\infty, -1)$ nebo $x \in (-1,\infty)$.
+\end{priklad}
+
+\begin{definice}
 
 \end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\paragraph{Goniometrické substituce.}
+
+
+\begin{priklad}
+	Spočtěte $\int \frac{1}{1+\sin^2t}\d t = \int g(t) \d t$.
+	\par Máme $R(a,b)=\frac{1}{1+a^2}$. Tato funkce je sudá, použijeme tedy substituci $\tg t = x$. Bude tedy
+	$$
+	    \varphi(t)=\tg t, \qquad t \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right )+k\pi.
+	$$
+	Pak je
+	$$
+	    \varphi^\prime(t) = \frac{1}{\cos^2 t}, \qquad t \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right )+k\pi.
+	$$
+	Chceme $\tg t = x$. Dostaneme
+	\begin{align*}
+	\frac{\sin^2 t}{\cos^2 t} &= x^2\\
+	\sin^2 t &= x^2 \cos ^2 t \\
+	\sin^2 t &= x^2 (1-\sin^2 t)\\
+	\sin^2 t &= \frac{x^2}{1+x^2},\\
+	\cos^2 t &= \frac{1}{1+x^2}.
+	\end{align*}
+	Přepíšeme
+	$$
+	\int g(t) \d t = \int \frac{1}{1+\sin^2 t} \cos^2 t \underbrace{\frac{1}{\cos^2 t}}_{\varphi(t)}\d t,
+	$$
+	pak je
+	$$
+	f(x) = \frac{\frac{1}{1+x^3}}{1+\frac{x^2}{1+x^2}},
+	$$
+	a tedy
+	$$
+	    \int f(x) \d x = \int \frac{1}{1+2x^2} \d x = \int \frac{1}{1+(\sqrt{2}x)^2} \stackrel{c}{=} \frac{1}{\sqrt{2}}\arctg{(\sqrt{2}x)},
+	$$
+	původní integrál je tedy roven
+	$$
+	    \int \frac{1}{1+\sin^2 t} \d t \stackrel{c}{=} \frac{1}{\sqrt{2}} \arctg{(\sqrt{2}\tg{t})}, \qquad t \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right )+k\pi, \pi \in \mathbb Z .
+	$$
+	Protože je primitivní funkce spojitá, ale tato funkce má body nespojitosti, musíme jednotlivé
+	hodnoty \uv{posunout} tak, aby limita zleva se rovnala limitě zprava v bodech nespojitosti.
+	Nakonec musíme ověřit, že derivace v bodech nespojitosti opravdu vyjde správně.
+\end{priklad}
+
+\paragraph{Několik dalších substitucí.} Ať $R$ je racionální funkce dvou proměnných.
+\begin{itemize}
+	\item $\int R \left( t, \sqrt[q]{\frac{az+b}{ct+f}} \right ) \d t$, kde $q \in \mathbb N , a,b,c,f,\in \mathbb R , af \ne bc$
+	Položíme
+	$$
+	    x = \sqrt[q]{\frac{at+b}{ct+f}}.
+	$$
+	\item $\int R \left( t, \sqrt{at^2 + bt +c} \right )\d t $, kde $a,b,c \in \mathbb R , a \ne 0$.
+	Rozlišíme následující možnosti:
+	\begin{enumerate}[(1)]
+		\item Polynom $at^2+bt+c$ má dvojnásobný kořen $\alpha$. Pak můžeme psát
+		$$
+		    at^2+bt+c = a(t-\alpha)^2,
+		$$
+		a tedy
+		$$
+  \sqrt{at^2+bt+c}= \sqrt{a} |t-\alpha|, \qquad a > 0.
+		$$
+		\item Polynom $at^2+bt+c$ má dva různé reálné kořeny $\alpha_1, \alpha_2$, $\alpha_1 <\alpha_2$.
+		Potom můžeme psát
+		$$
+  \sqrt{at^2+bt+c} = |t-\alpha_1| \cdot \sqrt{\frac{a(t-\alpha_2)}{t-\alpha_1}}, \qquad a>0.
+		$$
+		\item Polynom $at^2+bt+c$ nemá reálné kořeny. Potom $a>0$, a tedy i $c>0$, aby vůbec
+		úloha měla dobrý smysl. V tom případě můžeme použít tzv. Eulerovy substituce:
+		\begin{align*}
+			\sqrt{at^2+bt+c} &= \sqrt{a}t +x, \\
+			\sqrt{at^2+bt+c} &= -\sqrt{a}t+x, \\
+			\sqrt{at^2+bt+c} &= tx+ \sqrt{c}.
+		\end{align*}
+		Tyto substituce vedou na integraci racionální funkce.
+	\end{enumerate}
+\end{itemize}
+
+\begin{priklad}
+	Spočtěte $\int \frac{1}{t^2 \sqrt{t^2+1}}\d t$.
+	\par Budeme zvlášť uvažovat intervaly $(-\infty, 0), (0, \infty)$. Za sbustituci zvolíme
+	$\sqrt{t^2+1}=t+x$. Pak je
+	$$
+	    \varphi(t) = \sqrt{t^2+1}-t,
+	$$
+	$\varphi: \mathbb R \to \mathbb R $, a
+	$$
+	    \varphi^\prime(t) = \frac{1}{2}\cdot \frac{2t}{\sqrt{t^2+1}} - 1 = \frac{t^2}{t^2+1}-1.
+	$$
+	Máme tedy
+	\begin{align*}
+		t^2+t &= t^2+2tx+ x^2 \\
+		t &= 2tx +x^2\\
+		t &= \frac{1-x^2}{2x},
+		\d t &= \frac{-2x\cdot 2x - (1-x^2)\cdot 2}{4x^2}\d x = \frac{-2-2x^2}{4x^2} \d x.
+	\end{align*}
+	Můžeme tedy psát
+	\begin{align*}
+	&\int \frac{1}{\left( \frac{1-x^2}{2x} \right )^2 \left( \frac{1-x^2}{2x}+x \right )  } \cdot \frac{-2-2x^2}{4x^2}\d x\\
+	=&\int \frac{-4x}{(1-x)^2(1+x)^2}\d x \\
+	=& \int \left( \frac{-1}{(1-x)^2}+\frac{1}{(1+x)^2} \right )\d x \\
+	\stackrel{c}{=}& -\frac{1}{1-x} - \frac{1}{1+x} = \frac{2}{x^2-1},
+	\end{align*}
+	kde $x \in (-\infty, -1)$, $x \in (-1,1)$ nebo $x\in (1,\infty)$.
+	Celkem tedy
+	$$
+	    \int \frac{1}{t^2 \sqrt{t^2+1}}\d t \stackrel{c}{=} \frac{1}{\left( \sqrt{t^2+1}t \right )^2 - 1 },
+	$$
+	kde $t \in (-\infty, 0)$, $t \in (0, \infty)$.
+\end{priklad}
+
+\subsection{Riemannův integrál}
+\begin{definice}
+
+\end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{poznamka}
+	\,
+	\begin{enumerate}[(1)]
+		\item Platí $\int_0^1 1 \d x = 1$.
+		\item Funkce $\int_0^1 D(x) \d x$, kde
+		$$
+		    D(x) = \begin{cases}
+						0, & x \in \mathbb R \smallsetminus \mathbb Q,\\
+						1, & x \in \mathbb Q
+					\end{cases}
+		$$
+		je Dirichletova funkce, není riemannovsky integrovatelná. Vezměme $\overline{S}(D,P)$, kde
+		$P$ je dělení intervalu $[0,1]$. Pak je
+		\begin{align*}
+		\overline{S}(D,P) &= \sum _{j=1}^n M_j(x_j-x_{j-1})=1,\\
+		\underline{S}(D,P) &= \sum_{j=1}^n m_j(x_j-x_{j-1}) = 0.
+		\end{align*}
+		Máme tedy, že
+		$$
+		    \overline{\int_0^1} D(x)\d x = 1, \qquad \underline{\int_0^1} D(x) \d x = 0,
+		$$
+		a tedy $D(x)$ není riemannovsky integrovatelná.
+	\end{enumerate}
+\end{poznamka}
+
+\begin{lemma} \label{lemma8.10}
+
+\end{lemma}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Ať je $D = \left \{ x_j \right \}_{j=0}^n $. BÚNO $D^\prime$ obsahuje dělící body
+		$D$ a navíc právě jeden bod $z \in \left( x_{j-1}, x_j \right ) $, $j \in \left \{ 1,\dots, n \right \} $.
+		Můžeme psát
+		\begin{align*}
+		    \underline{S}(f,D) &= \sum_{k=1, k \ne j}^n m_k (x_k-x_{k-1})+ m_j(x_j-x_{j-1}),\\
+			\underline{S}(f,D) &= \sum_{k=1, k \ne j}^n m_k (x_k-x_{k-1})+ \underbrace{m_j^\prime}_{\geq m_j}(z-x_{j-1}) + \underbrace{m^{\prime\prime}_j}_{\geq m_j} (x_j - z).
+		\end{align*}
+		Tím jsme dokázali první nerovnost. Druhá nerovnost je triviální a třetí nerovnost dokážeme analogicky.
+		\item Nechť dělení $D$ zjemňuje $D_1$ i $D_2$. Podle části (a) platí
+		$$
+		    \underline{S}(f,D_1) \leq \underline{S}(f,D) \leq \overline{S}(f,D) \leq \overline{S}(f,D_2).
+		$$
+		\item Zvolme dělení $D_1$ intervalu $[a,b]$. Potom pro každé dělení $D_2$ platí
+		$$
+		    \underline{S}(f,D_1) \leq  \overline{S}(f,D_2).
+		$$
+		Odtud máme, že
+		$$\underline{S}(f,D_1) \leq \overline{\int_a^b}f=\inf \left \{ \overline{S}(f,D_2); D_2 \text{ dělení } [a,b]\right \}. $$
+		Jinými slovy,
+		$$
+		    \underline{S}(f,D_1) \leq \overline{\int_a^b}f
+		$$
+		pro každé dělení $D_1$. Je
+		$$
+		    \underline{\int_a^b } f = \sup \left \{ \underline{S}(f,D_1); D_1 \text{ je dělením }[a,b] \right \},
+		$$
+		odkud máme
+		$$
+		    \underline{\int_a^b}f \leq \overline{\int_a^b}f.
+		$$
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{dusledek}\label{dusledek8.11}
+
+\end{dusledek}
+
+\begin{proof}
+	Zvolme dělení $D$ sestávající z bodů $a$ a $b$. Potom platí
+	$$
+	    m(b-a) = \underline{S}(f,D)\leq \underline{S}(f,D_1) \leq \underline{\int_a^b}f \leq \overline{\int_a^b}f \leq \overline{S}(f,D_2) \leq \overline{S}(f,D)=M(b-a).
+	$$
+\end{proof}
+
+\begin{veta}\label{veta8.12}
+
+\end{veta}
+
+\begin{proof}
+    Nalezneme  $K>0$ takové, že pro každé $x \in [a,b]$ platí $|f(x)|<K$. Nyní zvolme $\varepsilon >0$.
+    Nalezneme dělení $D_0 = \left \{ x_j \right \}_{j=0}^n $ intervalu $[a,b]$ takové, že
+    $$
+        \overline{S}(f,D_0) < \overline{\int_a^b}f+ \frac{\varepsilon}{2}.
+    $$
+    Nalezneme $\delta >0$ splňující:
+    \begin{enumerate}[(1)]
+	\item $\delta < \min \left \{ x_j-x_{j-1}; j \in \left \{ 1,\dots,n \right \}  \right \} $,
+	\item $\delta < \frac{\varepsilon}{8Kn}$.
+    \end{enumerate}
+    Zvolme dělení $D$ na intervalu $[a,b]$ splňující $\nu(D)<\delta$. Chceme ukázat
+    $$
+        \overline{\int_a^b}f \leq \overline {S}(f,D) < \overline{\int_a^b}f+\varepsilon.
+    $$
+    Dělení $P$ bude obsahovat právě ty body dělení $D_0$ a $D$. Označme $\mathscr D$ (resp. $\mathscr P$) jako intervaly
+    příslušné dělení $D$ (resp. dělení $P$). Počítáme
+    $$
+        0\leq\overline{S}(f,D) - \overline{S}(f,P) = \sum_{I\in \mathscr D}\sup_I f \cdot \text{délka}(I) - \sum_{j\in \mathscr P}\sup_J f \cdot \text{délka}(J).
+    $$
+    Dále označme $Z = \left \{ x_0,x_1,\dots,x_n \right \} $. Pak je
+    $$
+        \overline{S}(f,D) - \overline{S}(f,P) = \sum_{I\in \mathscr D, I\cap Z \ne \emptyset} \sup_I f \cdot \text{délka}(I)-\sum_{J\in \mathscr P, J\cap Z \ne \emptyset} \sup_j f \cdot \text{délka}(J)\leq 2n\cdot 2K\cdot \delta = 4Kn\delta<\frac{\varepsilon}{2}.
+    $$
+    Dokázali jsme:
+    $$
+        \overline{\int _a^b}f\leq \overline{S}(f,P) \leq \overline{S}(f,D_0) \leq \overline{\int_a^b}f+\frac{\varepsilon}{2}
+    $$
+    a taky
+    $$
+        \overline{\int_a^b}f \leq \overline{S}(f,D) \leq \overline S(f,P)+\frac{\varepsilon}{2} < \overline{\int_a^b} f + \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\overline{\int_a^b}f+\varepsilon.
+    $$
+    Analogicky i pro $\underline{\int_a^b}f$.
+\end{proof}
+
+\begin{dusledek}\label{dusledek8.13}
+
+\end{dusledek}
+
+\begin{proof}
+	Zvolme $\varepsilon > 0$. Podle věty \ref{veta8.12} nalezneme $\delta >0$ takové, že pro každé
+	dělení $D$, $\nu(D)<\delta$ platí
+	$$
+	    \overline{\int_a^b}f \leq \overline{S}(f,D)<\overline{\int_a^b}f + \varepsilon.
+	$$
+	Nalezneme $n_0 \in \mathbb N $ takové, že
+	$$
+	    \forall n \geq n_0: \nu(D_n)<\delta.
+	$$
+	Potom
+	$$
+	    \forall n \geq n_0: \overline{\int_a^b}f \leq \overline{S}(f,D_n) < \overline{\int_a^b}f+\varepsilon,
+	$$
+	a tedy
+	$$
+ \lim_{n \to \infty} \overline{S}(f,D_n) = \int_a^b f.
+	$$
+\end{proof}
+
+\begin{priklad}
+	Spočtěte $\int_0^1 x^2\d x$.
+	\par Položme $D_n = \left \{ \frac{j}{n} \right \}_{j=0}^1 $ a označme $f(x)=x^2$.
+		$$
+		\overline{S}(f,D_n) = \sum_{j=1}^n \left( \frac{j}{n} \right )^2 \cdot \frac{1}{n} = \frac{1}{n^3} \sum_{j=1}^n j^2 = \frac{1}{n^2} \cdot \frac{n(n+1)(2n+1)}{6} \stackrel{n\to \infty}{\longrightarrow} \frac{1}{3}.
+		$$
+		Proto je
+		$$
+		    \overline{\int_0^1}  x^2 \d x = \frac{1}{3}.
+		$$
+		Obdobně
+		$$
+		\underline{S}(f,D_n) = \sum_{j=1}^n \left( \frac{j-1}{n} \right )^2 \cdot \frac{1}{n} = \frac{1}{n^3}\sum_{j=1}^n (j-1)^2 = \frac{1}{n^3}\cdot \frac{(n-1)n(2n-1)}{6}\stackrel{n\to \infty}{\longrightarrow} \frac{1}{3} ,
+		$$
+		a tedy
+		$$
+		    \underline{\int _0^1}x^2 \d x = \frac{1}{3},
+		$$
+		a tedy i
+		$$
+		    \int_0^1 x^2 \d x = \frac{1}{3}.
+		$$
+\end{priklad}
