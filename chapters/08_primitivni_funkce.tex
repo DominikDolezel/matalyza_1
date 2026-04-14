@@ -710,3 +710,432 @@ kde $x \in (-\infty, -1)$ nebo $x \in (-1,\infty)$.
 		    \int_0^1 x^2 \d x = \frac{1}{3}.
 		$$
 \end{priklad}
+
+\begin{veta}[Kritérium existence Riemannova integrálu]\label{veta8.14}
+
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}
+		\item[$\implies$] Z $f \in \mathscr R(\left [ a,b \right ] )$ platí
+		$$
+		    \underline{\int_a^b} f = \overline{\int_a^b} f.
+		$$
+		Zvolme $\varepsilon > 0$. Nalezneme dělení $D_1$ intervalu $[a,b]$ splňující
+		$$
+		    \int_a^b f \leq \overline{S}(f,D_1)< \int_a^b f + \frac{\varepsilon}{2}.
+		$$
+		Dále nalezneme dělení $D_2$ intervalu $[a,b]$ splňující
+		$$
+		    \int_a^b f - \frac{\varepsilon}{2}\underline{S}(f,D_2) \leq \int_a^b f.
+		$$
+		Zvolme dělení $D$ jako zjemnění $D_1$ a $D_2$. Potom platí
+		$$
+		    \overline{S}(f,D)-\underline{S}(f,D) \leq \overline{S}(f,D_1 - \underline S(f,D_2) < \int_a^b f + \frac{\varepsilon}{2} - \left( \int_a^b f - \frac{\varepsilon}{2} \right )= \varepsilon.
+		$$
+		\item[$\impliedby$] Zvolme $\varepsilon>0$. K němu nalezneme podle (ii) dělení
+		$D$ intervalu $[a,b]$ splňující
+		$$
+		    \overline S(f,D) - \underline S(f,D) < \varepsilon.
+		$$
+		Podle lemmatu \ref{lemma8.10}(c) je
+		$$
+		    0 \leq \overline{\int_a^b} f - \underline{\int_a^b} f \leq \overline S(f,D) - \underline S(f,D) < \varepsilon.
+		$$
+		Odtud máme $\overline{\int_a^b}f=\underline{\int_a^b}f$.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{poznamka}[Spojitost versus stejnoměrná spojitost]\,
+\begin{enumerate}[(1)]
+	\item Funkce $f$ je spojitá na intervalu $I$ pokud
+	$$
+	\forall x \in I \, \forall \varepsilon> 0 \, \forall \delta >0 \, \forall y \in I: \left( |x-y| < \delta \implies |f(x)-f(y)|<\varepsilon \right ).
+	$$
+	Funkce $f$ je stejnoměrné spojitá na intervalu $I$, pokud
+	$$
+	    \forall  \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in I\, \forall y \in I: \left( |x-y| < \delta \implies |f(x)-f(y)|<\varepsilon \right ).
+	$$
+	Odsud máme, že
+	$$
+	    f \text{ je stejnoměrně spojitá} \implies f \text{ je spojitá}.
+	$$
+	Opačná implikace obecně neplatí.
+	\item Vezměme $I=(0,1)$, $f(x)= \frac{1}{x}, x \in I$. Funkce $f$ je na $I$ spojitá. Bodem $x_n$ značíme
+	bod $\frac{1}{n}$.
+	\par Chceme ukázat, že $f$ není stejnoměrně spojitá na $I$. Položme $\varepsilon = 1$.
+	Nechť $\delta >0$. Nalezneme $n\in \mathbb N $ takové, že $x_n \in (0,\delta) \cap I$. Potom
+	$x_{n+1}\cap I$ a $|x_n - x_{n+1}|<\delta$. Pak je
+	$$
+	    f(x_{n+1})-f(x_n) = \frac{1}{\frac{1}{n+1}} - \frac{1}{\frac{1}{n}} = n+1-n = 1,
+	$$
+	a tedy
+	$$
+	    |f(x_{n+1})-f(x_n)| = 1.
+	$$
+	Proto $f$ není stejnoměrně spojitá.
+\end{enumerate}
+\end{poznamka}
+
+\begin{veta}\label{veta8.15}
+
+\end{veta}
+
+\begin{proof}
+	Pro spor předpokládejme, že
+	\begin{equation}\label{vlastnostss}
+	\exists \varepsilon > 0 \, \forall \delta > 0 \, \exists x \in I \, \exists y \in I : \left( |x-y| < \delta\implies |f(x)-f(y)|<\varepsilon \right ).
+	\end{equation}
+	Nechť $\varepsilon>0$ splňuje (\ref{vlastnostss}). Odsud pro každé $n \in \mathbb N $ nalezneme
+	dvojici $x_n, y_n \in I$ splňující
+	$$
+	    |x_n - y_n| < \frac{1}{n} \land |f(x_n)-f(x_n)|\geq \varepsilon.
+	$$
+	Podle Weierstrassovy věty \ref{bolzano-weierstrass} nalezneme konvergentní podposloupnost
+	$\left \{ x_{n_k} \right \}_{k=1}^\infty $ posloupnosti $\left \{ x_n \right \}_{n=1}^\infty $
+	splňující
+	$$
+ \lim_{k \to \infty} x_{n_k} = x^*.
+	$$
+	Platí $x^* \in I$ a dále pro každé $k \in \mathbb N $ máme
+	$$
+	    0\leq|x^* - y_{n_k}| \leq \underbrace{|x^*-x_{n_k}|}_{\to \, 0}+\underbrace{|x_{n_k}-y_{n_k}|}_{\to\, 0}.
+	$$
+	Odsud máme, že $\lim_{k \to \infty} y_{n_k}=x^*$.
+	Funkce $f$ je spojitá v $x^*$ vzhledem k $I$, tj.
+	\begin{equation}\label{podminka}
+	\exists \delta > 0 \, \forall y \in I: |x^* - y|<\delta \implies |f(x^*)-f(y)|<\frac{\varepsilon}{2}.
+\end{equation}
+	Nechť $\delta >0$ splňuje (\ref{podminka}). K němu nalezneme $k \in \mathbb N $ takové, že
+	$$
+	    |x_{n_k}-x^*|< \delta \land |y_{n_k} - x^*| <\delta.
+	$$
+	Potom platí
+	$$
+	    \varepsilon \leq|f(x_{n_k}) - f(y_{n_k})|\leq |f(x_{n_k})-f(x^*)| + |f(x^*)-f(y_{n_k})| < \frac{\varepsilon }{2}+\frac{\varepsilon}{2}= \varepsilon,
+	$$
+	odkud máme spor.
+\end{proof}
+
+\begin{veta}\label{veta8.16}
+
+\end{veta}
+
+\begin{proof}
+	Zvolme $\varepsilon > 0$. Podle věty \ref{veta8.15} existuje $\delta > 0$ takové, že
+	$$
+	    \forall x ,y \in [a,b], |x-y| < \delta \implies |f(x)-f(y)| < \varepsilon.
+	$$
+	Nalezneme dělení $D$ intervalu $[a,b]$ takové, že
+	$D = \left \{ x_i \right \}_{i=0}^n $ a $\nu (D)<\delta$. Označme
+	$$
+	m_i = \inf_{[x_{i-1},x_i]} f, \qquad M_i = \sup_{[x_{i-1},x_i]} f.
+	$$
+	Z (1) a (2) plyne $m_i \leq M_i \leq m_i+\varepsilon$. Počítejme
+	\begin{align*}
+	0 &\leq \overline S(f,D) - \underline S(f,D) = \sum_{i=1}^n M_i(x_i-x_{i-1}) - \sum_{i=1}^n m_i(x_i - x_{i-1}) \\
+	&= \sum_{i=1}^n \underbrace{(M_i-m_i)}_{\leq\, \varepsilon}(x_i-x_{i-1}) \leq \sum_{i=1}^n \varepsilon (x_i-x_{i-1}) = \varepsilon (b-a).
+	\end{align*}
+	Právě jsme dokázali (ii) ve větě \ref{veta8.14}, a tedy $f\in \mathscr R([a,b])$.
+\end{proof}
+
+\begin{veta}\label{veta8.17}
+
+\end{veta}
+
+\begin{proof}
+	BÚNO  $f$ je neklesající. Pro každé $x \in \left [ a,b \right ] $ platí $f(a)\leq f(x)\leq f(b)$.
+	Funkce $f$ je tedy omezená. Nalezneme $K > 0$ takové, že
+	$$
+	    \forall x \in \left [ a,b \right ] : |f(x)|\leq K.
+	$$
+	Zvolme $\varepsilon >0$. K němu nalezneme dostatečně velké $n \in \mathbb N $. Položme
+	$$
+	    x_j = a+ \frac{b-a}{n}\cdot j, \qquad j=0,\dots,n,
+	$$
+	$\mathcal D = \left \{ x_j \right \}_{j=0}^n. $ Počítejme
+	\begin{align*}
+	\overline S(f,D) &= \sum_{j=1}^n \sup_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) = \sum _{j=1}^n f(x_j)\cdot \frac{b-a}{n},\\
+	\underline S(f,D) &= \sum_{j=1}^n \inf{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) = \sum _{j=1}^n f(x_{j-1})\cdot \frac{b-a}{n}.
+	\end{align*}
+	Je tedy
+	\begin{align*}
+	\overline S(f,D) - \underline S(f,D) &= \sum_{j=1}^n \left( f(x_j)-f(x_{j-1}) \right )\cdot \frac{b-a}{n} \\
+	&= \frac{b-a}{n} \sum_{j=1}^n \left( f(x_j)-f(x_{j-1}) \right ) \\
+	&= \frac{b-a}{n} \left( f(b) -f(a)\right ) <\varepsilon,
+\end{align*}
+pokud $n > \frac{1}{\varepsilon}(b-a)(f(b)-f(a))$. Odtud vyplývá podle věty \ref{veta8.14}, že $f \in \mathcal R([a,b])$.
+\end{proof}
+
+\begin{veta}[Linearita Riemannova integrálu]\label{veta8.18}
+
+\end{veta}
+
+\begin{proof}
+	Protože jsou funkce $f,g$ omezené, je i $f+g$ omezená. Nechť $I\subseteq [a,b]$ je neprázdný interval.
+	Potom platí
+	$$
+	\sup_I (f+g) \leq \sup_I f+ \sup_I g.
+	$$
+	(Je totiž pro $x\in I$: $f(x)+g(x)\leq \sup_I f + \sup_I g$.) Podobně pro infimum platí
+	$$
+	    \inf_I f + \inf_I g \leq \inf_I (f+g).
+	$$
+	Pro libovolné dělení $\mathcal D$ intervalu $[a,b]$ platí
+	$$
+	    \underline S(f,D)+\underline S(g,D)\leq\underline S(f+g,D) \leq \overline S(f+g,D)\leq \overline S(f,D)+\overline S(g,D).
+	$$
+	Nalezneme posloupnost dělení $\left \{ \mathcal D^n \right \}_{n=1}^\infty $ intervalu $[a,b]$ splňující
+	$\lim_{n\to \infty} \nu (\mathcal D^n)=0$. Potom platí podle důsledku \ref{dusledek8.13}
+	\begin{align*}
+        \lim_{n \to \infty} \overline S(f,D^n)&=\lim_{n \to \infty} \underline S(f,D^n)=\int_a^b f,\\
+		\lim_{n \to \infty} \overline S(g,D^n)&=\lim_{n \to \infty} \underline S(g,D^n)=\int_a^b g.
+	\end{align*}
+	Pro každé $n\in \mathbb N $ platí
+	$$
+	    \underbrace{\underline S(f,D^n) + \underline S(g,D^n)}_{\to \int_a^b f +\int_a^b g}\leq \underline S(f+g,D^n) \leq \overline S(f+g,D^n)\leq \underbrace{\overline S(f,D^n)+ \overline S(g,D^n)}_{\to \int_a^b f + \int_a^b g},
+	$$
+	a tedy podle věty o dvou strážnících máme
+	$$
+ \lim_{n \to \infty} \underline S(f+g,D^n) = \lim_{n \to \infty} \overline S(f+g,D^n)=\int_a^b f + \int_a^b g.
+	$$
+	Podle důsledku \ref{dusledek8.13} dostáváme, že $f+g\in \mathscr R([a,b])$ a platí
+	$$
+	    \int_a^b (f+g) = \int_a^bf + \int _a^b g.
+	$$
+	Pro $\alpha$ a neprázdný interval $I\subseteq [a,b]$ platí
+	$$
+	    \sup_I (\alpha f) = \begin{cases}
+						\alpha \sup _I f, & \text{pro} \ \alpha \geq 0,\\
+						\alpha \inf _I f, & \text{pro} \ \alpha < 0.
+					\end{cases}
+	$$
+	Obdobně pro infimum
+	$$
+	    \inf_I (\alpha f) = \begin{cases}
+					\alpha \inf _I f, & \text{pro} \ \alpha \geq 0,\\
+					\alpha \sup _I f, & \text{pro} \ \alpha < 0.
+					\end{cases}
+	$$
+	Potom platí
+	$$
+ \lim_{n \to \infty} \overline S(\alpha f, D^n) = \left .\begin{cases}
+ \lim_{n \to \infty} \alpha \overline S(f,D^n), & \text{pro} \ \alpha \geq 0, \\
+ \lim_{n \to \infty} \alpha \underline S(f,D^n) & \text{pro} \ \alpha < 0.
+ \end{cases} \right \} = \alpha \int_a^b f,
+	$$
+	podobně
+	$$
+	\lim_{n \to \infty} \underline S(\alpha f, D^n) =\left . \begin{cases}
+ \lim_{n \to \infty} \alpha \underline S(f,D^n), & \text{pro} \ \alpha \geq 0, \\
+ \lim_{n \to \infty} \alpha \overline S(f,D^n) & \text{pro} \ \alpha < 0.
+ \end{cases}\right \} =  \alpha \int_a^b f,
+	$$
+	odkud podle důsledku \ref{dusledek8.13} dostáváme, že $f\in \mathscr R([a,b])$ a
+	$\int_a^b \alpha f  = \alpha \int _a^b f$.
+\end{proof}
+
+\begin{veta}[Riemannův integrál a uspořádání]\label{veta8.19}
+
+\end{veta}
+
+\begin{proof}
+	Nechť $\left \{ D^n \right \} $ je jako v předchozím důkazu. Potom platí pro každé $n \in \mathbb N $
+	$$
+	    \underbrace{overline S(f, D^n)}_{\to \int _a^b f} \leq \underbrace{\overline S(g,D^n)}_{\to \int_a^b g}.
+	$$
+	(Je totiž $\sup_I f \leq \sup _I g$ a $f(x) \leq g(x)\leq \sup_I g(x)$.) Podle věty o limitě a uspořádání
+	tedy dostáváme $\int _a^b f \leq \int_a^b g$.
+\end{proof}
+
+\begin{veta}[Aditivita Riemannova integrálu]\label{veta8.20}
+
+\end{veta}
+
+\begin{proof}
+	Nalezneme posloupnost dělení $\left \{ D_n^1 \right \}_{n=1}^\infty $ intervalu $[a,c]$ splňující
+	$\lim_{n \to \infty} \nu (D_n^1) = 0$. Dále nalezneme posloupnost dělení $\left \{ D_n^2 \right \}_{n=1}^\infty $
+	intervalu $[c,b]$ splňující $\lim_{n \to \infty} \nu(D_n^2)=0$. Dělení $D_n$ je dělení intervalu $[a,b]$, které
+	obsahuje právě dělící body $D_n^1$ a $D_n^2$. Předpokládejme, že $f\in \mathscr R([a,c])$ a
+	$f \in \mathscr R([c,b])$. Chceme ukázat, že $f\in \mathscr R([a,b])$. Platí
+	$$
+ \lim_{n \to \infty} \overline S(f,D_n^1) = \lim_{n \to \infty} \underline S(f,D_n^1) = \int _a^c f
+	$$
+	podle důsledku \ref{dusledek8.13}. Obdobně
+	$$
+ \lim_{n \to \infty} \overline S(f,D_n^2) = \lim_{n \to \infty} \underline S(f,D_n^2) = \int _c^b f.
+	$$
+	Pak platí
+	\begin{align*}
+	\lim_{n \to \infty} \overline S(f,D_n)&=\lim_{n \to \infty} (\overline S(f,D_n^1)+ \overline S(f,D_n^2)) = \int_a^c f = \int_c^b f.\\
+	\lim_{n \to \infty} \underline S(f,D_n) &= \lim_{n \to \infty} (\underline S(f,D_n^1) + \underline S(f,D_n^2)) = \int_a^b f + \int_a^b f.
+\end{align*}
+Proto je podle důsledku \ref{dusledek8.13} $f \in \mathscr R([a,b])$ a $\int_a^b f = \int_a^c f + \int_a^b f$.
+Tím je proveden důkaz implikace zprava doleva. Zbývá dokázat, že
+$$
+    f \in \mathscr R([a,b]) \implies f\in \mathscr R([a,c]).
+$$
+Platí
+\begin{align*}
+0&\leq\overline S(f,D_n^1) - \underline S(f,D_n^1) \leq \overline S(f,D_n^1) - \underline S(f,D_n^1) + \underbrace{\overline S(f,D_n^2)-\underline S(f,D_n^2)}_{\leq 0}\\
+&= \underbrace{\overline S(f,D_n)}_{\to \int_a^b f} - \underbrace{\underline S(f,D_n)}_{\to\int_a^b f}.
+\end{align*}
+Protože je
+$$
+\lim_{n \to \infty} \overline S (f,D_n^1) = \overline{\int_a^c} f, \qquad \lim_{n \to \infty} \underline S(f,D_n^1)=\underline{\int_a^c} f
+$$
+a $\lim_{n \to \infty} (\overline S(f,D_n^1) - \underline S(f,D_n^1))= 0$, máme odtud
+$$
+    \overline{ \int_a^c} f = \underline{\int_a^c} f ,
+$$
+a tedy $f \in \mathscr R([a,c])$. Analogicky je $f \in \mathscr R([c,b])$.
+\end{proof}
+
+\begin{poznamka}
+	Nechť $a,b,c \in \mathbb R $. Potom platí
+	$$
+	    \int_a^b f + \int_b^c f + \int _c^a f=0,
+	$$
+	pokud alespoň dva z integrálů jsou definované.
+\end{poznamka}
+
+\begin{veta}\label{veta8.21}
+
+\end{veta}
+
+\begin{proof}
+	Z $f\in \mathscr R([a,b])$ máme, že $f$ je na $[a,b]$ omezená.
+	\begin{pozorovani}
+		Nechť $I \subseteq [a,b]$ je neprázdný interval. Potom platí
+		$$
+		    \sup_I |f| - \inf_I |f| \leq \sup_I f - \inf_I f.
+		$$
+		Zvolme  $\varepsilon > 0$. Nalezneme $x,y\in I$  taková, že
+		$$
+		    |f(x)|>\sup_I |f|-\varepsilon, \qquad |f(y)| < \inf_I |f| + \varepsilon.
+		$$
+		Potom platí
+		\begin{align*}
+		\sup_I |f| - \inf_I |f| & < (|f(x)| + \varepsilon) - (|f(y)|-\varepsilon) = |f(x)| - |f(y)|+2\varepsilon \\
+		&\leq |f(x)-f(y)|+ 2\varepsilon  \leq \sup_I f - \inf_I f+ 2\varepsilon,
+		\end{align*}
+        čímž je pozorování dokázáno.
+	\end{pozorovani}
+	Nechť $\mathcal D$ je dělení intervalu $[a,b]$. Potom platí
+	$$
+	   0\leq \overline S(|f|,\mathcal D) - \underline S(|f|,D)\leq \overline S (f,\mathcal D) - \underline S(f,\mathcal D),
+	$$
+	takže $f$ je riemannovsky integrovatelná díky větě \ref{veta8.14}. Zbývá dokázat nerovnost.
+	\par Pro každé $x \in [a,b]$ platí
+	$$
+	    f(x)\leq |f(x)|.
+	$$
+	Odtud podle věty \ref{veta8.19} máme
+	$$
+	    \int_a^b f(x) \d x \leq \int _a^b |f(x)|\d x.
+	$$
+	Dále platí
+	$$
+	    -\int _a^b f \stackrel{V. \ref{veta8.18}}{=} \int_a^b (-f) \leq \int_a^b |-f| = \int_a^b |f|.
+	$$
+	Proto je
+	$$
+	    \left | \int_a^b f \right|\leq \int _a^b |f|.
+	$$
+\end{proof}
+
+\begin{veta}[Derivace funkce horní meze]\label{veta8.22}
+
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Nechť $x_0\in J$ a není pravým koncovým bodem $J$. Dokážeme, že
+		$$
+		    \lim_{x\to x_0+} F(x) = F(x_0).
+		$$
+		Nalezneme $\delta >0$ takové, že $x_0 + \delta \in J$. Platí, že
+		$f \in \mathscr R([x_0, x_0+\delta])$. Proto lze nalézt $K>0$ takové, že
+		$$
+		    \forall t \in [x_0, x_0+\delta]: |f(t)|\leq K.
+		$$
+		Pro $x \in [x_0,x_0+\delta]$ platí
+		\begin{align*}
+		|F(x)-F(x_0)|  &= \left | \int_c^x f(t)\d t - \int_c^{x_0} f(t)\d t \right |\\
+		& = \left |\int_{x_0}^x f(t) \d t\right| \leq \int _{x_0}^x|f(t)|\d t \leq \int_{x_0}^x K \d t = K(x-x_0)\\
+		& \!\! \implies \lim_{x\to x_0+} |F(x)-F(x_0)| = 0 \implies \lim_{x\to x_0+} F(x) = F(x_0).
+	    \end{align*}
+		Limita zleva se dokazuje analogicky.
+		\item Zvolme $\varepsilon > 0$. K němu nalezneme $\delta > 0$ takové, že
+		$[x_0-\delta, x_0+\delta] \subseteq J$ a
+		$$
+		    \forall t \in (x_0-\delta, x_0+\delta):|f(t)-f(x_0)|<\varepsilon.
+		$$
+		Chceme dokázat, že
+		$$
+            \lim_{x\to x_0} \frac{F(x)-F(x_0)}{x-x_0}=f(x_0).
+		$$
+		Pro $x \in P(x_0,\delta)$ dostaneme
+		\begin{align*}
+		\left | \frac{F(x)-F(x_0)}{x-x_0}-f(x_0) \right | & = \left | \frac{\int_c^x f - \int_c^{x_0}f}{x-x_0}-f(x_0) \right |\\
+		&= \left | \frac{\int_{x_0}^x f}{x-x_0}-f(x_0) \right | \\
+		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x f(t) \d t - f(x_0)(xx-x_0) \right |\\
+		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x f(t) \d t - \int_{x_0}^x f(x_0)\d t \right |\\
+		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x \left( f(t) - f(x_0) \right )  f(t) \d t \right |\\
+	& \leq \frac{1}{|x-x_0|}\cdot |x-x_0|\cdot \varepsilon = \varepsilon.
+	\end{align*}\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{dusledek}\label{dusledek8.23}
+
+\end{dusledek}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item $f$ je spojitá na intervalu $(a,b)$. Pokud $\alpha, \beta \in (a,b), \alpha < \beta$,
+		potom $f \in \mathscr R([a,b])$ podle věty \ref{veta8.16}. Zvolme $c \in (a,b)$. Potom
+		podle věty \ref{veta8.22}(b) platí $F^\prime(x) = f(x)$ pro každé $x \in (a,b)$, kde $F(x) = \in_c^x f$.
+		$F$ je tedy primitivní funkcí k $f$ na $(a,b)$.
+		\item Definujme pomocnou funkci
+		$$
+		    \tilde{f}(t) = \begin{cases}
+							f(a), & t \in (a-1,a),\\
+							f(t), & t \in [a,b], \\
+							f(b), & t\in (b,b+1).
+						\end{cases}
+		$$
+		Funkce $\tilde f$ je spojitá na intervalu $(a-1,b+1)$. Položme
+		$$
+		    G(x) = \int_a^x \tilde f(t) \d t, \quad x \in (a-1,b+1).
+		$$
+		Podle věty \ref{veta8.22}(b) dostáváme, že pro každé
+		$
+		    x \in (a-1,b+1)
+		$
+		platí $G^\prime(x) = \tilde f(x)$. Odtud plyne, že $G |_{(a,b)}$ je primitivní funkce k $f$.
+		Existuje tedy $c \in \mathbb R $ takové, že $G = F+c$ na $(a,b)$. $G$ je spojitá na
+		$(a-1,b+1)$. Platí tedy
+		$$
+  \lim_{x\to a+} G(x)=G(a), \qquad \lim_{x\to b-} G(x) = G(b).
+		$$
+		Potom $$\lim_{x\to a+} F(x) = \lim_{x\to a+} (G(x)-c)=G(a)-c\in \mathbb R .$$
+	    Podobně
+		$$
+		    \lim_{x\to b-} F(x) = \lim_{x\to b-} (G(x)-c)=G(b)-c\in \mathbb R .
+		$$
+		Pak je
+		\begin{align*}
+		\int_a^b f &= G(b)=G(b)-\underbrace{G(a)}_{=\ 0}\\
+	& = \left (\lim_{x\to b-} F(x)+ c\right ) - \left (\lim_{x\to a+} F(x)+c \right) \\
+	&= \lim_{x\to b-} F(x) - \lim_{x\to a+} F(x).
+\end{align*}\qedhere
+	\end{enumerate}
+\end{proof}
