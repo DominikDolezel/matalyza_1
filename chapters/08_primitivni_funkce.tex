@@ -387,9 +387,9 @@ $P_1(x)$ a jednotlivé parciální zlomky.
 	$$
 	Metodou porovnání koeficientů dostaneme
 	\begin{align*}
-		x^2: & 1 = A+B,\\
-		x^1: & 0=A+B+C, \\
-		x^0: & 1 = A+C.
+		&x^2: 1 = A+B,\\
+		&x^1: 0=A+B+C, \\
+		&x^0: 1 = A+C.
 	\end{align*}
 	Lze postupovat jednodušeji, třeba pro $x=1$ dostaneme $A=2$. Pak $B=-1$ a $C = -1$. Máme tedy
 	$$
@@ -1193,9 +1193,9 @@ Potom platí:
 		\begin{align*}
 		\left | \frac{F(x)-F(x_0)}{x-x_0}-f(x_0) \right | & = \left | \frac{\int_c^x f - \int_c^{x_0}f}{x-x_0}-f(x_0) \right |\\
 		&= \left | \frac{\int_{x_0}^x f}{x-x_0}-f(x_0) \right | \\
-		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x f(t) \d t - f(x_0)(xx-x_0) \right |\\
+		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x f(t) \d t - f(x_0)\cdot |x-x_0| \right |\\
 		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x f(t) \d t - \int_{x_0}^x f(x_0)\d t \right |\\
-		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x \left( f(t) - f(x_0) \right )  f(t) \d t \right |\\
+		&= \frac{1}{|x-x_0|} \left | \int_{x_0}^x \left( f(t) - f(x_0) \right ) \d t \right |\\
 	& \leq \frac{1}{|x-x_0|}\cdot |x-x_0|\cdot \varepsilon = \varepsilon.
 	\end{align*}\qedhere
 	\end{enumerate}
