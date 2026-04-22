@@ -1524,3 +1524,139 @@ Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna n
 \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x, y \in P(a, \delta): |F(x) - F(y)| < \varepsilon.
 \]
 \end{veta}
+
+\begin{proof}
+\begin{enumerate}
+	\item[$\implies$] Označme $A=\lim_{x\to a } F(x)$. Zvolme $\varepsilon > 0$. Nalezneme $\delta < 0$ takové, že
+	$$
+	    \forall x \in P(a,\delta): |F(x)-A|<\frac{1}{2}\varepsilon.
+	$$
+	Potom pro každé $x,y \in P(a,\delta)$ platí
+	$$
+	 |F(x)-F(y)| \leq |F(X)-A| + |A-F(y)| < \frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon.
+	$$
+	\item[$\impliedby$] Nechť $\left \{ x_n \right \} $ je posloupnost prvků $P(a,\delta_0)$ splňující $\lim x_n = A$.
+	Ověříme, že $\left \{ F(x_n) \right \} $ splňuje BC-podmínku. Zvolme $\varepsilon > 0$. K němu nalezneme
+	podle předpokladu $\delta > 0$ takové, že
+	$$
+	    \forall x,y \in P(a,\delta): |F(x)-F(y)| < \varepsilon.
+	$$
+	Nalezneme $n_0 \in \mathbb N $ takové, že pro každé $n\geq n_0$ platí $x_N \in P(a,\delta)$.
+	Potom pro každé $n,m \geq n_0$ platí
+	$$
+	    |F(x_n) - F(x_m)|<\varepsilon.
+	$$
+	Podle věty \ref{veta2.18} existuje vlastní limita
+	$
+ \lim_{n \to \infty} F(x_n)
+	$. Označme ji $A$.
+	\par Zvolme posloupnost $\left \{ y_n \right \} $ prvků $P(a,\delta_0)$ splňující
+	$\lim y_n=a$. Zvolme $\varepsilon>0$. K němu nalezneme $\delta>0$ takové, že
+	$$
+	    \forall x,y \in P(a,\delta): |F(x)-F(y)|<\varepsilon.
+	$$
+	Nalezneme $n^\star$ takové, že pro každé $n\geq n^\star$ platí $x_n \in P(a,\delta)$, $y_n\in P(a,\delta)$ a $|F(x)-A|<\varepsilon$.
+	Potom pro každé $n\geq n^\star$ platí
+	$$
+	|F(y)-A|\leq \underbrace{|F(y_n)-F(x_n)|}_{< \, \varepsilon} + \underbrace{|F(x_n)-A|}_{< \, \varepsilon} < 2 \varepsilon.
+	$$
+	Potom podle Heineovy věty \ref{Heinehoveta} dostáváme $\lim_{x\to a } F(x)=A$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+	Analogické tvrzení platí i pro jednostranné limity.
+\end{poznamka}
+
+\begin{veta}\label{veta8.33}
+
+\end{veta}
+
+\begin{proof}
+Podle věty \ref{veta8.2} má funkce $f$ na $(a,b)$ funkci primitivní. Označme ji $F$.
+Ukážeme, že $\lim_{x\to a+} F(x)$ existuje vlastní. Nalezneme $K>0$ takové, že
+$$
+    \forall x \in (a,b):|f(x)|<K.
+$$
+($f$ je omezená na $(a,b)$). Ověříme BC-podmínku pro $F$ v $a$ zprava. Zvolme
+$\varepsilon>0$. Nalezneme $\delta>0$ takové, že $K\delta < \varepsilon$.
+Potom pro každé $x,y$ splňující $a<x<y<a+\delta$ platí
+$$
+    |F(y)-F(x)| = \left | \int_x^y f \right | \leq \int_x^y |f| \leq \int_x^y K = K(y-x)<K\delta<\varepsilon.
+$$
+($F$ je spojitá na $(a,b)$, a tedy i na $[x,y]$). Odtud podle věty \ref{veta8.32} plyne $\lim_{x\to a+} F(x)\in \mathbb R $.
+Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy dostáváme, že $f \in \mathcal N(a,b)$.
+\end{proof}
+
+\begin{veta}[Vztah Riemannova a Newtonova integrálu]\label{veta8.34}
+
+\end{veta}
+
+\begin{veta}[Srovnávací kritérium]\label{veta8.35}
+
+\end{veta}
+
+\begin{proof}
+	Zvolme $c\in [a,b)$. Označme $F,G$ primitivní funkce k funkcím $f,g$ na intervalu $[a,b)$.
+	Můžeme předpokládat, že $F(c)=G(c)$. Funkce $G-F$ má na intervalu $(a,b)$ nezápornou derivaci
+	a je zde spojitá. Potom máme, že $G-F$ je neklesající. Potom pro každé $x \in [c,b)$ platí
+	$G(x)\geq F(x)$. Potom platí
+	$$
+ \underbrace{\lim_{x \to b-} F(x)}_{F^\prime = f \geq 0\implies F \ \text{je neklesající}} \leq \underbrace{\lim_{x \to b-} G(x)}_{\in \, \mathbb R \, (g \in \mathcal N(a,b))}.
+	$$
+	Proto je
+	$
+ \lim_{x\to b-} F(x) \in \mathbb R
+	$.
+	$F$ je spojitá v $c$, a proto $\lim_{x\to c+} F(x)\in \mathbb R $. Celkem tedy máme, že
+	$f \in \mathcal N(c,b)$. Protože je $f$ omezená a spojitá na $[a,c]$, máme, že
+	$F\in \mathcal N(a,c)$ podle věty \ref{veta8.33}. Potom podle věty \ref{veta8.28} dostáváme $f \in \mathcal N(a,b)$.
+\end{proof}
+
+\begin{veta}[Limitní srovnávací kritérium]\label{veta8.36}
+
+\end{veta}
+
+\begin{proof}
+\begin{enumerate}
+	\item[$\implies$] Podle definice limity nalezneme $x_0\in (a,b)$ takové, že pro každé $x \in [x_0,b)$
+	platí
+	$$
+ \frac{f(x)}{g(x)}>\frac{1}{2}c, \qquad \text{kde} \ c= \lim_{x\to b-} \frac{f(x)}{g(x)}.
+	$$
+	Potom máme, že $f(x) > \frac{1}{2}g(x)\geq 0$. Odtud podle věty \ref{veta8.35} máme
+	$$
+ \frac{1}{2}cg \in \mathcal N(x_0,b).
+	$$
+	Proto je $g\in \mathcal N(x_0,b)$ a $g \in \mathcal N(a,x_0)$. Potom je podle věty \ref{veta8.33}
+	$f \in \mathcal N(a,b)$.
+	\item[$\impliedby$] Analogicky.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lemma8.37}
+
+\end{lemma}
+
+\begin{proof}
+	Označme $F(x) = \int_a^x f$. Zvolme $\varepsilon > 0$.
+	K němu nalezneme $\delta > 0$ takové, že pro každé
+	$x,y \in [a,b]$, $|x-y|<\delta$ platí
+	$$
+	    |f(x)g(x)-f(y)g(y)|<\varepsilon, \qquad |f(x)-f(y)|<\varepsilon.
+	$$
+	($f$ a $g$ jsou spojité na $[a,b]$, a tedy stejnoměrně spojité.) Zvolme dělení $D=\left \{ x_j \right \}_{j=1}^n$
+	intervalu $[a,b]$ splňující $\nu(D)<\delta$. Potom máme
+	$$
+	F(x_{j-1})(x_j-x_{j-1}) \leq \int_{x_{j-1}}^{x_j} f + \varepsilon(x_j-x_{j-1}).
+	$$
+	($f(x_{j-1}\leq f(t)+\varepsilon$, $t \in [x_{j-1},x_j]$.) Dále je
+	$$
+	    \int_{x_{j-1}^x{x_j}} fg \leq f(x_{j-1})f(x_{j-1})(x_j-x_{j-1}) + \varepsilon(x_j-x_{j-1}),
+	$$
+	($f(x_{j-1})g(x_{j-1})\leq f(t)g(t)+\varepsilon$, $t \in [x_{j-1},x_j]$.)
+	$$
+	    \leq g(x_{j-1})\left( \int_{x_{j-1}}^{x_j}f + \varepsilon(x_j-x_{j-1}) \right ) + \varepsilon(x_j-x_{j-1}) = g(x_{j-1})\int_{x_{j-1}}^{x_j} f + g(x_{j-1})\varepsilon(x_j-x_{j-1})+\varepsilon(x_j-x_{j-1}) \leq g(x_{j-1})\int_{x_{j-1}}^{x_j} f + (g(a)+1) \varepsilon (x_j - x_{j-1}).
+	$$
+	$j=1,\dots,n$
+\end{proof}
