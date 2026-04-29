@@ -1634,6 +1634,12 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 \end{enumerate}
 \end{proof}
 
+\begin{poznamka}
+	Označme $\lim_{x\to b-} \frac{f(x)}{g(x)}=c$. Případ $c\in (0,\infty)$ ošetřuje věta.
+	Případ $c=0$ nám dává jen $\int_a^b g $ konverguje $\implies \int_a^b f$ konverguje. Případ $c=\infty$
+	naopak dává $\int_a^b f$ konverguje $\implies \int_a^b g$ konverguje.
+\end{poznamka}
+
 \begin{lemma}\label{lemma8.37}
 
 \end{lemma}
@@ -1659,4 +1665,98 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 	    \leq g(x_{j-1})\left( \int_{x_{j-1}}^{x_j}f + \varepsilon(x_j-x_{j-1}) \right ) + \varepsilon(x_j-x_{j-1}) = g(x_{j-1})\int_{x_{j-1}}^{x_j} f + g(x_{j-1})\varepsilon(x_j-x_{j-1})+\varepsilon(x_j-x_{j-1}) \leq g(x_{j-1})\int_{x_{j-1}}^{x_j} f + (g(a)+1) \varepsilon (x_j - x_{j-1}).
 	$$
 	$j=1,\dots,n$
+	DOOPRAVIT, NAFORMÁTOVAT
+	Označme $\varepsilon^\star = \varepsilon(g(a)+1)(b-a)$. Pak
+	\begin{align*}
+	\int_a^b f(t)g(t)\d t &= \sum_{i=1}^n \int_{x_{i-1}^{x_i}}f(t)g(t)\d t \\
+	& \leq \sum_{i=1}^n g(x_{i-1}) \int_{x_{i-1}}^{x_i} f(t)\d t + \sum_{i=1}^n \varepsilon(x_i - x_{i-1})(g(a)+1)\\
+	&= \sum_{i=1}^n g(x_{i-1}) \int_{x_{i-1}}^{x_i} f(t) \d t + \varepsilon(g(a)+1)(b-a)\\
+	&= \sum_{i=1}^n g(x_{i-1})(F(x_i)-F(x_{i-1}))+\varepsilon^* \\
+	&= \sum_{i=1}^{n-1} F(x_i)\underbrace{(g(x_{i-1})-g(x_i))}_{\geq \, 0}+ \underbrace{g(x_{n-1})}_{\geq \, 0}F(x_n)-\underbrace{g(x_0)F(x_0)}_{= \, F(a) = 0} + \varepsilon^*\\
+	& \leq \sum_{i=1}^{n-1} \sup_{[a,b]} F \cdot (g(x_{i-1}-g(x_i)) + \sup_{[a,b]} F \cdot g(x_{n-1}) + \varepsilon^*\\
+	&= \sup_{[a,b]} F \cdot \left( \sum_{i=1}^{n-1} (g(x_{i-1})-g(x_i)) + g(x_{n-1}) \right ) + \varepsilon^* \\
+    &= \sup_{[a,b]} F \cdot \underbrace{g(x_0)}_{g(a)} + \varepsilon^* .
+\end{align*}
+Tím je nerovnost dokázána. Nerovnost pro infimum se dokáže obdobně.
 \end{proof}
+
+\begin{veta}[První věta o střední hodnotě]\label{veta8.38}
+
+\end{veta}
+
+\begin{proof}
+	Označme $m$ minimum $f$ na $[a,b]$ a $M$ maximum $f$ na $[a,b]$. Pro každé $x \in [a,b]$ platí
+	$$
+	    mg(x)\leq g(x)f(x) \leq Mg(x).
+	$$
+	Potom platí
+	\begin{equation}\label{rovnice int}
+	m\int_a^b g \leq \int_a^b fg \leq M\int_a^b g.
+	\end{equation}
+	Rozlišíme dvě možnosti.
+	\begin{enumerate}[(1)]
+		\item $\int_a^b g = 0$. Je $\int_a^b g = [G]_a^b = 0$, $G$ neklesající. Kdyby existoval bod $x_0\in [a,b]$
+		takový, že $g(x_0)>0$, pak $G^\prime(x_0)>0$. Pak $[G]_a^b > 0$, což je spor. Odtud plyne, že
+		$g=0$ na $(a,b)$. Pak je i $\int_a^b fg = 0$ a za bod $c$ volíme libovolný bod z $(a,b)$.
+		\item $\int_a^b g > 0$. Pak podle (\ref{rovnice int}) platí
+		$$
+		    m \leq \frac{\int_a^b fg }{\int_a^b g }\leq M.
+		$$
+		Poněvadž $f([a,b])=[m,M]$, existuje $c \in [a,b]$ splňující
+		$$
+		f(c) = \frac{\int_a^b fg }{\int_a^b g},
+		$$
+		a tedy po vynásobení dostaneme
+		$$
+		    \int_a^b fg = f(c)\int_a^b g,
+		$$
+		což jsme chtěli dokázat.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{veta}[Druhá věta o střední hodnotě]\label{veta8.39}
+
+\end{veta}
+
+\begin{proof}
+	Položme
+	$$
+	\psi (y) = g(a) \int_a^y f + g(b) \int_y^b f, \qquad y \in [a,b].
+	$$
+	Platí
+	$$
+	    \psi(y = (g(a)-g(b))\int_a^y f + g(b)\int_a^b f, \qquad y \in [a,b].
+	$$
+	Funkce $\psi$ je spojitá na intervalu $[a,b]$. Nalezneme $y_1\in [a,b]$ bod maxima funkce $\psi$.
+	Podle lemmatu \ref{lemma8.37} platí
+	$$
+	    \int_a^b (g(t)-g(b))f(t)\d t\leq (g(a)-g(b))\sup_{x \in [a,b]} \int_a^x f.
+	$$
+	Budeme předpokládat, že $g$ je nerostoucí. Platí tedy, že funkce
+	$
+	    t \mapsto g(t)-g(b)
+	$
+	je nerostoucí a nezáporná na $[a,b]$. Potom platí
+	$$
+	    \int_a^b fg\leq (g(a)-g(b))\sup_{x \in [a,b]} \int_a^x f+ g(b)\int_a^b f = \psi(y_1).
+	$$
+	Obdobně nalezneme $y_2$ -- bod minima $\psi$ na $[a,b]$ a odvodíme
+	$$
+	    \psi(y_2) \leq \int_a^b fg.
+	$$
+	Odtud plyne, že existuje $c \in [a,b]$ takové, že $\psi(c)=\int_a^b fg$.
+	\par Pokud je $g$ neklesající, pak stačí přejít k funkci $-g$. Bod $c$, který nalezneme
+	pro $-g$, bude \uv{fungovat} i pro $g$.
+\end{proof}
+
+\subsection{Aplikace určitého integrálu}
+lemma se přeskakuje
+\begin{veta}\label{veta8.41}
+
+\end{veta}
+bez důkazu
+
+\begin{veta}[Integrální kritérium]\label{veta8.42}
+
+\end{veta}
+bez důkazu

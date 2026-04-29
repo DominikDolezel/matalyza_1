@@ -1,0 +1,111 @@
+\section{Metrické prostory I}
+\begin{definice}
+
+\end{definice}
+
+\begin{priklad}
+\begin{enumerate}[(1)]\,
+	\item $(\mathbb R ^n, \rho_e)$, kde
+	$$\rho_e(x,y) = \rho_e((x_1,\dots,x_n,(y_1,\dots,y_n)) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$$
+	je euklidovská metrika (někdy taky $l_2$-metrika).
+	\item $(\mathbb R ^n, \rho_1)$, kde
+	$$
+	    \rho_1(x,y)=\sum_{i=1}^{n} |x_i-y_i|
+	$$
+	je $l_1$-metrika (newyorská metrika).
+	\item $(\mathbb R ^n,\rho_\infty)$, kde
+	$$
+	    \rho_\infty(x,y) = \max \left \{ |x_i-y_i|, i \in \left \{ 1,\dots, n \right \}  \right \}
+	$$
+	je maximová metrika ($l_\infty$-metrika).
+	\item $(\mathscr C([a,b]), \rho_{\sup{}})$ je prostor spojitých funkcí na $[a,b]$, kde
+	$$
+	    \rho_{\sup} (f,g) = \sup_{[a,b]}|f-g| = \sup \left \{ |f(x)-g(x)|, x \in [a,b] \right \}
+	$$
+	je supremová metrika.
+	\item $(\mathscr C([a,b]),\rho_i$, kde
+	$$
+	    \rho_i(f,g) = \int_a^b |f-g|
+	$$
+	je integrální metrika.
+	\item $(P,\rho_d)$, kde
+	$$
+	    \rho_d(x,y) = \begin{cases}
+						0 & x=y,\\
+						1 & x=y.
+					\end{cases}
+	$$
+	je diskrétní metrika.
+\end{enumerate}
+\end{priklad}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}[Vlastnosti konvergence]\label{veta9.1}
+
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(a)]
+	\item Předpokládejme, že $x,y \in P$ jsou limity $\left \{ x_n \right \}_{n=1}^\infty $.
+	Potom platí
+	$$
+	    \rho(x,y) \leq \underbrace{\rho(x,x_n)}_{\to \, 0} + \underbrace{\rho(x_n, y)}_{\to \, 0},
+	$$
+	a proto $\rho(x,y)\leq 0$, a tedy $\rho(x,y) = 0$, a tedy $x=y$, což jsme chtěli dokázat.
+	\item Pro každé $n \geq n_0$ platí $\rho(x_n,x)=\rho(x,x)=0$. Odtud máme
+	$\lim_{n \to \infty} \rho(x_n,x)=0$, a tedy $x$ je limitou $\left \{ x_n \right \} $.
+	\item Posloupnost $\left \{ \rho(x_{n_k},x) \right \} $ je vybraná z $\left \{ \rho(x_n,x) \right \} $.
+	Protože je $\lim \rho(x_n,x)=0$, pak i $\lim \rho(x_{n_k},x)=0$, tedy $x$ je limita $\left \{ x_{n_k} \right \} $.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{oznaceni}
+
+\end{oznaceni}
+
+\begin{definice}
+
+\end{definice}
+
+\begin{veta}[Vlastnosti uzavřených množiny] \label{veta9.2}
+
+\end{veta}
+
+\begin{proof}\,
+\begin{enumerate}[(a)]
+	\item Zřejmé.
+	\item Předpokládejme, že $\left \{ x_n \right \} $ je posloupnost prvků $\bigcap \mathcal F$
+	a platí $\lim x_n= x \in P$. Zvolme $F \in \mathcal F$. Potom $\left \{ x_n \right \} $ je
+	posloupnost prvků $F$. $F$ je podle předpokladu uzavřená, takže $x \in F$. Proto i $x \in \bigcap \mathcal F$.
+	\item Předpokládejme, že $\left \{ x_n \right \} $ je posloupnost prvků $\bigcup _{i=1}^m F_i$
+	a platí $\lim x_n=x$. Položme
+	$$A_i = \left \{ n \in \mathbb N , x_n \in F_i \right \}, \qquad i=1,\dots,m. $$
+	Platí $\mathbb N =\bigcup_{i=1}^m A_i$. Nalezneme $i_0\in \left \{ 1,\dots,m \right \} $
+	takové, že $A_{i_0}$ je nekonečná. Existuje rostoucí posloupnost $\left \{ n_k \right \}_{k=1}^\infty $
+	taková, že $A_{i_0}=\left \{ n_k, k \in \mathbb N  \right \} $. Potom $\left \{ x_{n_k} \right \}_{k=1}^\infty $
+	je vybraná z $\left \{ x_n \right \} $ a platí $\lim x_{n_k} = x$ (podle věty \ref{veta9.2}) a
+	pro každé $k \in \mathbb N $ platí $x_{n_k} \in F_{i_0}$. $F_{i_0}$ je uzavřená, a tedy
+	$x \in F_{i_0} \subseteq \bigcup_{i=1}^m F_i$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{priklad}
+	Pro $(\mathbb R ^2, \rho_\infty)$ se jedná o \uv{otevřený čtverec}. Pro $(\mathbb R ^2, \rho_i)$
+	jedná o otočený otevřený čtverec. Dále př. $(\mathscr C([a,b]), \rho_{\sup})$.
+\end{priklad}
+
+\begin{pozorovani}
+	Nechť $(P,\rho)$ je metrický prostor, $x \in P, r >0$. Pro každé $y \in B(x,r)$ existuje $s>0$
+	takové, že $B(y,s)\subseteq B(x,r)$. Stačí volit $0 < s < r-\rho(x,y)$.
+\end{pozorovani}
+
+\begin{definice}
+
+\end{definice}
