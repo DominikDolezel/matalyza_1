@@ -171,9 +171,12 @@
 \author{Dominik Doležel}
 
 \begin{document}
-
+\frontmatter
 \maketitle
+\thispagestyle{empty}
+\clearpage
 
+\pagenumbering{roman}
 \tableofcontents
 \clearpage
 
@@ -190,7 +193,7 @@
 % KAPITOLY
 % \input{chapters/01_nazev_kapitoly}
 % ...
-
+\mainmatter
 \input{chapters/01_uvod.tex}
 \input{chapters/02_limita_posloupnosti.tex}
 \input{chapters/03_limita_a_spojitost_funkce.tex}
