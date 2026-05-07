@@ -1,36 +1,48 @@
 \section{Metrické prostory I}
+\subsection{Základní vlastnosti}
 \begin{definice}
+\textbf{Metrickým prostorem} rozumíme dvojici $(P, \varrho)$, kde $P$ je množina,
+$
+\varrho : P \times P \to [0,\infty)
+$
+je funkce splňující:
+\begin{enumerate}[(a)]
+    \item $\forall x,y \in P : \varrho(x,y)=0 \iff x=y,$
+    \item $\forall x,y \in P : \varrho(x,y)=\varrho(y,x),$
+    \item $\forall x,y,z \in P : \varrho(x,z)\leq \varrho(x,y)+\varrho(y,z).$
+\end{enumerate}
 
+Funkci $\varrho$ nazýváme \textbf{metrika na} $P$.
 \end{definice}
 
-\begin{priklad}
-\begin{enumerate}[(1)]\,
-	\item $(\mathbb R ^n, \rho_e)$, kde
-	$$\rho_e(x,y) = \rho_e((x_1,\dots,x_n,(y_1,\dots,y_n)) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$$
+\begin{priklad}\,
+\begin{enumerate}[(1)]
+	\item $(\mathbb R ^n, \varrho_e)$, kde
+	$$\varrho_e(x,y) = \varrho_e((x_1,\dots,x_n,(y_1,\dots,y_n)) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}$$
 	je euklidovská metrika (někdy taky $l_2$-metrika).
-	\item $(\mathbb R ^n, \rho_1)$, kde
+	\item $(\mathbb R ^n, \varrho_1)$, kde
 	$$
-	    \rho_1(x,y)=\sum_{i=1}^{n} |x_i-y_i|
+	    \varrho_1(x,y)=\sum_{i=1}^{n} |x_i-y_i|
 	$$
 	je $l_1$-metrika (newyorská metrika).
-	\item $(\mathbb R ^n,\rho_\infty)$, kde
+	\item $(\mathbb R ^n,\varrho_\infty)$, kde
 	$$
-	    \rho_\infty(x,y) = \max \left \{ |x_i-y_i|, i \in \left \{ 1,\dots, n \right \}  \right \}
+	    \varrho_\infty(x,y) = \max \left \{ |x_i-y_i|, i \in \left \{ 1,\dots, n \right \}  \right \}
 	$$
 	je maximová metrika ($l_\infty$-metrika).
-	\item $(\mathscr C([a,b]), \rho_{\sup{}})$ je prostor spojitých funkcí na $[a,b]$, kde
+	\item $(\mathscr C([a,b]), \varrho_{\sup{}})$ je prostor spojitých funkcí na $[a,b]$, kde
 	$$
-	    \rho_{\sup} (f,g) = \sup_{[a,b]}|f-g| = \sup \left \{ |f(x)-g(x)|, x \in [a,b] \right \}
+	    \varrho_{\sup} (f,g) = \sup_{[a,b]}|f-g| = \sup \left \{ |f(x)-g(x)|, x \in [a,b] \right \}
 	$$
 	je supremová metrika.
-	\item $(\mathscr C([a,b]),\rho_i$, kde
+	\item $(\mathscr C([a,b]),\varrho_i$, kde
 	$$
-	    \rho_i(f,g) = \int_a^b |f-g|
+	    \varrho_i(f,g) = \int_a^b |f-g|
 	$$
 	je integrální metrika.
-	\item $(P,\rho_d)$, kde
+	\item $(P,\varrho_d)$, kde
 	$$
-	    \rho_d(x,y) = \begin{cases}
+	    \varrho_d(x,y) = \begin{cases}
 						0 & x=y,\\
 						1 & x=y.
 					\end{cases}
@@ -40,15 +52,32 @@
 \end{priklad}
 
 \begin{definice}
-
+Nechť $(P,\varrho)$ je metrický prostor. Řekneme, že posloupnost $\{x_n\}$ prvků $P$ \textbf{konverguje} k prvku
+$x\in P$ v prostoru $(P,\varrho)$, jestliže platí
+$
+\lim_{n\to\infty}\varrho(x_n,x)=0.
+$
+Prvek $x$ nazýváme \textbf{limitou posloupnosti $\{x_n\}$ v $(P,\varrho)$}. \textbf{Konvergentní posloupností v}
+$(P,\varrho)$ rozumíme posloupnost, která má limitu v $(P,\varrho)$.
 \end{definice}
 
 \begin{definice}
-
+Nechť $\{x_n\}$ je posloupnost prvků metrického prostoru $(P,\varrho)$.
+Jestliže $\{n_k\}_{k=1}^\infty$ je rostoucí posloupnost přirozených čísel, pak říkáme, že
+$\{x_{n_k}\}_{k=1}^\infty$ je \textbf{podposloupnost} posloupnosti $\{x_n\}$, případně \textbf{vybranou posloupností} z
+posloupnosti $\{x_n\}$.
 \end{definice}
 
 \begin{veta}[Vlastnosti konvergence]\label{veta9.1}
+Nechť $(P,\varrho)$ je metrický prostor a $\{x_n\}$ je posloupnost prvků $P$.
 
+\begin{itemize}
+    \item[(a)] Pak má posloupnost $\{x_n\}$ v $(P,\varrho)$ nejvýše jednu limitu.
+
+    \item[(b)] Jestliže existují $n_0\in\mathbb{N}$ a $x\in P$ taková, že $x_n=x$ pro každé $n\in\mathbb{N}$, $n\geq n_0$, potom je $x$ limitou posloupnosti $\{x_n\}$.
+
+    \item[(c)] Nechť $\{x_{n_k}\}$ je vybraná posloupnost z posloupnosti $\{x_n\}$. Jestliže $x\in P$ je limitou posloupnosti $\{x_n\}$ v $(P,\varrho)$, pak $x$ je také limitou posloupnosti $\{x_{n_k}\}$.
+\end{itemize}
 \end{veta}
 
 \begin{proof}\,
@@ -56,26 +85,51 @@
 	\item Předpokládejme, že $x,y \in P$ jsou limity $\left \{ x_n \right \}_{n=1}^\infty $.
 	Potom platí
 	$$
-	    \rho(x,y) \leq \underbrace{\rho(x,x_n)}_{\to \, 0} + \underbrace{\rho(x_n, y)}_{\to \, 0},
+	    \varrho(x,y) \leq \underbrace{\varrho(x,x_n)}_{\to \, 0} + \underbrace{\varrho(x_n, y)}_{\to \, 0},
 	$$
-	a proto $\rho(x,y)\leq 0$, a tedy $\rho(x,y) = 0$, a tedy $x=y$, což jsme chtěli dokázat.
-	\item Pro každé $n \geq n_0$ platí $\rho(x_n,x)=\rho(x,x)=0$. Odtud máme
-	$\lim_{n \to \infty} \rho(x_n,x)=0$, a tedy $x$ je limitou $\left \{ x_n \right \} $.
-	\item Posloupnost $\left \{ \rho(x_{n_k},x) \right \} $ je vybraná z $\left \{ \rho(x_n,x) \right \} $.
-	Protože je $\lim \rho(x_n,x)=0$, pak i $\lim \rho(x_{n_k},x)=0$, tedy $x$ je limita $\left \{ x_{n_k} \right \} $.\qedhere
+	a proto $\varrho(x,y)\leq 0$, a tedy $\varrho(x,y) = 0$, a tedy $x=y$, což jsme chtěli dokázat.
+	\item Pro každé $n \geq n_0$ platí $\varrho(x_n,x)=\varrho(x,x)=0$. Odtud máme
+	$\lim_{n \to \infty} \varrho(x_n,x)=0$, a~tedy $x$ je limitou $\left \{ x_n \right \} $.
+	\item Posloupnost $\left \{ \varrho(x_{n_k},x) \right \} $ je vybraná z $\left \{ \varrho(x_n,x) \right \} $.
+	Protože je $\lim \varrho(x_n,x)=0$, pak i~$\lim \varrho(x_{n_k},x)=0$, tedy $x$ je limita $\left \{ x_{n_k} \right \} $.\qedhere
 \end{enumerate}
 \end{proof}
 
 \begin{oznaceni}
-
+Pokud je posloupnost $\{x_n\}$ konvergentní v metrickém prostoru $(P,\varrho)$, pak je podle věty \ref{veta9.1} (a) její limita určena jednoznačně a budeme ji značit
+$
+\lim_{n\to\infty}x_n
+$
+nebo jen $\lim x_n$. Pokud $\lim x_n=x$, pak také píšeme
+$
+x_n \xrightarrow{\varrho} x,\ n\to\infty,
+$
+případně $x_n \xrightarrow{\varrho} x$ nebo pouze $x_n\to x$.
 \end{oznaceni}
 
 \begin{definice}
-
+Nechť $(P,\varrho)$ je metrický prostor a $M\subset P$. Řekneme, že množina $M$ je \textbf{uzavřená} v $(P,\varrho)$,
+jestliže pro každou konvergentní posloupnost $\{x_n\}$ prvků množiny $M$ je limita této posloupnosti prvkem $M$.
 \end{definice}
 
-\begin{veta}[Vlastnosti uzavřených množiny] \label{veta9.2}
+\begin{veta}[Vlastnosti uzavřených množin] \label{veta9.2}
+Nechť $(P,\varrho)$ je metrický prostor.
 
+\begin{itemize}
+    \item[(a)] Prázdná množina a celý prostor $P$ jsou uzavřené množiny v $(P,\varrho)$.
+
+    \item[(b)] Nechť $\mathcal{F}$ je neprázdný systém uzavřených množin. Potom je množina
+    $
+    \bigcap \mathcal{F}
+    $
+    uzavřená v $(P,\varrho)$.
+
+    \item[(c)] Nechť $m\in\mathbb{N}$. Předpokládejme, že množiny $F_1,\dots,F_m$ jsou uzavřené. Potom je množina
+    $
+    \bigcup_{i=1}^m F_i
+    $
+    uzavřená v $(P,\varrho)$.
+\end{itemize}
 \end{veta}
 
 \begin{proof}\,
@@ -97,15 +151,318 @@
 \end{proof}
 
 \begin{priklad}
-	Pro $(\mathbb R ^2, \rho_\infty)$ se jedná o \uv{otevřený čtverec}. Pro $(\mathbb R ^2, \rho_i)$
-	jedná o otočený otevřený čtverec. Dále př. $(\mathscr C([a,b]), \rho_{\sup})$.
+	Pro $(\mathbb R ^2, \varrho_\infty)$ se jedná o \uv{otevřený čtverec}. Pro $(\mathbb R ^2, \varrho_i)$
+	jedná o otočený otevřený čtverec. Dále př. $(\mathscr C([a,b]), \varrho_{\sup})$.
 \end{priklad}
 
 \begin{pozorovani}
-	Nechť $(P,\rho)$ je metrický prostor, $x \in P, r >0$. Pro každé $y \in B(x,r)$ existuje $s>0$
-	takové, že $B(y,s)\subseteq B(x,r)$. Stačí volit $0 < s < r-\rho(x,y)$.
+	Nechť $(P,\varrho)$ je metrický prostor, $x \in P, r >0$. Pro každé $y \in B(x,r)$ existuje $s>0$
+	takové, že $B(y,s)\subseteq B(x,r)$. Stačí volit $0 < s < r-\varrho(x,y)$.
 \end{pozorovani}
 
 \begin{definice}
-
+Nechť $(P,\varrho)$ je metrický prostor, $x\in P$ a $r>0$. Potom množinu $B(x,r)$ definovanou předpisem
+\[
+B(x,r)=\{y\in P;\ \varrho(x,y)<r\}
+\]
+nazýváme \textbf{otevřenou koulí se středem $x$ a poloměrem $r$}.
 \end{definice}
+
+\begin{definice}
+Nechť $(P,\varrho)$ je metrický prostor, $M\subset P$ a $x\in P$. Řekneme, že $x$ je \textbf{vnitřním bodem} množiny $M$, jestliže existuje $r>0$ takové, že
+\[
+B(x,r)\subset M.
+\]
+Množinu všech vnitřních bodů množiny $M$ nazýváme \textbf{vnitřkem} množiny $M$ a označujeme symbolem $\operatorname{Int}M$.
+
+Řekneme, že množina $M$ je \textbf{otevřená} v $(P,\varrho)$, jestliže každý její bod je jejím vnitřním bodem.
+\end{definice}
+
+\begin{veta}[Vlastnosti otevřených množin]\label{veta9.3}
+Nechť $(P,\varrho)$ je metrický prostor.
+
+\begin{itemize}
+    \item[(a)] Prázdná množina a $P$ jsou otevřené množiny v $(P,\varrho)$.
+    \item[(b)] Nechť $\mathcal{G}$ je systém otevřených množin v~$(P,\varrho)$. Potom je množina
+    $
+    \bigcup \mathcal{G}
+    $
+    otevřená v $(P,\varrho)$.
+    \item[(c)] Nechť $m\in\mathbb{N}$. Předpokládejme, že množiny $G_1,\dots,G_m$ jsou otevřené v $(P,\varrho)$. Potom je množina
+    $
+    \bigcap_{i=1}^m G_i
+    $
+    otevřená v $(P,\varrho)$.
+\end{itemize}
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Plyne z definice otevřené množiny.
+		\item Zvolme $x \in \bigcup \mathcal G$. Nalezneme z definice sjednocení $G\in \mathcal G$
+		takovou, že $ x\in G$. Protože je $G$ otevřená, nalezneme $r>0$ takové, že $B(x,r) \subset G$.
+		Tedy $B(x,r) \subset \bigcup \mathcal G$. Tedy $\bigcup \mathcal G$ je otevřená množina v $P$.
+		\item Zvolme $x \in \bigcap_{i=1}^m G_i$. Potom $x \in G_i$ pro všechna $i \in \left \{ 1,\dots,m \right \} $.
+		Díky otevřenosti $G_i$ nalezneme pro každé $i\in \left \{ 1,\dots, m \right \} $ nalezneme $r_i>0$
+    	takové, že $B(x,r_i)\subset G_i$. Položme $r=\min \left \{ r_i:i \in \left \{ 1,\dots,m \right \}  \right \} $.
+        Pak $r>0$ a $\forall i \in \left \{ 1,\dots,m \right \}: B(x,r)\subset G_i $. Tedy
+        $B(x,r)\subset \bigcap_{i=1}^m G_i$. Tudíž $\bigcap_{i=1}^m G_i$ je otevřená množina v $P$.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{poznamka}\,
+\begin{enumerate}[(1)]
+	\item V tvrzení (c) věty \ref{veta9.3} je důležité, aby počet množin byl \emph{konečný}. Pro
+	nekonečné průniky tvrzení neplatí. Např. $G_i = \left( -\frac{1}{i}, \frac{1}{i} \right ), i \in \mathbb N  $,
+	pak sice pro každé $i\in \mathbb N $ je $G_i$ otevřená v $\mathbb R $, ale $\bigcap_{i=1}^\infty G_i = \left \{ 0 \right \} $
+	není otevřená v $\mathbb R $.
+	\par Jiné příklady: $G_i = \left( -\frac{1}{i}, 1+\frac{1}{i} \right ) $, pak $\bigcap G_i = [0,1]$.
+	\item Podle věty \ref{veta9.3} (b) je $\operatorname{Int} M$ otevřená množina (pro každou $M\subset P$)
+	a platí
+	$$
+	    \operatorname{Int} M = \bigcup \left \{ B(x,r), x \in M, r>0, B(x,r)\subset M \right \}.
+	$$
+\end{enumerate}
+\end{poznamka}
+
+\begin{veta}[Vztah otevřených a uzavřených množin]\label{veta9.4}
+Nechť $(P,\varrho)$ je metrický prostor a~$M\subset P$. Potom množina $M$ je otevřená právě tehdy, když $P\smallsetminus M$ je uzavřená.
+\end{veta}
+
+\begin{proof}
+	Dokážeme každou implikaci zvlášť.
+	\begin{enumerate}
+		\item[$\implies$] Předpokládejme, že $M$ je otevřená. Chceme dokázat, že $P \smallsetminus M$ je
+		uzavřená, tj.
+		$$
+  \left \{ x_n \right \} \subset (P \smallsetminus M), x_n \to x \in P \implies x \in (P \smallsetminus M).
+		$$
+		Zvolme $\left \{ x_n \right \} \subset (P \smallsetminus M)$, nechť $x_n \to x, x \in P$.
+		Předpokládejme, že $x \in M$. Protože $M$ je otevřená, nalezneme $r >0$ tak, že
+		$B(x,r)\subset M$. Protože $x_n \to x$, nalezneme $n_0\in \mathbb N $ tak, že $\varrho(x_{n_0},x)<r$,
+		tedy $x_{n_0}\in B(x,r) \subset M$. To je spor, neboť $x_{n_0}\in (P \smallsetminus M)\cap M$.
+		Tedy $x \notin M$, tj. $x \in P \smallsetminus M$, takže $P \smallsetminus M$ je uzavřená.
+		\item[$\impliedby$] Dokážeme nepřímo, tj. předpokládáme, že $M$ není otevřená a dokážeme,
+		že $P \smallsetminus M$ není uzavřená. Předpokládejme, že $M$ není otevřená v $P$. Nalezneme
+		bod $x \in M \smallsetminus\operatorname{Int} M$. Potom
+		$$\forall r >0:B(x,r)\cap (P \smallsetminus M) \ne \emptyset.$$
+		Speciálně pro $r=\frac{1}{n}, n \in \mathbb N ,$ platí
+		$$
+		    B \left( x, \frac{1}{n} \right ) \cap (P \smallsetminus M) \ne \emptyset \qquad \forall n \in \mathbb N .
+		$$
+		Tedy pro každé $n \in \mathbb N $ nalezneme
+		$$
+		    x_n \in B \left( x, \frac{1}{n} \right ) \cap (P \smallsetminus M).
+		$$
+		Potom $\left \{ x_n \right \} \subset (P \smallsetminus M)$ a $\varrho (x,x_n)<\frac{1}{n},$ tedy
+		$x_n\to x$ v $P$. Protože $x \in M$, a tedy $x \notin (P \smallsetminus M)$, plyne odtud,
+		že $P \smallsetminus M$ není uzavřená v $P$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{definice}
+Nechť $(P,\varrho)$ je metrický prostor, $M\subset P$ a $x\in P$. Řekneme, že $x$ je \textbf{hraničním bodem} množiny $M$, jestliže pro každé $r>0$ platí
+\[
+B(x,r)\cap M\neq\emptyset \qquad \text{a} \qquad B(x,r)\cap(P\smallsetminus M)\neq\emptyset.
+\]
+Množinu všech hraničních bodů množiny $M$ nazýváme \textbf{hranicí} množiny $M$ a značíme ji $\partial M$.
+\end{definice}
+
+\begin{poznamka}
+	Hraniční bod nějaké množiny může a nemusí být jejím prvkem.
+\end{poznamka}
+
+\begin{definice}
+Nechť $(P,\varrho)$ je metrický prostor a $M\subset P$. Označme
+$
+\overline{M}=M\cup \partial M.
+$
+Potom množinu $\overline{M}$ nazýváme \textbf{uzávěrem} množiny $M$ v prostoru $(P,\varrho)$.
+\end{definice}
+
+\begin{priklad}
+	\,
+	\begin{enumerate}[(a)]
+		\item $P=\mathbb R $, $M = (0,1)$, potom $\partial M = \left \{ 0,1 \right \} $ a $\overline M = [0,1]$,
+		\item $P=\mathbb R $, $M=\mathbb Q $, potom $\partial M=\mathbb R $, tedy $\overline {\mathbb Q} =\mathbb R $,
+		\item $\operatorname{Int}([0,1])=(0,1)$, $\operatorname {Int}(\mathbb Q )=\emptyset$.
+	\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Vlastnosti uzávěru]\label{veta9.5}
+Nechť $(P,\varrho)$ je metrický prostor, $A\subset P$, $B\subset P$. Pak platí:
+
+\begin{itemize}
+    \item[(a)] $\overline{\emptyset}=\emptyset$, $\overline{P}=P$,
+
+    \item[(b)] pokud $A\subset B$, pak $\overline{A}\subset \overline{B}$,
+
+    \item[(c)] $\overline{A}$ je uzavřená.
+\end{itemize}
+\end{veta}
+
+\begin{proof}
+	\,
+	\begin{enumerate}[(a)]
+		\item Zřejmé.
+		\item Předpokládejme, že $x \in \partial A \smallsetminus B$. Chceme dokázat, že $x \in \partial B$.
+		Zvolme $r > 0$. Potom zřejmě
+		$$B(x,r) \cap (P \smallsetminus B) \ne \emptyset.$$
+		Protože $x \in \partial A$, platí $B(x,r) \cap A \ne \emptyset$, tedy
+		tím spíše $B(x,r) \cap B \ne \emptyset$, neboť $A\subset B$. Tedy $x \in \partial B$. Dokázali jsme:
+		$\partial A \smallsetminus B \subset \partial B$. Tudíž
+		$$\overline A = A\cup \partial A \subset B \cup (\partial A \smallsetminus B)\subset B \cup \partial B = \overline B.$$
+		\item Chceme $\overline A$ je uzavřená, tj. $A \cup \partial A $ je uzavřená, jinými slovy chceme, že
+		$\left \{ x_n \right \}\subset \overline A , x_n \to x \in P$, pak $x \in \overline A$. Předpokládejme,
+		že $\left \{ x_n \right \}  \subset \overline A$, $x_n \to x \in P, x \notin A$. Zvolme $r>0$.
+		Nalezneme $n_0, \in \mathbb N $ takové, že $x_n \in B \left( x, \frac{r}{2} \right ) $. Potom
+		$B \left( x_{n_0}, \frac{r}{2} \right ) \cap A \ne \emptyset $, neboť $x_n $ je v $A$ nebo v $\partial A$.
+		Tedy nalezneme $y \in B \left \{ x_{n_0}, \frac{r}{2} \right \}\cap A $. Potom
+		$$
+		    \varrho(x,y) \leq \varrho(x,x_{n_0})+ \varrho(x_{n_0},y)<\frac{r}{2}+\frac{r}{2}=r.
+		$$
+		Takže je $y \in B(x,r) \cap A$. Tedy $B(x,r)\cap A \ne \emptyset$, takže $x \in \partial A$, tudíž
+		$x \in \overline A$. Tedy $\overline A$ je uzavřená v $P$.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Spojitá zobrazení}
+\begin{definice}
+Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $a\in P$ a $M\subset P$.
+Řekneme, že
+\begin{itemize}
+    \item $f$ je \textbf{spojité v bodě $a$ vzhledem k množině} $M$, jestliže $a\in M$ a platí
+    \[
+    \forall \varepsilon>0\ \exists \delta>0\ \forall x\in M :
+    \rho(x,a)<\delta \implies \sigma(f(x),f(a))<\varepsilon;
+    \]
+
+    \item $f$ je \textbf{spojité v bodě} $a$, jestliže je spojité v $a$ vzhledem k $P$,
+
+    \item $f$ je \textbf{spojité na} $M$, jestliže je spojité v každém bodě $b\in M$ vzhledem k $M$,
+
+    \item $f$ je \textbf{spojité}, jestliže je spojité na $P$.
+\end{itemize}
+\end{definice}
+
+\begin{veta}[Charakterizace spojitosti]\label{veta9.6}
+Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory a $f : P \to Q$. Pak jsou následující tvrzení ekvivalentní.
+
+\begin{itemize}
+    \item[(i)] Zobrazení $f$ je spojité.
+
+    \item[(ii)] Pro každou otevřenou množinu $G$ v prostoru $(Q,\sigma)$ je $f^{-1}(G)$ otevřená v $(P,\rho)$.
+
+    \item[(iii)] Pro každou uzavřenou množinu $F$ v prostoru $(Q,\sigma)$ je $f^{-1}(F)$ uzavřená v $(P,\rho)$.
+\end{itemize}
+\end{veta}
+
+\begin{definice}
+Nechť $(X,\rho)$ je metrický prostor, $M\subset X$ a $x\in X$. Řekneme, že $x$ je \textbf{hromadným bodem množiny} $M$, jestliže pro každé $\varepsilon>0$ platí
+\[
+M\cap (B(x,\varepsilon)\smallsetminus\{x\})\neq\emptyset.
+\]
+Množinu všech hromadných bodů množiny $M$ značíme $M'$.
+Body z $M\smallsetminus M'$ nazýváme \textbf{izolovanými body množiny} $M$.
+\end{definice}
+
+\begin{definice}
+Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset X$ a $a\in A'$. Řekneme, že prvek $b\in Y$ je \textbf{limitou zobrazení $f$ v bodě $a$ vzhledem k množině} $A$, jestliže platí
+\[
+\forall \varepsilon>0\ \exists \delta>0\ \forall x\in A,\ x\neq a :
+\rho(x,a)<\delta \implies \sigma(f(x),b)<\varepsilon.
+\]
+Je-li $A=P$, říkáme, že $f$ má v bodě $a$ \textbf{limitu} $b$.
+\end{definice}
+
+\begin{oznaceni}
+Pokud limita $f$ v bodě $a$ vzhledem k $A$ existuje, pak ji značíme
+$
+\lim_{x\to a,\, x\in A} f(x).
+$
+Místo
+$
+\lim_{x\to a,\, x\in X} f(x)
+$
+píšeme jen
+$
+\lim_{x\to a} f(x).
+$
+\end{oznaceni}
+
+\begin{veta}[Heine]\label{veta9.7}
+Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset \mathcal D(f)$, $a\in A'$, $b\in Q$. Potom jsou následující dvě tvrzení ekvivalentní:
+
+\begin{itemize}
+    \item[(i)]
+    $
+    \lim_{x\to a,\, x\in A} f(x)=b,
+    $
+
+    \item[(ii)] pro každou posloupnost $\{x_n\}$ prvků množiny $A\smallsetminus\{a\}$, která splňuje
+    $
+    \lim x_n=a,
+    $
+    platí
+    $
+    \lim f(x_n)=b.
+    $
+\end{itemize}
+\end{veta}
+
+\begin{veta}[Spojitost složeného zobrazení v bodě]\label{veta9.8}
+Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A$, $B\subset Y$, $f(a)\in B$ a platí:
+
+\begin{itemize}
+    \item existuje $\delta>0$ takové, že
+    $
+    f(B(a,\delta)\cap A)\subset B,
+    $
+
+    \item $f$ je spojité v bodě $a$ vzhledem k $A$,
+
+    \item $g$ je spojité v bodě $f(a)$ vzhledem k $B$.
+\end{itemize}
+
+Pak zobrazení $g\circ f$ je spojité v bodě $a$ vzhledem k $A$.
+\end{veta}
+
+\begin{veta}[Spojitost složeného zobrazení] \label{veta9.9}
+Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f : X\to Y$ a $g : Y\to Z$ jsou spojitá zobrazení. Pak zobrazení
+$
+g\circ f : X\to Z
+$
+je spojité.
+\end{veta}
+
+\begin{veta}[Limita složeného zobrazení]\label{veta9.10}
+Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A'$, $B\subset Y$, $b\in B'$, $c\in Z$ a platí:
+
+\begin{itemize}
+    \item existuje $\delta>0$ takové, že
+    $
+    f\bigl((A\cap B(a,\delta))\setminus\{a\}\bigr)\subset B,
+    $
+
+    \item
+    $
+    \lim_{x\to a,\, x\in A} f(x)=b,
+    $
+
+    \item
+    $
+    \lim_{y\to b,\, y\in B} g(y)=c.
+    $
+\end{itemize}
+
+Pokud dále platí jedna z podmínek
+\begin{enumerate}
+	\item[(P)] existuje $\eta>0$ takové, že pro každé $x\in B(a,\eta)\cap A,\ x\neq a,$ platí $f(x)\neq b,$
+	\item[(S)] zobrazení $g$ je spojité v bodě $b$ vzhledem k $B$,
+\end{enumerate}
+pak
+\[
+\lim_{x\to a,\, x\in A} g\circ f(x)=c.
+\]
+\end{veta}

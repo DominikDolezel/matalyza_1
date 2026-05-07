@@ -1569,7 +1569,7 @@ Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna n
 \end{poznamka}
 
 \begin{veta}\label{veta8.33}
-
+Nechť $a, b \in \mathbb{R}$, $a < b$, a $f$ je omezená spojitá funkce na $(a, b)$. Potom $f \in \mathcal N(a, b)$.
 \end{veta}
 
 \begin{proof}
@@ -1589,11 +1589,18 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 \end{proof}
 
 \begin{veta}[Vztah Riemannova a Newtonova integrálu]\label{veta8.34}
-
+Nechť $a, b \in \mathbb{R}$, $a < b$, a $f$ má Riemannův integrál na $[a, b]$ a Newtonův integrál na $(a, b)$. Potom
+\[
+(R)\int_a^b f = (N)\int_a^b f.
+\]
 \end{veta}
 
 \begin{veta}[Srovnávací kritérium]\label{veta8.35}
-
+Nechť $a \in \mathbb{R}$, $b \in \mathbb{R}^\ast$ a $a < b$. Nechť funkce $f, g : [a, b) \to \mathbb{R}$ splňují
+$
+0 \leq f(x) \leq g(x)
+$
+pro každé $x \in [a, b)$. Nechť dále je $f$ spojitá na $[a, b)$ a platí $g \in\mathcal N(a, b)$. Potom $f \in\mathcal N(a, b)$.
 \end{veta}
 
 \begin{proof}
@@ -1614,7 +1621,11 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 \end{proof}
 
 \begin{veta}[Limitní srovnávací kritérium]\label{veta8.36}
-
+Nechť $a \in \mathbb{R}$, $b \in \mathbb{R}^\ast$, $a < b$, $f, g$ jsou spojité nezáporné funkce na $[a, b)$. Jestliže
+$
+\lim_{x \to b-} \frac{f(x)}{g(x)} \in (0,\infty),
+$
+pak $f \in \mathcal N(a, b)$ právě tehdy, když $g \in\mathcal N(a, b)$.
 \end{veta}
 
 \begin{proof}
@@ -1641,7 +1652,22 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 \end{poznamka}
 
 \begin{lemma}\label{lemma8.37}
+Nechť $a, b \in \mathbb{R}$, $a < b$, $f$ je spojitá funkce na $[a, b]$ a $g : [a, b] \to \mathbb{R}$ je nerostoucí, nezáporná a spojitá funkce. Potom
+\[
+g(a)\inf_{x \in [a,b]} \int_a^x f
+\leq
+\int_a^b fg
+\leq
+g(a)\sup_{x \in [a,b]} \int_a^x f.
+\]
 
+Speciálně platí
+\[
+\left| \int_a^b fg \right|
+\leq
+g(a)\sup_{x \in [a,b]}
+\left| \int_a^x f \right|.
+\]
 \end{lemma}
 
 \begin{proof}
@@ -1654,18 +1680,18 @@ Případ $\lim_{x\to b-} F(x)\in \mathbb R $ ověříme analogicky. Celkem tedy 
 	($f$ a $g$ jsou spojité na $[a,b]$, a tedy stejnoměrně spojité.) Zvolme dělení $D=\left \{ x_j \right \}_{j=1}^n$
 	intervalu $[a,b]$ splňující $\nu(D)<\delta$. Potom máme
 	$$
-	F(x_{j-1})(x_j-x_{j-1}) \leq \int_{x_{j-1}}^{x_j} f + \varepsilon(x_j-x_{j-1}).
+	F(x_{j-1})(x_j-x_{j-1}) \leq \int_{x_{j-1}}^{x_j} f + \varepsilon(x_j-x_{j-1}),
 	$$
-	($f(x_{j-1}\leq f(t)+\varepsilon$, $t \in [x_{j-1},x_j]$.) Dále je
+	protože $f(x_{j-1}\leq f(t)+\varepsilon$, $t \in [x_{j-1},x_j]$. Dále je
 	$$
-	    \int_{x_{j-1}^x{x_j}} fg \leq f(x_{j-1})f(x_{j-1})(x_j-x_{j-1}) + \varepsilon(x_j-x_{j-1}),
+	    \int_{x_{j-1}}^{x_j} fg \leq f(x_{j-1})f(x_{j-1})(x_j-x_{j-1}) + \varepsilon(x_j-x_{j-1}),
 	$$
-	($f(x_{j-1})g(x_{j-1})\leq f(t)g(t)+\varepsilon$, $t \in [x_{j-1},x_j]$.)
-	$$
-	    \leq g(x_{j-1})\left( \int_{x_{j-1}}^{x_j}f + \varepsilon(x_j-x_{j-1}) \right ) + \varepsilon(x_j-x_{j-1}) = g(x_{j-1})\int_{x_{j-1}}^{x_j} f + g(x_{j-1})\varepsilon(x_j-x_{j-1})+\varepsilon(x_j-x_{j-1}) \leq g(x_{j-1})\int_{x_{j-1}}^{x_j} f + (g(a)+1) \varepsilon (x_j - x_{j-1}).
-	$$
-	$j=1,\dots,n$
-	DOOPRAVIT, NAFORMÁTOVAT
+	neboť $f(x_{j-1})g(x_{j-1})\leq f(t)g(t)+\varepsilon$, $t \in [x_{j-1},x_j]$. Máme tedy
+	\begin{align*}
+ \int_{x_{j-1}}^{x_j} fg & \leq g(x_{j-1})\left( \int_{x_{j-1}}^{x_j}f + \varepsilon(x_j-x_{j-1}) \right ) + \varepsilon(x_j-x_{j-1}) \\
+ & = g(x_{j-1})\int_{x_{j-1}}^{x_j} f + g(x_{j-1})\varepsilon(x_j-x_{j-1})+\varepsilon(x_j-x_{j-1}) \\
+ &\leq g(x_{j-1})\int_{x_{j-1}}^{x_j} f + (g(a)+1) \varepsilon (x_j - x_{j-1}), \qquad j=1,\dots,n.
+	\end{align*}
 	Označme $\varepsilon^\star = \varepsilon(g(a)+1)(b-a)$. Pak
 	\begin{align*}
 	\int_a^b f(t)g(t)\d t &= \sum_{i=1}^n \int_{x_{i-1}^{x_i}}f(t)g(t)\d t \\
@@ -1681,7 +1707,13 @@ Tím je nerovnost dokázána. Nerovnost pro infimum se dokáže obdobně.
 \end{proof}
 
 \begin{veta}[První věta o střední hodnotě]\label{veta8.38}
-
+Nechť $a, b \in \mathbb{R}$, $a < b$, $f$ je spojitá funkce na $[a, b]$, $g$ je
+nezáporná funkce na $[a, b]$, $g \in \mathcal N(a, b)$ a $fg \in \mathcal N(a, b)$. Potom existuje $c \in [a, b]$ takové, že
+\[
+\int_a^b fg
+=
+f(c)\int_a^b g.
+\]
 \end{veta}
 
 \begin{proof}
@@ -1715,7 +1747,16 @@ Tím je nerovnost dokázána. Nerovnost pro infimum se dokáže obdobně.
 \end{proof}
 
 \begin{veta}[Druhá věta o střední hodnotě]\label{veta8.39}
-
+Nechť $a, b \in \mathbb{R}$, $a < b$, $f$ je spojitá funkce na $[a, b]$, $g$ je monotónní a
+spojitá funkce na $[a, b]$. Potom existuje $c \in [a, b]$ takové, že
+\[
+\int_a^b fg
+=
+g(a)\int_a^c f
++
+g(b)\int_c^b f.
+\tag{2}
+\]
 \end{veta}
 
 \begin{proof}
@@ -1750,13 +1791,75 @@ Tím je nerovnost dokázána. Nerovnost pro infimum se dokáže obdobně.
 \end{proof}
 
 \subsection{Aplikace určitého integrálu}
-lemma se přeskakuje
-\begin{veta}\label{veta8.41}
+\begin{definice}
+\textbf{Křivkou} budeme rozumět zobrazení
+\[
+\varphi = (\varphi_1, \dots, \varphi_n) : [a, b] \to \mathbb{R}^n,
+\]
+kde $n \in \mathbb{N}$, $a, b \in \mathbb{R}$, $a < b$, a pro každé $i \in \{1, \dots, n\}$ je $\varphi_i$ spojitá funkce na $[a, b]$.
 
+\textbf{Křivkou třídy} $\mathcal C^1$ rozumíme křivku
+$
+\varphi = (\varphi_1, \dots, \varphi_n)
+$
+takovou, že pro každé $i \in \{1, \dots, n\}$ je $\varphi_i'$ spojitá funkce na $[a, b]$, přičemž v krajních bodech $[a, b]$ symbol $\varphi_i'(x)$ značí příslušnou jednostrannou derivaci.
+\end{definice}
+
+\begin{definice}
+Nechť $\varphi : [a, b] \to \mathbb{R}^n$ je křivka. \textbf{Délkou křivky} $\varphi$ rozumíme hodnotu
+\[
+L(\varphi)
+=
+\sup
+\left\{
+L(\varphi,D); \ D \text{ je dělení intervalu } [a,b]
+\right\},
+\]
+kde pro dělení $D = \{x_j\}_{j=0}^k$ intervalu $[a,b]$ definujeme
+\[
+L(\varphi,D)
+=
+\sum_{j=1}^k
+\text{vzdálenost}
+\bigl(
+\varphi(x_{j-1}), \varphi(x_j)
+\bigr).
+\]
+\end{definice}
+
+\begin{veta}\label{veta8.41}
+Nechť
+$
+\varphi = (\varphi_1, \dots, \varphi_n) : [a,b] \to \mathbb{R}^n
+$
+je křivka třídy $\mathcal C^1$. Pak platí
+\[
+L(\varphi)
+=
+\int_a^b
+\sqrt{
+(\varphi_1'(t))^2
++
+\cdots
++
+(\varphi_n'(t))^2
+}
+\d t.
+\]
 \end{veta}
-bez důkazu
 
 \begin{veta}[Integrální kritérium]\label{veta8.42}
-
+Nechť $f$ je nezáporná nerostoucí spojitá funkce na $[n_0,\infty)$, kde $n_0 \in \mathbb{N}$. Nechť pro posloupnost $\{a_n\}$ platí
+$
+a_n = f(n),  n \geq n_0.
+$
+Pak
+$
+\sum_{n=1}^\infty a_n
+$
+konverguje právě tehdy, když
+$
+\int_{n_0}^\infty f(x)\d x
+$
+konverguje.
 \end{veta}
-bez důkazu

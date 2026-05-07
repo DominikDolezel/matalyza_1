@@ -182,15 +182,15 @@ je-li výraz na pravé straně definován.
 			& \forall y \in P(b,\delta): \left | \frac{f(y)-f(b)}{y-b} \right |<c,\\
 			& \forall y \in B(b,\delta): |f(y)-f(b)| \leq c\cdot |y-b|.
 \end{align*}
-    Zvolme $\varepsilon>0$. Nalezneme $\rho_1>0$ takové, že
+    Zvolme $\varepsilon>0$. Nalezneme $\varrho_1>0$ takové, že
     $$
-        \forall x \in P(a,\rho_1): \left | \frac{g(x)-g(a)}{x-a}-0 \right|<\varepsilon.
+        \forall x \in P(a,\varrho_1): \left | \frac{g(x)-g(a)}{x-a}-0 \right|<\varepsilon.
     $$
-    Dále nalezneme $\rho_2 \in (0,\rho_1)$ takové, že
+    Dále nalezneme $\varrho_2 \in (0,\varrho_1)$ takové, že
     $$
-        \forall x \in B(a,\rho_2): g(x)\in B(b,\delta).
+        \forall x \in B(a,\varrho_2): g(x)\in B(b,\delta).
     $$
-    Pro každé $x \in P(a,\rho_2)$ platí
+    Pro každé $x \in P(a,\varrho_2)$ platí
     $$
 	\left | \frac{f(g(x))-f(g(a))}{x-a} \right | \leq \frac{c|g(x)-g(a)|}{|x-a|} = c\cdot \left | \frac{g(x)-g(a)}{x-a} \right |<c\varepsilon,
     $$
