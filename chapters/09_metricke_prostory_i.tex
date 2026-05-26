@@ -328,14 +328,14 @@ Nechť $(P,\varrho)$ je metrický prostor, $A\subset P$, $B\subset P$. Pak plat�
 \end{proof}
 
 \subsection{Spojitá zobrazení}
-\begin{definice}
-Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $a\in P$ a $M\subset P$.
+\begin{definice}\label{definicespojitost}
+Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $a\in P$ a $M\subset P$.
 Řekneme, že
 \begin{itemize}
     \item $f$ je \textbf{spojité v bodě $a$ vzhledem k množině} $M$, jestliže $a\in M$ a platí
     \[
     \forall \varepsilon>0\ \exists \delta>0\ \forall x\in M :
-    \rho(x,a)<\delta \implies \sigma(f(x),f(a))<\varepsilon;
+    \varrho(x,a)<\delta \implies \sigma(f(x),f(a))<\varepsilon;
     \]
 
     \item $f$ je \textbf{spojité v bodě} $a$, jestliže je spojité v $a$ vzhledem k $P$,
@@ -346,20 +346,81 @@ Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P
 \end{itemize}
 \end{definice}
 
-\begin{veta}[Charakterizace spojitosti]\label{veta9.6}
-Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory a $f : P \to Q$. Pak jsou následující tvrzení ekvivalentní.
+\begin{poznamka}
+	\,
+	\begin{enumerate}[(1)]
+		\item Spojitost $f$ závisí na $\varrho$ a $\sigma$.
+		\item Definice \ref{definicespojitost} je kompatibilní s prvním semestrem.
+\end{enumerate}
+\end{poznamka}
 
+\begin{priklad}
+	Vezměme $n \in \mathbb N , i \in \mathbb N , i \leq n$ a mějme zobrazení
+	$\pi_i: \mathbb R ^n \to \mathbb R $ dané předpisem
+	$$
+	    \pi_i(x) = \pi_i(x_1,\dots,x_n)=x_i.
+	$$
+	Zobrazení $\pi_i$ je spojité mezi prostory $(\mathbb R ^n, \varrho_e) $ a $(\mathbb R , \sigma)$.
+	\par Zvolme $a \in \mathbb R ^n$. Zvolme $\varepsilon>0$. Položíme $\delta = \varepsilon$.
+	Potom pro všechna $x \in \mathbb R ^n$ je
+	$$
+	    \varrho(x,a) = \sqrt{\sum_{j=1}^n (x_j-a_j)^2}<\delta,
+	$$
+	neboť
+	$$
+	    |\pi_(x)-\pi_i(a)|=|x_a-a_i|\leq \varrho_e(x,a)<\delta=\varepsilon.
+	$$
+\end{priklad}
+
+\begin{veta}[Charakterizace spojitosti]\label{veta9.6}
+Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory a $f : P \to Q$. Pak jsou následující tvrzení ekvivalentní.
 \begin{itemize}
     \item[(i)] Zobrazení $f$ je spojité.
-
-    \item[(ii)] Pro každou otevřenou množinu $G$ v prostoru $(Q,\sigma)$ je $f^{-1}(G)$ otevřená v $(P,\rho)$.
-
-    \item[(iii)] Pro každou uzavřenou množinu $F$ v prostoru $(Q,\sigma)$ je $f^{-1}(F)$ uzavřená v $(P,\rho)$.
+    \item[(ii)] Pro každou otevřenou množinu $G$ v prostoru $(Q,\sigma)$ je $f^{-1}(G)$ otevřená v $(P,\varrho)$.
+    \item[(iii)] Pro každou uzavřenou množinu $F$ v prostoru $(Q,\sigma)$ je $f^{-1}(F)$ uzavřená v $(P,\varrho)$.
 \end{itemize}
 \end{veta}
 
+\begin{proof}
+	Nejprve dokážeme ekvivalenci mezi (i) a (ii).
+	\begin{enumerate}
+		\item[$\implies$] Zvolme množinu $G\subset Q$, $G$ je otevřená (vzhledem k prostoru $(Q,\sigma)$).
+		Chceme ukázat, že $f^{-1}(G)$ je otevřená, tedy že pr každý bod $x \in f^{-1}(G)$ je $f(x)\in G$.
+		Nalezneme $\varepsilon>0$ takové, že $B(f(x),\varepsilon)\subset G$. Díky spojitosti $f$
+		v $x$ nalezneme $\delta > 0$ takové, že
+		$$
+		    \forral y \in P, \varrho(x,y)<\delta: \sigma(f(x),f(y))<\varepsilon.
+		$$
+		Odtud plyne, že $B(x,\delta)\subset f^{-1}(G)$, a tedy $x$ je vnitřní bod množiny $f^{-1}(G)$.
+	    \item[$\impliedby$] Zvolme $a \in P$. Zvolme $\varepsilon>0$. Množina $B(f(a),\varepsilon)$ je
+		otevřená v $(Q,\sigma)$. Odtud plyne, že $f^{-1}(B(f(a),\varepsilon))$ je otevřená
+		v $(P,\varrho)$ a bod $a \in f^{-1}(B(f(a),\varepsilon))$. Nalezneme $\delta>0$ takové, že
+		$$
+		B(a,\delta)\subset f^{-1}(B(f(a),\varepsilon)).
+		$$
+		Platí tedy
+		$$
+		    \forall y \in B(a,\delta):f(y)\in B(f(a),\varepsilon).
+		$$
+	\end{enumerate}
+	Dále dokážeme ekvivalenci (ii) a (iii).
+	\begin{enumerate}
+		\item[$\implies$] Vezměme $F \subseteq Q$, $F$ uzavřená v $(Q,\sigma)$. Víme, že
+		$f^{-1}(Q\smallsetminus F)$ je otevřená v $(P,\varrho)$, neboť i $Q\smallsetminus F$ je otevřená v $(Q,\sigma)$.
+		Proto je
+		$$f^{-1}(F)=P\smallsetminus \underbrace{f^{-1}(Q\smallsetminus F)}_{\text{otevřená}}$$
+		uzavřená, což jsme chtěli dokázat.
+		\item[$\impliedby$] Vezměme $G \subset Q$ otevřenou množinu. Pak je $Q\smallsetminus G$ uzavřená, a
+	    tedy $f^{-1}(Q\smallsetminus G)$ je uzavřená v $(P,\varrho)$. proto je
+		$$
+			 f^{-1}(G)=P\smallsetminus \underbrace{f^{-1}(Q\smallsetminus G)}_{\text{uzavřená}}
+		$$
+		otevřená, což jsme chtěli dokázat. \qedhere
+\end{enumerate}
+\end{proof}
+
 \begin{definice}
-Nechť $(X,\rho)$ je metrický prostor, $M\subset X$ a $x\in X$. Řekneme, že $x$ je \textbf{hromadným bodem množiny} $M$, jestliže pro každé $\varepsilon>0$ platí
+Nechť $(X,\varrho)$ je metrický prostor, $M\subset X$ a $x\in X$. Řekneme, že $x$ je \textbf{hromadným bodem množiny} $M$, jestliže pro každé $\varepsilon>0$ platí
 \[
 M\cap (B(x,\varepsilon)\smallsetminus\{x\})\neq\emptyset.
 \]
@@ -367,14 +428,26 @@ Množinu všech hromadných bodů množiny $M$ značíme $M'$.
 Body z $M\smallsetminus M'$ nazýváme \textbf{izolovanými body množiny} $M$.
 \end{definice}
 
+\begin{priklad}
+	\,
+	\begin{enumerate}[(1)]
+		\item $(0,1)^\prime = [0,1]$
+		\item $\left \{ \frac{1}{n}, n \in \mathbb N  \right \}^\prime = \left \{ 0 \right \}  $
+	\end{enumerate}
+\end{priklad}
+
 \begin{definice}
-Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset X$ a $a\in A'$. Řekneme, že prvek $b\in Y$ je \textbf{limitou zobrazení $f$ v bodě $a$ vzhledem k množině} $A$, jestliže platí
+Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset P$ a $a\in A'$. Řekneme, že prvek $b\in Q$ je \textbf{limitou zobrazení $f$ v bodě $a$ vzhledem k množině} $A$, jestliže platí
 \[
 \forall \varepsilon>0\ \exists \delta>0\ \forall x\in A,\ x\neq a :
-\rho(x,a)<\delta \implies \sigma(f(x),b)<\varepsilon.
+\varrho(x,a)<\delta \implies \sigma(f(x),b)<\varepsilon.
 \]
 Je-li $A=P$, říkáme, že $f$ má v bodě $a$ \textbf{limitu} $b$.
 \end{definice}
+
+\begin{poznamka}
+	Při označení z předchozí definice má $f$ v $a$ vzhledem k $A$ nejvýše jednu limitu.
+\end{poznamka}
 
 \begin{oznaceni}
 Pokud limita $f$ v bodě $a$ vzhledem k $A$ existuje, pak ji značíme
@@ -392,8 +465,7 @@ $
 \end{oznaceni}
 
 \begin{veta}[Heine]\label{veta9.7}
-Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset \mathcal D(f)$, $a\in A'$, $b\in Q$. Potom jsou následující dvě tvrzení ekvivalentní:
-
+Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P$ do $Q$, $A\subset \mathcal D(f)$, $a\in A'$, $b\in Q$. Potom jsou následující dvě tvrzení ekvivalentní:
 \begin{itemize}
     \item[(i)]
     $
@@ -412,8 +484,7 @@ Nechť $(P,\rho)$ a $(Q,\sigma)$ jsou metrické prostory, $f$ je zobrazení z $P
 \end{veta}
 
 \begin{veta}[Spojitost složeného zobrazení v bodě]\label{veta9.8}
-Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A$, $B\subset Y$, $f(a)\in B$ a platí:
-
+Nechť $(X,\varrho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A$, $B\subset Y$, $f(a)\in B$ a platí:
 \begin{itemize}
     \item existuje $\delta>0$ takové, že
     $
@@ -424,21 +495,29 @@ Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je z
 
     \item $g$ je spojité v bodě $f(a)$ vzhledem k $B$.
 \end{itemize}
-
 Pak zobrazení $g\circ f$ je spojité v bodě $a$ vzhledem k $A$.
 \end{veta}
 
+\begin{proof}
+	Samostatně.
+\end{proof}
+
 \begin{veta}[Spojitost složeného zobrazení] \label{veta9.9}
-Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f : X\to Y$ a $g : Y\to Z$ jsou spojitá zobrazení. Pak zobrazení
+Nechť $(X,\varrho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f : X\to Y$ a $g : Y\to Z$ jsou spojitá zobrazení. Pak zobrazení
 $
 g\circ f : X\to Z
 $
 je spojité.
 \end{veta}
 
-\begin{veta}[Limita složeného zobrazení]\label{veta9.10}
-Nechť $(X,\rho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A'$, $B\subset Y$, $b\in B'$, $c\in Z$ a platí:
+\begin{proof}
+	Vezměme $G \subset Z$, $G$ otevřenou. Pak je množiny
+	$$(g\circ f)^{-1}(G)=f^{-1}(\underbrace{g^{-1}(G)}_{\text{otevřená}})$$
+	otevřená, a tedy podle věty \ref{veta9.6} je $g\circ f$ spojité zobrazení.
+\end{proof}
 
+\begin{veta}[Limita složeného zobrazení]\label{veta9.10}
+Nechť $(X,\varrho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ je zobrazení z $X$ do $Y$ a $g$ je zobrazení z $Y$ do $Z$. Nechť $A\subset X$, $a\in A'$, $B\subset Y$, $b\in B'$, $c\in Z$ a platí:
 \begin{itemize}
     \item existuje $\delta>0$ takové, že
     $
@@ -466,3 +545,7 @@ pak
 \lim_{x\to a,\, x\in A} g\circ f(x)=c.
 \]
 \end{veta}
+
+\begin{proof}
+	Samostatně.
+\end{proof}

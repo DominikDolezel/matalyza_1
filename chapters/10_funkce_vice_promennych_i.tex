@@ -1,0 +1,403 @@
+\section{Funkce více proměnných I}
+\begin{oznaceni}
+    \,
+    \begin{itemize}
+	\item $\mathbb R ^n = \underbrace{\mathbb R \times \mathbb R  \times \dots \times \mathbb R}_{k\ \text{krát}} $
+	\item $x \in \mathbb R ^n$ znamená, že $x=[x_1,x_2,\dots,x_n]$
+	\item $e^i = [0,0,\dots,0, \underset{i-\text{tý}}{1},0,\dots,0]$
+	\item $o=[0,\dots,0]$
+	\item $\nm{x}= \sqrt{\sum_{i=1}^\infty x_i^2}$
+	\item někdy píšeme $\rho_e(x,y)=\nm{x-y}$
+    \end{itemize}
+\end{oznaceni}
+
+\begin{definice}
+Nechť $f$ je reálná funkce $n$ proměnných,
+$a\in\mathbb{R}^n$
+a $1\le i\le n$.
+Pak \textbf{parciální derivaci funkce $f$ v bodě $a$
+podle $i$-té proměnné} definujeme jako limitu
+
+\[
+\frac{\partial f}{\partial x_i}(a)
+=
+\lim_{t\to0}
+\frac{
+f(a+t e^i)-f(a)
+}{t}.
+\]
+Symbolem
+$
+\frac{\partial f}{\partial x_i}
+$
+označujeme \textbf{parciální derivaci funkce $f$
+podle $i$-té proměnné}, tj. funkci definovanou
+předpisem
+\[
+\frac{\partial f}{\partial x_i}
+:
+x\mapsto
+\frac{\partial f}{\partial x_i}(x).
+\]
+\end{definice}
+
+\begin{poznamka}\,
+\begin{enumerate}[(1)]
+	\item Značení: místo symbolu $\frac{\partial f }{\partial x_i}(a)$ někdy používáme symbol $\partial_i f(a)$.
+	\item Limita v definici
+	$$
+ \begin{cases}
+		\text{neexistuje},\\
+		\text{existuje} \ \begin{cases}
+			\in \mathbb R \ \text{vlastní},\\
+			\text{nevlastní} \ \begin{cases}
+				\infty,\\
+				-\infty.
+\end{cases}
+\end{cases}
+ \end{cases}
+	$$
+	\item Pokud $\frac{\partial f }{\partial x_i}(a)$ existuje, pak
+	$$
+	    \exists \delta>0: \left \{ a+te^i, |t|<\delta \right \}\subset \mathcal D(f).
+	$$
+	\item Početní technika. Nechť $f$ je funkce $n$ proměnných, $a \in \mathbb R ^n,$ $1\leq i \leq n$.
+	Parciální funkce je definována jako
+	$$
+	g(x)=f(a_1,\dots,a_{i-1},x,a_{i+1},\dots,a_n).
+	$$
+	Fukce $g$ je z $\mathbb R $ do $\mathbb R $.
+	Platí
+    $$
+    g^\prime(a)=\frac{\partial f }{\partial x_i}(a),
+    $$
+    pokud má jedna strana smysl.
+\end{enumerate}
+\end{poznamka}
+
+\begin{priklad}
+	Vezměme funkci $f(x_1,x_2)=e^{x_1x_2^2}$. Spočteme parciální derivace
+	\begin{align*}
+		\frac{\partial f }{\partial x_1} (x_1,x_2) &= e^{x_1x_2^2}x_2^2,\\
+		\frac{\partial f }{\partial x_2} (x_1,x_2) &= e^{x_1x_2^2}2x_1x_2.
+\end{align*}
+\end{priklad}
+
+\begin{definice}
+Nechť $f$ je reálná funkce $n$ proměnných,
+$a\in\mathbb{R}^n$
+a $L:\mathbb{R}^n\to\mathbb{R}$ je lineární zobrazení.
+Řekneme, že $L$ je \textbf{totální diferenciál funkce
+$f$ v bodě $a$}, jestliže platí
+\[
+\lim_{h\to0}
+\frac{
+f(a+h)-f(a)-L(h)
+}{
+\nm{h}
+}
+=
+0.
+\]
+\end{definice}
+
+\begin{poznamka}
+	Pro $n=1$ máme
+	$$
+ \frac{f(a+h)-f(a)-Ah}{|h|} \to 0.
+	$$
+	Tento výraz můžeme ekvivalentně přepsat jako
+	$$
+ \frac{|f(a+h)-f(a)-Ah|}{|h|} \to 0.
+	$$
+	Jinými slovy,
+	$$
+	    \left |\frac{f(a+h)-f(a)-Ah}{h}\right | \to 0.
+	$$
+	Konečně
+	$$
+	    \left |\frac{f(a+h)-f(a)}{h} - A\right | \to 0.
+	$$
+	Proto $A=f^\prime(a)$.
+	\par Pro $n=2$ máme
+	$$
+	    (x,y)\mapsto f(x,y).
+	$$
+	Lineární zobrazení bude
+	$$
+	    (x,y)\mapsto f(a_1,a_2) + L(x-a_1,y-a_2).
+	$$
+	\par Pro $n \in \mathbb N $ máme zobrazení $x \mapsto f(x)$ a lineární zobrazení je
+	$$
+	    x \mapsto f(a)+L(x-a).
+	$$
+	Pak
+	$$
+ \frac{f(x)-f(a)-L(x-a)}{\nm{x-a}}
+	$$
+	nám po jednoduché substituci dává definiční výraz.
+\end{poznamka}
+
+\begin{poznamka}
+	Podmínka z definice ohledně aproximace je ekvivalentní podmínce
+	$$
+ \lim_{x\to a } \frac{f(x)-f(a)-L(x-a)}{\nm{x-a}}=0.
+	$$
+\end{poznamka}
+
+\begin{veta}[Vztah totálního diferenciálu a parciální derivace]\label{veta10.1}
+Nechť $L$ je totální diferenciál funkce
+$f$ v bodě $a\in\mathbb{R}^n$.
+Potom existují parciální derivace
+\[
+\frac{\partial f}{\partial x_1}(a),
+\dots,
+\frac{\partial f}{\partial x_n}(a)
+\]
+a pro každé $h\in\mathbb{R}^n$ platí
+\[
+L(h_1,\dots,h_n)
+=
+\frac{\partial f}{\partial x_1}(a)h_1
++\cdots+
+\frac{\partial f}{\partial x_n}(a)h_n.
+\]
+\end{veta}
+
+\begin{proof}
+	Zobrazení $L$ pišme ve tvaru
+	$$
+	    L(h_1,h_2,\dots,h_n)=A_1h_1+ A_2h_2 + \dots + A_nh_n,
+	$$
+	kde $A_1,\dots,A_n \in \mathbb R $. Zvolme $i \in \left \{ 1,\dots,n \right \} $.
+	Zobrazení $\varphi(t)=te^i$ je spojité. Pak je
+	$$
+	    \nm{\varphi(t)-\varphi(0)}=\nm{te^i-0e^i} = \nm{ [ 0,\dots, 0, \underset{i-\text{tý}}{t},0\dots,0 ] }=|t|.
+	$$
+	Potom podle věty \ref{veta9.10} platí
+	$$
+ \lim_{t\to 0} \frac{f \left( a+\varphi(t) - f(a) -L(\varphi(t)) \right ) }{\nm{\varphi(t)}} = 0,
+	$$
+	podmínka (P) je splněna. Upravíme
+	$$
+ \lim_{t\to 0} \frac{f(a+te^i)-f(a)-A_it}{|t|}=0.
+	$$
+	Odsud dostáváme, že
+	$$
+ \lim_{t \to 0} \left | \frac{f(a+te^i)-f(a)}{t}-A_i \right | = 0,
+	$$
+	a tedy
+	$$
+	\lim_{t \to 0} \frac{f(a+te^i) - f(a)}{t} = A_i.
+	$$
+	Proto $\frac{\partial f }{\partial x_i}(a)=A_i$.
+\end{proof}
+
+\begin{poznamka}
+	Z věty \ref{veta10.1} plyne, že totální diferenciál je určen jednoznačně.
+\end{poznamka}
+
+\begin{oznaceni}
+	Totální diferenciál značíme $f^\prime(a)$. Formálně je $f^\prime(a)\in \left( \mathbb R ^n \right )^* $.
+	\par Pozor na kolizi značení! Pro $n=1$ je
+	\begin{align*}
+		f^\prime(a)\in \mathbb R && f^\prime(a) \in (\mathbb R)^* : \mathbb R \to \mathbb R
+	\end{align*}
+	třeba rozlišovat mezi derivací a totálním diferenciálem.
+\end{oznaceni}
+
+\begin{veta}\label{veta10.2}
+Má-li funkce $f$ v bodě
+$a\in\mathbb{R}^n$
+totální diferenciál, je
+$f$ v bodě $a$ spojitá.
+\end{veta}
+
+\begin{proof}
+    Stačí ukázat, že následující limita je rovna $f(a)$:
+    $$
+    \lim_{x \to a } f(x) = \lim_{x \to a }  \left (\frac{f(x)-f(a)-f^\prime(a)(x-a) }{\nm{x-a}} \cdot \nm{x-a} + f(a) + f^\prime(a)(x-a)\right ),
+    $$
+    kde $f^\prime(a)$ je zobrazení z $\mathbb R ^n$ do $\mathbb R $, $h \mapsto f^\prime(a)(h)$.
+    Protože je $x \mapsto \nm{x-a}$ vlastně
+    $$x \mapsto \sqrt{\sum_{i=1}^n (x_i-a_i)^2},$$ je spojité.
+    Konečně třetí člen je vlastně $$x \mapsto x-a = [x_1-a_1, \dots, x_n-a_n],$$ a tedy je též spojité.
+    Po substituci je $$y \to f^\prime(a)(y) = \sum_{i=1}^n \frac{\partial f }{\partial x_i}(a)\cdot y_i.$$
+    Máme tedy
+    $$
+    \lim_{x \to a } f(x) = 0\cdot 0 + f(a) + f^\prime(a) (\vec o) = f(a),
+    $$
+    což jsme chtěli dokázat.
+\end{proof}
+
+\begin{poznamka}
+	\,
+	\begin{enumerate}[(1)]
+		\item Existuje-li $f^\prime(a)$, již jsme dokázali, že $\frac{\partial f }{\partial x_i}(a)\in \mathbb R $
+		a také že $f$ je v $a$ spojité. Opačná implikace neplatí.
+		\item Uvažujme
+		$$
+		    f(x,y) = \begin{cases}
+							0 & x=0 \lor y=0, \\
+							1 & \text{jinak}.
+						\end{cases}
+		$$
+		Potom
+		\begin{align*}
+		\frac{\partial f }{\partial x }(0,0) = 0, & & \frac{\partial f }{\partial y}(0,0) = 0,
+\end{align*}
+ale $f$ není spojitá v $(0,0)$.
+	\end{enumerate}
+\end{poznamka}
+
+\begin{lemma}\label{lemma10.3}
+Nechť $f$ je reálná funkce $n$ proměnných,
+$
+I=
+(\alpha_1,\beta_1)
+\times\cdots\times
+(\alpha_n,\beta_n)
+\subset\mathbb{R}^n,
+$
+$a,b\in I$.
+Nechť v každém bodě $I$ existují vlastní
+parciální derivace $f$
+podle všech proměnných.
+Potom existují body
+$
+\xi_1,\dots,\xi_n\in I
+$
+takové, že
+\[
+f(b)-f(a)
+=
+\sum_{i=1}^{n}
+\frac{\partial f}{\partial x_i}
+(\xi_i)
+(b_i-a_i).
+\]
+\end{lemma}
+
+\begin{proof}
+	Označme
+	\begin{align*}
+	p^0 &= (a_1,a_2,\dots,a_n) = a,\\
+	p^1 &= (b_1,a_2,\dots, a_n),\\
+	p^2 &= (b_1,b_2, \dots, a_n),\\
+	&\dots \\
+	p^n &= (b_1,b_2,\dots,b_n) = b.
+\end{align*}
+Potom platí
+$$
+    f(b) - f(a) = \sum_{k=1}^n \left( f(p^k)-f(p^{k-1}) \right ).
+$$
+Položme pro $k\in \left \{ 1,\dots,n \right \} $
+$$
+    g^k(x)=f(b_1, b_2,\dots, b_{k-1}, x, a_{k+1}, \dots, a_n).
+$$
+Potom má $g^k$ v každém bodě $(\alpha_k, \beta_k)$ vlastní derivaci, takže existuje $z_k \in [a_k, b_k]$
+splňující (Lagrangeova věta \ref{veta5.7})
+$$
+    \underbrace{g^k(b_k)-g^k(a_k)}_{f(p^k)-f(p^{k-1})}=\underbrace{(g^k)^\prime(z_k)(b_k-a_k)}_{\frac{\partial f }{\partial x_k}(\xi^k)\cdot (b_k-a_k)}.
+$$
+Položíme $\xi^k = [b_1,b_2,\dots,b_{k-1},z_k, a_{k+1}, \dots,a_n]$.
+\end{proof}
+
+\begin{veta}\label{veta10.4}
+Nechť $f$ je reálná funkce
+$n$ proměnných,
+$a\in\mathbb{R}^n$
+a
+\[
+\frac{\partial f}{\partial x_1},
+\dots,
+\frac{\partial f}{\partial x_n}
+\]
+jsou spojité funkce v bodě $a$.
+Potom má $f$ v bodě $a$
+totální diferenciál.
+\end{veta}
+
+\begin{proof}
+	Máme funkci $f:\mathbb R ^n \to \mathbb R $ a spolu s ní $n$-tici funkcí
+	\begin{align*}
+	\frac{\partial f }{\partial x_1} &: B(\alpha_1,\beta_1) \to \mathbb R , \\
+	\frac{\partial f }{\partial x_2} &: B(\alpha_2,\beta_2) \to \mathbb R , \\
+	& \dots\\
+\frac{\partial f }{\partial x_n} &: B(\alpha_n,\beta_n) \to \mathbb R .
+	\end{align*}
+	Dále máme $L: \mathbb R ^n \to \mathbb R $ takové, že
+	$$
+	    L: k \mapsto \sum_{i=1}^n \frac{\partial f }{\partial x_i}(a)k_i.
+	$$
+	Ukážeme, že $L = f^\prime(a)$, tj. pro $L$ platí
+	$$
+ \lim_{x \to a} \frac{f(x)-f(a)-L(x-a)}{\nm{x-a}} = 0.
+	$$
+	Zvolme $\varepsilon>0$. K němu nalezneme $\tilde \delta >0$ takové, že
+	$$
+	    \forall i \in \left \{ 1, \dots, n \right \} \, \forall x \in B(a,\tilde \delta): \left | \frac{\partial f }{\partial x_i }(x) - \frac{\partial f }{\partial x_i} (a) \right |  <\varepsilon.
+	$$
+	Položme $\delta =\frac{\tilde \delta }{\sqrt n}$. Pak
+	$$
+	    I = (a_1-\delta, a_1+\delta)\times \dots \times (a_n-\delta,a_n+ \delta) \subset (a,\tilde,\delta).
+	$$
+	Zvolme $x \in B(a,\delta) \subseteq I \subseteq B(a,\tilde \delta)$. Podle lemmatu
+	\ref{lemma10.3} nalezneme body $\xi^i (x)\in I$, $i =1,\dots,n $ takové, že
+	$$
+	    f(x)-f(a) = \sum_{i=1}^n \frac{\partial f }{\partial x_i} (\xi^i (x))(x_i-a_i).
+	$$
+	Pak máme
+	\begin{align*}
+	|f(x)-f(a)-L(x-a)|&=\left | \sum_{i=1}^n \frac{\partial f }{\partial x_i} (\xi^i(x))(x_i-a_i) - \sum_{i=1}^n \frac{\partial f }{\partial x_i}(a)(x_i-a_i) \right | \\
+	&= \left | \sum_{i=1}^n \left( \frac{\partial f }{\partial x_i}(\xi^i(x)) - \frac{\partial f }{\partial x_i}(a) \right ) \cdot (x_i-a_i) \right |\\
+	& \leq \sum_{i=1}^n \underbrace{\left | \frac{\partial f }{\partial x_i} (\xi^i(x))-\frac{\partial f }{\partial x_i}(a) \right |}_{< \, \varepsilon}  \cdot \underbrace{|x_i-a_i|}_{\leq\,\nm{x-a}}\\
+	& \leq n\cdot  \varepsilon\cdot  \nm{x-a}.
+\end{align*}
+	Odsud plyne, že
+	$$
+ \lim_{x \to a } \frac{f(x)-f(a)-L(x-a)}{\nm{x-a}} = 0.
+	$$
+\end{proof}
+
+\begin{veta}[Řetízkové pravidlo]\label{veta10.5}
+Nechť funkce
+$
+f_1,\dots,f_k
+$
+z $\mathbb{R}^n$ do $\mathbb{R}$
+mají v bodě
+$a\in\mathbb{R}^n$
+totální diferenciál
+a funkce $g$ z $\mathbb R ^k$ do $\mathbb R $
+má v bodě
+$
+b=
+(f_1(a),\dots,f_k(a))
+$
+totální diferenciál.
+Definujme funkci
+$h:\mathbb{R}^n\to\mathbb{R}$ předpisem
+\[
+h(x)
+=
+g(
+f_1(x),
+\dots,
+f_k(x)
+).
+\]
+Potom má $h$ v bodě $a$
+totální diferenciál a pro
+$
+i\in\{1,\dots,n\}
+$
+platí
+\[
+\frac{\partial h}{\partial x_i}(a)
+=
+\sum_{j=1}^{k}
+\frac{\partial g}{\partial y_j}(b)
+\frac{\partial f_j}{\partial x_i}(a).
+\]
+\end{veta}
