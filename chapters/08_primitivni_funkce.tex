@@ -8,7 +8,7 @@ je \textbf{primitivní funkcí} k funkci $f$ na $I$, jestliže pro každé $x \i
 \begin{poznamka}
 	\,
 	\begin{enumerate}[(1)]
-		\item Existují funkce, které nemají funkci primitivní, např. $\sgn$ na $\mathbb R $.
+		\item Existují funkce, které nemají funkci primitivní, např. $\sign$ na $\mathbb R $.
 		\item Je-li funkce $F$ primitivní k funkci $f$ na $I$, potom $F$ je spojitá na $I$.
 		\item Hledání primitivní funkce označujeme jako \textbf{integraci}. Primitivní funkci někdy říkáme
 		\textbf{neurčitý integrál}.
@@ -17,7 +17,7 @@ je \textbf{primitivní funkcí} k funkci $f$ na $I$, jestliže pro každé $x \i
 	\end{enumerate}
 \end{poznamka}
 
-\begin{veta}\label{veta8.1}
+\begin{veta}[Tvar množiny primitivních funkcí]\label{veta8.1}
 Nechť $I$ je otevřený interval, $f, F, G : I \to \mathbb{R}$ jsou funkce, přičemž $F$ a $G$ jsou primitivní funkce k $f$ na $I$. Pak existuje $c \in \mathbb{R}$ takové, že
 $F = G + c$.
 \end{veta}
@@ -62,11 +62,11 @@ Jednotlivé části symbolu $\int f(x) \d x$ jsou znak integrálu $\int$, integr
 &\int -\frac{1}{1+x^2}\d x \stackrel{c}{=} \arccotg x,\quad x \in \mathbb R
 \end{align*}
 
-\begin{veta}\label{veta8.2}
+\begin{veta}[Existence primitivní funkce]\label{veta8.2}
 Nechť $f$ je spojitá funkce na otevřeném neprázdném intervalu $I$. Pak $f$ má na $I$ primitivní funkci.
 \end{veta}
 
-\begin{veta}\label{veta8.3}
+\begin{veta}[Primitivní funkce a aritmetické operace]\label{veta8.3}
 Nechť $\alpha \in \mathbb{R} \smallsetminus \{0\}$ a funkce $f$ a $g$ mají na otevřeném intervalu $I$ primitivní funkce. Pak mají funkce $\alpha f$ a $f+g$ primitivní funkce na $I$ a platí
 \[
 \int (f+g) = \int f + \int g,\qquad
@@ -177,7 +177,7 @@ $$
 \end{enumerate}
 \end{priklad}
 
-\begin{veta}[Darboux] \label{veta8.5}
+\begin{veta}[Darbouxova vlastnost derivace] \label{veta8.5}
 Nechť $f$ má na otevřeném intervalu $I$ primitivní funkci. Potom $f$ zobrazuje každý interval $J \subset I$ opět na interval.
 \end{veta}
 
@@ -329,7 +329,7 @@ $$
 což už umíme.
 \end{enumerate}
 
-\begin{veta}\label{veta8.8}
+\begin{veta}[Rozklad polynomu]\label{veta8.8}
 Nechť
 $
 P(x) = a_n x^n + \cdots + a_1 x + a_0
@@ -352,8 +352,11 @@ Nechť $P,Q$ jsou polynomy s reálnými koeficienty, takové, že $\operatorname
 $$
 Q(x) = a_n(x-x_1)^{p_1}\dots (x-x_k^{p_k})\left( x^2+\alpha_1x+\beta_1 \right )^{q_1}\dots \left( x^2+\alpha_l x + \beta_l \right )^{q_l}
 $$
-je rozklad polynomu $Q$ z věty \ref{veta8.8}. Pak existují jednoznačně určená čísla $A_1^1,\dots,A_{p_1}^1,\dots, A_1^{k},\dots,A_{p_k}^k$,
-$B_1^1,C_1^1\dots, B_{q_1}^1C_{q_1}^1,\dots,B_1^l,C_1^l,B_{q_l}^lC_{q_l}^l$ taková, že platí
+je rozklad polynomu $Q$ z věty \ref{veta8.8}. Pak existují jednoznačně určená čísla
+\begin{align*}
+A_1^1,\dots,A_{p_1}^1,\dots, A_1^{k},\dots,A_{p_k}^k, && B_1^1,C_1^1\dots, B_{q_1}^1C_{q_1}^1,\dots,B_1^l,C_1^l,B_{q_l}^lC_{q_l}^l
+\end{align*}
+taková, že platí
 \begin{align*}
 \frac{P(x)}{Q(x)} &= \frac{A_1^1}{(x-x_1)}+\dots + \frac{A_{p_1}^1}{(x-x_1)^{p_1}} + \dots + \frac{A_1^k}{(x-x_k)}+ \dots + \frac{A_{p_k}^k}{(x-x_k)^{p_k}}\\
 &+ \frac{B_1^1 x+C_1^1}{(x^2+\alpha_1 x+\beta_1)}+\dots + \frac{B_{q_1}^1x+C_{q_1}^1}{(x^1+\alpha_1 x+\beta_1)^{q_1}}\\
@@ -616,7 +619,7 @@ značíme $\mathcal R([a,b])$.
 	\end{enumerate}
 \end{poznamka}
 
-\begin{lemma} \label{lemma8.10}
+\begin{lemma}[Vlastnosti dělení] \label{lemma8.10}
 Nechť $f$ je omezená funkce na intervalu $[a,b]$.
 \begin{enumerate}[(a)]
 	\item Nechť $D, D^\prime$ jsou dělení $[a,b]$ a $D^\prime$ zjemňuje $D$. Pak platí
@@ -671,7 +674,7 @@ Nechť $f$ je omezená funkce na intervalu $[a,b]$.
 	\end{enumerate}
 \end{proof}
 
-\begin{dusledek}\label{dusledek8.11}
+\begin{dusledek}[Odhad horního a dolního Riemannova integrálu]\label{dusledek8.11}
 Nechť $f$ je omezená na $[a,b]$, $D_1$ a $D_2$ jsou dělení intervalu $[a,b]$. Potom
 \[
 m(b-a) \le \underline{S}(f,D_1) \le \underline{\int_a^b} f(x)\d x
@@ -687,7 +690,7 @@ kde $m = \inf\{f(x);\, x \in [a,b]\}$ a $M = \sup\{f(x);\, x \in [a,b]\}$.
 	$$
 \end{proof}
 
-\begin{veta}\label{veta8.12}
+\begin{veta}[Riemannův integrál a dělení]\label{veta8.12}
 Nechť $f$ je omezená na $[a,b]$. Pak pro každé $\varepsilon > 0$ existuje $\delta > 0$ takové, že pro každé dělení $D$ intervalu $[a,b]$ splňující $\nu(D) < \delta$ platí
 \begin{align*}
 	&\underline{\int_a^b} f(x)\d x \ge \underline{S}(f,D) \ge \underline{\int_a^b} f(x)\d x - \varepsilon,\\
@@ -731,7 +734,7 @@ Nechť $f$ je omezená na $[a,b]$. Pak pro každé $\varepsilon > 0$ existuje $\
     Analogicky i pro $\underline{\int_a^b}f$.
 \end{proof}
 
-\begin{dusledek}\label{dusledek8.13}
+\begin{dusledek}[Riemannův integraál a posloupnost dělení]\label{dusledek8.13}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je omezená funkce na $[a,b]$. Nechť $\{D_n\}_{n=1}^\infty$ je posloupnost dělení intervalu $[a,b]$ splňující $\lim \nu(D_n) = 0$. Pak
 \[
 \underline{\int_a^b} f(x)\d x = \lim_{n\to\infty} \underline{S}(f,D_n)
@@ -865,7 +868,7 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je omezená funkce na $[a,b]$. Pak jso
 \end{enumerate}
 \end{poznamka}
 
-\begin{veta}\label{veta8.15}
+\begin{veta}[Spojitost a stejnoměrná spojitost]\label{veta8.15}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $f$ je stejnoměrně spojitá na $[a,b]$.
 \end{veta}
 
@@ -905,7 +908,7 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $
 	odkud máme spor.
 \end{proof}
 
-\begin{veta}\label{veta8.16}
+\begin{veta}[Vztah Riemannova integrálu a spojitosti]\label{veta8.16}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $f \in \mathcal R([a,b])$.
 \end{veta}
 
@@ -927,7 +930,7 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $
 	Právě jsme dokázali (ii) ve větě \ref{veta8.14}, a tedy $f\in \mathcal R([a,b])$.
 \end{proof}
 
-\begin{veta}\label{veta8.17}
+\begin{veta}[Vztah Riemannova integrálu a monotónní funkce]\label{veta8.17}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je monotónní funkce na $[a,b]$. Potom $f \in \mathcal R([a,b])$.
 \end{veta}
 
@@ -1100,7 +1103,7 @@ a tedy $f \in \mathcal R([a,c])$. Analogicky je $f \in \mathcal R([c,b])$.
 	pokud alespoň dva z integrálů jsou definované.
 \end{poznamka}
 
-\begin{veta}\label{veta8.21}
+\begin{veta}[Absolutní hodnota a Riemannův integrál]\label{veta8.21}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f \in \mathcal R([a,b])$. Pak $|f| \in \mathcal R([a,b])$ a platí
 \[
 \left| \int_a^b f(x)\d x \right| \le \int_a^b |f(x)|\d x.
@@ -1201,7 +1204,7 @@ Potom platí:
 	\end{enumerate}
 \end{proof}
 
-\begin{dusledek}\label{dusledek8.23}\,
+\begin{dusledek}[Newtonova--Leibnizova formule]\label{dusledek8.23}\,
 \begin{enumerate}[(a)]
 	\item Nechť $a,b \in \mathbb{R}^\ast$, $a<b$, a $f$ je spojitá funkce na intervalu $(a,b)$. Potom $f$ má na $(a,b)$ primitivní funkci.
 \item Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$ a $F$ je primitivní funkce k $f$ na $(a,b)$.
@@ -1255,7 +1258,7 @@ Potom existují vlastní limity $\lim_{x\to a+} F(x)$ a $\lim_{x\to b-} F(x)$ a 
 	\end{enumerate}
 \end{proof}
 
-\begin{veta}\label{veta8.24}
+\begin{veta}[Riemannovská integrovatelnost a změna v konečně mnoha bodech]\label{veta8.24}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f \in \mathcal R([a,b])$. Jestliže $g$ je funkce definovaná alespoň
 na $[a,b]$, která se na intervalu $[a,b]$ liší od $f$ v konečném počtu bodů, pak $g \in \mathcal R([a,b])$ a
 \[
@@ -1263,7 +1266,7 @@ na $[a,b]$, která se na intervalu $[a,b]$ liší od $f$ v konečném počtu bod
 \]
 \end{veta}
 
-\begin{veta}\label{veta8.25}
+\begin{veta}[Riemannova a Darbouxova definice integrálu]\label{veta8.25}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je funkce definovaná na intervalu $[a,b]$.
 Pak jsou následující výroky ekvivalentní.
 \begin{enumerate}[(i)]
@@ -1435,7 +1438,7 @@ Nechť $a, b, c \in \mathbb{R}^\star$, $a < c < b$.
 \end{enumerate}
 \end{proof}
 
-\begin{veta}\label{veta8.29}
+\begin{veta}[Newtonův integrál a basolutní hodnota]\label{veta8.29}
 Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a $f$ má Newtonův integrál na intervalu $(a, b)$ a $f$ je spojitá na $(a, b)$. Pak
 $\int_a^b |f(x)|\d x$ existuje a
 \[
@@ -1568,7 +1571,7 @@ Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna n
 	Analogické tvrzení platí i pro jednostranné limity.
 \end{poznamka}
 
-\begin{veta}\label{veta8.33}
+\begin{veta}[Konvergence integrálu omezené funkce]\label{veta8.33}
 Nechť $a, b \in \mathbb{R}$, $a < b$, a $f$ je omezená spojitá funkce na $(a, b)$. Potom $f \in \mathcal N(a, b)$.
 \end{veta}
 
@@ -1651,7 +1654,7 @@ pak $f \in \mathcal N(a, b)$ právě tehdy, když $g \in\mathcal N(a, b)$.
 	naopak dává $\int_a^b f$ konverguje $\implies \int_a^b g$ konverguje.
 \end{poznamka}
 
-\begin{lemma}\label{lemma8.37}
+\begin{lemma}[Odhad integrálu $\int_a^b fg$]\label{lemma8.37}
 Nechť $a, b \in \mathbb{R}$, $a < b$, $f$ je spojitá funkce na $[a, b]$ a $g : [a, b] \to \mathbb{R}$ je nerostoucí, nezáporná a spojitá funkce. Potom
 \[
 g(a)\inf_{x \in [a,b]} \int_a^x f
@@ -1827,7 +1830,7 @@ L(\varphi,D)
 \]
 \end{definice}
 
-\begin{veta}\label{veta8.41}
+\begin{veta}[Délka křivky]\label{veta8.41}
 Nechť
 $
 \varphi = (\varphi_1, \dots, \varphi_n) : [a,b] \to \mathbb{R}^n
