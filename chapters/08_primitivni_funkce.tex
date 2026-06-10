@@ -78,7 +78,7 @@ Nechť $\alpha \in \mathbb{R} \smallsetminus \{0\}$ a funkce $f$ a $g$ mají na 
 \begin{itemize}
 	\item První rovnost
 	\begin{enumerate}
-		\item[$\subseteq$] Označme $H\in \int(f+g)$, Zvolme $F \in \in f, G\in \int g$. Pak je
+		\item[$\subseteq$] Označme $H\in \int(f+g)$. Zvolme $F \in \int f, G\in \int g$. Pak je
 		\begin{align*}
 		H &= (H-F-G)+F+G, \qquad \text{a}\\
 		(H-F-G)^\prime + F^\prime &= f+g-f-g+f = f.
@@ -122,7 +122,7 @@ Nechť funkce $f$ a $g$ mají na otevřeném intervalu $I$ po řadě primitivní
 		$$
 		    L = FG-FG+L = FG- ( FG-L).
 		$$
-		Chceme ověřit, že $(FG-L) \in \int Fg$. Počíáme
+		Chceme ověřit, že $(FG-L) \in \int Fg$. Počítáme
 		$$
 		    (FG-L)^\prime = F^\prime G + FG^\prime - L^\prime = fG+Fg - fG = Fg,
 		$$
@@ -233,7 +233,7 @@ Nechť $a,b,\alpha,\beta \in \mathbb{R}^*$, $a<b$, $\alpha<\beta$, $\varphi : (\
 pro každé $t \in(\alpha, \beta)$ existuje $\varphi^\prime(t)$ vlastní a nenulová a
 $\varphi((\alpha, \beta)) = (a,b)$. Nechť $f$ je funkce definovaná na intervalu $(a,b)$ a platí
 \[
-\int f(\varphi(t)) \cdot\varphi'(t)\d t \stackrel{c}{=} G(t), \qquad t \in (a,b).
+\int f(\varphi(t)) \cdot\varphi'(t)\d t \stackrel{c}{=} G(t), \qquad t \in (\alpha,\beta).
 \]
 Pak platí
 \[
@@ -267,10 +267,6 @@ Pak platí
 	$$
 	Derivace $F(x)$ není spojitá v nule.
 \end{priklad}
-
-\begin{poznamka}
-	viz prezentaci
-\end{poznamka}
 
 \subsection*{Integrace racionálních funkcí}
 \begin{definice}
@@ -361,7 +357,7 @@ taková, že platí
 \frac{P(x)}{Q(x)} &= \frac{A_1^1}{(x-x_1)}+\dots + \frac{A_{p_1}^1}{(x-x_1)^{p_1}} + \dots + \frac{A_1^k}{(x-x_k)}+ \dots + \frac{A_{p_k}^k}{(x-x_k)^{p_k}}\\
 &+ \frac{B_1^1 x+C_1^1}{(x^2+\alpha_1 x+\beta_1)}+\dots + \frac{B_{q_1}^1x+C_{q_1}^1}{(x^1+\alpha_1 x+\beta_1)^{q_1}}\\
 &+  \dots \\
-&+ \frac{B_1^l x+C_1^l}{(x^2+\alpha_l x+\beta_l)} + \dots + \frac{B_{q_l}^l x+C_{q_l}^l}{(x^2+\alpha_l x+\beta_l)^{q_l}}
+&+ \frac{B_1^l x+C_1^l}{(x^2+\alpha_l x+\beta_l)} + \dots + \frac{B_{q_l}^l x+C_{q_l}^l}{(x^2+\alpha_l x+\beta_l)^{q_l}}.
 \end{align*}
 \end{veta}
 
@@ -428,7 +424,7 @@ kde $n \in \mathbb{N}\cup\{0\}$, $a_{ij} \in \mathbb{R}$ pro $i,j\in \left \{ 0,
 \begin{definice}
 Řekneme, že $R$ je \textbf{lichá v první proměnné}, pokud pro každé $(x,y)\in \mathcal D(R)$
 platí $(-x,y)\in \mathcal D(R)$ a $R(-x,y) = -R(x,y)$. Analogicky definujeme \textbf{lichost ve druhé proměnné}.
-Funkce $R$ je \textbf{sudá}, pokud pro každé $(-x,-y)\in \mathcal D(R)$ platí $(-x,-y)\in \mathcal D(R)$ a $R(x,y) = R(-x,-y)$.
+Funkce $R$ je \textbf{sudá}, pokud pro každé $(x,y)\in \mathcal D(R)$ platí $(-x,-y)\in \mathcal D(R)$ a $R(x,y) = R(-x,-y)$.
 \end{definice}
 
 \paragraph{Goniometrické substituce.} Nechť $R$ je racionální funkce dvou proměnných a $I$ otevřený neprázdný interval.
@@ -465,11 +461,11 @@ lze užít následujících substitucí.
 	\end{align*}
 	Přepíšeme
 	$$
-	\int g(t) \d t = \int \frac{1}{1+\sin^2 t} \cos^2 t \underbrace{\frac{1}{\cos^2 t}}_{\varphi(t)}\d t,
+	\int g(t) \d t = \int \frac{1}{1+\sin^2 t} \cos^2 t \underbrace{\frac{1}{\cos^2 t}}_{\varphi^\prime(t)}\d t,
 	$$
 	pak je
 	$$
-	f(x) = \frac{\frac{1}{1+x^3}}{1+\frac{x^2}{1+x^2}},
+	f(x) = \frac{\frac{1}{1+x^2}}{1+\frac{x^2}{1+x^2}},
 	$$
 	a tedy
 	$$
@@ -486,7 +482,7 @@ lze užít následujících substitucí.
 
 \paragraph{Několik dalších substitucí.} Ať $R$ je racionální funkce dvou proměnných.
 \begin{itemize}
-	\item $\int R \left( t, \sqrt[q]{\frac{az+b}{ct+f}} \right ) \d t$, kde $q \in \mathbb N , a,b,c,f,\in \mathbb R , af \ne bc$
+	\item $\int R \left( t, \sqrt[q]{\frac{at+b}{ct+f}} \right ) \d t$, kde $q \in \mathbb N , a,b,c,f,\in \mathbb R , af \ne bc$.
 	Položíme
 	$$
 	    x = \sqrt[q]{\frac{at+b}{ct+f}}.
@@ -520,7 +516,7 @@ lze užít následujících substitucí.
 
 \begin{priklad}
 	Spočtěte $\int \frac{1}{t^2 \sqrt{t^2+1}}\d t$.
-	\par Budeme zvlášť uvažovat intervaly $(-\infty, 0), (0, \infty)$. Za sbustituci zvolíme
+	\par Budeme zvlášť uvažovat intervaly $(-\infty, 0), (0, \infty)$. Za substituci zvolíme
 	$\sqrt{t^2+1}=t+x$. Pak je
 	$$
 	    \varphi(t) = \sqrt{t^2+1}-t,
@@ -694,7 +690,7 @@ kde $m = \inf\{f(x);\, x \in [a,b]\}$ a $M = \sup\{f(x);\, x \in [a,b]\}$.
 Nechť $f$ je omezená na $[a,b]$. Pak pro každé $\varepsilon > 0$ existuje $\delta > 0$ takové, že pro každé dělení $D$ intervalu $[a,b]$ splňující $\nu(D) < \delta$ platí
 \begin{align*}
 	&\underline{\int_a^b} f(x)\d x \ge \underline{S}(f,D) \ge \underline{\int_a^b} f(x)\d x - \varepsilon,\\
-&	\overline{\int_a^b} f(x)\,dx \le \overline{S}(f,D) \le \overline{\int_a^b} f(x)\,dx + \varepsilon.
+&	\overline{\int_a^b} f(x)\d x \le \overline{S}(f,D) \le \overline{\int_a^b} f(x)\d x + \varepsilon.
 \end{align*}
 \end{veta}
 
@@ -734,7 +730,7 @@ Nechť $f$ je omezená na $[a,b]$. Pak pro každé $\varepsilon > 0$ existuje $\
     Analogicky i pro $\underline{\int_a^b}f$.
 \end{proof}
 
-\begin{dusledek}[Riemannův integraál a posloupnost dělení]\label{dusledek8.13}
+\begin{dusledek}[Riemannův integrál a posloupnost dělení]\label{dusledek8.13}
 Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je omezená funkce na $[a,b]$. Nechť $\{D_n\}_{n=1}^\infty$ je posloupnost dělení intervalu $[a,b]$ splňující $\lim \nu(D_n) = 0$. Pak
 \[
 \underline{\int_a^b} f(x)\d x = \lim_{n\to\infty} \underline{S}(f,D_n)
@@ -811,11 +807,11 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je omezená funkce na $[a,b]$. Pak jso
 		$$
 		Dále nalezneme dělení $D_2$ intervalu $[a,b]$ splňující
 		$$
-		    \int_a^b f - \frac{\varepsilon}{2}\underline{S}(f,D_2) \leq \int_a^b f.
+		    \int_a^b f - \frac{\varepsilon}{2}\leq\underline{S}(f,D_2) \leq \int_a^b f.
 		$$
 		Zvolme dělení $D$ jako zjemnění $D_1$ a $D_2$. Potom platí
 		$$
-		    \overline{S}(f,D)-\underline{S}(f,D) \leq \overline{S}(f,D_1 - \underline S(f,D_2) < \int_a^b f + \frac{\varepsilon}{2} - \left( \int_a^b f - \frac{\varepsilon}{2} \right )= \varepsilon.
+		    \overline{S}(f,D)-\underline{S}(f,D) \leq \overline{S}(f,D_1) - \underline S(f,D_2) < \int_a^b f + \frac{\varepsilon}{2} - \left( \int_a^b f - \frac{\varepsilon}{2} \right )= \varepsilon.
 		$$
 		\item[$\impliedby$] Zvolme $\varepsilon>0$. K němu nalezneme podle (ii) dělení
 		$D$ intervalu $[a,b]$ splňující
@@ -841,9 +837,9 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je omezená funkce na $[a,b]$. Pak jso
 \begin{enumerate}[(1)]
 	\item Funkce $f$ je spojitá na intervalu $I$ pokud
 	$$
-	\forall x \in I \, \forall \varepsilon> 0 \, \forall \delta >0 \, \forall y \in I: \left( |x-y| < \delta \implies |f(x)-f(y)|<\varepsilon \right ).
+	\forall x \in I \, \forall \varepsilon> 0 \, \exists \delta >0 \, \forall y \in I: \left( |x-y| < \delta \implies |f(x)-f(y)|<\varepsilon \right ).
 	$$
-	Funkce $f$ je stejnoměrné spojitá na intervalu $I$, pokud
+	Funkce $f$ je stejnoměrně spojitá na intervalu $I$, pokud
 	$$
 	    \forall  \varepsilon > 0 \, \exists \delta > 0 \, \forall x \in I\, \forall y \in I: \left( |x-y| < \delta \implies |f(x)-f(y)|<\varepsilon \right ).
 	$$
@@ -875,7 +871,7 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $
 \begin{proof}
 	Pro spor předpokládejme, že
 	\begin{equation}\label{vlastnostss}
-	\exists \varepsilon > 0 \, \forall \delta > 0 \, \exists x \in I \, \exists y \in I : \left( |x-y| < \delta\implies |f(x)-f(y)|<\varepsilon \right ).
+	\exists \varepsilon > 0 \, \forall \delta > 0 \, \exists x \in I \, \exists y \in I : \left( |x-y| < \delta\land |f(x)-f(y)|\geq\varepsilon \right ).
 	\end{equation}
 	Nechť $\varepsilon>0$ splňuje (\ref{vlastnostss}). Odsud pro každé $n \in \mathbb N $ nalezneme
 	dvojici $x_n, y_n \in I$ splňující
@@ -915,12 +911,12 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je spojitá funkce na $[a,b]$. Potom $
 \begin{proof}
 	Zvolme $\varepsilon > 0$. Podle věty \ref{veta8.15} existuje $\delta > 0$ takové, že
 	$$
-	    \forall x ,y \in [a,b], |x-y| < \delta \implies |f(x)-f(y)| < \varepsilon.
+	    \forall x ,y \in [a,b]: |x-y| < \delta \implies |f(x)-f(y)| < \varepsilon.
 	$$
 	Nalezneme dělení $D$ intervalu $[a,b]$ takové, že
 	$D = \left \{ x_i \right \}_{i=0}^n $ a $\nu (D)<\delta$. Označme
 	$$
-	m_i = \inf_{[x_{i-1},x_i]} f, \qquad M_i = \sup_{[x_{i-1},x_i]} f.
+	m_i = \inf_{[x_{i-1},x_i]}  f, \qquad M_i = \sup_{[x_{i-1},x_i]} f.
 	$$
 	Z (1) a (2) plyne $m_i \leq M_i \leq m_i+\varepsilon$. Počítejme
 	\begin{align*}
@@ -944,10 +940,10 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f$ je monotónní funkce na $[a,b]$. Poto
 	$$
 	    x_j = a+ \frac{b-a}{n}\cdot j, \qquad j=0,\dots,n,
 	$$
-	$\mathcal D = \left \{ x_j \right \}_{j=0}^n. $ Počítejme
+	$ D = \left \{ x_j \right \}_{j=0}^n. $ Počítejme
 	\begin{align*}
 	\overline S(f,D) &= \sum_{j=1}^n \sup_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) = \sum _{j=1}^n f(x_j)\cdot \frac{b-a}{n},\\
-	\underline S(f,D) &= \sum_{j=1}^n \inf{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) = \sum _{j=1}^n f(x_{j-1})\cdot \frac{b-a}{n}.
+	\underline S(f,D) &= \sum_{j=1}^n \inf_{[x_{j-1},x_j]}f \cdot (x_j-x_{j-1}) = \sum _{j=1}^n f(x_{j-1})\cdot \frac{b-a}{n}.
 	\end{align*}
 	Je tedy
 	\begin{align*}
@@ -976,12 +972,12 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, $f,g \in \mathcal R([a,b])$ a $\alpha \in \m
 	$$
 	    \inf_I f + \inf_I g \leq \inf_I (f+g).
 	$$
-	Pro libovolné dělení $\mathcal D$ intervalu $[a,b]$ platí
+	Pro libovolné dělení $ D$ intervalu $[a,b]$ platí
 	$$
 	    \underline S(f,D)+\underline S(g,D)\leq\underline S(f+g,D) \leq \overline S(f+g,D)\leq \overline S(f,D)+\overline S(g,D).
 	$$
-	Nalezneme posloupnost dělení $\left \{ \mathcal D^n \right \}_{n=1}^\infty $ intervalu $[a,b]$ splňující
-	$\lim_{n\to \infty} \nu (\mathcal D^n)=0$. Potom platí podle důsledku \ref{dusledek8.13}
+	Nalezneme posloupnost dělení $\left \{  D^n \right \}_{n=1}^\infty $ intervalu $[a,b]$ splňující
+	$\lim_{n\to \infty} \nu ( D^n)=0$. Potom platí podle důsledku \ref{dusledek8.13}
 	\begin{align*}
         \lim_{n \to \infty} \overline S(f,D^n)&=\lim_{n \to \infty} \underline S(f,D^n)=\int_a^b f,\\
 		\lim_{n \to \infty} \overline S(g,D^n)&=\lim_{n \to \infty} \underline S(g,D^n)=\int_a^b g.
@@ -1071,17 +1067,17 @@ Je-li $f \in \mathcal R([a,b])$, pak
 	$$
 	Pak platí
 	\begin{align*}
-	\lim_{n \to \infty} \overline S(f,D_n)&=\lim_{n \to \infty} (\overline S(f,D_n^1)+ \overline S(f,D_n^2)) = \int_a^c f = \int_c^b f.\\
-	\lim_{n \to \infty} \underline S(f,D_n) &= \lim_{n \to \infty} (\underline S(f,D_n^1) + \underline S(f,D_n^2)) = \int_a^b f + \int_a^b f.
+	\lim_{n \to \infty} \overline S(f,D_n)&=\lim_{n \to \infty} (\overline S(f,D_n^1)+ \overline S(f,D_n^2)) = \int_a^c f + \int_c^b f.\\
+	\lim_{n \to \infty} \underline S(f,D_n) &= \lim_{n \to \infty} (\underline S(f,D_n^1) + \underline S(f,D_n^2)) = \int_a^c f + \int_c^b f.
 \end{align*}
-Proto je podle důsledku \ref{dusledek8.13} $f \in \mathcal R([a,b])$ a $\int_a^b f = \int_a^c f + \int_a^b f$.
+Proto je podle důsledku \ref{dusledek8.13} $f \in \mathcal R([a,b])$ a $\int_a^b f = \int_a^c f + \int_c^b f$.
 Tím je proveden důkaz implikace zprava doleva. Zbývá dokázat, že
 $$
     f \in \mathcal R([a,b]) \implies f\in \mathcal R([a,c]).
 $$
 Platí
 \begin{align*}
-0&\leq\overline S(f,D_n^1) - \underline S(f,D_n^1) \leq \overline S(f,D_n^1) - \underline S(f,D_n^1) + \underbrace{\overline S(f,D_n^2)-\underline S(f,D_n^2)}_{\leq 0}\\
+0&\leq\overline S(f,D_n^1) - \underline S(f,D_n^1) \leq \overline S(f,D_n^1) - \underline S(f,D_n^1) + \underbrace{\overline S(f,D_n^2)-\underline S(f,D_n^2)}_{\geq 0}\\
 &= \underbrace{\overline S(f,D_n)}_{\to \int_a^b f} - \underbrace{\underline S(f,D_n)}_{\to\int_a^b f}.
 \end{align*}
 Protože je
@@ -1128,11 +1124,11 @@ Nechť $a,b \in \mathbb{R}$, $a<b$, a $f \in \mathcal R([a,b])$. Pak $|f| \in \m
 		\end{align*}
         čímž je pozorování dokázáno.
 	\end{pozorovani}
-	Nechť $\mathcal D$ je dělení intervalu $[a,b]$. Potom platí
+	Nechť $ D$ je dělení intervalu $[a,b]$. Potom platí
 	$$
-	   0\leq \overline S(|f|,\mathcal D) - \underline S(|f|,D)\leq \overline S (f,\mathcal D) - \underline S(f,\mathcal D),
+	   0\leq \overline S(|f|, D) - \underline S(|f|,D)\leq \overline S (f, D) - \underline S(f, D),
 	$$
-	takže $f$ je riemannovsky integrovatelná díky větě \ref{veta8.14}. Zbývá dokázat nerovnost.
+	takže $|f|$ je riemannovsky integrovatelná díky větě \ref{veta8.14}. Zbývá dokázat nerovnost.
 	\par Pro každé $x \in [a,b]$ platí
 	$$
 	    f(x)\leq |f(x)|.
@@ -1219,8 +1215,8 @@ Potom existují vlastní limity $\lim_{x\to a+} F(x)$ a $\lim_{x\to b-} F(x)$ a 
 	\,
 	\begin{enumerate}[(a)]
 		\item $f$ je spojitá na intervalu $(a,b)$. Pokud $\alpha, \beta \in (a,b), \alpha < \beta$,
-		potom $f \in \mathcal R([a,b])$ podle věty \ref{veta8.16}. Zvolme $c \in (a,b)$. Potom
-		podle věty \ref{veta8.22}(b) platí $F^\prime(x) = f(x)$ pro každé $x \in (a,b)$, kde $F(x) = \in_c^x f$.
+		potom $f \in \mathcal R([\alpha,\beta])$ podle věty \ref{veta8.16}. Zvolme $c \in (a,b)$. Potom
+		podle věty \ref{veta8.22}(b) platí $F^\prime(x) = f(x)$ pro každé $x \in (a,b)$, kde $F(x) = \int_c^x f$.
 		$F$ je tedy primitivní funkcí k $f$ na $(a,b)$.
 		\item Definujme pomocnou funkci
 		$$
@@ -1318,7 +1314,7 @@ Jestliže je potřeba rozlišit mezi Newtonovým a Riemannovým integrálem z fu
 \end{oznaceni}
 
 \begin{veta}[Linearita Newtonova integrálu]\label{veta8.26}
-Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a $\alpha \in \mathbb{R}$ Newtonův integrál funkcí $f, g$ existuje na $(a, b)$. Pak
+Nechť $a, b \in \mathbb{R}^*$, $a < b$, $\alpha \in \mathbb{R}$ a Newtonův integrál funkcí $f, g$ existuje na $(a, b)$. Pak
 \[
 \int_a^b (f(x) + g(x))\d x = \int_a^b f(x)\,dx + \int_a^b g(x)\d x,
 \]
@@ -1340,13 +1336,13 @@ $$
 [F]_a^b+[G]_a^b=\left [ F+G \right ]_a^b \in \mathbb R ^* .
 $$
 Obdobně mějme primitivní funkci $\alpha F$ k funkci $\alpha f$
-na intervalu $(a,b)$. Protože je $\alpha \cdot [F]_a^b\in R
+na intervalu $(a,b)$. Protože je $\alpha \cdot [F]_a^b\in\mathbb R
 ^*$,
-dostáváme, že $[\alpha F]_a^b \in R^*$ a $[\alpha F]_a^b=\alpha [F]_a^b$.
+dostáváme, že $[\alpha F]_a^b \in \mathbb R^*$ a $[\alpha F]_a^b=\alpha [F]_a^b$.
 \end{proof}
 
 \begin{veta}[Newtonův integrál a uspořádání]\label{veta8.27}
-Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a Newtonův integrál funkcí $f, g$ existuje na $(a, b)$. Nechť platí $f(x) \leq g(x)$ pro každé $x \in (a, b)$. Pak
+Nechť $a, b \in \mathbb{R}^*$, $a < b$, a Newtonův integrál funkcí $f, g$ existuje na $(a, b)$. Nechť platí $f(x) \leq g(x)$ pro každé $x \in (a, b)$. Pak
 \[
 \int_a^b f(x)\d x \leq \int_a^b g(x)\d x.
 \]
@@ -1360,7 +1356,7 @@ Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a Newtonův integrál funkcí $f, g
 	$$
 	tedy $G-F$ je neklesající na $(a,b)$. Proto máme
 	$$
- \lim_{x\to a+} (G(x)-G(x)) \in \mathbb R \cup \left \{ -\infty \right \}, \qquad \lim_{x\to b-} (G(x)-F(x))\in \mathbb R \cup \left \{ \infty \right \}.
+ \lim_{x\to a+} (G(x)-F(x)) \in \mathbb R \cup \left \{ -\infty \right \}, \qquad \lim_{x\to b-} (G(x)-F(x))\in \mathbb R \cup \left \{ \infty \right \}.
 	$$
 	Je tedy
 	$$
@@ -1378,7 +1374,7 @@ Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a Newtonův integrál funkcí $f, g
 \end{proof}
 
 \begin{veta}[Aditivita Newtonova integrálu]\label{veta8.28}
-Nechť $a, b, c \in \mathbb{R}^\star$, $a < c < b$.
+Nechť $a, b, c \in \mathbb{R}^*$, $a < c < b$.
 
 \begin{enumerate}[(a)]
 \item Jestliže existuje Newtonův integrál funkce $f$ na intervalu $(a, b)$, potom existují integrály funkce $f$ na intervalech $(a, c)$ a $(c, b)$ a platí
@@ -1402,9 +1398,9 @@ Nechť $a, b, c \in \mathbb{R}^\star$, $a < c < b$.
 	    \int_a^c f = [F]_a^c = \lim_{x\to c-} F(x)-\lim_{x\to a+} F(x)=\underbrace{F(c)}_{\in \, \mathbb R} - \underbrace{\lim_{x \to a+} F(x)}_{\in \, \mathbb R ^*},
 	$$
 	kde poslední člen je v $\mathbb R ^*$, neboť $[F]_a^b \in \mathbb R ^*$. Podobně i
-	$\int_c^b F(x) \in R^*$. Potom
+	$\int_c^b f(x) \in \mathbb R^*$. Potom
 	$$
-	    \int_a^c f + \int_c^b = F(c) - \lim_{x\to a+} F(x) + \lim_{x\to b-} F(x) - F(c) = \int_a^b f(x).
+	    \int_a^c f + \int_c^b f = F(c) - \lim_{x\to a+} F(x) + \lim_{x\to b-} F(x) - F(c) = \int_a^b f(x).
 	$$
 	\item Označme $F$ primitivní funkci k $f$ na $(a,c)$ a $G$ primitivní funkci k $f$ na $(c,b)$.
 	Funkce $f$ je spojitá v $c$, takže existují $K>0$, $\delta>0$ taková, že
@@ -1438,8 +1434,8 @@ Nechť $a, b, c \in \mathbb{R}^\star$, $a < c < b$.
 \end{enumerate}
 \end{proof}
 
-\begin{veta}[Newtonův integrál a basolutní hodnota]\label{veta8.29}
-Nechť $a, b \in \mathbb{R}^\star$, $a < b$, a $f$ má Newtonův integrál na intervalu $(a, b)$ a $f$ je spojitá na $(a, b)$. Pak
+\begin{veta}[Newtonův integrál a absolutní hodnota]\label{veta8.29}
+Nechť $a, b \in \mathbb{R}^*$, $a < b$,  $f$ má Newtonův integrál na intervalu $(a, b)$ a $f$ je spojitá na $(a, b)$. Pak
 $\int_a^b |f(x)|\d x$ existuje a
 \[
  \left|\int_a^b f(x)\d x\right| \leq \int_a^b |f(x)|\d x.
@@ -1452,13 +1448,13 @@ $\int_a^b |f(x)|\d x$ existuje a
 	$[F]_a^b$ je definována podle věty o limitě monotónní funkce \ref{veta3.9}. Navíc platí
 	$[F]_a^b \geq 0$. Podle věty \ref{veta8.27} platí
 	$$
-	    -\int_a^b |f|\stackrel{\text{V} \ref{veta8.26}}{=}\int_a^b -|f| \leq \int_a^b f \leq \int_a^b |f|
+	    -\int_a^b |f|\stackrel{\text{V}.\ref{veta8.26}}{=}\int_a^b -|f| \leq \int_a^b f \leq \int_a^b |f|.
 	$$
 	Dostáváme tedy $|\int_a^b f|\leq \int_a^b |f|$.
 \end{proof}
 
 \begin{veta}[Per partes pro Newtonův integrál]\label{veta8.30}
-Nechť $a, b \in \mathbb{R}^\star$, $a < b$, $f$ a $g$ jsou funkce definované na $(a, b)$. Nechť $F$ je primitivní funkce k funkci $f$ na $(a, b)$ a $G$ je primitivní funkce k funkci $g$ na $(a, b)$. Potom platí
+Nechť $a, b \in \mathbb{R}^*$, $a < b$, $f$ a $g$ jsou funkce definované na $(a, b)$. Nechť $F$ je primitivní funkce k funkci $f$ na $(a, b)$ a $G$ je primitivní funkce k funkci $g$ na $(a, b)$. Potom platí
 \[
 \int_a^b Fg = [FG]_a^b - \int_a^b fG,
 \]
@@ -1468,7 +1464,7 @@ jestliže má pravá strana smysl.
 \begin{proof}
 	Označme $H$ primitivní funkci k funkci $fG$ na $(a,b)$. Počítejme
 	$$
-	(FG-H)^\prime = fG+Fg-fG=Fg, \qquad \text{na} (a,b).
+	(FG-H)^\prime = fG+Fg-fG=Fg, \qquad \text{na } (a,b).
 	$$
 	Pak je
 	$$
@@ -1482,7 +1478,7 @@ jestliže má pravá strana smysl.
 \end{proof}
 
 \begin{veta}[Substituce pro Newtonův integrál]\label{veta8.31}
-Nechť $a, b, \alpha, \beta \in \mathbb{R}^\star$, $a < b$, $\alpha < \beta$, $f$ je funkce definovaná na $(a, b)$ a $\varphi$ je funkce definovaná na $(\alpha, \beta)$. Nechť $\varphi$ má vlastní nenulovou derivaci na $(\alpha, \beta)$ a platí $\varphi((\alpha, \beta)) = (a, b)$. Potom
+Nechť $a, b, \alpha, \beta \in \mathbb{R}^*$, $a < b$, $\alpha < \beta$, $f$ je funkce definovaná na $(a, b)$ a $\varphi$ je funkce definovaná na $(\alpha, \beta)$. Nechť $\varphi$ má vlastní nenulovou derivaci na $(\alpha, \beta)$ a platí $\varphi((\alpha, \beta)) = (a, b)$. Potom
 \[
 \int_a^b f(x)\d x = \int_\alpha^\beta f(\varphi(t))\cdot |\varphi^\prime(t)|\d t,
 \]
@@ -1515,20 +1511,20 @@ jestliže má alespoň jedna strana smysl.
 	$\lim_{x\to a+} -G(\varphi^{-1}(x))=-\lim_{t\to \beta-}G(t)$ a $\lim_{x\to b-}-G(\varphi^{-1}(x)) = -\lim_{t\to \alpha+} G(t)$.
 	Konečně máme
 	$$
-	    \int_a^b f(x) \d x = [-G\circ \varphi^{-1}]_a^b = -\lim_{t\to \alpha+} G(t) + \lim_{t\to \beta -} G(t) = \int_a^b f(\varphi(t)) |\varphi^\prime(t)|\d t.
+	    \int_a^b f(x) \d x = [-G\circ \varphi^{-1}]_a^b = -\lim_{t\to \alpha+} G(t) + \lim_{t\to \beta -} G(t) = \int_\alpha^\beta f(\varphi(t)) |\varphi^\prime(t)|\d t.
 	$$
 	Případ $\varphi$ rostoucí dokážeme analogicky.
 \end{proof}
 
 \begin{veta}[Bolzanova--Cauchyova podmínka pro funkce]\label{veta8.32}
-Nechť $a \in \mathbb{R}^\star$, $\delta_0 > 0$, a funkce $F$ je definována alespoň na $P(a, \delta_0)$.
+Nechť $a \in \mathbb{R}^*$, $\delta_0 > 0$, a funkce $F$ je definována alespoň na $P(a, \delta_0)$.
 Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna následující (tzv. Bolzanova--Cauchyova) podmínka:
 \[
 \forall \varepsilon > 0 \, \exists \delta > 0 \, \forall x, y \in P(a, \delta): |F(x) - F(y)| < \varepsilon.
 \]
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}
 	\item[$\implies$] Označme $A=\lim_{x\to a } F(x)$. Zvolme $\varepsilon > 0$. Nalezneme $\delta < 0$ takové, že
 	$$
@@ -1536,9 +1532,9 @@ Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna n
 	$$
 	Potom pro každé $x,y \in P(a,\delta)$ platí
 	$$
-	 |F(x)-F(y)| \leq |F(X)-A| + |A-F(y)| < \frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon.
+	 |F(x)-F(y)| \leq |F(x)-A| + |A-F(y)| < \frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon.
 	$$
-	\item[$\impliedby$] Nechť $\left \{ x_n \right \} $ je posloupnost prvků $P(a,\delta_0)$ splňující $\lim x_n = A$.
+	\item[$\impliedby$] Nechť $\left \{ x_n \right \} $ je posloupnost prvků $P(a,\delta_0)$ splňující $\lim x_n = a$.
 	Ověříme, že $\left \{ F(x_n) \right \} $ splňuje BC-podmínku. Zvolme $\varepsilon > 0$. K němu nalezneme
 	podle předpokladu $\delta > 0$ takové, že
 	$$
@@ -1558,10 +1554,10 @@ Potom existuje vlastní $\lim_{x \to a} F(x)$ právě tehdy, když je splněna n
 	$$
 	    \forall x,y \in P(a,\delta): |F(x)-F(y)|<\varepsilon.
 	$$
-	Nalezneme $n^\star$ takové, že pro každé $n\geq n^\star$ platí $x_n \in P(a,\delta)$, $y_n\in P(a,\delta)$ a $|F(x)-A|<\varepsilon$.
-	Potom pro každé $n\geq n^\star$ platí
+	Nalezneme $n^*$ takové, že pro každé $n\geq n^*$ platí $x_n \in P(a,\delta)$, $y_n\in P(a,\delta)$ a $|F(x)-A|<\varepsilon$.
+	Potom pro každé $n\geq n^*$ platí
 	$$
-	|F(y)-A|\leq \underbrace{|F(y_n)-F(x_n)|}_{< \, \varepsilon} + \underbrace{|F(x_n)-A|}_{< \, \varepsilon} < 2 \varepsilon.
+	|F(y_n)-A|\leq \underbrace{|F(y_n)-F(x_n)|}_{< \, \varepsilon} + \underbrace{|F(x_n)-A|}_{< \, \varepsilon} < 2 \varepsilon.
 	$$
 	Potom podle Heineovy věty \ref{Heinehoveta} dostáváme $\lim_{x\to a } F(x)=A$.\qedhere
 \end{enumerate}
@@ -1631,7 +1627,7 @@ $
 pak $f \in \mathcal N(a, b)$ právě tehdy, když $g \in\mathcal N(a, b)$.
 \end{veta}
 
-\begin{proof}
+\begin{proof}\,
 \begin{enumerate}
 	\item[$\implies$] Podle definice limity nalezneme $x_0\in (a,b)$ takové, že pro každé $x \in [x_0,b)$
 	platí
@@ -1683,11 +1679,11 @@ g(a)\sup_{x \in [a,b]}
 	($f$ a $g$ jsou spojité na $[a,b]$, a tedy stejnoměrně spojité.) Zvolme dělení $D=\left \{ x_j \right \}_{j=1}^n$
 	intervalu $[a,b]$ splňující $\nu(D)<\delta$. Potom máme
 	$$
-	F(x_{j-1})(x_j-x_{j-1}) \leq \int_{x_{j-1}}^{x_j} f + \varepsilon(x_j-x_{j-1}),
+	f(x_{j-1})(x_j-x_{j-1}) \leq \int_{x_{j-1}}^{x_j} f + \varepsilon(x_j-x_{j-1}),
 	$$
-	protože $f(x_{j-1}\leq f(t)+\varepsilon$, $t \in [x_{j-1},x_j]$. Dále je
+	protože $f(x_{j-1})\leq f(t)+\varepsilon$, $t \in [x_{j-1},x_j]$. Dále je
 	$$
-	    \int_{x_{j-1}}^{x_j} fg \leq f(x_{j-1})f(x_{j-1})(x_j-x_{j-1}) + \varepsilon(x_j-x_{j-1}),
+	    \int_{x_{j-1}}^{x_j} fg \leq f(x_{j-1})g(x_{j-1})(x_j-x_{j-1}) + \varepsilon(x_j-x_{j-1}),
 	$$
 	neboť $f(x_{j-1})g(x_{j-1})\leq f(t)g(t)+\varepsilon$, $t \in [x_{j-1},x_j]$. Máme tedy
 	\begin{align*}
@@ -1695,16 +1691,16 @@ g(a)\sup_{x \in [a,b]}
  & = g(x_{j-1})\int_{x_{j-1}}^{x_j} f + g(x_{j-1})\varepsilon(x_j-x_{j-1})+\varepsilon(x_j-x_{j-1}) \\
  &\leq g(x_{j-1})\int_{x_{j-1}}^{x_j} f + (g(a)+1) \varepsilon (x_j - x_{j-1}), \qquad j=1,\dots,n.
 	\end{align*}
-	Označme $\varepsilon^\star = \varepsilon(g(a)+1)(b-a)$. Pak
+	Označme $\varepsilon^* = \varepsilon(g(a)+1)(b-a)$. Pak
 	\begin{align*}
-	\int_a^b f(t)g(t)\d t &= \sum_{i=1}^n \int_{x_{i-1}^{x_i}}f(t)g(t)\d t \\
+	\int_a^b f(t)g(t)\d t &= \sum_{i=1}^n \int_{x_{i-1}}^{x_i}f(t)g(t)\d t \\
 	& \leq \sum_{i=1}^n g(x_{i-1}) \int_{x_{i-1}}^{x_i} f(t)\d t + \sum_{i=1}^n \varepsilon(x_i - x_{i-1})(g(a)+1)\\
 	&= \sum_{i=1}^n g(x_{i-1}) \int_{x_{i-1}}^{x_i} f(t) \d t + \varepsilon(g(a)+1)(b-a)\\
 	&= \sum_{i=1}^n g(x_{i-1})(F(x_i)-F(x_{i-1}))+\varepsilon^* \\
-	&= \sum_{i=1}^{n-1} F(x_i)\underbrace{(g(x_{i-1})-g(x_i))}_{\geq \, 0}+ \underbrace{g(x_{n-1})}_{\geq \, 0}F(x_n)-\underbrace{g(x_0)F(x_0)}_{= \, F(a) = 0} + \varepsilon^*\\
-	& \leq \sum_{i=1}^{n-1} \sup_{[a,b]} F \cdot (g(x_{i-1}-g(x_i)) + \sup_{[a,b]} F \cdot g(x_{n-1}) + \varepsilon^*\\
+	&= \sum_{i=1}^{n-1} F(x_i)\underbrace{(g(x_{i-1})-g(x_i))}_{\geq \, 0}+ \underbrace{g(x_{n-1})}_{\geq \, 0}F(x_n)-\underbrace{g(x_0)F(x_0)}_{= \, F(a)\, =\, 0} +\, \varepsilon^*\\
+	& \leq \sum_{i=1}^{n-1} \sup_{[a,b]} F \cdot (g(x_{i-1})-g(x_i)) + \sup_{[a,b]} F \cdot g(x_{n-1}) + \varepsilon^*\\
 	&= \sup_{[a,b]} F \cdot \left( \sum_{i=1}^{n-1} (g(x_{i-1})-g(x_i)) + g(x_{n-1}) \right ) + \varepsilon^* \\
-    &= \sup_{[a,b]} F \cdot \underbrace{g(x_0)}_{g(a)} + \varepsilon^* .
+    &= \sup_{[a,b]} F \cdot \underbrace{g(x_0)}_{g(a)} +\, \varepsilon^* .
 \end{align*}
 Tím je nerovnost dokázána. Nerovnost pro infimum se dokáže obdobně.
 \end{proof}
@@ -1769,7 +1765,7 @@ g(b)\int_c^b f.
 	$$
 	Platí
 	$$
-	    \psi(y = (g(a)-g(b))\int_a^y f + g(b)\int_a^b f, \qquad y \in [a,b].
+	    \psi(y) = (g(a)-g(b))\int_a^y f + g(b)\int_a^b f, \qquad y \in [a,b].
 	$$
 	Funkce $\psi$ je spojitá na intervalu $[a,b]$. Nalezneme $y_1\in [a,b]$ bod maxima funkce $\psi$.
 	Podle lemmatu \ref{lemma8.37} platí

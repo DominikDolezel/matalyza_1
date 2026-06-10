@@ -172,11 +172,11 @@ L(h_1,\dots,h_n)
 	kde $A_1,\dots,A_n \in \mathbb R $. Zvolme $i \in \left \{ 1,\dots,n \right \} $.
 	Zobrazení $\varphi(t)=te^i$ je spojité. Pak je
 	$$
-	    \nm{\varphi(t)-\varphi(0)}=\nm{te^i-0e^i} = \nm{ [ 0,\dots, 0, \underset{i-\text{tý}}{t},0\dots,0 ] }=|t|.
+	    \nm{\varphi(t)-\varphi(0)}=\nm{te^i-0e^i} = \nm{ [ 0,\dots, 0, \underset{i\text{-tý}}{t},0\dots,0 ] }=|t|.
 	$$
 	Potom podle věty \ref{veta9.10} platí
 	$$
- \lim_{t\to 0} \frac{f \left( a+\varphi(t) - f(a) -L(\varphi(t)) \right ) }{\nm{\varphi(t)}} = 0,
+ \lim_{t\to 0} \frac{f \left( a+\varphi(t)) - f(a) -L(\varphi(t) \right ) }{\nm{\varphi(t)}} = 0,
 	$$
 	podmínka (P) je splněna. Upravíme
 	$$
@@ -340,7 +340,7 @@ totální diferenciál.
 	$$
 	Položme $\delta =\frac{\tilde \delta }{\sqrt n}$. Pak
 	$$
-	    I = (a_1-\delta, a_1+\delta)\times \dots \times (a_n-\delta,a_n+ \delta) \subset (a,\tilde,\delta).
+	    I = (a_1-\delta, a_1+\delta)\times \dots \times (a_n-\delta,a_n+ \delta) \subset B(a,\tilde\delta).
 	$$
 	Zvolme $x \in B(a,\delta) \subseteq I \subseteq B(a,\tilde \delta)$. Podle lemmatu
 	\ref{lemma10.3} nalezneme body $\xi^i (x)\in I$, $i =1,\dots,n $ takové, že

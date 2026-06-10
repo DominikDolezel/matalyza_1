@@ -3,7 +3,7 @@
 \begin{definice}
 Nechť $\{a_n\}_{n=1}^\infty$ je posloupnost.
 \begin{enumerate}[(a)]
-\item Pro $m\in\mathbb{N}$ položme $s_m=\sum_{n=1}^m a_n$. \textbf{Součet řady} $\sum_{n=1}^\infty a_n$ je limita posloupnosti $\{s_m\}$, pokud tato limita existuje.
+\item Pro $m\in\mathbb{N}$ položme $s_m=\sum_{n=1}^m a_n$. \textbf{Součet řady} $\sum_{n=1}^\infty a_n$ je limita posloupnosti $\{s_m\}_{m=1}^\infty$, pokud tato limita existuje.
 \item Řekneme, že řada $\sum_{n=1}^\infty a_n$ \textbf{konverguje} (\textbf{je konvergentní}), je-li $\lim_{m\to \infty} s_m$ vlastní.
 Řekneme, že řada $\sum_{n=1}^\infty a_n$ \textbf{diverguje} (\textbf{je divergentní}), jestliže $\lim_{m\to \infty} s_m$ neexistuje nebo je nevlastní.
 Pro jemnější rozlišení budeme někdy říkat, že řada $\sum_{n=1}^\infty a_n$ \textbf{diverguje k $\infty$}, respektive
@@ -52,7 +52,7 @@ Nechť řada $\sum_{n=1}^\infty a_n$ konverguje. Pak platí $\lim a_n=0$.
 \end{veta}
 
 \begin{proof}
-	Označme $x_n = \sum_{j=1}^n a_j$. Počítáme
+	Označme $s_n = \sum_{j=1}^n a_j$. Počítáme
 	$$
  \lim a_n = \lim (s_n - s_{n-1}).
 	$$
@@ -79,7 +79,7 @@ Nechť $\sum_{n=1}^\infty a_n$ je řada. Pak jsou následující tvrzení ekviva
 	\begin{itemize}
 		\item[$\impliedby$] Platí
 		\begin{equation}\label{bcpodminka}
-		\forall \varepsilon > 0 \exists n_0 \in \mathbb N  \forall m, n \in \mathbb N , m \geq n \geq n_0: s_m - s_{n-1}| < \varepsilon.
+		\forall \varepsilon > 0 \, \exists n_0 \in \mathbb N \, \forall m, n \in \mathbb N , m \geq n \geq n_0: |s_m - s_{n-1}| < \varepsilon.
 \end{equation}
 		Ověříme BC-podmínku pro posloupnost $\left \{ s_m \right \} $. Zvolme $\varepsilon > 0$. Podle
 		(\ref{bcpodminka}) nalezneme k $\varepsilon$ příslušné $n_0\in \mathbb N $. Zvolme
@@ -87,9 +87,9 @@ Nechť $\sum_{n=1}^\infty a_n$ je řada. Pak jsou následující tvrzení ekviva
 		\begin{enumerate}[(i)]
 			\item $m_1 > n_1$: $|s_{m_1} - s_{n_1}|< \varepsilon $, neboť $m_1 \geq n_1 + 1 \geq n_0$,
 			\item $m_1 = n_1$: $|s_{m_1} - s_{n_1}| = 0 < \varepsilon$,
-			\item $m_1 < n_1$: $|s_{m_1} - s_{n_1}| = < |s_{n_1} - s_{m_1}|\varepsilon $, neboť $n_1 \geq m_1 + 1 \geq n_0$.
+			\item $m_1 < n_1$: $|s_{m_1} - s_{n_1}| < |s_{n_1} - s_{m_1}|\varepsilon $, neboť $n_1 \geq m_1 + 1 \geq n_0$.
 		\end{enumerate}
-		Máme tedy že $\left \{ a_n \right \} $ splňuje BC-podmínku, tedy $\left \{ s_n \right \} $ je konvergentní,
+		Máme tedy že $\left \{ s_n \right \} $ splňuje BC-podmínku, tedy $\left \{ s_n \right \} $ je konvergentní,
 		a proto $\sum_{n=1}^\infty a_n$ konverguje.
 		\item[$\implies$] Protože $\sum a_n$ konverguje, splňuje $\left \{ s_n \right \} $ BC-podmínku, odkud plyne (ii).\qedhere
 	\end{itemize}
@@ -101,7 +101,7 @@ Nechť $\sum_{n=1}^\infty a_n$ je řada. Pak jsou následující tvrzení ekviva
     $$
     s_{2n}-s_n=\underbrace{\frac{1}{n+1} + \frac{1}{n+2}+ \dots + \frac{1}{n+n}}_{n \textrm{ členů}} \geq n \cdot \frac{1}{2n} = \frac{1}{2}.
     $$
-    Protože $\sum_{n=1}^\infty \frac{1}{n}$ nesplňuje BC-podmínku, a tedy diverguje (k nekonečnu).
+    Protože $\sum_{n=1}^\infty \frac{1}{n}$ nesplňuje BC-podmínku,  diverguje (k nekonečnu).
     Zároveň je to protipříklad na opačnou implikaci ve větě \ref{veta7.1}.
 \end{priklad}
 
@@ -140,7 +140,7 @@ Nechť řady $\sum_{n=1}^\infty a_n$ a $\sum_{n=1}^\infty b_n$ mají součet.
 
 \subsection{Řady s nezápornými členy}
 \begin{veta}[Součet řad s nezápornými členy]\label{veta7.4}
-Nechť je $\sum_{n=1}^\infty a_n$ řda s nezápornými členy. Pak má $\sum_{n=1}^\infty a_n$ součet.
+Nechť je $\sum_{n=1}^\infty a_n$ řada s nezápornými členy. Pak má $\sum_{n=1}^\infty a_n$ součet.
 \end{veta}
 
 \begin{proof}
@@ -173,7 +173,7 @@ $\sum_{n=1}^{\infty} b_n$ divergentní.
     $$
     Dále platí $\lim s_n = s \in \mathbb R ^*$ a $\lim t_n = t \in \mathbb R ^*$ podle věty \ref{veta7.4}.
     Potom $s \leq t + s_{n_0-1} - t_{n_0-1}$. Podle předpokladu je $t \in \mathbb R $, takže
-    celá pravá strana je prvekm $\mathbb R $, a tedy $s \in \mathbb R $, neboť všechny členy jsou nezáporné.
+    celá pravá strana je prvkem $\mathbb R $, a tedy $s \in \mathbb R $, neboť všechny členy jsou nezáporné.
     \item Plyne z (a) obměnou, což jsme již dokázali. \qedhere
 \end{enumerate}
 \end{proof}
@@ -212,9 +212,9 @@ pak konverguje i $\sum_{n=1}^{\infty} b_n$.
 			    \sum_{n=1}^\infty \left( \frac{1}{2}Ab_n \right )
 			$$
 			konverguje. Dále podle věty \ref{veta7.3}(a) máme, že
-			$$
+			$
 			    \sum_{n=1}^\infty b_n
-			$$
+			$
 			konverguje.
 			\item[$\impliedby$] Nalezneme $n_0 \in \mathbb N $ takové, že
 			$$
@@ -401,7 +401,7 @@ $
 \begin{proof}
 Označme
 \begin{align*}
-s_n & = a_1+ a_2+ \dots a_n,\\
+s_n & = a_1+ a_2+ \dots+ a_n,\\
 t_k &= a_1 + 2a_2 + \dots + 2^ka_{2^k}, \quad k \in \mathbb N _0.
 \end{align*}
 	Pro $n \leq 2^k$ platí
@@ -415,8 +415,8 @@ t_k &= a_1 + 2a_2 + \dots + 2^ka_{2^k}, \quad k \in \mathbb N _0.
 	Pokud $n \geq 2^k$, platí
 	\begin{align}\label{druha}
 	\begin{split}
-	s_n& \geq a_1 + a_2 + (a_3 + a_4) + (a_5+ a_6+a_7+a_8) + \dots + (a_{2^{k-1}+1}+a_{2^k})\\
-	& \leq \frac{1}{2} a_1+ a_2 + 2 a_4+ 4a_8 + \dots + 2^{k-1} a_{2^k} \\
+	s_n& \geq a_1 + a_2 + (a_3 + a_4) + (a_5+ a_6+a_7+a_8) + \dots + (a_{2^{k-1}+1}+\dots+a_{2^k})\\
+	& \geq \frac{1}{2} a_1+ a_2 + 2 a_4+ 4a_8 + \dots + 2^{k-1} a_{2^k} \\
 	&= \frac{1}{2} \cdot \left( a_1 + 2a_2 + 4a_4+8a_8+ \dots + 2^ka_{2^k} \right ) = \frac{1}{2} \cdot t_k.
 \end{split}
 \end{align}
@@ -424,9 +424,9 @@ t_k &= a_1 + 2a_2 + \dots + 2^ka_{2^k}, \quad k \in \mathbb N _0.
 \begin{enumerate}
 	\item[$\implies$] Máme, že $\lim s_n = s\in \mathbb R $, neboť $\sum a_n$ konverguje. Pro každé
 	$n, k$ splňující $n\geq 2^k$ platí podle (\ref{druha}) $t_k \leq 2s_n \leq 2s$. Odsud máme, že
-	$\lim t_k \in \mathbb R$, neboť $\sum 2^k a_{2^k}$ je konvergentní
+	$\lim t_k \in \mathbb R$, neboť $\sum 2^k a_{2^k}$ je konvergentní.
 	\item[$\impliedby$] Podle předpokladu $\lim_{k\to \infty}t_k = t\in \mathbb R $.
-	Zvolme $n\in \mathbb N $. Potom pro každé $k\in \mathbb N, n \leq 2^k $ platí (\ref{druha}),
+	Zvolme $n\in \mathbb N $. Potom pro každé $k\in \mathbb N, n \leq 2^k $ platí (\ref{prvni}),
 	tedy $s_n \leq t_k \leq t$. Odtud plyne $\lim s_n \leq t$. Proto je $\sum a_n$ konvergentní. \qedhere
 \end{enumerate}
 \end{proof}
@@ -445,7 +445,8 @@ konverguje právě tehdy, když $\alpha > 1$.
 		\item $\alpha > 1$: Použijeme větu \ref{veta7.9}. Místo řady $\sum_{n=1}^\infty \frac{1}{n^\alpha}$
 		vyšetřujeme řadu
 		$$\sum_{k=0}^\infty 2^k \frac{1}{{2^k}^\alpha} = \sum_{k=0}^\infty \left( 2^k \right )^{1-\alpha} = \sum_{k=0}^\infty \left( 2^{1-\alpha} \right )^k , $$
-		která konverguje, neboť $2^{1-\alpha < 0} \in (0,1)$; proto konverguje i původní řada.
+		která konverguje, neboť $2^{1-\alpha}$ je pro $\alpha > 1$ geometrická řada
+	    s kvocientem $q\in (0,1)$; proto konverguje i původní řada.
 		\item $\alpha \leq 1$: Platí
 		$$
 		    \forall n \in \mathbb N : \frac{1}{n^\alpha} \geq \frac{1}{n} \geq 0.
@@ -464,6 +465,24 @@ Nechť $\{a_n\}$ je monotónní posloupnost splňující $\lim a_n = 0$. Potom j
 konvergentní.
 \end{veta}
 
+\begin{priklad}
+	Řada
+	$$c_k=\sum_{n=1}^\infty \underbrace{\frac{(-1)^n}{\sqrt{n}}}_{a_n= b_n}$$ konverguje podle Leibnizova kritéria, neboť $\frac{1}{\sqrt{n}}$
+	konverguje. Řada
+	$$
+	c_k=\sum _{i=1}^k a_{k+1-i}b_i = \sum_{i=1}^k \frac{(-1)^{k+i-1}}{\sqrt{k+1-i}}\cdot \frac{(-1)^i}{\sqrt{i}}= (-1)^{k+1} \sum_{i=1}^k \frac{1}{\sqrt{(k+1-i)i}},
+	$$
+	díky AG nerovnosti máme
+	$$
+ \frac{1}{\sqrt{(k+1-i)i}} \geq \frac{1}{\frac{(k+1-i)+i}{2}}=\frac{2}{k+1},
+	$$
+	a tedy i
+	$$
+	c_k \geq \frac{2}{k+1},
+	$$
+	a proto $\sum c_k$ diverguje, neboť není splněna nutná podmínka konvergence.
+\end{priklad}
+
 \begin{proof}
 	BÚNO $\left \{ a_n \right \} $ je nerostoucí. Potom
 	$$
@@ -476,12 +495,12 @@ konvergentní.
 	$$
 	Pro každé $n\in \mathbb N $ platí
 	\begin{align*}
-	s_{2n} &= \underbrace{(a_1+a_2)}_{\leq 0}+\underbrace{(-a_3+a_4)}_{\leq 0}+\dots +\underbrace{(-a_{2n-1}+a_{2n})}_{\leq 0},\\
+	s_{2n} &= \underbrace{-(a_1+a_2)}_{\leq 0}+\underbrace{(-a_3+a_4)}_{\leq 0}+\dots +\underbrace{(-a_{2n-1}+a_{2n})}_{\leq 0},\\
     s_{2n+2} &= s_{2n} + \underbrace{(-a_{2n+1} + a_{2n+2})}_{\leq 0} \leq s_{2n}.
     \end{align*}
 	Dále platí
 	$$
-	    s_{2n} = -a_1 + \underbrace{(a_2 - a_3)}_{\leq 0} + \underbrace{(a_4  -a_5)}_{\leq 0}+ \dots + \underbrace{(a_{2n-2}+a_{2n-1})}_{\leq 0} + a_{2n}\geq -a_1,
+	    s_{2n} = -a_1 + \underbrace{(a_2 - a_3)}_{\geq 0} + \underbrace{(a_4  -a_5)}_{\geq 0}+ \dots + \underbrace{(a_{2n-2}+a_{2n-1})}_{\geq 0} + \, a_{2n}\geq -a_1,
 	$$
 	odkud máme, že $\lim s_{2n}=s \in \mathbb R $.
 	\par Pro každé $n \in \mathbb N $ platí
@@ -566,7 +585,7 @@ konvergentní a navíc platí
 \end{proof}
 
 \begin{poznamka}
-Někdy je možné ukázat konvergenci řady $\sum_{n=1}^\infty a_n$ tako, že ukážeme konvergenci
+Někdy je možné ukázat konvergenci řady $\sum_{n=1}^\infty a_n$ tak, že ukážeme konvergenci
 řady $\sum_{n=1}^\infty |a_n|$, což je řada s nezápornými členy.
 \end{poznamka}
 
@@ -595,7 +614,7 @@ absolutně konverguje a platí
 	\item Předpokládejme nejprve, že $\sum a_n$ má nezáporné členy.
 	Pro každé $n$ platí
 	$$
-	    a_{\pi(1)}+a_{\pi(2)} + \dots + a_{\pi(n)} \leq a_1 + a_2 + +\dots a_m \leq \sum_{j=1}^\infty a_j,
+	    a_{\pi(1)}+a_{\pi(2)} + \dots + a_{\pi(n)} \leq a_1 + a_2 + \dots +a_m \leq \sum_{j=1}^\infty a_j,
 	$$
 	pokud $m \geq \max \left \{ \pi(1), \pi(2), \dots, \pi(n) \right \} $. Odtud plyne
 	$$
@@ -639,7 +658,7 @@ Nechť řada $\sum_{n=1}^{\infty} a_n$ konverguje neabsolutně a $s \in \mathbb{
 \begin{proof}
 	Hlavní myšlenka důkazu. Označme
 	\begin{align*}
-	P = \left \{ n \in \mathbb N , a_n \geq 0 \right \},  & Q = \left \{ n \in \mathbb N , a_n < 0 \right \}.
+	P = \left \{ n \in \mathbb N , a_n \geq 0 \right \},  && Q = \left \{ n \in \mathbb N , a_n < 0 \right \}.
 \end{align*}
 Pak je $\mathbb N = P \cup Q$ a taky $P\cap Q = \emptyset$. Množiny $P$ a $Q$ jsou nekonečné (kdyby nějaká z nich
 byla konečná, řada by byla absolutně konvergentní). Nalezneme posloupnosti přirozených čísel
@@ -673,14 +692,14 @@ Nechť řada $\sum_{n=1}^{\infty} a_n$ absolutně konverguje a řada $\sum_{m=1}
 \begin{proof}
 	Označme
 	\begin{align*}
-		A_n &= \sum_{i=1}^na_i, & A &= \sum_{n=1}^\infty, & \alpha = \sum_{n=1}^\infty|a_n|,\\
+		A_n &= \sum_{i=1}^na_i, & A &= \sum_{n=1}^\infty a_n, & \alpha = \sum_{n=1}^\infty|a_n|,\\
 	 B_m &= \sum_{i=1}^m b_i & B &= \sum_{n=1}^\infty b_n, & \beta _n = B_n-B,\\
-	 C_n &= \sum_{i=1}^n, \quad c_i = \sum_{j=1}^i a_{i+1-j}b_j.
+	 C_n &= \sum_{i=1}^n c_i, &  c_i &= \sum_{j=1}^i a_{i+1-j}b_j.
 \end{align*}
 Je
 \begin{align*}
 C_n &= \underbrace{(a_1b_1)}_{c_1} + \underbrace{(a_1b_2+a_2b_1)}_{c_2} + \dots + \underbrace{(a_1b_n + a_2 + b_{n-1}+ \dots + a_nb_1)}_{c_n}\\
-&= a_1(b_1+b_2+\dots +b_n) + a_2(b_1+b_1+\dots+b_{n-1}) +\dots + a_nb_1\\
+&= a_1(b_1+b_2+\dots +b_n) + a_2(b_1+b_2+\dots+b_{n-1}) +\dots + a_nb_1\\
 &= a_1 (B+ \beta_n) + a_2 (B+ \beta_{n-1}) +\dots +a_n(B+\beta_1)\\
 &= (a_1+a_2+\dots+a_n)B + \underbrace{(a_1\beta_n + a_2\beta_{n-1} +\dots + a_n\beta_1)}_{\gamma_n}\\
 &= A_nB+\gamma_n.
@@ -706,7 +725,7 @@ $$
 $$
 Odhadneme $|\gamma_n|$ jako
 \begin{align*}
-|\gamma_n| &\leq (|a_1|\cdot \underbrace{|\beta_n|}_{<\varepsilon} + \dots + |a_{n+1-N}|\cdot \underbrace{|\beta_N|}_{<\varepsilon})+ |a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1|\\
+|\gamma_n| &\leq (|a_1|\cdot \underbrace{|\beta_n|}_{<\,\varepsilon} + \dots + |a_{n+1-N}|\cdot \underbrace{|\beta_N|}_{<\,\varepsilon})+ |a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1|\\
 & \leq \alpha \varepsilon + |a_{n+2-N}\beta_{N-1} +\dots + a_n\beta_1|.
 \end{align*}
 Poněvadž $\lim_{j\to \infty} a_j = 0$, dostáváme, že
@@ -720,23 +739,7 @@ $$
 a tedy $\liminf |\gamma _n| = 0$ a taky $\lim \gamma _n = 0$.
 \end{proof}
 
-\begin{priklad}
-	Řada
-	$$c_k\sum_{n=1}\infty \underbrace{\frac{(-1)^n}{\sqrt{n}}_{a_n = b_n}}$$ konverguje podle Leibnitzova kritéria, neboť $\frac{1}{\sqrt{n}}$
-	konverguje. Řada
-	$$
-	c_k\sum _{i=1}^k a_{k+1-i}b_i = \sum_{i=1}^k \frac{(-1)^{k+i-1}}{\sqrt{k+1-i}}\cdot \frac{(-1)^i}{\sqrt{i}}= (-1)^{k+1} \sum_{i=1}^k \frac{1}{\sqrt{(k+1-i)i}},
-	$$
-	díky AG nerovnosti máme
-	$$
- \frac{1}{\sqrt{(k+1-i)i}} \geq \frac{1}{\frac{(k+1-i)+i}{2}}=\frac{2}{k+1},
-	$$
-	a tedy i
-	$$
-	c_k \geq \frac{2}{k+1},
-	$$
-	a proto $\sum c_k$ diverguje, neboť není splněna nutná podmínka konvergence.
-\end{priklad}
+
 
 \begin{veta}[Abel] \label{veta7.16}
 Nechť $\sum_{n=1}^{\infty} a_n$ a $\sum_{m=1}^{\infty} b_m$ jsou konvergentní řady, jejichž Cauchyův součin konverguje. Pak platí
@@ -870,7 +873,7 @@ Nechť $\{a_n\}$ je posloupnost komplexních čísel. Pro $m\in \mathbb N $ polo
 $$
 s_m = a_1+a_2+\dots +a_m.
 $$
-Číslo $s_m$ nazveme \textbf{$m$-tám částečným součtem} řady $\sum_{n=1}^\infty a_n$. Prvek $a_n$ budeme nazývat
+Číslo $s_m$ nazveme \textbf{$m$-tým částečným součtem} řady $\sum_{n=1}^\infty a_n$. Prvek $a_n$ budeme nazývat
 \textbf{$n$-tým členem} řady $\sum_{n=1}^\infty a_n$. \textbf{Součtem} nekonečné řady $\sum_{n=1}^\infty a_n$
 nazveme limitu posloupnosti $\left \{ s_m \right \} $, pokud tato limita existuje (jako prvek $\mathbb C $).
 Součet řady budeme značit symbolem $\sum_{n=1}^\infty a_n$. Řekneme, že řada \textbf{konverguje}, je-li její
@@ -887,7 +890,7 @@ Je-li řada komplexních čísel $\sum_{n=1}^{\infty} a_n$ absolutně konvergent
 \end{veta}
 
 \begin{definice}
-\textbf{Komplexní exponenciální funkcí} rozumíme funkci $\exp: \mathbb C \to C$ definovanou
+\textbf{Komplexní exponenciální funkcí} rozumíme funkci $\exp: \mathbb C \to \mathbb C$ definovanou
 předpisem
 \[
 \exp(z) = \sum_{n=0}^{\infty} \frac{1}{n!} z^n, \quad z \in \mathbb{C}.

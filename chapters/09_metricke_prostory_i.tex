@@ -96,7 +96,7 @@ Nechť $(P,\varrho)$ je metrický prostor a $\{x_n\}$ je posloupnost prvků $P$.
 \end{proof}
 
 \begin{oznaceni}
-Pokud je posloupnost $\{x_n\}$ konvergentní v metrickém prostoru $(P,\varrho)$, pak je podle věty \ref{veta9.1} (a) její limita určena jednoznačně a budeme ji značit
+Pokud je posloupnost $\{x_n\}$ konvergentní v metrickém prostoru $(P,\varrho)$, pak je podle věty \ref{veta9.1}(a) její limita určena jednoznačně a budeme ji značit
 $
 \lim_{n\to\infty}x_n
 $
@@ -144,7 +144,7 @@ Nechť $(P,\varrho)$ je metrický prostor.
 	Platí $\mathbb N =\bigcup_{i=1}^m A_i$. Nalezneme $i_0\in \left \{ 1,\dots,m \right \} $
 	takové, že $A_{i_0}$ je nekonečná. Existuje rostoucí posloupnost $\left \{ n_k \right \}_{k=1}^\infty $
 	taková, že $A_{i_0}=\left \{ n_k, k \in \mathbb N  \right \} $. Potom $\left \{ x_{n_k} \right \}_{k=1}^\infty $
-	je vybraná z $\left \{ x_n \right \} $ a platí $\lim x_{n_k} = x$ (podle věty \ref{veta9.2}) a
+	je vybraná z $\left \{ x_n \right \} $ a platí $\lim x_{n_k} = x$ (podle věty \ref{veta9.1}) a
 	pro každé $k \in \mathbb N $ platí $x_{n_k} \in F_{i_0}$. $F_{i_0}$ je uzavřená, a tedy
 	$x \in F_{i_0} \subseteq \bigcup_{i=1}^m F_i$.\qedhere
 \end{enumerate}
@@ -152,7 +152,7 @@ Nechť $(P,\varrho)$ je metrický prostor.
 
 \begin{priklad}
 	Pro $(\mathbb R ^2, \varrho_\infty)$ se jedná o \uv{otevřený čtverec}. Pro $(\mathbb R ^2, \varrho_i)$
-	jedná o otočený otevřený čtverec. Dále př. $(\mathscr C([a,b]), \varrho_{\sup})$.
+	se jedná o otočený otevřený čtverec. Dále př. $(\mathscr C([a,b]), \varrho_{\sup})$.
 \end{priklad}
 
 \begin{pozorovani}
@@ -204,7 +204,7 @@ Nechť $(P,\varrho)$ je metrický prostor.
 		takovou, že $ x\in G$. Protože je $G$ otevřená, nalezneme $r>0$ takové, že $B(x,r) \subset G$.
 		Tedy $B(x,r) \subset \bigcup \mathcal G$. Tedy $\bigcup \mathcal G$ je otevřená množina v $P$.
 		\item Zvolme $x \in \bigcap_{i=1}^m G_i$. Potom $x \in G_i$ pro všechna $i \in \left \{ 1,\dots,m \right \} $.
-		Díky otevřenosti $G_i$ nalezneme pro každé $i\in \left \{ 1,\dots, m \right \} $ nalezneme $r_i>0$
+		Díky otevřenosti $G_i$ pro každé $i\in \left \{ 1,\dots, m \right \} $ nalezneme $r_i>0$
     	takové, že $B(x,r_i)\subset G_i$. Položme $r=\min \left \{ r_i:i \in \left \{ 1,\dots,m \right \}  \right \} $.
         Pak $r>0$ a $\forall i \in \left \{ 1,\dots,m \right \}: B(x,r)\subset G_i $. Tedy
         $B(x,r)\subset \bigcap_{i=1}^m G_i$. Tudíž $\bigcap_{i=1}^m G_i$ je otevřená množina v $P$.\qedhere
@@ -218,7 +218,7 @@ Nechť $(P,\varrho)$ je metrický prostor.
 	pak sice pro každé $i\in \mathbb N $ je $G_i$ otevřená v $\mathbb R $, ale $\bigcap_{i=1}^\infty G_i = \left \{ 0 \right \} $
 	není otevřená v $\mathbb R $.
 	\par Jiné příklady: $G_i = \left( -\frac{1}{i}, 1+\frac{1}{i} \right ) $, pak $\bigcap G_i = [0,1]$.
-	\item Podle věty \ref{veta9.3} (b) je $\operatorname{Int} M$ otevřená množina (pro každou $M\subset P$)
+	\item Podle věty \ref{veta9.3}(b) je $\operatorname{Int} M$ otevřená množina (pro každou $M\subset P$)
 	a platí
 	$$
 	    \operatorname{Int} M = \bigcup \left \{ B(x,r), x \in M, r>0, B(x,r)\subset M \right \}.
@@ -317,8 +317,8 @@ Nechť $(P,\varrho)$ je metrický prostor, $A\subset P$, $B\subset P$. Pak plat�
 		$\left \{ x_n \right \}\subset \overline A , x_n \to x \in P$, pak $x \in \overline A$. Předpokládejme,
 		že $\left \{ x_n \right \}  \subset \overline A$, $x_n \to x \in P, x \notin A$. Zvolme $r>0$.
 		Nalezneme $n_0, \in \mathbb N $ takové, že $x_n \in B \left( x, \frac{r}{2} \right ) $. Potom
-		$B \left( x_{n_0}, \frac{r}{2} \right ) \cap A \ne \emptyset $, neboť $x_n $ je v $A$ nebo v $\partial A$.
-		Tedy nalezneme $y \in B \left \{ x_{n_0}, \frac{r}{2} \right \}\cap A $. Potom
+		$B \left( x_{n_0}, \frac{r}{2} \right ) \cap \overline A \ne \emptyset $, neboť $x_n $ je v $A$ nebo v $\partial A$.
+		Tedy nalezneme $y \in B \left ( x_{n_0}, \frac{r}{2} \right )\cap A $. Potom
 		$$
 		    \varrho(x,y) \leq \varrho(x,x_{n_0})+ \varrho(x_{n_0},y)<\frac{r}{2}+\frac{r}{2}=r.
 		$$
@@ -385,7 +385,7 @@ Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory a $f : P \to Q$. Pak
 	Nejprve dokážeme ekvivalenci mezi (i) a (ii).
 	\begin{enumerate}
 		\item[$\implies$] Zvolme množinu $G\subset Q$, $G$ je otevřená (vzhledem k prostoru $(Q,\sigma)$).
-		Chceme ukázat, že $f^{-1}(G)$ je otevřená, tedy že pr každý bod $x \in f^{-1}(G)$ je $f(x)\in G$.
+		Chceme ukázat, že $f^{-1}(G)$ je otevřená, tedy že pro každý bod $x \in f^{-1}(G)$ je $f(x)\in G$.
 		Nalezneme $\varepsilon>0$ takové, že $B(f(x),\varepsilon)\subset G$. Díky spojitosti $f$
 		v $x$ nalezneme $\delta > 0$ takové, že
 		$$
@@ -411,7 +411,7 @@ Nechť $(P,\varrho)$ a $(Q,\sigma)$ jsou metrické prostory a $f : P \to Q$. Pak
 		$$f^{-1}(F)=P\smallsetminus \underbrace{f^{-1}(Q\smallsetminus F)}_{\text{otevřená}}$$
 		uzavřená, což jsme chtěli dokázat.
 		\item[$\impliedby$] Vezměme $G \subset Q$ otevřenou množinu. Pak je $Q\smallsetminus G$ uzavřená, a
-	    tedy $f^{-1}(Q\smallsetminus G)$ je uzavřená v $(P,\varrho)$. proto je
+	    tedy $f^{-1}(Q\smallsetminus G)$ je uzavřená v $(P,\varrho)$. Proto je
 		$$
 			 f^{-1}(G)=P\smallsetminus \underbrace{f^{-1}(Q\smallsetminus G)}_{\text{uzavřená}}
 		$$
@@ -511,7 +511,7 @@ je spojité.
 \end{veta}
 
 \begin{proof}
-	Vezměme $G \subset Z$, $G$ otevřenou. Pak je množiny
+	Vezměme $G \subset Z$, $G$ otevřenou. Pak je množina
 	$$(g\circ f)^{-1}(G)=f^{-1}(\underbrace{g^{-1}(G)}_{\text{otevřená}})$$
 	otevřená, a tedy podle věty \ref{veta9.6} je $g\circ f$ spojité zobrazení.
 \end{proof}
@@ -521,7 +521,7 @@ Nechť $(X,\varrho)$, $(Y,\sigma)$ a $(Z,\omega)$ jsou metrické prostory, $f$ j
 \begin{itemize}
     \item existuje $\delta>0$ takové, že
     $
-    f\bigl((A\cap B(a,\delta))\setminus\{a\}\bigr)\subset B,
+    f\bigl((A\cap B(a,\delta))\smallsetminus\{a\}\bigr)\subset B,
     $
 
     \item
