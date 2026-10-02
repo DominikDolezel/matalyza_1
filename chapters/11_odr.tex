@@ -1,0 +1,139 @@
+\section{Obyčejné diferenciální rovnice}
+\subsection{Základní pojmy}
+
+\begin{definice}
+Diferenciální rovnicí rozumíme rovnici tvaru
+\begin{equation}\label{odrdef}
+F(x,y,y',y'',\ldots,y^{(n-1)},y^{(n)})=0.
+\end{equation}
+kde $F$ je reálná funkce $n+2$ proměnných.
+
+\textbf{Řešením diferenciální rovnice} (\ref{odrdef}) rozumíme funkci $y$ definovanou na nějakém neprázdném
+otevřeném intervalu $I$, která má v každém bodě intervalu $I$ vlastní $n$-tou derivaci a jejíž hodnoty
+spolu s hodnotami derivací splňují rovnici (\ref{odrdef}) v každém bodě intervalu $I$, tj. pro každé $x\in I$
+platí
+\[
+F\bigl(x,y(x),y'(x),y''(x),\ldots,y^{(n-1)}(x),y^{(n)}(x)\bigr)=0.
+\]
+\end{definice}
+
+\begin{priklad}
+	Rovnice $p^\prime = ap - bp^2$ nebo $y^{\prime\prime} +y^\prime +\ = \sin x$. Tu lze převést na
+$$y^{\prime\prime} +y^\prime +\ -\sin x= 0.$$
+Tady je
+	$$F(z_1,z_2,z_3,z_4)=--\sin z_1 + z_2 + z_3 + z_4.$$
+\end{priklad}
+
+\begin{definice}
+Je-li funkce $y$ řešením rovnice (\ref{odrdef}) na intervalu $I$ a funkce $\widetilde y$ řešením rovnice (\ref{odrdef}) na
+intervalu $\widetilde I$, kde $I\subset\widetilde I$, $I\ne\widetilde I$, a $y(x)=\widetilde y(x)$ pro všechna $x\in I$,
+pak říkáme, že řešení $\widetilde y$ je \textbf{prodloužením řešení $y$} na interval $\widetilde I$.
+Řešení rovnice (\ref{odrdef}), které nemá prodloužení, nazýváme \textbf{maximálním řešením} rovnice (\ref{odrdef}).
+\end{definice}
+
+\subsection{Rovnice se separovanými proměnnými}
+\begin{definice}
+Rovnice se separovanými proměnnými je rovnice tvaru
+\begin{equation}\label{separ}
+y'=g(y)h(x).
+\end{equation}
+kde $g,h$ jsou dané reálné funkce.
+\end{definice}
+
+\begin{pozorovani}
+Označme $\mathcal D(h)=I$.
+	Předpokládejme, že $g(c)=0$. Položme $y(x)=c$, $x \in I$. To je maximální řešení, neboť
+	po dosazení je na levé straně $y^\prime(x)=0$ a na pravé straně
+	$$
+	    g(y(x))\cdot h(x) = g(c)\cdot h(x) = 0\cdot h(x)=0.
+	$$
+\end{pozorovani}
+
+\begin{pozorovani}
+Předpokládejme, že $J$ je otevřený interval, kde $g$ nemění znaménko a $y: L \to J$ řeší na otevřeném
+	intervalu $L\subseteq I$ rovnici (\ref{separ}). Potom
+	\begin{align*}
+	\forall x \in L: \qquad y^\prime (x) &= g(y(x))\cdot h(x),\\
+	\frac{y^\prime(x)}{g(y(x))}&= h(x).
+	\end{align*}
+	Nechť $H$ je primitivní k funkci $h$, tj. $H^\prime(x) = h(x)$, $x \in I$. Nechť $G$ je primitivní
+	k funkci $\frac{1}{g}$, tj. $G^\prime(z)=\frac{1}{g(z)}$, $z\in J$.
+	Protože je
+	\begin{align*}
+	(G(y(x)))^\prime &= \frac{1}{g(y(x))}\cdot y^\prime(x), \qquad x \in L \\
+	H^\prime(x)&=h(x), \qquad x \in L.
+	\end{align*}
+	Existuje tedy $k \in \mathbb R $ takové, že
+	$$
+	    \forall x \in L: \qquad G(y(x)) = H(x) + k.
+	$$
+	Pak je
+	$$
+	    y(x) = G^{-1} (H(x)+k).
+	$$
+\end{pozorovani}
+
+\paragraph{Metoda řešení}
+Předpokládejme, že $\mathcal D(g)$ je interval, $\mathcal D(h)$ je otevřený interval, $g$ je spojitá na
+$\mathcal D(g)$, a $h$ je spojitá
+na $\mathcal D(h)$.
+
+\paragraph{1. krok (kořeny a znaménko $g$).}
+Označme $I=\mathcal D(h)$. Nalezneme všechny nulové body funkce $g$.
+Je-li totiž $g(c)=0$, pak funkce $y(x)=c$, $x\in I$, je řešením rovnice (\ref{separ}).
+Těmto řešením se říká \textbf{singulární nebo také stacionární}. Určíme maximální otevřené intervaly,
+na kterých je $g$ nenulová.
+
+\paragraph{2. krok (výpočet primitivních funkcí).}
+Nechť $J$ je interval z 1. kroku, kde je $g$ nenulová.
+Budeme hledat řešení, která jsou definovaná na nějakém otevřeném intervalu, který je obsažen
+v $I$, a mají hodnoty v intervalu $J$. Nalezneme primitivní funkci $H$ k funkci $h$ na $I$ a primitivní
+funkci $G$ k funkci $\frac{1}{g}$ na $J$. Existuje inverzní funkce
+$G^{-1}\colon G(J)\to J$.
+
+\paragraph{3. krok (určení definičních oborů).}
+Zvolme $c\in\mathbb R$. Nalezneme maximální neprázdné otevřené intervaly obsažené v množině
+\[
+\{x\in I;\ H(x)+c\in G(J)\}.
+\]
+
+Nechť $L$ je takový interval. Na $L$ definujeme funkci $y$ předpisem
+\[
+y(x)=G^{-1}\bigl(H(x)+c\bigr),\qquad x\in L.
+\]
+Funkce $y$ je dobře definována a je řešením rovnice (\ref{separ}).
+
+Ověření, že funkce $y(x)$ je řešením rovnice (\ref{separ}).
+
+Na levé straně je
+\begin{align*}
+	y^\prime(x) &= \left( G^{-1}(H(x)+c) \right ) ^\prime = \frac{1}{G^\prime \left( G^{-1}(H(x)+c) \right ) }\cdot (H(x)+c)\\
+	&=g ( \underbrace{G^{-1}(H(x)+c)}_{y(x)} )\cdot h(x) = g(y(x))\cdot h(x).
+\end{align*}
+
+\paragraph{4. krok (lepení).}
+Z řešení nalezených ve 3. kroku a singulárních řešení z 1. kroku slepíme všechna maximální řešení.
+Nechť $y_1$ a $y_2$ jsou řešení rovnice (\ref{separ}), první na intervalu $(a,b)$ a druhé na intervalu $(b,c)$,
+přičemž $b\in I$. Předpokládejme, že
+\[
+\lim_{x\to b-}y_1(x)=\lim_{x\to b+}y_2(x)=\alpha\in \mathcal D(g).
+\]
+Pak funkce
+\[
+y(x)=
+\begin{cases}
+y_1(x), & x\in(a,b),\\
+\alpha, & x=b,\\
+y_2(x), & x\in(b,c),
+\end{cases}
+\]
+je řešením rovnice (\ref{separ}) na intervalu $(a,c)$.
+
+
+Kontrola, že po čtvrtém kroku je v bodě $b$ nová funkce opravdu řešení. Zřejmě je (\ref{separ}) splněna pro každé
+$x \in (a,b) \cup (b,c)$. Zbývá ověřit (\ref{separ}) pro $x=b$. Funkce $y$ je spojitá zleva v bodě $b$. Je
+\begin{align*}
+	y_-^\prime(b) &= \lim_{x \to b-} y^\prime(x) = \lim_{x \to b-} y_1^\prime(x) = \lim_{x \to b-} g(y_1(x))\cdot h(x)\\
+	&= g(\alpha)\cdot h(b)=g(y(b))\cdot h(b).
+\end{align*}
+Z pravé strany provedeme obdobně.
